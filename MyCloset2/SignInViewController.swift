@@ -8,9 +8,13 @@
 import UIKit
 
 class SignInViewController: UIViewController {
+    
+    @IBOutlet var nameTextField : UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("aaaaa")
 
         // Do any additional setup after loading the view.
     }
