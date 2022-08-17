@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="y6N-v4-6yP">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -19,7 +19,7 @@
         <!--その他-->
         <scene sceneID="kM8-vj-QbM">
             <objects>
-                <viewController id="qgv-o6-4uH" customClass="TheOthersListViewController" customModule="GeekProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="qgv-o6-4uH" customClass="TheOthersViewController" customModule="MyCloset2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hMz-7w-2IM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -52,15 +52,14 @@
                     <navigationItem key="navigationItem" title="その他" id="DCB-ey-c7I">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="OHJ-lf-94b">
                             <connections>
-                                <action selector="addClothes" destination="qgv-o6-4uH" id="Yj4-Y7-6PC"/>
+                                <action selector="toAdd" destination="qgv-o6-4uH" id="9Ie-ly-tEj"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="clothesListTableView" destination="EpC-sc-nrb" id="1XG-Qi-Nng"/>
-                        <segue destination="Cdb-yD-mSg" kind="presentation" identifier="theOthersSegue" id="a3l-7e-CX2"/>
                         <segue destination="c0a-9h-VGg" kind="presentation" identifier="editTheOthers" id="xtR-Kd-vjn"/>
+                        <segue destination="Cdb-yD-mSg" kind="presentation" identifier="fromOthers" id="Lyo-cn-49b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rNh-r7-4nD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -70,7 +69,7 @@
         <!--靴・サンダルなど-->
         <scene sceneID="FdN-qH-zjO">
             <objects>
-                <viewController id="WXl-CF-c1k" customClass="ShoesListViewController" customModule="GeekProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="WXl-CF-c1k" customClass="ShoesListViewController" customModule="MyCloset2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XAP-Am-Fy0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -119,7 +118,7 @@
         <!--How To Use View Controller-->
         <scene sceneID="wSN-L5-Nyj">
             <objects>
-                <viewController id="uGg-eh-diQ" customClass="HowToUseViewController" customModule="GeekProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="uGg-eh-diQ" customClass="HowToUseViewController" customModule="MyCloset2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NtZ-sp-KEm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -170,7 +169,7 @@
         <!--検索-->
         <scene sceneID="QVO-KE-bhT">
             <objects>
-                <viewController id="4fv-uv-tyQ" customClass="SearchViewController" customModule="GeekProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="4fv-uv-tyQ" customClass="SearchViewController" customModule="MyCloset2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lAH-MP-cmu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -254,7 +253,7 @@
         <!--Select Color View Controller-->
         <scene sceneID="ud2-31-Kjl">
             <objects>
-                <viewController id="WZ6-kQ-MLd" customClass="SelectColorViewController" customModule="GeekProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="WZ6-kQ-MLd" customClass="SelectColorViewController" customModule="MyCloset2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Iey-ci-KO2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -359,7 +358,7 @@
         <!--Search Result View Controller-->
         <scene sceneID="6S3-Ju-p6D">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="QpM-tU-WBp" customClass="SearchResultViewController" customModule="GeekProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="QpM-tU-WBp" customClass="SearchResultViewController" customModule="MyCloset2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IeT-10-7Q7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -400,7 +399,7 @@
         <!--Home View Controller-->
         <scene sceneID="Ctw-SQ-RRg">
             <objects>
-                <viewController id="a2l-8L-662" customClass="HomeViewController" customModule="GeekProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="a2l-8L-662" customClass="HomeViewController" customModule="MyCloset2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QeA-Pd-IvB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -423,9 +422,6 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="didTouchDownButton" destination="a2l-8L-662" eventType="touchDown" id="9Zx-D5-OOz"/>
-                                    <action selector="didTouchDragExitButton" destination="a2l-8L-662" eventType="touchDragExit" id="M3U-dj-Lf3"/>
-                                    <action selector="didTouchUpInsideButton" destination="a2l-8L-662" eventType="touchUpInside" id="1Om-ew-i0z"/>
                                     <segue destination="4fv-uv-tyQ" kind="show" id="PDO-li-28P"/>
                                 </connections>
                             </button>
@@ -458,16 +454,8 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="yH7-zm-dKt">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <action selector="showMenu" destination="a2l-8L-662" id="5wr-TD-0ep"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="searchButton" destination="sCc-Si-Gsj" id="nvg-Wo-DZq"/>
-                        <outlet property="titleImagwView" destination="UzR-ug-tIV" id="qIh-ad-bB7"/>
-                        <outlet property="titleLabel" destination="gRU-ja-3km" id="PkV-ll-bR7"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zf8-r4-Tek" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -476,7 +464,7 @@
         <!--トップス/アウター-->
         <scene sceneID="ZC1-Y9-aeZ">
             <objects>
-                <viewController id="Esm-7l-gsy" customClass="SelectCategoryViewController" customModule="GeekProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Esm-7l-gsy" customClass="SelectCategoryViewController" customModule="MyCloset2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aGn-hB-0DK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -554,7 +542,7 @@
         <!--トップス/アウター長袖-->
         <scene sceneID="t4C-M0-ahW">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="jtQ-US-1jC" customClass="longTopsListViewController" customModule="GeekProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="jtQ-US-1jC" customClass="longTopsListViewController" customModule="MyCloset2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WDs-Xs-yfy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -628,7 +616,7 @@
         <!--ボトムス-->
         <scene sceneID="pmK-eY-4lZ">
             <objects>
-                <viewController id="W9I-jh-6Hn" customClass="BottomsListViewController" customModule="GeekProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="W9I-jh-6Hn" customClass="BottomsListViewController" customModule="MyCloset2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9rT-5y-qh2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -677,7 +665,7 @@
         <!--トップス/アウター半袖-->
         <scene sceneID="vFk-2u-Xyr">
             <objects>
-                <viewController id="3lW-4J-gJA" customClass="ShortTopsListViewController" customModule="GeekProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="3lW-4J-gJA" customClass="ShortTopsListViewController" customModule="MyCloset2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8dc-eh-ULW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -723,10 +711,10 @@
             </objects>
             <point key="canvasLocation" x="4502.898550724638" y="-1073.4375"/>
         </scene>
-        <!--Add Clothes View Controller-->
+        <!--Add View Controller-->
         <scene sceneID="UbA-3m-Qp2">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="Cdb-yD-mSg" customClass="AddClothesViewController" customModule="GeekProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="Cdb-yD-mSg" customClass="AddViewController" customModule="MyCloset2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="o3l-lh-b8f">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -742,9 +730,6 @@
                                         <fontDescription key="fontDescription" name="Macfine.ttf" family="Macfine.ttf" pointSize="15"/>
                                         <color key="tintColor" systemColor="linkColor"/>
                                         <state key="normal" title="キャンセル"/>
-                                        <connections>
-                                            <action selector="cancel" destination="Cdb-yD-mSg" eventType="touchUpInside" id="HGj-BR-Lbu"/>
-                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="服を追加" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yM1-ik-MvG">
                                         <rect key="frame" x="150" y="0.0" width="80" height="30"/>
@@ -765,7 +750,7 @@
                                         <color key="tintColor" systemColor="linkColor"/>
                                         <state key="normal" title="追加する"/>
                                         <connections>
-                                            <action selector="addClothes" destination="Cdb-yD-mSg" eventType="touchUpInside" id="PeN-E5-p4H"/>
+                                            <action selector="save" destination="Cdb-yD-mSg" eventType="touchUpInside" id="M53-2o-3XW"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -795,7 +780,7 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="selectImage" destination="Cdb-yD-mSg" eventType="touchUpInside" id="FMW-Sf-8dE"/>
+                                                    <action selector="selectImage" destination="Cdb-yD-mSg" eventType="touchUpInside" id="nAh-LW-b5V"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -880,23 +865,14 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dq4-yk-gnD">
                                                                 <rect key="frame" x="0.0" y="0.0" width="59.5" height="34"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                                <connections>
-                                                                    <action selector="black" destination="Cdb-yD-mSg" eventType="touchUpInside" id="btn-kE-ak8"/>
-                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bg9-Ly-L8a">
                                                                 <rect key="frame" x="79.5" y="0.0" width="60" height="34"/>
                                                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
-                                                                <connections>
-                                                                    <action selector="white" destination="Cdb-yD-mSg" eventType="touchUpInside" id="qgD-ju-VfY"/>
-                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ijh-wy-h5v">
                                                                 <rect key="frame" x="159.5" y="0.0" width="59.5" height="34"/>
                                                                 <color key="backgroundColor" systemColor="systemRedColor"/>
-                                                                <connections>
-                                                                    <action selector="red" destination="Cdb-yD-mSg" eventType="touchUpInside" id="pje-fH-jFY"/>
-                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
@@ -906,23 +882,14 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sbU-6f-hm2">
                                                                 <rect key="frame" x="0.0" y="0.0" width="59.5" height="34"/>
                                                                 <color key="backgroundColor" red="0.48880748060000001" green="0.27181170310000002" blue="0.22426291279999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <connections>
-                                                                    <action selector="brown" destination="Cdb-yD-mSg" eventType="touchUpInside" id="Zsp-Ur-Nuq"/>
-                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LT6-hx-0lf">
                                                                 <rect key="frame" x="79.5" y="0.0" width="60" height="34"/>
                                                                 <color key="backgroundColor" red="0.921875" green="0.8046283904" blue="0.62642931469999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <connections>
-                                                                    <action selector="beige" destination="Cdb-yD-mSg" eventType="touchUpInside" id="9Js-lG-gRj"/>
-                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Idr-Z3-19w">
                                                                 <rect key="frame" x="159.5" y="0.0" width="59.5" height="34"/>
                                                                 <color key="backgroundColor" systemColor="systemOrangeColor"/>
-                                                                <connections>
-                                                                    <action selector="orange" destination="Cdb-yD-mSg" eventType="touchUpInside" id="Z95-5r-drK"/>
-                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
@@ -932,23 +899,14 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gvW-Mi-ooX">
                                                                 <rect key="frame" x="0.0" y="0.0" width="59.5" height="34"/>
                                                                 <color key="backgroundColor" red="1" green="0.9329096187" blue="0.01090372346" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <connections>
-                                                                    <action selector="yellow" destination="Cdb-yD-mSg" eventType="touchUpInside" id="kGZ-nO-v4W"/>
-                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dxt-eR-euQ">
                                                                 <rect key="frame" x="79.5" y="0.0" width="60" height="34"/>
                                                                 <color key="backgroundColor" red="0.15394941070000001" green="0.73755262310000003" blue="0.1917830989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <connections>
-                                                                    <action selector="green" destination="Cdb-yD-mSg" eventType="touchUpInside" id="cdb-iZ-XK3"/>
-                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aN5-3O-hZ7">
                                                                 <rect key="frame" x="159.5" y="0.0" width="59.5" height="34"/>
                                                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <connections>
-                                                                    <action selector="blue" destination="Cdb-yD-mSg" eventType="touchUpInside" id="Dvf-Vo-iEZ"/>
-                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
@@ -962,6 +920,12 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sKy-T0-j6p">
+                                <rect key="frame" x="79" y="612" width="257" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RL2-77-9dF"/>
                         <color key="backgroundColor" red="1" green="0.97192384710000002" blue="0.92533255039999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -976,28 +940,17 @@
                     </view>
                     <navigationItem key="navigationItem" id="eGR-8i-FyH"/>
                     <connections>
-                        <outlet property="addButton" destination="B9b-i0-Mc4" id="CBx-8h-3pS"/>
-                        <outlet property="beigeButton" destination="LT6-hx-0lf" id="pxq-Yl-QK6"/>
-                        <outlet property="blackButton" destination="dq4-yk-gnD" id="pMj-pY-17s"/>
-                        <outlet property="blueButton" destination="aN5-3O-hZ7" id="W8q-cy-kwA"/>
-                        <outlet property="brandNameTextField" destination="ioG-8c-VYr" id="LGU-FA-leQ"/>
-                        <outlet property="brownButton" destination="sbU-6f-hm2" id="HSZ-4t-nVo"/>
-                        <outlet property="buyDateTextField" destination="7Eb-HH-mTK" id="P6J-Bh-Xmc"/>
-                        <outlet property="clothesImageView" destination="f9O-G7-XmE" id="DGa-3U-ktc"/>
-                        <outlet property="colorCategoryLabel" destination="mxw-zm-fmq" id="Ao6-zL-ktn"/>
+                        <outlet property="buyDateTextField" destination="7Eb-HH-mTK" id="MvV-bn-ECG"/>
+                        <outlet property="colorTextField" destination="sKy-T0-j6p" id="fUt-7F-8zQ"/>
                         <outlet property="commentTextView" destination="3oU-yg-VU7" id="1uj-ge-DKZ"/>
-                        <outlet property="greenButton" destination="dxt-eR-euQ" id="rkR-2r-OXo"/>
-                        <outlet property="orangeButton" destination="Idr-Z3-19w" id="0FI-Wk-89g"/>
-                        <outlet property="priceTextField" destination="Baa-73-mts" id="L9m-xq-EUl"/>
-                        <outlet property="redButton" destination="ijh-wy-h5v" id="H0i-Tc-NtK"/>
-                        <outlet property="selectImageButton" destination="YfJ-r4-pbT" id="c4Y-ka-hDR"/>
-                        <outlet property="whiteButton" destination="bg9-Ly-L8a" id="eN1-aO-B5c"/>
-                        <outlet property="yellowButton" destination="gvW-Mi-ooX" id="0kl-o3-Me8"/>
+                        <outlet property="imageView" destination="f9O-G7-XmE" id="r9x-3w-u32"/>
+                        <outlet property="nameTextField" destination="ioG-8c-VYr" id="XZA-0L-fda"/>
+                        <outlet property="priceTextField" destination="Baa-73-mts" id="K9R-D0-gCo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QHV-qg-fKB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5756.521739130435" y="-390.40178571428572"/>
+            <point key="canvasLocation" x="5711.594202898551" y="-390.40178571428572"/>
         </scene>
         <!--靴・サンダルなど-->
         <scene sceneID="VyN-af-QKi">
@@ -1098,7 +1051,7 @@
         <!--Edit View Controller-->
         <scene sceneID="yhY-kW-Lid">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="c0a-9h-VGg" customClass="EditViewController" customModule="GeekProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="c0a-9h-VGg" customClass="EditViewController" customModule="MyCloset2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="82X-EL-el3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1369,7 +1322,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="na8-A9-xgZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6543" y="-391"/>
+            <point key="canvasLocation" x="6739" y="-390"/>
         </scene>
         <!--その他-->
         <scene sceneID="abI-Dl-dfq">
@@ -1398,7 +1351,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="xtR-Kd-vjn"/>
-        <segue reference="a3l-7e-CX2"/>
+        <segue reference="Lyo-cn-49b"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="clothes-image.jpeg" width="275" height="183"/>
