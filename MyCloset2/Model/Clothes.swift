@@ -19,6 +19,7 @@ class Clothes: Object {
     @objc dynamic var comment: String!
     @objc dynamic var color: String!
     @objc dynamic var imageData: NSData!
+    @objc dynamic var putOnCount: Int = 0
     
     
     

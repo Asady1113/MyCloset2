@@ -19,7 +19,7 @@
         <!--その他-->
         <scene sceneID="kM8-vj-QbM">
             <objects>
-                <viewController id="qgv-o6-4uH" customClass="TheOthersViewController" customModule="MyCloset2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="qgv-o6-4uH" customClass="OthersViewController" customModule="MyCloset2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hMz-7w-2IM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -58,6 +58,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="tableView" destination="EpC-sc-nrb" id="TrU-Hn-f3z"/>
                         <segue destination="c0a-9h-VGg" kind="presentation" identifier="editTheOthers" id="xtR-Kd-vjn"/>
                         <segue destination="Cdb-yD-mSg" kind="presentation" identifier="fromOthers" id="Lyo-cn-49b"/>
                     </connections>
@@ -730,6 +731,9 @@
                                         <fontDescription key="fontDescription" name="Macfine.ttf" family="Macfine.ttf" pointSize="15"/>
                                         <color key="tintColor" systemColor="linkColor"/>
                                         <state key="normal" title="キャンセル"/>
+                                        <connections>
+                                            <action selector="cancel" destination="Cdb-yD-mSg" eventType="touchUpInside" id="WIs-Ic-hf6"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="服を追加" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yM1-ik-MvG">
                                         <rect key="frame" x="150" y="0.0" width="80" height="30"/>

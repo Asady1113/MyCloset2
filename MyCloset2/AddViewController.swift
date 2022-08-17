@@ -149,7 +149,21 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
         }
         
         KRProgressHUD.dismiss()
+        self.dismiss(animated: true, completion: nil)
     }
     
+    
+    @IBAction func cancel() {
+        let alert = UIAlertController(title: "記入内容の破棄", message: "現在記入されている情報は破棄されます。よろしいですか？", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            self.dismiss(animated: true, completion: nil)
+        }
+        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel) { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        self.present(alert,animated: true,completion: nil)
+    }
 
 }
