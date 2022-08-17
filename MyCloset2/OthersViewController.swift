@@ -9,7 +9,7 @@ import UIKit
 import RealmSwift
 import KRProgressHUD
 
-class OthersViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class OthersViewController: UIViewController,UITableViewDataSource,UITableViewDelegate, ClothesTableViewCellDelegate {
     
     let category = "others"
     var clothesArray = [Clothes]()
@@ -45,6 +45,13 @@ class OthersViewController: UIViewController,UITableViewDataSource,UITableViewDe
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! ClothesTableViewCell
         
+        cell.delegate = self
+        
+        //タグの設定
+        cell.putOnButton.tag = indexPath.row
+        cell.cancelButton.tag = indexPath.row
+        cell.deleteButton.tag = indexPath.row
+        
         //画像取得
         let data = clothesArray[indexPath.row].imageData
         let image = UIImage(data: data! as Data)
@@ -59,6 +66,71 @@ class OthersViewController: UIViewController,UITableViewDataSource,UITableViewDe
         return cell
     }
     
+    @objc func didTapPutOnButton(tableViewCell: UITableViewCell, button: UIButton) {
+        
+        var putOnCount = clothesArray[button.tag].putOnCount
+        putOnCount = putOnCount + 1
+        
+        let realm = try! Realm()
+        let result = realm.objects(Clothes.self).filter("id== %@", clothesArray[button.tag].id)
+        
+        //resultを配列化する
+        let object = Array(result)
+        
+        try! realm.write {
+            object.first!.putOnCount = putOnCount
+        }
+        
+        loadData()
+        
+    }
+    
+    @objc func didTapCancelButton(tableViewCell: UITableViewCell, button: UIButton) {
+        
+        var putOnCount = clothesArray[button.tag].putOnCount
+        
+        if putOnCount > 0 {
+           putOnCount = putOnCount - 1
+        } else if putOnCount == 0 {
+            putOnCount = 0
+        }
+        
+        let realm = try! Realm()
+        let result = realm.objects(Clothes.self).filter("id== %@", clothesArray[button.tag].id)
+        
+        //resultを配列化する
+        let object = Array(result)
+        
+        try! realm.write {
+            object.first!.putOnCount = putOnCount
+        }
+        
+        loadData()
+        
+    }
+    
+    @objc func didTapDeleteButton(tableViewCell: UITableViewCell, button: UIButton) {
+        
+        let alert = UIAlertController(title: "削除しますか？", message: "削除したデータは復元できません", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { action in
+            let realm = try! Realm()
+            let result = realm.objects(Clothes.self).filter("id== %@", self.clothesArray[button.tag].id)
+            
+            try! realm.write {
+                realm.delete(result)
+            }
+        }
+        let cancelAction = UIAlertAction(title: "キャンセル", style: .default) { action in
+            alert.dismiss(animated: true, completion: nil)
+        }
+        
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+        
+        loadData()
+    }
+    
     
     
     func loadData() {
@@ -68,15 +140,10 @@ class OthersViewController: UIViewController,UITableViewDataSource,UITableViewDe
         let realm = try! Realm()
         let result = realm.objects(Clothes.self).filter("category== %@", category)
         
-        for object in result {
-            clothesArray.append(object)
-        }
+        clothesArray = Array(result)
         
         tableView.reloadData()
     }
-    
-    
-    
     
     
     //画面遷移処理
