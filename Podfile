@@ -11,6 +11,7 @@ target 'MyCloset2' do
   pod 'UITextView+Placeholder'
   pod "KRProgressHUD"
   pod 'Kingfisher'
+  pod 'RealmSwift'
 
 
   target 'MyCloset2Tests' do

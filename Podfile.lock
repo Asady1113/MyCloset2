@@ -4,12 +4,18 @@ PODS:
   - KRProgressHUD (3.4.7):
     - KRActivityIndicatorView (= 3.0.7)
   - NYXImagesKit (2.3)
+  - Realm (10.28.1):
+    - Realm/Headers (= 10.28.1)
+  - Realm/Headers (10.28.1)
+  - RealmSwift (10.28.1):
+    - Realm (= 10.28.1)
   - "UITextView+Placeholder (1.4.0)"
 
 DEPENDENCIES:
   - Kingfisher
   - KRProgressHUD
   - NYXImagesKit
+  - RealmSwift
   - "UITextView+Placeholder"
 
 SPEC REPOS:
@@ -18,6 +24,8 @@ SPEC REPOS:
     - KRActivityIndicatorView
     - KRProgressHUD
     - NYXImagesKit
+    - Realm
+    - RealmSwift
     - "UITextView+Placeholder"
 
 SPEC CHECKSUMS:
@@ -25,8 +33,10 @@ SPEC CHECKSUMS:
   KRActivityIndicatorView: ad69e89c4ce40c986cf580595be4829dcad0e35a
   KRProgressHUD: a248f0bc6c9c2aed40a37b76e03ffecc7f85c887
   NYXImagesKit: 8163e3335a40eaa173ca5bbbf81fafb57d3947eb
+  Realm: f4674e0e7ee537f67a78d79bd8319bc777d61d06
+  RealmSwift: 0e0e4786685c4442bf56d3831dfefb5fa05d6fd6
   "UITextView+Placeholder": d7b0c400921f66523f3a85d74f774512e14f6502
 
-PODFILE CHECKSUM: 7613cccc4497aa843ae51aed0ae9a3cfebf913fa
+PODFILE CHECKSUM: 2ec4153b73256eb1265d6baaab081b76445c0670
 
 COCOAPODS: 1.11.3
