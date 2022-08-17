@@ -1,0 +1,32 @@
+PODS:
+  - Kingfisher (7.3.2)
+  - KRActivityIndicatorView (3.0.7)
+  - KRProgressHUD (3.4.7):
+    - KRActivityIndicatorView (= 3.0.7)
+  - NYXImagesKit (2.3)
+  - "UITextView+Placeholder (1.4.0)"
+
+DEPENDENCIES:
+  - Kingfisher
+  - KRProgressHUD
+  - NYXImagesKit
+  - "UITextView+Placeholder"
+
+SPEC REPOS:
+  trunk:
+    - Kingfisher
+    - KRActivityIndicatorView
+    - KRProgressHUD
+    - NYXImagesKit
+    - "UITextView+Placeholder"
+
+SPEC CHECKSUMS:
+  Kingfisher: 0086ad83719761ba9b2cdaf6ef4d5b4878cbae23
+  KRActivityIndicatorView: ad69e89c4ce40c986cf580595be4829dcad0e35a
+  KRProgressHUD: a248f0bc6c9c2aed40a37b76e03ffecc7f85c887
+  NYXImagesKit: 8163e3335a40eaa173ca5bbbf81fafb57d3947eb
+  "UITextView+Placeholder": d7b0c400921f66523f3a85d74f774512e14f6502
+
+PODFILE CHECKSUM: 7613cccc4497aa843ae51aed0ae9a3cfebf913fa
+
+COCOAPODS: 1.11.3
