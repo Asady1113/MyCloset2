@@ -481,9 +481,6 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="didTouchDownLongTopsButton" destination="Esm-7l-gsy" eventType="touchDown" id="7Jb-1q-OB4"/>
-                                    <action selector="didTouchDragExitLongTopsButton" destination="Esm-7l-gsy" eventType="touchDragExit" id="4hb-Vy-U9L"/>
-                                    <action selector="didTouchUpInsideLongTopsButton" destination="Esm-7l-gsy" eventType="touchUpInside" id="Lwa-Bz-Md7"/>
                                     <segue destination="jtQ-US-1jC" kind="show" id="OWg-hE-g2y"/>
                                 </connections>
                             </button>
@@ -507,9 +504,6 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="didTouchDownShortTopsButton" destination="Esm-7l-gsy" eventType="touchDown" id="R38-l8-Wh1"/>
-                                    <action selector="didTouchDragExitShortTopsButton" destination="Esm-7l-gsy" eventType="touchDragExit" id="zP7-Jf-BIG"/>
-                                    <action selector="didTouchUpInsideShortTopsButton" destination="Esm-7l-gsy" eventType="touchUpInside" id="3Pd-iD-VNx"/>
                                     <segue destination="3lW-4J-gJA" kind="show" id="qAd-WZ-zGX"/>
                                 </connections>
                             </button>
@@ -531,10 +525,6 @@
                     <navigationItem key="navigationItem" title="トップス/アウター" id="Vo1-9M-9hh">
                         <barButtonItem key="backBarButtonItem" title="もどる" id="DS1-fW-P84"/>
                     </navigationItem>
-                    <connections>
-                        <outlet property="longTopsButton" destination="kKA-vk-ry0" id="f11-0X-UIx"/>
-                        <outlet property="shortTopsButton" destination="oe7-pe-AYZ" id="zLR-S4-rR9"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="njK-pb-aLV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -543,7 +533,7 @@
         <!--トップス/アウター長袖-->
         <scene sceneID="t4C-M0-ahW">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="jtQ-US-1jC" customClass="longTopsListViewController" customModule="MyCloset2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="jtQ-US-1jC" customClass="LongTopsViewController" customModule="MyCloset2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WDs-Xs-yfy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -575,14 +565,14 @@
                     <navigationItem key="navigationItem" title="トップス/アウター長袖" id="lG1-0k-DF9">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="pZ5-Vh-f8Q">
                             <connections>
-                                <action selector="addClothes" destination="jtQ-US-1jC" id="Vgn-Un-lMJ"/>
+                                <action selector="toAdd" destination="jtQ-US-1jC" id="I2r-py-Len"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="clothesListTableView" destination="woc-nR-lSE" id="bkk-gU-dUy"/>
-                        <segue destination="Cdb-yD-mSg" kind="presentation" identifier="longTopsSegue" id="cfg-yL-ujk"/>
-                        <segue destination="c0a-9h-VGg" kind="presentation" identifier="editLongTops" id="GhU-6U-6Ez"/>
+                        <outlet property="tableView" destination="woc-nR-lSE" id="ItN-HI-nHO"/>
+                        <segue destination="Cdb-yD-mSg" kind="presentation" identifier="fromLongTops" id="cfg-yL-ujk"/>
+                        <segue destination="c0a-9h-VGg" kind="presentation" identifier="toDetail" id="GhU-6U-6Ez"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4xY-Aw-yoF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -617,7 +607,7 @@
         <!--ボトムス-->
         <scene sceneID="pmK-eY-4lZ">
             <objects>
-                <viewController id="W9I-jh-6Hn" customClass="BottomsListViewController" customModule="MyCloset2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="W9I-jh-6Hn" customClass="BottomsViewController" customModule="MyCloset2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9rT-5y-qh2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -649,14 +639,14 @@
                     <navigationItem key="navigationItem" title="ボトムス" id="2u2-se-iKt">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="s0p-u8-cZ4">
                             <connections>
-                                <action selector="addClothes" destination="W9I-jh-6Hn" id="Xm3-B5-DM6"/>
+                                <action selector="toAdd" destination="W9I-jh-6Hn" id="tma-hP-24I"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="clothesListTableView" destination="1Z2-zB-Wib" id="L7k-NH-AeO"/>
-                        <segue destination="Cdb-yD-mSg" kind="presentation" identifier="bottomsSegue" id="adN-Wy-ceU"/>
-                        <segue destination="c0a-9h-VGg" kind="presentation" identifier="editBottoms" id="oij-Px-Tbe"/>
+                        <outlet property="tableView" destination="1Z2-zB-Wib" id="yRK-zh-YW6"/>
+                        <segue destination="Cdb-yD-mSg" kind="presentation" identifier="fromBottoms" id="adN-Wy-ceU"/>
+                        <segue destination="c0a-9h-VGg" kind="presentation" identifier="toDetail" id="oij-Px-Tbe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yPU-EX-wtX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -666,7 +656,7 @@
         <!--トップス/アウター半袖-->
         <scene sceneID="vFk-2u-Xyr">
             <objects>
-                <viewController id="3lW-4J-gJA" customClass="ShortTopsListViewController" customModule="MyCloset2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="3lW-4J-gJA" customClass="ShortTopsViewController" customModule="MyCloset2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8dc-eh-ULW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -698,14 +688,14 @@
                     <navigationItem key="navigationItem" title="トップス/アウター半袖" id="sb2-Xr-59h">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="dnS-Kr-itY">
                             <connections>
-                                <action selector="addClothes" destination="3lW-4J-gJA" id="YQP-El-gIo"/>
+                                <action selector="toAdd" destination="3lW-4J-gJA" id="aTS-a4-ojf"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="clothesListTableView" destination="qof-mi-bwn" id="Bbe-qR-IIc"/>
-                        <segue destination="Cdb-yD-mSg" kind="presentation" identifier="shortTopsSegue" id="iMi-RZ-AxA"/>
-                        <segue destination="c0a-9h-VGg" kind="presentation" identifier="editShortTops" id="N3p-Af-H2V"/>
+                        <outlet property="tableView" destination="qof-mi-bwn" id="0MV-tt-yGJ"/>
+                        <segue destination="Cdb-yD-mSg" kind="presentation" identifier="fromShortTops" id="iMi-RZ-AxA"/>
+                        <segue destination="c0a-9h-VGg" kind="presentation" identifier="toDetail" id="N3p-Af-H2V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vh2-gq-Wgo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1170,8 +1160,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="xtR-Kd-vjn"/>
-        <segue reference="Lyo-cn-49b"/>
+        <segue reference="N3p-Af-H2V"/>
+        <segue reference="adN-Wy-ceU"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="clothes-image.jpeg" width="275" height="183"/>

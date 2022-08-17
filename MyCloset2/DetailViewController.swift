@@ -168,6 +168,9 @@ class DetailViewController: UIViewController,UITextViewDelegate,UITextFieldDeleg
     @IBAction func update() {
         KRProgressHUD.show()
         
+        //変更なしの際に落ちるのを避ける
+        resizedImage = imageView.image
+        
         // 撮影した画像をデータ化したときに右に90度回転してしまう問題の解消
         UIGraphicsBeginImageContext(resizedImage.size)
         let rect = CGRect(x: 0, y: 0, width: resizedImage.size.width, height: resizedImage.size.height)
