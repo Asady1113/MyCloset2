@@ -1,8 +1,8 @@
 //
-//  AddViewController.swift
+//  DetailViewController.swift
 //  MyCloset2
 //
-//  Created by 浅田智哉 on 2022/08/17.
+//  Created by 浅田智哉 on 2022/08/18.
 //
 
 import UIKit
@@ -11,10 +11,10 @@ import NYXImagesKit
 import KRProgressHUD
 import UITextView_Placeholder
 
-class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+
+class DetailViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
-    
-    var selectedCategory: String!
+    var selectedClothes = Clothes()
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
@@ -30,20 +30,16 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
     
     var resizedImage: UIImage!
     var color: String!
-    
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         nameTextField.delegate = self
         buyDateTextField.delegate = self
         priceTextField.delegate = self
         commentTextView.delegate = self
         colorTextField.delegate = self
         
-        addButton.isEnabled = false
         commentTextView.placeholder = "コメントを入力しよう！"
         
         //  購入日のシステム
@@ -75,6 +71,10 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
         // インプットビュー設定
         colorTextField.inputView = pickerView
         colorTextField.inputAccessoryView = colorToolBar
+        
+        
+
+        showDetail()
     }
     
     //  購入日の決定ボタン
@@ -92,7 +92,21 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
         colorTextField.text = "\(colorList[pickerView.selectedRow(inComponent: 0)])"
     }
     
+    
 
+    func showDetail() {
+        //画像取得
+        let data = selectedClothes.imageData
+        let image = UIImage(data: data! as Data)
+        
+        imageView.image = image
+        nameTextField.text = selectedClothes.name
+        buyDateTextField.text = selectedClothes.buyDateString
+        priceTextField.text = selectedClothes.price
+        commentTextView.text = selectedClothes.comment
+        colorTextField.text = selectedClothes.color
+    }
+    
     // 選択された画像の表示
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
     let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
@@ -151,9 +165,7 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
         }
         
     
-    
-    
-    @IBAction func save() {
+    @IBAction func update() {
         KRProgressHUD.show()
         
         // 撮影した画像をデータ化したときに右に90度回転してしまう問題の解消
@@ -171,28 +183,27 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
         isEmpty(textField: priceTextField)
         isEmpty(textField: colorTextField)
         
-        //idを作成
-        let uuid = UUID()
-        let id = uuid.uuidString
         
-        //Realmに保存する
+        
         let realm = try! Realm()
-        let clothes = Clothes()
+        let result = realm.objects(Clothes.self).filter("id== %@", selectedClothes.id)
         
-      
-        clothes.add(id: id, category: selectedCategory, name: nameTextField.text!, buyDateString: buyDateTextField.text!, buyDate: datePicker.date, price: priceTextField.text!, comment: commentTextView.text!, color: colorTextField.text!, imageData: data!)
+        //resultを配列化する
+        let object = Array(result)
         
         try! realm.write {
-            realm.add(clothes)
+            object.first?.add(id: selectedClothes.id, category: selectedClothes.category, name: nameTextField.text!, buyDateString: buyDateTextField.text!, buyDate: datePicker.date, price: priceTextField.text!, comment: commentTextView.text!, color: colorTextField.text!, imageData: data!)
         }
         
         KRProgressHUD.dismiss()
         self.dismiss(animated: true, completion: nil)
     }
     
+
+    
     
     @IBAction func cancel() {
-        let alert = UIAlertController(title: "記入内容の破棄", message: "現在記入されている情報は破棄されます。よろしいですか？", preferredStyle: .alert)
+        let alert = UIAlertController(title: "編集内容の破棄", message: "現在編集されている情報は破棄されます。よろしいですか？", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
             self.dismiss(animated: true, completion: nil)
         }
@@ -226,14 +237,11 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
         }
         
     }
-    
-    
 }
 
 
-
 //Picker
-extension AddViewController : UIPickerViewDelegate, UIPickerViewDataSource {
+extension DetailViewController : UIPickerViewDelegate, UIPickerViewDataSource {
  
     // ドラムロールの列数
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -253,3 +261,4 @@ extension AddViewController : UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
 }
+

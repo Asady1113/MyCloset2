@@ -68,6 +68,12 @@ class OthersViewController: UIViewController,UITableViewDataSource,UITableViewDe
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        self.performSegue(withIdentifier: "toDetail", sender: nil)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     @objc func didTapPutOnButton(tableViewCell: UITableViewCell, button: UIButton) {
         
         loadFunction.didTapPutOnButton(clothes: clothesArray[button.tag])
@@ -114,8 +120,18 @@ class OthersViewController: UIViewController,UITableViewDataSource,UITableViewDe
     }
   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let addViewController = segue.destination as! AddViewController
-        addViewController.selectedCategory = category
+        
+        if segue.identifier == "fromOthers" {
+            let addViewController = segue.destination as! AddViewController
+            addViewController.selectedCategory = category
+            
+        } else if segue.identifier == "toDetail" {
+            
+            let detailViewController = segue.destination as! DetailViewController
+            let selectedIndex = tableView.indexPathForSelectedRow!
+            detailViewController.selectedClothes = clothesArray[selectedIndex.row]
+            
+        }
     }
 
 }

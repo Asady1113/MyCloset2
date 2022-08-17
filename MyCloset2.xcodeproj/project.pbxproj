@@ -51,6 +51,7 @@
 		94D32CE228AD09FB00AE8409 /* ClothesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94D32CE028AD09FB00AE8409 /* ClothesTableViewCell.xib */; };
 		94D32CE528AD385B00AE8409 /* LoadFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D32CE428AD385B00AE8409 /* LoadFunctions.swift */; };
 		94D32CE728AD3BAC00AE8409 /* ShoesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D32CE628AD3BAC00AE8409 /* ShoesViewController.swift */; };
+		94D32CE928AD4B8400AE8409 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D32CE828AD4B8400AE8409 /* DetailViewController.swift */; };
 		AFD14EFC87AEF581F40AEE0A /* Pods_MyCloset2_MyCloset2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 504C4A858119A1B8C20D97AF /* Pods_MyCloset2_MyCloset2UITests.framework */; };
 		FFA601E3A671CDD4A9837E5B /* Pods_MyCloset2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDA7B92BA40365AD0DDC2264 /* Pods_MyCloset2Tests.framework */; };
 /* End PBXBuildFile section */
@@ -124,6 +125,7 @@
 		94D32CE028AD09FB00AE8409 /* ClothesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClothesTableViewCell.xib; sourceTree = "<group>"; };
 		94D32CE428AD385B00AE8409 /* LoadFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadFunctions.swift; sourceTree = "<group>"; };
 		94D32CE628AD3BAC00AE8409 /* ShoesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoesViewController.swift; sourceTree = "<group>"; };
+		94D32CE828AD4B8400AE8409 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		BDA7B92BA40365AD0DDC2264 /* Pods_MyCloset2Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyCloset2Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA10553C7FDBA533EF0C4DFF /* Pods-MyCloset2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyCloset2Tests.debug.xcconfig"; path = "Target Support Files/Pods-MyCloset2Tests/Pods-MyCloset2Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		EEA91A738F7099BD0457E578 /* Pods_MyCloset2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyCloset2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -215,6 +217,7 @@
 				94D32CD828ACF49800AE8409 /* OthersViewController.swift */,
 				94D32CE628AD3BAC00AE8409 /* ShoesViewController.swift */,
 				94D32CDA28ACF4CF00AE8409 /* AddViewController.swift */,
+				94D32CE828AD4B8400AE8409 /* DetailViewController.swift */,
 				94D32CE328AD0C3300AE8409 /* Cell */,
 				940B35482859A9EF00172ADB /* Main.storyboard */,
 				940B354B2859A9F000172ADB /* Assets.xcassets */,
@@ -567,6 +570,7 @@
 				94D32CE528AD385B00AE8409 /* LoadFunctions.swift in Sources */,
 				94D32CD928ACF49800AE8409 /* OthersViewController.swift in Sources */,
 				94D32CE128AD09FB00AE8409 /* ClothesTableViewCell.swift in Sources */,
+				94D32CE928AD4B8400AE8409 /* DetailViewController.swift in Sources */,
 				940B35432859A9EF00172ADB /* AppDelegate.swift in Sources */,
 				940B35452859A9EF00172ADB /* SceneDelegate.swift in Sources */,
 			);
