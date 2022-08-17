@@ -1,19 +1,19 @@
 //
-//  TheOthersViewController.swift
+//  ShoesViewController.swift
 //  MyCloset2
 //
-//  Created by 浅田智哉 on 2022/08/17.
+//  Created by 浅田智哉 on 2022/08/18.
 //
 
 import UIKit
 import RealmSwift
 import KRProgressHUD
 
-class OthersViewController: UIViewController,UITableViewDataSource,UITableViewDelegate, ClothesTableViewCellDelegate {
-    
+class ShoesViewController: UIViewController,UITableViewDataSource,UITableViewDelegate, ClothesTableViewCellDelegate {
+
     let loadFunction = LoadFunctions()
     
-    let category = "others"
+    let category = "shoes"
     var clothesArray = [Clothes]()
     
     @IBOutlet weak var tableView: UITableView!
@@ -108,14 +108,14 @@ class OthersViewController: UIViewController,UITableViewDataSource,UITableViewDe
         
         tableView.reloadData()
     }
+    
     //画面遷移処理
     @IBAction func toAdd() {
-        self.performSegue(withIdentifier: "fromOthers", sender: nil)
+        self.performSegue(withIdentifier: "fromShoes", sender: nil)
     }
   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let addViewController = segue.destination as! AddViewController
         addViewController.selectedCategory = category
     }
-
 }

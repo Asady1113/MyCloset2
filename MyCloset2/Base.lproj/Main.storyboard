@@ -70,7 +70,7 @@
         <!--靴・サンダルなど-->
         <scene sceneID="FdN-qH-zjO">
             <objects>
-                <viewController id="WXl-CF-c1k" customClass="ShoesListViewController" customModule="MyCloset2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="WXl-CF-c1k" customClass="ShoesViewController" customModule="MyCloset2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XAP-Am-Fy0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -102,13 +102,13 @@
                     <navigationItem key="navigationItem" title="靴・サンダルなど" id="x7y-EV-MdX">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Pnw-3F-wOO">
                             <connections>
-                                <action selector="addClothes" destination="WXl-CF-c1k" id="UUL-zu-Sig"/>
+                                <action selector="toAdd" destination="WXl-CF-c1k" id="dhg-cn-rU3"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="clothesListTableView" destination="4f2-UC-tOC" id="zKo-6N-gpQ"/>
-                        <segue destination="Cdb-yD-mSg" kind="presentation" identifier="shoesSegue" id="Oh7-sD-nCm"/>
+                        <outlet property="tableView" destination="4f2-UC-tOC" id="bh6-Co-45L"/>
+                        <segue destination="Cdb-yD-mSg" kind="presentation" identifier="fromShoes" id="Oh7-sD-nCm"/>
                         <segue destination="c0a-9h-VGg" kind="presentation" identifier="editShoes" id="Dvv-T9-VhY"/>
                     </connections>
                 </viewController>
@@ -1354,8 +1354,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="xtR-Kd-vjn"/>
-        <segue reference="Lyo-cn-49b"/>
+        <segue reference="Dvv-T9-VhY"/>
+        <segue reference="Oh7-sD-nCm"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="clothes-image.jpeg" width="275" height="183"/>
