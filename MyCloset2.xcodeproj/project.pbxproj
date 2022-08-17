@@ -16,8 +16,6 @@
 		940B355A2859A9F000172ADB /* MyCloset2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B35592859A9F000172ADB /* MyCloset2Tests.swift */; };
 		940B35642859A9F000172ADB /* MyCloset2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B35632859A9F000172ADB /* MyCloset2UITests.swift */; };
 		940B35662859A9F000172ADB /* MyCloset2UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B35652859A9F000172ADB /* MyCloset2UITestsLaunchTests.swift */; };
-		9468B5FC2860CDB2000A202E /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9468B5FB2860CDB2000A202E /* SignIn.storyboard */; };
-		9468B5FE2860CF87000A202E /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9468B5FD2860CF87000A202E /* SignInViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,8 +49,6 @@
 		940B355F2859A9F000172ADB /* MyCloset2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyCloset2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		940B35632859A9F000172ADB /* MyCloset2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCloset2UITests.swift; sourceTree = "<group>"; };
 		940B35652859A9F000172ADB /* MyCloset2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCloset2UITestsLaunchTests.swift; sourceTree = "<group>"; };
-		9468B5FB2860CDB2000A202E /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
-		9468B5FD2860CF87000A202E /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,8 +103,6 @@
 				940B35442859A9EF00172ADB /* SceneDelegate.swift */,
 				940B35462859A9EF00172ADB /* ViewController.swift */,
 				940B35482859A9EF00172ADB /* Main.storyboard */,
-				9468B5FB2860CDB2000A202E /* SignIn.storyboard */,
-				9468B5FD2860CF87000A202E /* SignInViewController.swift */,
 				940B354B2859A9F000172ADB /* Assets.xcassets */,
 				940B354D2859A9F000172ADB /* LaunchScreen.storyboard */,
 				940B35502859A9F000172ADB /* Info.plist */,
@@ -237,7 +231,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9468B5FC2860CDB2000A202E /* SignIn.storyboard in Resources */,
 				940B354F2859A9F000172ADB /* LaunchScreen.storyboard in Resources */,
 				940B354C2859A9F000172ADB /* Assets.xcassets in Resources */,
 				940B354A2859A9EF00172ADB /* Main.storyboard in Resources */,
@@ -265,7 +258,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9468B5FE2860CF87000A202E /* SignInViewController.swift in Sources */,
 				940B35472859A9EF00172ADB /* ViewController.swift in Sources */,
 				940B35432859A9EF00172ADB /* AppDelegate.swift in Sources */,
 				940B35452859A9EF00172ADB /* SceneDelegate.swift in Sources */,
