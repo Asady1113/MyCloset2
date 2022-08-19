@@ -14,6 +14,7 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
     var searchResult: [String] = []
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var cancelButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,7 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
         tableView.dataSource = self
         tableView.delegate = self
        
+        cancelButton.isHidden = true
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -46,6 +48,8 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
         
         if currentConditions == "Category" {
             currentConditions = "Color"
+            cancelButton.isHidden = false
+            
             tableView.reloadData()
         } else if currentConditions == "Color" {
             self.performSegue(withIdentifier: "toResult", sender: nil)
@@ -57,7 +61,6 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let resultViewController = segue.destination as! ResultViewController
-        print(searchResult,"あああああ")
         resultViewController.conditions = searchResult
     }
     
@@ -72,6 +75,14 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
         }
         
         return array
+    }
+    
+    
+    @IBAction func back() {
+       currentConditions = "Category"
+       //検索初期化
+       searchResult = [String]()
+       tableView.reloadData()
     }
 
 
