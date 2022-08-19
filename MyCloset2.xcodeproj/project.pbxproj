@@ -17,9 +17,8 @@
 		940B355A2859A9F000172ADB /* MyCloset2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B35592859A9F000172ADB /* MyCloset2Tests.swift */; };
 		940B35642859A9F000172ADB /* MyCloset2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B35632859A9F000172ADB /* MyCloset2UITests.swift */; };
 		940B35662859A9F000172ADB /* MyCloset2UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B35652859A9F000172ADB /* MyCloset2UITestsLaunchTests.swift */; };
-		94B40B6328AF5A2000B86CFF /* SelectCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B40B6228AF5A2000B86CFF /* SelectCategoryViewController.swift */; };
-		94B40B6528AF5A3400B86CFF /* SelectColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B40B6428AF5A3400B86CFF /* SelectColorViewController.swift */; };
 		94B40B6728AF5A9800B86CFF /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B40B6628AF5A9800B86CFF /* ResultViewController.swift */; };
+		94B40B6B28AFEDB300B86CFF /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B40B6A28AFEDB300B86CFF /* SearchViewController.swift */; };
 		94D32CBD28ACED1400AE8409 /* checked-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94D32CA228ACED1400AE8409 /* checked-icon@2x.png */; };
 		94D32CBE28ACED1400AE8409 /* icons-search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94D32CA328ACED1400AE8409 /* icons-search@2x.png */; };
 		94D32CBF28ACED1400AE8409 /* check_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94D32CA428ACED1400AE8409 /* check_off@2x.png */; };
@@ -97,9 +96,8 @@
 		940B355F2859A9F000172ADB /* MyCloset2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyCloset2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		940B35632859A9F000172ADB /* MyCloset2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCloset2UITests.swift; sourceTree = "<group>"; };
 		940B35652859A9F000172ADB /* MyCloset2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCloset2UITestsLaunchTests.swift; sourceTree = "<group>"; };
-		94B40B6228AF5A2000B86CFF /* SelectCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryViewController.swift; sourceTree = "<group>"; };
-		94B40B6428AF5A3400B86CFF /* SelectColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorViewController.swift; sourceTree = "<group>"; };
 		94B40B6628AF5A9800B86CFF /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		94B40B6A28AFEDB300B86CFF /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		94D32CA228ACED1400AE8409 /* checked-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checked-icon@2x.png"; sourceTree = "<group>"; };
 		94D32CA328ACED1400AE8409 /* icons-search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons-search@2x.png"; sourceTree = "<group>"; };
 		94D32CA428ACED1400AE8409 /* check_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check_off@2x.png"; sourceTree = "<group>"; };
@@ -226,9 +224,8 @@
 				940B35442859A9EF00172ADB /* SceneDelegate.swift */,
 				94D32CDE28ACFC4F00AE8409 /* Model */,
 				940B35462859A9EF00172ADB /* ViewController.swift */,
-				94B40B6228AF5A2000B86CFF /* SelectCategoryViewController.swift */,
-				94B40B6428AF5A3400B86CFF /* SelectColorViewController.swift */,
 				94B40B6628AF5A9800B86CFF /* ResultViewController.swift */,
+				94B40B6A28AFEDB300B86CFF /* SearchViewController.swift */,
 				94D32CD828ACF49800AE8409 /* OthersViewController.swift */,
 				94D32CEC28AD552500AE8409 /* LongTopsViewController.swift */,
 				94D32CEE28AD558400AE8409 /* ShortTopsViewController.swift */,
@@ -581,12 +578,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94B40B6B28AFEDB300B86CFF /* SearchViewController.swift in Sources */,
 				94D32CED28AD552500AE8409 /* LongTopsViewController.swift in Sources */,
 				94D32CE728AD3BAC00AE8409 /* ShoesViewController.swift in Sources */,
-				94B40B6328AF5A2000B86CFF /* SelectCategoryViewController.swift in Sources */,
 				94B40B6728AF5A9800B86CFF /* ResultViewController.swift in Sources */,
 				94D32CDD28ACFC3700AE8409 /* Clothes.swift in Sources */,
-				94B40B6528AF5A3400B86CFF /* SelectColorViewController.swift in Sources */,
 				94D32CDB28ACF4CF00AE8409 /* AddViewController.swift in Sources */,
 				94D32CEB28AD544900AE8409 /* BottomsViewController.swift in Sources */,
 				940B35472859A9EF00172ADB /* ViewController.swift in Sources */,

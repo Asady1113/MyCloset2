@@ -10,7 +10,6 @@ target 'MyCloset2' do
   pod 'NYXImagesKit'
   pod 'UITextView+Placeholder'
   pod "KRProgressHUD"
-  pod 'Kingfisher'
   pod 'RealmSwift'
 
 

@@ -9,8 +9,7 @@ import UIKit
 
 class ResultViewController: UIViewController {
     
-    var selectedCategory : Int!
-    var selectedColor : Int!
+    var conditions: [String] = [""]
     
 
     override func viewDidLoad() {
