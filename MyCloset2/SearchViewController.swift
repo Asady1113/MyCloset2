@@ -11,7 +11,7 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
 
     var currentConditions: String = "Category"
     var array: [String] = [""]
-    var searchResult: [String] = [""]
+    var searchResult: [String] = []
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -52,6 +52,13 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
         }
         
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let resultViewController = segue.destination as! ResultViewController
+        print(searchResult,"あああああ")
+        resultViewController.conditions = searchResult
     }
     
     

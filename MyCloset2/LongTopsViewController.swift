@@ -13,7 +13,7 @@ class LongTopsViewController: UIViewController,UITableViewDataSource,UITableView
     
     let loadFunction = LoadFunctions()
     
-    let category = "longTops"
+    let category = "長袖トップス・アウター"
     var clothesArray = [Clothes]()
     
     @IBOutlet weak var tableView: UITableView!

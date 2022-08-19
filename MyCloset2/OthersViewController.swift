@@ -13,7 +13,7 @@ class OthersViewController: UIViewController,UITableViewDataSource,UITableViewDe
     
     let loadFunction = LoadFunctions()
     
-    let category = "others"
+    let category = "その他"
     var clothesArray = [Clothes]()
     
     @IBOutlet weak var tableView: UITableView!

@@ -13,7 +13,7 @@ class ShoesViewController: UIViewController,UITableViewDataSource,UITableViewDel
 
     let loadFunction = LoadFunctions()
     
-    let category = "shoes"
+    let category = "靴・サンダル"
     var clothesArray = [Clothes]()
     
     @IBOutlet weak var tableView: UITableView!

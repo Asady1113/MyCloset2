@@ -248,23 +248,23 @@
             </objects>
             <point key="canvasLocation" x="6683" y="-2263"/>
         </scene>
-        <!--Search Result View Controller-->
+        <!--Result View Controller-->
         <scene sceneID="6S3-Ju-p6D">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="QpM-tU-WBp" customClass="SearchResultViewController" customModule="MyCloset2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="QpM-tU-WBp" customClass="ResultViewController" customModule="MyCloset2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IeT-10-7Q7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="250" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ghT-JO-JHy">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="300" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ghT-JO-JHy">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="fhp-r5-dXa">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="250"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fhp-r5-dXa" id="AEh-up-T9l">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -282,7 +282,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="Sbs-9m-jjs"/>
                     <connections>
-                        <outlet property="clothesListTableView" destination="ghT-JO-JHy" id="T6f-6v-Sg0"/>
+                        <outlet property="tableView" destination="ghT-JO-JHy" id="woj-of-u8z"/>
+                        <segue destination="c0a-9h-VGg" kind="presentation" identifier="toDetail" id="SkQ-Fo-8nD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oRC-UU-Rza" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1078,7 +1079,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9sY-d9-g9k">
-                                                    <rect key="frame" x="37" y="19" width="150" height="21"/>
+                                                    <rect key="frame" x="37" y="19" width="257" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -1104,12 +1105,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OKx-VE-YM2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4503" y="-2483"/>
+            <point key="canvasLocation" x="4502.898550724638" y="-2483.0357142857142"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="N3p-Af-H2V"/>
-        <segue reference="adN-Wy-ceU"/>
+        <segue reference="SkQ-Fo-8nD"/>
+        <segue reference="cfg-yL-ujk"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="clothes-image.jpeg" width="275" height="183"/>

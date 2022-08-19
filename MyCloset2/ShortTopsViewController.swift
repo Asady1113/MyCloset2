@@ -13,7 +13,7 @@ class ShortTopsViewController: UIViewController,UITableViewDataSource,UITableVie
     
     let loadFunction = LoadFunctions()
     
-    let category = "shortTops"
+    let category = "半袖トップス・アウター"
     var clothesArray = [Clothes]()
     
     @IBOutlet weak var tableView: UITableView!

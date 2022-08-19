@@ -13,7 +13,7 @@ class BottomsViewController: UIViewController,UITableViewDataSource,UITableViewD
     
     let loadFunction = LoadFunctions()
     
-    let category = "bottoms"
+    let category = "ボトムス"
     var clothesArray = [Clothes]()
     
     @IBOutlet weak var tableView: UITableView!
