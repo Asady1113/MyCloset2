@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import KRProgressHUD
 
 class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,ClothesTableViewCellDelegate {
     
@@ -22,6 +23,9 @@ class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDe
 
         tableView.dataSource = self
         tableView.delegate = self
+        
+        tableView.backgroundColor = #colorLiteral(red: 0.9921784997, green: 0.8421893716, blue: 0.5883585811, alpha: 1)
+        
         
         //カスタムセルの登録
         let nib = UINib(nibName: "ClothesTableViewCell",bundle: Bundle.main)
@@ -107,8 +111,12 @@ class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDe
         
         let realm = try! Realm()
         let result = realm.objects(Clothes.self).filter("category== %@ AND color== %@", conditions[0],conditions[1])
-        
+       
         clothesArray = Array(result)
+        
+        if clothesArray.count == 0 {
+            KRProgressHUD.showMessage("検索結果がありません")
+        }
         
         tableView.reloadData()
     }

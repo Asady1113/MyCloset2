@@ -11,7 +11,7 @@ class HomeViewController: UIViewController {
     
     @IBOutlet var searchButton : UIButton!
     
-    var design = Design()
+    let design = Design()
 
     override func viewDidLoad() {
         super.viewDidLoad()

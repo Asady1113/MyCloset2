@@ -21,6 +21,8 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
 
         tableView.dataSource = self
         tableView.delegate = self
+        
+        tableView.backgroundColor = #colorLiteral(red: 0.9921784997, green: 0.8421893716, blue: 0.5883585811, alpha: 1)
        
         cancelButton.isHidden = true
     }
@@ -34,6 +36,8 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
+        
+        cell.backgroundColor = #colorLiteral(red: 0.9921784997, green: 0.8421893716, blue: 0.5883585811, alpha: 1)
         
         let textLabel = cell.viewWithTag(1) as! UILabel
         textLabel.text = array[indexPath.row]

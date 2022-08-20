@@ -23,6 +23,8 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
     @IBOutlet weak var commentTextView: UITextView!
     @IBOutlet weak var colorTextField: UITextField!
     @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var selectImageButton: UIButton!
     
     var datePicker: UIDatePicker = UIDatePicker()
     var pickerView: UIPickerView = UIPickerView()
@@ -44,7 +46,12 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
         colorTextField.delegate = self
         
         addButton.isEnabled = false
+        addButton.backgroundColor = .none
         commentTextView.placeholder = "コメントを入力しよう！"
+        
+        selectImageButton.layer.cornerRadius = 10
+        cancelButton.layer.cornerRadius = 10
+        addButton.layer.cornerRadius = 10
         
         //  購入日のシステム
         datePicker.datePickerMode = UIDatePicker.Mode.date
@@ -209,8 +216,10 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
     func confirmContents() {
         if imageView.image != UIImage(named: "clothes-placeholder-icon@2x.png") {
             addButton.isEnabled = true
+            addButton.backgroundColor = .orange
         } else {
             addButton.isEnabled = false
+            addButton.backgroundColor = .none
         }
     }
     

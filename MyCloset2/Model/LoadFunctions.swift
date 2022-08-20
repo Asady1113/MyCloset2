@@ -7,6 +7,7 @@
 
 import Foundation
 import RealmSwift
+import KRProgressHUD
 
 class LoadFunctions {
     
@@ -19,6 +20,10 @@ class LoadFunctions {
         let result = realm.objects(Clothes.self).filter("category== %@", category)
         
         clothesArray = Array(result)
+        
+        if clothesArray.count == 0 {
+            KRProgressHUD.showMessage("登録されていません")
+        }
         
         return clothesArray
     }

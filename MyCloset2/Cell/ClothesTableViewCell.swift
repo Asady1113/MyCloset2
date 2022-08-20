@@ -16,6 +16,7 @@ protocol ClothesTableViewCellDelegate {
 class ClothesTableViewCell: UITableViewCell {
     
     var delegate: ClothesTableViewCellDelegate?
+   
     
     @IBOutlet weak var clothesImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -29,7 +30,9 @@ class ClothesTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        putOnButton.layer.cornerRadius = 12
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -23,7 +23,8 @@ class ShortTopsViewController: UIViewController,UITableViewDataSource,UITableVie
 
         tableView.delegate = self
         tableView.dataSource = self
-        // Do any additional setup after loading the view.
+        
+        tableView.backgroundColor = #colorLiteral(red: 0.9921784997, green: 0.8421893716, blue: 0.5883585811, alpha: 1)
         
         //カスタムセルの登録
         let nib = UINib(nibName: "ClothesTableViewCell",bundle: Bundle.main)

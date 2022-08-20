@@ -18,6 +18,7 @@
 		940B35642859A9F000172ADB /* MyCloset2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B35632859A9F000172ADB /* MyCloset2UITests.swift */; };
 		940B35662859A9F000172ADB /* MyCloset2UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B35652859A9F000172ADB /* MyCloset2UITestsLaunchTests.swift */; };
 		9463205D28B0765F0005D6C3 /* Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463205C28B0765F0005D6C3 /* Design.swift */; };
+		9463205F28B07F750005D6C3 /* TopsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463205E28B07F750005D6C3 /* TopsViewController.swift */; };
 		94B40B6728AF5A9800B86CFF /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B40B6628AF5A9800B86CFF /* ResultViewController.swift */; };
 		94B40B6B28AFEDB300B86CFF /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B40B6A28AFEDB300B86CFF /* SearchViewController.swift */; };
 		94D32CBD28ACED1400AE8409 /* checked-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94D32CA228ACED1400AE8409 /* checked-icon@2x.png */; };
@@ -98,6 +99,7 @@
 		940B35632859A9F000172ADB /* MyCloset2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCloset2UITests.swift; sourceTree = "<group>"; };
 		940B35652859A9F000172ADB /* MyCloset2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCloset2UITestsLaunchTests.swift; sourceTree = "<group>"; };
 		9463205C28B0765F0005D6C3 /* Design.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Design.swift; sourceTree = "<group>"; };
+		9463205E28B07F750005D6C3 /* TopsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopsViewController.swift; sourceTree = "<group>"; };
 		94B40B6628AF5A9800B86CFF /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		94B40B6A28AFEDB300B86CFF /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		94D32CA228ACED1400AE8409 /* checked-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checked-icon@2x.png"; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 				94B40B6A28AFEDB300B86CFF /* SearchViewController.swift */,
 				94D32CD828ACF49800AE8409 /* OthersViewController.swift */,
 				94D32CEC28AD552500AE8409 /* LongTopsViewController.swift */,
+				9463205E28B07F750005D6C3 /* TopsViewController.swift */,
 				94D32CEE28AD558400AE8409 /* ShortTopsViewController.swift */,
 				94D32CEA28AD544900AE8409 /* BottomsViewController.swift */,
 				94D32CE628AD3BAC00AE8409 /* ShoesViewController.swift */,
@@ -585,6 +588,7 @@
 				9463205D28B0765F0005D6C3 /* Design.swift in Sources */,
 				94D32CED28AD552500AE8409 /* LongTopsViewController.swift in Sources */,
 				94D32CE728AD3BAC00AE8409 /* ShoesViewController.swift in Sources */,
+				9463205F28B07F750005D6C3 /* TopsViewController.swift in Sources */,
 				94B40B6728AF5A9800B86CFF /* ResultViewController.swift in Sources */,
 				94D32CDD28ACFC3700AE8409 /* Clothes.swift in Sources */,
 				94D32CDB28ACF4CF00AE8409 /* AddViewController.swift in Sources */,
