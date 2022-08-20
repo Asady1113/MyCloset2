@@ -48,6 +48,7 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
         addButton.isEnabled = false
         addButton.backgroundColor = .none
         commentTextView.placeholder = "コメントを入力しよう！"
+        commentTextView.layer.cornerRadius = 10
         
         selectImageButton.layer.cornerRadius = 10
         cancelButton.layer.cornerRadius = 10

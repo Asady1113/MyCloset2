@@ -611,7 +611,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="カラー" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sKy-T0-j6p">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="カラー" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sKy-T0-j6p" customClass="CustomTextField" customModule="MyCloset2" customModuleProvider="target">
                                 <rect key="frame" x="87" y="402" width="240" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -621,27 +621,32 @@
                                 <rect key="frame" x="132" y="87" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ブランド名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ioG-8c-VYr">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ブランド名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ioG-8c-VYr" customClass="CustomTextField" customModule="MyCloset2" customModuleProvider="target">
                                 <rect key="frame" x="87" y="300" width="240" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="購入日" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Eb-HH-mTK">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="購入日" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Eb-HH-mTK" customClass="CustomTextField" customModule="MyCloset2" customModuleProvider="target">
                                 <rect key="frame" x="87" y="351" width="110" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="値段" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Baa-73-mts">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="値段" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Baa-73-mts" customClass="CustomTextField" customModule="MyCloset2" customModuleProvider="target">
                                 <rect key="frame" x="217" y="351" width="110" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3oU-yg-VU7">
+                                <rect key="frame" x="87" y="461" width="240" height="98"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0KK-GV-Dpt">
                                 <rect key="frame" x="20" y="50" width="75" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -653,13 +658,6 @@
                                     <action selector="cancel" destination="Cdb-yD-mSg" eventType="touchUpInside" id="WIs-Ic-hf6"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="服を追加" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yM1-ik-MvG">
-                                <rect key="frame" x="167" y="52" width="80" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Macfine.ttf" family="Macfine.ttf" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B9b-i0-Mc4">
                                 <rect key="frame" x="316" y="50" width="78" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -683,14 +681,13 @@
                                     <action selector="selectImage" destination="Cdb-yD-mSg" eventType="touchUpInside" id="nAh-LW-b5V"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3oU-yg-VU7">
-                                <rect key="frame" x="87" y="461" width="240" height="69"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="服を追加" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yM1-ik-MvG">
+                                <rect key="frame" x="167" y="50" width="80" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                                <fontDescription key="fontDescription" name="Macfine.ttf" family="Macfine.ttf" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RL2-77-9dF"/>
                         <color key="backgroundColor" red="1" green="0.97192384710000002" blue="0.92533255039999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -816,164 +813,101 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="DnP-Tt-WK2">
-                                <rect key="frame" x="17" y="30" width="380" height="30"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TgW-Dx-PK7">
-                                        <rect key="frame" x="0.0" y="0.0" width="75" height="30"/>
-                                        <color key="backgroundColor" systemColor="systemCyanColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="UJW-wR-khC"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Macfine.ttf" family="Macfine.ttf" pointSize="15"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="キャンセル"/>
-                                        <connections>
-                                            <action selector="cancel" destination="c0a-9h-VGg" eventType="touchUpInside" id="yPZ-6a-wIp"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="服を編集" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Yj-aP-ijc">
-                                        <rect key="frame" x="150" y="0.0" width="80" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="36" id="VwZ-vL-c6F"/>
-                                            <constraint firstAttribute="width" constant="80" id="o6K-wb-Vzx"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Macfine.ttf" family="Macfine.ttf" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Thk-zw-FN8">
-                                        <rect key="frame" x="305" y="0.0" width="75" height="30"/>
-                                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="wPG-Ik-wni"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Macfine.ttf" family="Macfine.ttf" pointSize="15"/>
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="編集完了"/>
-                                        <connections>
-                                            <action selector="update" destination="c0a-9h-VGg" eventType="touchUpInside" id="KsH-Pi-lOa"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="8Yj-aP-ijc" firstAttribute="centerX" secondItem="DnP-Tt-WK2" secondAttribute="centerX" id="a0m-e8-ww0"/>
-                                    <constraint firstItem="8Yj-aP-ijc" firstAttribute="centerX" secondItem="DnP-Tt-WK2" secondAttribute="centerX" id="eyA-HZ-xln"/>
-                                </constraints>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="np3-PL-avX">
-                                <rect key="frame" x="40" y="68" width="334" height="329"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="Xhs-j5-gUk">
-                                        <rect key="frame" x="92" y="0.0" width="150" height="183"/>
-                                        <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clothes-placeholder-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="Edy-qg-efc">
-                                                <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="150" id="Uai-Ze-CGs"/>
-                                                    <constraint firstAttribute="width" constant="150" id="Zq4-Vc-4J5"/>
-                                                </constraints>
-                                            </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h6x-vp-cBw">
-                                                <rect key="frame" x="0.0" y="151" width="150" height="32"/>
-                                                <color key="backgroundColor" red="0.99959963559999998" green="0.65415984390000004" blue="0.102527611" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" name="Macfine.ttf" family="Macfine.ttf" pointSize="20"/>
-                                                <state key="normal" title="画像を選択">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="selectImage" destination="c0a-9h-VGg" eventType="touchUpInside" id="rwH-O1-Dd5"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="5Nu-xh-oDB">
-                                        <rect key="frame" x="47" y="191" width="240" height="138"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="IZT-hz-Jpc">
-                                                <rect key="frame" x="0.0" y="0.0" width="240" height="138"/>
-                                                <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ブランド名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Yd-VH-UiP">
-                                                        <rect key="frame" x="0.0" y="0.0" width="240" height="34"/>
-                                                        <color key="backgroundColor" red="1" green="0.97192384710000002" blue="0.92533255039999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="240" id="rrz-Jr-ITv"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="KSm-6a-lOU">
-                                                        <rect key="frame" x="0.0" y="42" width="240" height="34"/>
-                                                        <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="購入日" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C6o-BG-PLI">
-                                                                <rect key="frame" x="0.0" y="0.0" width="110" height="34"/>
-                                                                <color key="backgroundColor" red="1" green="0.97192384710000002" blue="0.92533255039999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="110" id="U5h-Ob-rRv"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
-                                                            </textField>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="値段" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o85-Q7-85c">
-                                                                <rect key="frame" x="130" y="0.0" width="110" height="34"/>
-                                                                <color key="backgroundColor" red="1" green="0.97192384710000002" blue="0.92533255039999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="110" id="jWy-nd-cQe"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
-                                                            </textField>
-                                                        </subviews>
-                                                    </stackView>
-                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1dD-ac-eN1">
-                                                        <rect key="frame" x="0.0" y="84" width="240" height="54"/>
-                                                        <color key="backgroundColor" red="1" green="0.97192384710000002" blue="0.92533255039999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="240" id="fLV-KP-kuf"/>
-                                                            <constraint firstAttribute="height" constant="54" id="ur2-zg-g2f"/>
-                                                        </constraints>
-                                                        <color key="textColor" systemColor="labelColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                    </textView>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="1dD-ac-eN1" firstAttribute="top" secondItem="6Yd-VH-UiP" secondAttribute="bottom" constant="50" id="dz2-Ue-aby"/>
-                                                </constraints>
-                                            </stackView>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                            </stackView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="カラー" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GTk-7U-B7f">
-                                <rect key="frame" x="83" y="431" width="249" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="カラー" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ls7-NA-ZCu" customClass="CustomTextField" customModule="MyCloset2" customModuleProvider="target">
+                                <rect key="frame" x="87" y="396" width="240" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="clothes-placeholder-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="Rr6-Ck-gCF">
+                                <rect key="frame" x="132" y="81" width="150" height="150"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ブランド名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ymt-ZW-RDp" customClass="CustomTextField" customModule="MyCloset2" customModuleProvider="target">
+                                <rect key="frame" x="87" y="294" width="240" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="購入日" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XH1-2s-o5K" customClass="CustomTextField" customModule="MyCloset2" customModuleProvider="target">
+                                <rect key="frame" x="87" y="345" width="110" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="値段" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p5i-IG-vFp" customClass="CustomTextField" customModule="MyCloset2" customModuleProvider="target">
+                                <rect key="frame" x="217" y="345" width="110" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jF5-Ok-Ou5">
+                                <rect key="frame" x="87" y="455" width="240" height="98"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T0n-68-sqy">
+                                <rect key="frame" x="20" y="44" width="75" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemCyanColor"/>
+                                <fontDescription key="fontDescription" name="Macfine.ttf" family="Macfine.ttf" pointSize="15"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="キャンセル"/>
+                                <connections>
+                                    <action selector="cancel" destination="c0a-9h-VGg" eventType="touchUpInside" id="E9m-8d-YGG"/>
+                                    <action selector="cancel" destination="Cdb-yD-mSg" eventType="touchUpInside" id="YS9-05-3dl"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="服を追加" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jzo-0g-TAQ">
+                                <rect key="frame" x="167" y="46" width="80" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Macfine.ttf" family="Macfine.ttf" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ij2-u4-IHQ">
+                                <rect key="frame" x="316" y="44" width="78" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                <fontDescription key="fontDescription" name="Macfine.ttf" family="Macfine.ttf" pointSize="15"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="追加する"/>
+                                <connections>
+                                    <action selector="save" destination="Cdb-yD-mSg" eventType="touchUpInside" id="ZmI-O0-7yl"/>
+                                    <action selector="update" destination="c0a-9h-VGg" eventType="touchUpInside" id="EOU-k5-pZL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IRb-cb-KPW">
+                                <rect key="frame" x="132" y="239" width="150" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.99959963559999998" green="0.65415984390000004" blue="0.102527611" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Macfine.ttf" family="Macfine.ttf" pointSize="20"/>
+                                <state key="normal" title="画像を選択">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectImage" destination="c0a-9h-VGg" eventType="touchUpInside" id="hp0-I1-WTf"/>
+                                    <action selector="selectImage" destination="Cdb-yD-mSg" eventType="touchUpInside" id="oyq-uS-cqQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rFI-zT-E0W"/>
                         <color key="backgroundColor" red="1" green="0.97192384710000002" blue="0.92533255039999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="rFI-zT-E0W" firstAttribute="trailing" secondItem="np3-PL-avX" secondAttribute="trailing" constant="40" id="0Zr-aG-f74"/>
-                            <constraint firstItem="DnP-Tt-WK2" firstAttribute="leading" secondItem="rFI-zT-E0W" secondAttribute="leading" constant="17" id="3ve-8a-Mph"/>
-                            <constraint firstItem="np3-PL-avX" firstAttribute="leading" secondItem="rFI-zT-E0W" secondAttribute="leading" constant="40" id="Pri-ko-CZh"/>
-                            <constraint firstItem="np3-PL-avX" firstAttribute="top" secondItem="DnP-Tt-WK2" secondAttribute="bottom" constant="8" id="UDc-2Q-R6B"/>
-                            <constraint firstAttribute="trailing" secondItem="DnP-Tt-WK2" secondAttribute="trailing" constant="17" id="cvv-4S-V11"/>
-                            <constraint firstItem="DnP-Tt-WK2" firstAttribute="top" secondItem="82X-EL-el3" secondAttribute="top" constant="30" id="hw1-ct-73m"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="iJ2-d3-Kpo"/>
                     <connections>
-                        <outlet property="addButton" destination="Thk-zw-FN8" id="IaA-Vu-7vv"/>
-                        <outlet property="buyDateTextField" destination="C6o-BG-PLI" id="MsN-WN-dMS"/>
-                        <outlet property="cancelButton" destination="TgW-Dx-PK7" id="bhn-UP-b10"/>
-                        <outlet property="colorTextField" destination="GTk-7U-B7f" id="61J-zN-6fV"/>
-                        <outlet property="commentTextView" destination="1dD-ac-eN1" id="3SW-he-cwR"/>
-                        <outlet property="imageView" destination="Edy-qg-efc" id="kqS-4G-O5q"/>
-                        <outlet property="nameTextField" destination="6Yd-VH-UiP" id="Wpm-E6-N8Z"/>
-                        <outlet property="priceTextField" destination="o85-Q7-85c" id="qj9-s9-TJo"/>
-                        <outlet property="selectImageButton" destination="h6x-vp-cBw" id="F2K-xz-isB"/>
+                        <outlet property="addButton" destination="ij2-u4-IHQ" id="WMu-W2-zIP"/>
+                        <outlet property="buyDateTextField" destination="XH1-2s-o5K" id="MyM-fr-cRf"/>
+                        <outlet property="cancelButton" destination="T0n-68-sqy" id="eN7-3L-IeC"/>
+                        <outlet property="colorTextField" destination="Ls7-NA-ZCu" id="qIA-Vq-Rpq"/>
+                        <outlet property="commentTextView" destination="jF5-Ok-Ou5" id="Fdu-0b-uSc"/>
+                        <outlet property="imageView" destination="Rr6-Ck-gCF" id="gz9-VI-Pj1"/>
+                        <outlet property="nameTextField" destination="ymt-ZW-RDp" id="13d-5w-Biw"/>
+                        <outlet property="priceTextField" destination="p5i-IG-vFp" id="R0a-6a-Swh"/>
+                        <outlet property="selectImageButton" destination="IRb-cb-KPW" id="ZJW-kE-B3Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="na8-A9-xgZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

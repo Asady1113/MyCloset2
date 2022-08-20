@@ -19,6 +19,7 @@
 		940B35662859A9F000172ADB /* MyCloset2UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B35652859A9F000172ADB /* MyCloset2UITestsLaunchTests.swift */; };
 		9463205D28B0765F0005D6C3 /* Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463205C28B0765F0005D6C3 /* Design.swift */; };
 		9463205F28B07F750005D6C3 /* TopsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463205E28B07F750005D6C3 /* TopsViewController.swift */; };
+		9463206128B09AEC0005D6C3 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463206028B09AEC0005D6C3 /* CustomTextField.swift */; };
 		94B40B6728AF5A9800B86CFF /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B40B6628AF5A9800B86CFF /* ResultViewController.swift */; };
 		94B40B6B28AFEDB300B86CFF /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B40B6A28AFEDB300B86CFF /* SearchViewController.swift */; };
 		94D32CBD28ACED1400AE8409 /* checked-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94D32CA228ACED1400AE8409 /* checked-icon@2x.png */; };
@@ -100,6 +101,7 @@
 		940B35652859A9F000172ADB /* MyCloset2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCloset2UITestsLaunchTests.swift; sourceTree = "<group>"; };
 		9463205C28B0765F0005D6C3 /* Design.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Design.swift; sourceTree = "<group>"; };
 		9463205E28B07F750005D6C3 /* TopsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopsViewController.swift; sourceTree = "<group>"; };
+		9463206028B09AEC0005D6C3 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		94B40B6628AF5A9800B86CFF /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		94B40B6A28AFEDB300B86CFF /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		94D32CA228ACED1400AE8409 /* checked-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checked-icon@2x.png"; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 				94D32CDC28ACFC3600AE8409 /* Clothes.swift */,
 				94D32CE428AD385B00AE8409 /* LoadFunctions.swift */,
 				9463205C28B0765F0005D6C3 /* Design.swift */,
+				9463206028B09AEC0005D6C3 /* CustomTextField.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -592,6 +595,7 @@
 				94B40B6728AF5A9800B86CFF /* ResultViewController.swift in Sources */,
 				94D32CDD28ACFC3700AE8409 /* Clothes.swift in Sources */,
 				94D32CDB28ACF4CF00AE8409 /* AddViewController.swift in Sources */,
+				9463206128B09AEC0005D6C3 /* CustomTextField.swift in Sources */,
 				94D32CEB28AD544900AE8409 /* BottomsViewController.swift in Sources */,
 				940B35472859A9EF00172ADB /* HomeViewController.swift in Sources */,
 				94D32CE528AD385B00AE8409 /* LoadFunctions.swift in Sources */,

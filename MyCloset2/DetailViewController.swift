@@ -43,6 +43,8 @@ class DetailViewController: UIViewController,UITextViewDelegate,UITextFieldDeleg
         colorTextField.delegate = self
         
         commentTextView.placeholder = "コメントを入力しよう！"
+        commentTextView.layer.cornerRadius = 10
+        
         selectImageButton.layer.cornerRadius = 10
         cancelButton.layer.cornerRadius = 10
         addButton.layer.cornerRadius = 10
