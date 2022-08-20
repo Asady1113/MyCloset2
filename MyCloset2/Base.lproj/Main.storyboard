@@ -170,7 +170,6 @@
         <!--検索-->
         <scene sceneID="QVO-KE-bhT">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zBK-gX-IIH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="4fv-uv-tyQ" customClass="SelectCategoryViewController" customModule="MyCloset2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lAH-MP-cmu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -245,6 +244,7 @@
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zBK-gX-IIH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6683" y="-2263"/>
         </scene>
@@ -290,10 +290,10 @@
             </objects>
             <point key="canvasLocation" x="5310" y="-2484"/>
         </scene>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="Ctw-SQ-RRg">
             <objects>
-                <viewController id="a2l-8L-662" sceneMemberID="viewController">
+                <viewController id="a2l-8L-662" customClass="HomeViewController" customModule="MyCloset2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QeA-Pd-IvB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -307,7 +307,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sCc-Si-Gsj">
                                 <rect key="frame" x="132" y="583" width="150" height="57"/>
-                                <color key="backgroundColor" red="0.49810733109999999" green="0.71610445990000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="57" id="1eC-Rq-4Jo"/>
                                 </constraints>
@@ -316,6 +316,9 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="didTouchDownButton" destination="a2l-8L-662" eventType="touchDown" id="IgA-oF-kgm"/>
+                                    <action selector="didTouchDragExitButton" destination="a2l-8L-662" eventType="touchDragExit" id="ONQ-pC-zpV"/>
+                                    <action selector="didTouchUpInsideButton" destination="a2l-8L-662" eventType="touchUpInside" id="plc-IZ-ao8"/>
                                     <segue destination="InO-F8-0O4" kind="show" id="L6U-xb-WRE"/>
                                 </connections>
                             </button>
@@ -346,10 +349,10 @@
                                 <segue destination="uGg-eh-diQ" kind="presentation" id="hGD-AG-bvJ"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="yH7-zm-dKt">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="searchButton" destination="sCc-Si-Gsj" id="yk5-tY-ab5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zf8-r4-Tek" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1142,6 +1145,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
