@@ -244,8 +244,8 @@
 				94D32CE828AD4B8400AE8409 /* DetailViewController.swift */,
 				94D32CE328AD0C3300AE8409 /* Cell */,
 				940B35482859A9EF00172ADB /* Main.storyboard */,
-				940B354B2859A9F000172ADB /* Assets.xcassets */,
 				940B354D2859A9F000172ADB /* LaunchScreen.storyboard */,
+				940B354B2859A9F000172ADB /* Assets.xcassets */,
 				940B35502859A9F000172ADB /* Info.plist */,
 			);
 			path = MyCloset2;
@@ -804,7 +804,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -834,7 +834,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
