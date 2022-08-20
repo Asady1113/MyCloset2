@@ -60,6 +60,10 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
         datePicker.locale = Locale.current
         buyDateTextField.inputView = datePicker
         
+        if #available(iOS 13.4, *) {
+        datePicker.preferredDatePickerStyle = .wheels
+        }
+        
         let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 35))
         let spacelItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))

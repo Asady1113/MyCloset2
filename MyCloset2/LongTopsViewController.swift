@@ -97,6 +97,7 @@ class LongTopsViewController: UIViewController,UITableViewDataSource,UITableView
         let alert = UIAlertController(title: "削除しますか？", message: "削除したデータは復元できません", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { action in
             self.loadFunction.didTapDeleteButton(clothes: self.clothesArray[button.tag])
+            self.loadData()
         }
         let cancelAction = UIAlertAction(title: "キャンセル", style: .default) { action in
             alert.dismiss(animated: true, completion: nil)
@@ -105,8 +106,6 @@ class LongTopsViewController: UIViewController,UITableViewDataSource,UITableView
         alert.addAction(okAction)
         alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
-        
-        loadData()
     }
     
     

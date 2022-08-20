@@ -23,15 +23,15 @@ class HomeViewController: UIViewController {
         design.buttonDesign(button: howtoUseButton)
         
         
-        // アニメーション
-        UIView.animate(withDuration: 2.0) {
-
-            let x = (Int(self.view.bounds.width) / 2) - (Int(self.titleLabel.bounds.width) / 2)
-
-            self.titleLabel.frame = CGRect(x: x, y: 130, width: Int(self.titleLabel.bounds.width), height: Int(self.titleLabel.bounds.height))
-
-
-        }
+//        // アニメーション
+//        UIView.animate(withDuration: 2.0) {
+//
+//            let x = (Int(self.view.bounds.width) / 2) - (Int(self.titleLabel.bounds.width) / 2)
+//
+//            self.titleLabel.frame = CGRect(x: x, y: 130, width: Int(self.titleLabel.bounds.width), height: Int(self.titleLabel.bounds.height))
+//
+//
+//        }
     }
 
     @IBAction func didTouchDownButton(_sender: UIButton) {
