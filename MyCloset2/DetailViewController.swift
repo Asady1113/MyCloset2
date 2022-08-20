@@ -99,7 +99,17 @@ class DetailViewController: UIViewController,UITextViewDelegate,UITextFieldDeleg
         colorTextField.text = "\(colorList[pickerView.selectedRow(inComponent: 0)])"
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
+    }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if (self.commentTextView.isFirstResponder) {
+            self.commentTextView.resignFirstResponder()
+        }
+    }
 
     func showDetail() {
         //画像取得
