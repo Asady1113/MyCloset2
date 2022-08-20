@@ -111,37 +111,20 @@
             </objects>
             <point key="canvasLocation" x="3592.753623188406" y="307.36607142857139"/>
         </scene>
-        <!--How To Use View Controller-->
+        <!--View Controller-->
         <scene sceneID="wSN-L5-Nyj">
             <objects>
-                <viewController id="uGg-eh-diQ" customClass="HowToUseViewController" customModule="MyCloset2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="uGg-eh-diQ" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NtZ-sp-KEm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="ZIe-kf-7ru">
-                                <rect key="frame" x="16" y="64" width="382" height="376.5"/>
+                                <rect key="frame" x="16" y="64" width="382" height="716"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="howtouseImage.png" translatesAutoresizingMaskIntoConstraints="NO" id="fUN-f1-2Km">
-                                        <rect key="frame" x="0.0" y="0.0" width="382" height="306"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="fUN-f1-2Km" secondAttribute="height" multiplier="343:575" id="pMo-rn-B2u"/>
-                                        </constraints>
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="716"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wa6-eG-Czj">
-                                        <rect key="frame" x="0.0" y="341" width="382" height="35.5"/>
-                                        <color key="backgroundColor" red="0.99217849970000005" green="0.61408613460000006" blue="0.08228391903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="Wa6-eG-Czj" secondAttribute="height" multiplier="343:32" id="lXX-NC-MLN"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Macfine.ttf" family="Macfine.ttf" pointSize="20"/>
-                                        <state key="normal" title="アプリを使ってみる！">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="back" destination="uGg-eh-diQ" eventType="touchUpInside" id="ub6-9m-wAS"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -154,94 +137,10 @@
                             <constraint firstItem="qLc-0m-gFi" firstAttribute="bottom" secondItem="ZIe-kf-7ru" secondAttribute="bottom" constant="62" id="n5f-c9-KNc"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="backButton" destination="Wa6-eG-Czj" id="0bJ-5d-rAn"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s8E-TV-FKW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3591.1999999999998" y="-2483.497536945813"/>
-        </scene>
-        <!--検索-->
-        <scene sceneID="QVO-KE-bhT">
-            <objects>
-                <viewController id="4fv-uv-tyQ" customClass="SelectCategoryViewController" customModule="MyCloset2" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="lAH-MP-cmu">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yr3-km-ZQ7">
-                                <rect key="frame" x="186" y="134" width="0.0" height="0.0"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="半袖トップス" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xXn-lU-hXD">
-                                <rect key="frame" x="135" y="226" width="104" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="長袖トップス・アウター" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="71D-zD-uDY">
-                                <rect key="frame" x="135" y="179" width="191" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ボトムス" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="79c-tz-UnL">
-                                <rect key="frame" x="135" y="271" width="70" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="靴・サンダル" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XYl-u0-FdQ">
-                                <rect key="frame" x="135" y="316" width="104" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="その他" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xve-du-0PP">
-                                <rect key="frame" x="135" y="361" width="52" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="カテゴリを選択してください" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fgp-Pz-WnI">
-                                <rect key="frame" x="53" y="73" width="308" height="17"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="308" id="o1e-bf-IsO"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Macfine.ttf" family="Macfine.ttf" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="O78-Ae-owO"/>
-                        <color key="backgroundColor" red="0.99217849970000005" green="0.84218937159999996" blue="0.58835858110000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="fgp-Pz-WnI" firstAttribute="leading" secondItem="O78-Ae-owO" secondAttribute="leading" constant="53" id="SSW-2J-m3e"/>
-                            <constraint firstItem="fgp-Pz-WnI" firstAttribute="top" secondItem="O78-Ae-owO" secondAttribute="top" constant="29" id="fmM-Sj-xDK"/>
-                            <constraint firstItem="O78-Ae-owO" firstAttribute="trailing" secondItem="fgp-Pz-WnI" secondAttribute="trailing" constant="53" id="iev-9T-hKN"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="検索" id="TZI-ev-Frt">
-                        <barButtonItem key="backBarButtonItem" title="前画面に戻る" id="aSW-8R-EbV"/>
-                        <barButtonItem key="rightBarButtonItem" title="次へ" id="6Sc-Xo-oor">
-                            <connections>
-                                <action selector="next" destination="4fv-uv-tyQ" id="3dq-B4-weK"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zBK-gX-IIH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6683" y="-2263"/>
         </scene>
         <!--Result View Controller-->
         <scene sceneID="6S3-Ju-p6D">
@@ -293,60 +192,58 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="My-Closet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gRU-ja-3km">
-                                <rect key="frame" x="94" y="290" width="226" height="63"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="My-Closet+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gRU-ja-3km">
+                                <rect key="frame" x="54" y="213" width="307" height="63"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="KodomoRounded" family="KodomoRounded" pointSize="30"/>
+                                <fontDescription key="fontDescription" name="KodomoRounded" family="KodomoRounded" pointSize="38"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sCc-Si-Gsj">
-                                <rect key="frame" x="132" y="583" width="150" height="57"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sCc-Si-Gsj">
+                                <rect key="frame" x="132" y="541" width="150" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemOrangeColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="57" id="1eC-Rq-4Jo"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" name="Macfine.ttf" family="Macfine.ttf" pointSize="20"/>
                                 <state key="normal" title="服を検索">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="didTouchDownButton" destination="a2l-8L-662" eventType="touchDown" id="IgA-oF-kgm"/>
-                                    <action selector="didTouchDragExitButton" destination="a2l-8L-662" eventType="touchDragExit" id="ONQ-pC-zpV"/>
-                                    <action selector="didTouchUpInsideButton" destination="a2l-8L-662" eventType="touchUpInside" id="plc-IZ-ao8"/>
+                                    <action selector="didTouchDownButtonWith_sender:" destination="a2l-8L-662" eventType="touchDown" id="haC-ZT-cg9"/>
+                                    <action selector="didTouchDragExitButtonWith_sender:" destination="a2l-8L-662" eventType="touchDragExit" id="qdL-OA-YBW"/>
+                                    <action selector="didTouchUpInsideButtonWith_sender:" destination="a2l-8L-662" eventType="touchUpInside" id="TcJ-9g-oxH"/>
                                     <segue destination="InO-F8-0O4" kind="show" id="L6U-xb-WRE"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clothes-image.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="UzR-ug-tIV">
-                                <rect key="frame" x="0.0" y="238" width="414" height="295"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="295" id="kDK-3D-x48"/>
-                                </constraints>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mycloset.png" translatesAutoresizingMaskIntoConstraints="NO" id="UzR-ug-tIV">
+                                <rect key="frame" x="0.0" y="203" width="414" height="295"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l2j-d9-XsZ">
+                                <rect key="frame" x="132" y="633" width="150" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemCyanColor"/>
+                                <fontDescription key="fontDescription" name="Macfine.ttf" family="Macfine.ttf" pointSize="20"/>
+                                <state key="normal" title="使い方">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTouchDownButtonWith_sender:" destination="a2l-8L-662" eventType="touchDown" id="hH1-78-gFS"/>
+                                    <action selector="didTouchDragExitButtonWith_sender:" destination="a2l-8L-662" eventType="touchDragExit" id="UgR-5A-rG5"/>
+                                    <action selector="didTouchUpInsideButtonWith_sender:" destination="a2l-8L-662" eventType="touchUpInside" id="kRS-oc-YmR"/>
+                                    <segue destination="uGg-eh-diQ" kind="presentation" id="Yb1-M0-HaI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Tg7-5Q-LGC"/>
                         <color key="backgroundColor" red="0.99217849970000005" green="0.84218937159999996" blue="0.58835858110000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="sCc-Si-Gsj" firstAttribute="top" secondItem="UzR-ug-tIV" secondAttribute="bottom" constant="50" id="3O5-4n-sag"/>
-                            <constraint firstItem="sCc-Si-Gsj" firstAttribute="leading" secondItem="Tg7-5Q-LGC" secondAttribute="leading" constant="132" id="RLv-ZQ-j0O"/>
-                            <constraint firstItem="Tg7-5Q-LGC" firstAttribute="trailing" secondItem="sCc-Si-Gsj" secondAttribute="trailing" constant="132" id="VTw-Sw-EWe"/>
-                            <constraint firstItem="UzR-ug-tIV" firstAttribute="trailing" secondItem="Tg7-5Q-LGC" secondAttribute="trailing" id="YSL-H7-pTW"/>
-                            <constraint firstItem="sCc-Si-Gsj" firstAttribute="width" secondItem="QeA-Pd-IvB" secondAttribute="height" multiplier="75:448" id="cax-sB-sDo"/>
-                            <constraint firstItem="UzR-ug-tIV" firstAttribute="leading" secondItem="Tg7-5Q-LGC" secondAttribute="leading" id="qP1-7q-Ehm"/>
-                            <constraint firstItem="UzR-ug-tIV" firstAttribute="top" secondItem="Tg7-5Q-LGC" secondAttribute="top" constant="150" id="sD7-ay-50J"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="AJh-3x-uww">
                         <barButtonItem key="backBarButtonItem" title="ホームに戻る" id="DN2-Bx-igs"/>
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="howToUse-icon.png" id="BsM-NA-RLb">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <segue destination="uGg-eh-diQ" kind="presentation" id="hGD-AG-bvJ"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="howtoUseButton" destination="l2j-d9-XsZ" id="PPV-eW-neU"/>
                         <outlet property="searchButton" destination="sCc-Si-Gsj" id="yk5-tY-ab5"/>
+                        <outlet property="titleLabel" destination="gRU-ja-3km" id="Jei-n0-gS8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zf8-r4-Tek" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -977,15 +874,16 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vll-ZL-3C9">
-                                <rect key="frame" x="180" y="579" width="55" height="32"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="giy-75-wpW">
+                                <rect key="frame" x="157" y="588" width="100" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="戻る">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="15"/>
-                                </buttonConfiguration>
+                                <color key="backgroundColor" systemColor="systemCyanColor"/>
+                                <fontDescription key="fontDescription" name="Macfine.ttf" family="Macfine.ttf" pointSize="15"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="戻る"/>
                                 <connections>
-                                    <action selector="back" destination="InO-F8-0O4" eventType="touchUpInside" id="bIQ-Y0-lz5"/>
+                                    <action selector="back" destination="InO-F8-0O4" eventType="touchUpInside" id="b6N-MR-ZQv"/>
+                                    <action selector="cancel" destination="Cdb-yD-mSg" eventType="touchUpInside" id="5ci-1g-yU7"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -996,7 +894,7 @@
                         <barButtonItem key="backBarButtonItem" title="前画面に戻る" id="zib-rL-1Bn"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="cancelButton" destination="Vll-ZL-3C9" id="M1o-G9-ddP"/>
+                        <outlet property="cancelButton" destination="giy-75-wpW" id="b5u-L7-AqY"/>
                         <outlet property="tableView" destination="IZo-U0-7r0" id="emQ-Ca-VBe"/>
                         <segue destination="QpM-tU-WBp" kind="show" identifier="toResult" id="8us-Fe-WoA"/>
                     </connections>
@@ -1011,10 +909,9 @@
         <segue reference="Lyo-cn-49b"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="clothes-image.jpeg" width="275" height="183"/>
         <image name="clothes-placeholder-icon.png" width="40" height="40"/>
-        <image name="howToUse-icon.png" width="24" height="24"/>
         <image name="howtouseImage.png" width="155" height="306"/>
+        <image name="mycloset.png" width="577" height="433"/>
         <image name="tabbar-icon-bottoms.png" width="25" height="25"/>
         <image name="tabbar-icon-home.png" width="24" height="24"/>
         <image name="tabbar-icon-shoes.png" width="25" height="25"/>

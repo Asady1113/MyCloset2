@@ -20,6 +20,7 @@
 		9463205D28B0765F0005D6C3 /* Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463205C28B0765F0005D6C3 /* Design.swift */; };
 		9463205F28B07F750005D6C3 /* TopsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463205E28B07F750005D6C3 /* TopsViewController.swift */; };
 		9463206128B09AEC0005D6C3 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463206028B09AEC0005D6C3 /* CustomTextField.swift */; };
+		9463206528B0D57C0005D6C3 /* mycloset.png in Resources */ = {isa = PBXBuildFile; fileRef = 9463206428B0D57C0005D6C3 /* mycloset.png */; };
 		94B40B6728AF5A9800B86CFF /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B40B6628AF5A9800B86CFF /* ResultViewController.swift */; };
 		94B40B6B28AFEDB300B86CFF /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B40B6A28AFEDB300B86CFF /* SearchViewController.swift */; };
 		94D32CBD28ACED1400AE8409 /* checked-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94D32CA228ACED1400AE8409 /* checked-icon@2x.png */; };
@@ -102,6 +103,7 @@
 		9463205C28B0765F0005D6C3 /* Design.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Design.swift; sourceTree = "<group>"; };
 		9463205E28B07F750005D6C3 /* TopsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopsViewController.swift; sourceTree = "<group>"; };
 		9463206028B09AEC0005D6C3 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		9463206428B0D57C0005D6C3 /* mycloset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mycloset.png; sourceTree = "<group>"; };
 		94B40B6628AF5A9800B86CFF /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		94B40B6A28AFEDB300B86CFF /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		94D32CA228ACED1400AE8409 /* checked-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checked-icon@2x.png"; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 		94D32CA128ACED1400AE8409 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				9463206428B0D57C0005D6C3 /* mycloset.png */,
 				94D32CA228ACED1400AE8409 /* checked-icon@2x.png */,
 				94D32CA328ACED1400AE8409 /* icons-search@2x.png */,
 				94D32CA428ACED1400AE8409 /* check_off@2x.png */,
@@ -444,6 +447,7 @@
 				94D32CC628ACED1400AE8409 /* howtouse3.jpg in Resources */,
 				94D32CC328ACED1400AE8409 /* Mac細丸ゴシック.TTF in Resources */,
 				94D32CC828ACED1400AE8409 /* KodomoRounded.otf in Resources */,
+				9463206528B0D57C0005D6C3 /* mycloset.png in Resources */,
 				94D32CD228ACED1400AE8409 /* cinecaption227.TTF in Resources */,
 				94D32CCB28ACED1400AE8409 /* tabbar-icon-bottoms@2x.png in Resources */,
 				94D32CBE28ACED1400AE8409 /* icons-search@2x.png in Resources */,

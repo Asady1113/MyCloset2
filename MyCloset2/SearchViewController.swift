@@ -12,6 +12,7 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
     var currentConditions: String = "Category"
     var array: [String] = [""]
     var searchResult: [String] = []
+
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var cancelButton: UIButton!
@@ -24,6 +25,7 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
         
         tableView.backgroundColor = #colorLiteral(red: 0.9921784997, green: 0.8421893716, blue: 0.5883585811, alpha: 1)
        
+        cancelButton.layer.cornerRadius = 15
         cancelButton.isHidden = true
     }
     
@@ -87,6 +89,8 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
        //検索初期化
        searchResult = [String]()
        tableView.reloadData()
+        
+       cancelButton.isHidden = true
     }
 
 
