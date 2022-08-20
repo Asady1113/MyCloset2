@@ -52,6 +52,7 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
         selectImageButton.layer.cornerRadius = 10
         cancelButton.layer.cornerRadius = 10
         addButton.layer.cornerRadius = 10
+    
         
         //  購入日のシステム
         datePicker.datePickerMode = UIDatePicker.Mode.date

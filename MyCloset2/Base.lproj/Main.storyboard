@@ -611,152 +611,89 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="9mI-dJ-ogg">
-                                <rect key="frame" x="17" y="30" width="380" height="30"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0KK-GV-Dpt">
-                                        <rect key="frame" x="0.0" y="0.0" width="75" height="30"/>
-                                        <color key="backgroundColor" systemColor="systemCyanColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="Gp2-tF-ezS"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Macfine.ttf" family="Macfine.ttf" pointSize="15"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="キャンセル"/>
-                                        <connections>
-                                            <action selector="cancel" destination="Cdb-yD-mSg" eventType="touchUpInside" id="WIs-Ic-hf6"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="服を追加" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yM1-ik-MvG">
-                                        <rect key="frame" x="150" y="0.0" width="80" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="80" id="Eza-LS-z6a"/>
-                                            <constraint firstAttribute="height" constant="36" id="WIh-bN-wDF"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Macfine.ttf" family="Macfine.ttf" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B9b-i0-Mc4">
-                                        <rect key="frame" x="305" y="0.0" width="75" height="30"/>
-                                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="jc2-0Z-juY"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Macfine.ttf" family="Macfine.ttf" pointSize="15"/>
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="追加する"/>
-                                        <connections>
-                                            <action selector="save" destination="Cdb-yD-mSg" eventType="touchUpInside" id="M53-2o-3XW"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="yM1-ik-MvG" firstAttribute="centerX" secondItem="9mI-dJ-ogg" secondAttribute="centerX" id="QOO-Ue-XP6"/>
-                                    <constraint firstItem="yM1-ik-MvG" firstAttribute="centerX" secondItem="9mI-dJ-ogg" secondAttribute="centerX" id="wTP-tA-Y5e"/>
-                                </constraints>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="qfL-FN-Dcy">
-                                <rect key="frame" x="40" y="68" width="334" height="329"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="ePP-js-Bqj">
-                                        <rect key="frame" x="92" y="0.0" width="150" height="183"/>
-                                        <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clothes-placeholder-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="f9O-G7-XmE">
-                                                <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="150" id="GIm-Dr-U39"/>
-                                                    <constraint firstAttribute="height" constant="150" id="jln-HX-vT7"/>
-                                                </constraints>
-                                            </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YfJ-r4-pbT">
-                                                <rect key="frame" x="0.0" y="151" width="150" height="32"/>
-                                                <color key="backgroundColor" red="0.99959963559999998" green="0.65415984390000004" blue="0.102527611" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" name="Macfine.ttf" family="Macfine.ttf" pointSize="20"/>
-                                                <state key="normal" title="画像を選択">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="selectImage" destination="Cdb-yD-mSg" eventType="touchUpInside" id="nAh-LW-b5V"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="xe1-0j-9ta">
-                                        <rect key="frame" x="47" y="191" width="240" height="138"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JYj-bx-AzR">
-                                                <rect key="frame" x="0.0" y="0.0" width="240" height="138"/>
-                                                <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ブランド名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ioG-8c-VYr">
-                                                        <rect key="frame" x="0.0" y="0.0" width="240" height="34"/>
-                                                        <color key="backgroundColor" red="1" green="0.97192384710000002" blue="0.92533255039999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="240" id="vEX-6R-6uV"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="waq-hQ-LW5">
-                                                        <rect key="frame" x="0.0" y="42" width="240" height="34"/>
-                                                        <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="購入日" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Eb-HH-mTK">
-                                                                <rect key="frame" x="0.0" y="0.0" width="110" height="34"/>
-                                                                <color key="backgroundColor" red="1" green="0.97192384710000002" blue="0.92533255039999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="110" id="scK-Pn-Vbn"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
-                                                            </textField>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="値段" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Baa-73-mts">
-                                                                <rect key="frame" x="130" y="0.0" width="110" height="34"/>
-                                                                <color key="backgroundColor" red="1" green="0.97192384710000002" blue="0.92533255039999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="110" id="5n0-St-INi"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
-                                                            </textField>
-                                                        </subviews>
-                                                    </stackView>
-                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3oU-yg-VU7">
-                                                        <rect key="frame" x="0.0" y="84" width="240" height="54"/>
-                                                        <color key="backgroundColor" red="1" green="0.97192384710000002" blue="0.92533255039999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="54" id="78L-je-fs1"/>
-                                                            <constraint firstAttribute="width" constant="240" id="qdT-C0-Go5"/>
-                                                        </constraints>
-                                                        <color key="textColor" systemColor="labelColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                    </textView>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="3oU-yg-VU7" firstAttribute="top" secondItem="ioG-8c-VYr" secondAttribute="bottom" constant="50" id="OOv-OU-ief"/>
-                                                </constraints>
-                                            </stackView>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                            </stackView>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="カラー" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sKy-T0-j6p">
-                                <rect key="frame" x="83" y="420" width="249" height="34"/>
+                                <rect key="frame" x="87" y="402" width="240" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="clothes-placeholder-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="f9O-G7-XmE">
+                                <rect key="frame" x="132" y="87" width="150" height="150"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ブランド名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ioG-8c-VYr">
+                                <rect key="frame" x="87" y="300" width="240" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="購入日" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Eb-HH-mTK">
+                                <rect key="frame" x="87" y="351" width="110" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="値段" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Baa-73-mts">
+                                <rect key="frame" x="217" y="351" width="110" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0KK-GV-Dpt">
+                                <rect key="frame" x="20" y="50" width="75" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemCyanColor"/>
+                                <fontDescription key="fontDescription" name="Macfine.ttf" family="Macfine.ttf" pointSize="15"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="キャンセル"/>
+                                <connections>
+                                    <action selector="cancel" destination="Cdb-yD-mSg" eventType="touchUpInside" id="WIs-Ic-hf6"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="服を追加" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yM1-ik-MvG">
+                                <rect key="frame" x="167" y="52" width="80" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Macfine.ttf" family="Macfine.ttf" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B9b-i0-Mc4">
+                                <rect key="frame" x="316" y="50" width="78" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                <fontDescription key="fontDescription" name="Macfine.ttf" family="Macfine.ttf" pointSize="15"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="追加する"/>
+                                <connections>
+                                    <action selector="save" destination="Cdb-yD-mSg" eventType="touchUpInside" id="M53-2o-3XW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YfJ-r4-pbT">
+                                <rect key="frame" x="132" y="245" width="150" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.99959963559999998" green="0.65415984390000004" blue="0.102527611" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Macfine.ttf" family="Macfine.ttf" pointSize="20"/>
+                                <state key="normal" title="画像を選択">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectImage" destination="Cdb-yD-mSg" eventType="touchUpInside" id="nAh-LW-b5V"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3oU-yg-VU7">
+                                <rect key="frame" x="87" y="461" width="240" height="69"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RL2-77-9dF"/>
                         <color key="backgroundColor" red="1" green="0.97192384710000002" blue="0.92533255039999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="qfL-FN-Dcy" firstAttribute="leading" secondItem="RL2-77-9dF" secondAttribute="leading" constant="40" id="I2h-hl-4Zi"/>
-                            <constraint firstItem="9mI-dJ-ogg" firstAttribute="top" secondItem="o3l-lh-b8f" secondAttribute="top" constant="30" id="QBj-vJ-K1D"/>
-                            <constraint firstItem="9mI-dJ-ogg" firstAttribute="leading" secondItem="RL2-77-9dF" secondAttribute="leading" constant="17" id="Xe3-6s-UKe"/>
-                            <constraint firstItem="qfL-FN-Dcy" firstAttribute="top" secondItem="9mI-dJ-ogg" secondAttribute="bottom" constant="8" id="aDf-N9-ede"/>
-                            <constraint firstAttribute="trailing" secondItem="9mI-dJ-ogg" secondAttribute="trailing" constant="17" id="mDN-f9-Bjf"/>
-                            <constraint firstItem="RL2-77-9dF" firstAttribute="trailing" secondItem="qfL-FN-Dcy" secondAttribute="trailing" constant="40" id="nET-4m-s3v"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="eGR-8i-FyH"/>
                     <connections>
