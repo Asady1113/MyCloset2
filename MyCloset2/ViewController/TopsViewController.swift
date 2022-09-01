@@ -17,6 +17,7 @@ class TopsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "HonyaJi-Re", size: 20) as Any]
         
         design.buttonDesign(button: longTopsButton)
         design.buttonDesign(button: shortTopsButton)

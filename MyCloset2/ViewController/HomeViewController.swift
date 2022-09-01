@@ -13,26 +13,34 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var howtoUseButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     
+    @IBOutlet weak var ruleButton: UIBarButtonItem!
+    
+    
     let design = Design()
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        
+        //Barボタンのフォント変更
+        UIBarButtonItem.appearance().setTitleTextAttributes(nil, for: .normal)
+        let attribute = [NSAttributedString.Key.font: UIFont(name: "HonyaJi-Re", size: 20) as Any]
+        UIBarButtonItem.appearance().setTitleTextAttributes(attribute, for: .normal)
+
+        ruleButton.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "HonyaJi-Re", size: 20) as Any], for: UIControl.State.normal)
+        
+        
+        //Tabbarのフォント
+//        UITabBarItem.appearance().setTitleTextAttributes([.font : UIFont(name: "HonyaJi-Re", size: 10) as Any], for: .normal)
+        
+        
         //検索ボタンのデザイン
         design.buttonDesign(button: searchButton)
         design.buttonDesign(button: howtoUseButton)
-        
-        
-//        // アニメーション
-//        UIView.animate(withDuration: 2.0) {
-//
-//            let x = (Int(self.view.bounds.width) / 2) - (Int(self.titleLabel.bounds.width) / 2)
-//
-//            self.titleLabel.frame = CGRect(x: x, y: 130, width: Int(self.titleLabel.bounds.width), height: Int(self.titleLabel.bounds.height))
-//
-//
-//        }
+
     }
+
+    
 
     @IBAction func didTouchDownButton(_sender: UIButton) {
            design.didTouchDownButton(button: _sender)

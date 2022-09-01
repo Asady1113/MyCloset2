@@ -28,6 +28,7 @@ class OthersViewController: UIViewController,UITableViewDataSource,UITableViewDe
         
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "HonyaJi-Re", size: 20) as Any]
         
+        
         //カスタムセルの登録
         let nib = UINib(nibName: "ClothesTableViewCell",bundle: Bundle.main)
         tableView.register(nib, forCellReuseIdentifier: "Cell")

@@ -8,11 +8,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="HonyaJi-Re.ttf">
+            <string>HonyaJi-Re</string>
+        </array>
         <array key="KodomoRounded.otf">
             <string>KodomoRounded</string>
-        </array>
-        <array key="Mac細丸ゴシック.TTF">
-            <string>Macfine.ttf</string>
         </array>
     </customFonts>
     <scenes>
@@ -215,7 +215,7 @@
                                     <constraint firstAttribute="width" constant="150" id="4tc-0B-BSM"/>
                                     <constraint firstAttribute="height" constant="57" id="dfh-hR-8ds"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Macfine.ttf" family="Macfine.ttf" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="20"/>
                                 <state key="normal" title="使い方">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -233,7 +233,7 @@
                                     <constraint firstAttribute="height" constant="57" id="Was-EE-28U"/>
                                     <constraint firstAttribute="width" constant="150" id="kui-P1-FVy"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Macfine.ttf" family="Macfine.ttf" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="20"/>
                                 <state key="normal" title="服を検索">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -270,6 +270,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="howtoUseButton" destination="l2j-d9-XsZ" id="PPV-eW-neU"/>
+                        <outlet property="ruleButton" destination="Mnu-LH-dAm" id="j1S-Yi-YWn"/>
                         <outlet property="searchButton" destination="sCc-Si-Gsj" id="yk5-tY-ab5"/>
                         <outlet property="titleLabel" destination="gRU-ja-3km" id="Jei-n0-gS8"/>
                     </connections>
@@ -292,7 +293,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="fWL-VI-4qR"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Macfine.ttf" family="Macfine.ttf" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="20"/>
                                 <state key="normal" title="長袖トップス">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -308,7 +309,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="cif-a4-dtZ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Macfine.ttf" family="Macfine.ttf" pointSize="19"/>
+                                <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -318,7 +319,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="mxh-Io-RYO"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Macfine.ttf" family="Macfine.ttf" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="20"/>
                                 <state key="normal" title="半袖トップス">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -542,7 +543,7 @@
                                     <constraint firstAttribute="width" constant="240" id="7KE-ju-Opf"/>
                                     <constraint firstAttribute="height" constant="34" id="gQ6-q3-exr"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clothes-placeholder-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="f9O-G7-XmE">
@@ -558,7 +559,7 @@
                                     <constraint firstAttribute="width" constant="240" id="JBQ-WG-CXP"/>
                                     <constraint firstAttribute="height" constant="34" id="eFa-B8-Qxl"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="0aZ-om-1WA">
@@ -570,7 +571,7 @@
                                             <constraint firstAttribute="height" constant="34" id="B4c-Ix-D7T"/>
                                             <constraint firstAttribute="width" constant="110" id="p7u-HK-gbT"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="値段" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Baa-73-mts" customClass="CustomTextField" customModule="MyCloset2" customModuleProvider="target">
@@ -579,7 +580,7 @@
                                             <constraint firstAttribute="width" constant="110" id="hbl-cc-3ZV"/>
                                             <constraint firstAttribute="height" constant="34" id="ykq-Mg-59E"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
@@ -596,8 +597,11 @@
                                     <constraint firstAttribute="height" constant="98" id="kcf-dq-EyS"/>
                                 </constraints>
                                 <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="コメントを入力しよう！"/>
+                                </userDefinedRuntimeAttributes>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0KK-GV-Dpt">
                                 <rect key="frame" x="20" y="50" width="75" height="27"/>
@@ -606,7 +610,7 @@
                                     <constraint firstAttribute="width" constant="75" id="7Wj-lW-ZBV"/>
                                     <constraint firstAttribute="height" constant="27" id="NWH-gG-ESM"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Macfine.ttf" family="Macfine.ttf" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="15"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="キャンセル"/>
                                 <connections>
@@ -620,7 +624,7 @@
                                     <constraint firstAttribute="height" constant="27" id="lVn-r1-H8K"/>
                                     <constraint firstAttribute="width" constant="78" id="pFy-fR-O4H"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Macfine.ttf" family="Macfine.ttf" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="15"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="追加する"/>
                                 <connections>
@@ -634,7 +638,7 @@
                                     <constraint firstAttribute="height" constant="32" id="fQo-jU-eCe"/>
                                     <constraint firstAttribute="width" constant="150" id="gVD-Rr-cKS"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Macfine.ttf" family="Macfine.ttf" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="20"/>
                                 <state key="normal" title="画像を選択">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -648,7 +652,7 @@
                                     <constraint firstAttribute="width" constant="80" id="hVw-hH-KwC"/>
                                     <constraint firstAttribute="height" constant="27" id="k4e-ts-05I"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Macfine.ttf" family="Macfine.ttf" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -803,7 +807,7 @@
                                     <constraint firstAttribute="width" constant="240" id="7NY-ia-aWu"/>
                                     <constraint firstAttribute="height" constant="34" id="XGi-GY-QxU"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clothes-placeholder-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="Rr6-Ck-gCF">
@@ -819,7 +823,7 @@
                                     <constraint firstAttribute="width" constant="240" id="b0I-fP-yPP"/>
                                     <constraint firstAttribute="height" constant="34" id="kXY-sG-J33"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="p9z-pj-DV0">
@@ -831,7 +835,7 @@
                                             <constraint firstAttribute="width" constant="110" id="O5c-iY-yR8"/>
                                             <constraint firstAttribute="height" constant="34" id="VOy-5c-tOw"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="値段" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p5i-IG-vFp" customClass="CustomTextField" customModule="MyCloset2" customModuleProvider="target">
@@ -840,7 +844,7 @@
                                             <constraint firstAttribute="width" constant="110" id="4JW-lm-7L5"/>
                                             <constraint firstAttribute="height" constant="34" id="gly-ll-ZhK"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
@@ -857,7 +861,7 @@
                                     <constraint firstAttribute="height" constant="98" id="Q7q-0Q-P1B"/>
                                 </constraints>
                                 <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T0n-68-sqy">
@@ -867,7 +871,7 @@
                                     <constraint firstAttribute="width" constant="75" id="8Kj-f7-HBg"/>
                                     <constraint firstAttribute="height" constant="27" id="eNw-II-dgQ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Macfine.ttf" family="Macfine.ttf" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="15"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="キャンセル"/>
                                 <connections>
@@ -881,7 +885,7 @@
                                     <constraint firstAttribute="height" constant="27" id="GPS-XN-xgH"/>
                                     <constraint firstAttribute="width" constant="80" id="kKX-hp-JqY"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Macfine.ttf" family="Macfine.ttf" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -892,7 +896,7 @@
                                     <constraint firstAttribute="height" constant="32" id="GDz-PX-DWq"/>
                                     <constraint firstAttribute="width" constant="150" id="xoG-Nb-TDH"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Macfine.ttf" family="Macfine.ttf" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="20"/>
                                 <state key="normal" title="画像を選択">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -908,7 +912,7 @@
                                     <constraint firstAttribute="height" constant="27" id="K86-1a-7vq"/>
                                     <constraint firstAttribute="width" constant="78" id="nI6-GM-HbO"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Macfine.ttf" family="Macfine.ttf" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="15"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="変更する"/>
                                 <connections>
@@ -1016,7 +1020,7 @@
                                                         <constraint firstAttribute="height" constant="21" id="9c7-Mn-si8"/>
                                                         <constraint firstAttribute="width" constant="257" id="Uvv-Qj-T0F"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1036,7 +1040,7 @@
                                     <constraint firstAttribute="height" constant="38" id="dAb-bI-Jqf"/>
                                     <constraint firstAttribute="width" constant="100" id="jbC-zh-GNA"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Macfine.ttf" family="Macfine.ttf" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="15"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="戻る"/>
                                 <connections>
