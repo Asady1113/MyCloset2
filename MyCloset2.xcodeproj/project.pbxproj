@@ -890,21 +890,24 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = TZ5A5U924L;
+				DEVELOPMENT_TEAM = WD3T62M8VK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyCloset2/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "My-Closet+";
+				INFOPLIST_KEY_NSCameraUsageDescription = "服の撮影のためにカメラを使用します。";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "服の画像選択のためにフォトライブラリを使用します。";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Asady.MyCloset2;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.geek.MyCloset;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -920,21 +923,24 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = TZ5A5U924L;
+				DEVELOPMENT_TEAM = WD3T62M8VK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyCloset2/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "My-Closet+";
+				INFOPLIST_KEY_NSCameraUsageDescription = "服の撮影のためにカメラを使用します。";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "服の画像選択のためにフォトライブラリを使用します。";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Asady.MyCloset2;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.geek.MyCloset;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
