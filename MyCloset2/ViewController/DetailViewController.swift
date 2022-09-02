@@ -216,7 +216,7 @@ class DetailViewController: UIViewController,UITextViewDelegate,UITextFieldDeleg
         let object = Array(result)
         
         try! realm.write {
-            object.first?.add(id: selectedClothes.id, category: selectedClothes.category, name: nameTextField.text!, buyDateString: buyDateTextField.text!, buyDate: datePicker.date, price: priceTextField.text!, comment: commentTextView.text!, color: colorTextField.text!, imageData: data!)
+            object.first?.add(id: selectedClothes.id, category: selectedClothes.category, name: nameTextField.text!, buyDateString: buyDateTextField.text!, buyDate: datePicker.date, price: priceTextField.text!, comment: commentTextView.text!, color: colorTextField.text!, imageData: data!,notificationId: selectedClothes.notificationId)
         }
         
         KRProgressHUD.dismiss()

@@ -204,7 +204,7 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
         let clothes = Clothes()
         
       
-        clothes.add(id: id, category: selectedCategory, name: nameTextField.text!, buyDateString: buyDateTextField.text!, buyDate: datePicker.date, price: priceTextField.text!, comment: commentTextView.text!, color: colorTextField.text!, imageData: data!)
+        clothes.add(id: id, category: selectedCategory, name: nameTextField.text!, buyDateString: buyDateTextField.text!, buyDate: datePicker.date, price: priceTextField.text!, comment: commentTextView.text!, color: colorTextField.text!, imageData: data!,notificationId: id)
         
         try! realm.write {
             realm.add(clothes)

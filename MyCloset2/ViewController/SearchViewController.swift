@@ -27,6 +27,7 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
         
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "HonyaJi-Re", size: 20) as Any]
        
+        
         cancelButton.layer.cornerRadius = 15
         cancelButton.isHidden = true
     }
