@@ -24,9 +24,10 @@ class ClothesTableViewCell: UITableViewCell {
     @IBOutlet var priceLabel: UILabel!
     @IBOutlet weak var commentTextView: UITextView!
     @IBOutlet var putOnCountLabel: UILabel!
-    @IBOutlet var putOnButton : UIButton!
-    @IBOutlet var cancelButton : UIButton!
-    @IBOutlet var deleteButton : UIButton!
+    @IBOutlet var putOnButton: UIButton!
+    @IBOutlet var cancelButton: UIButton!
+    @IBOutlet var deleteButton: UIButton!
+    @IBOutlet weak var warningLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

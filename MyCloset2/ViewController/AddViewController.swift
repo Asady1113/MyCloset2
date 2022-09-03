@@ -195,6 +195,9 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
         isEmpty(textField: priceTextField)
         isEmpty(textField: colorTextField)
         
+        //作成日を記憶
+        let date = Date()
+        
         //idを作成
         let uuid = UUID()
         let id = uuid.uuidString
@@ -205,6 +208,12 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
         
       
         clothes.add(id: id, category: selectedCategory, name: nameTextField.text!, buyDateString: buyDateTextField.text!, buyDate: datePicker.date, price: priceTextField.text!, comment: commentTextView.text!, color: colorTextField.text!, imageData: data!,notificationId: id)
+        
+        //着用日のログ
+        let dateLog = DateLog()
+        dateLog.date = date
+        clothes.putOnDateArray.append(dateLog)
+
         
         try! realm.write {
             realm.add(clothes)

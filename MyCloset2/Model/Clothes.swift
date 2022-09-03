@@ -21,7 +21,7 @@ class Clothes: Object {
     @objc dynamic var imageData: NSData!
     @objc dynamic var putOnCount: Int = 0
     @objc dynamic var notificationId: String!
-    
+    var putOnDateArray = List<DateLog>()
     
     
     func add(id: String, category: String, name: String, buyDateString: String, buyDate: Date, price: String, comment: String, color: String, imageData: NSData, notificationId: String) {

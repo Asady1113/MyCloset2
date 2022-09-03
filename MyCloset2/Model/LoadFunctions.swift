@@ -50,6 +50,11 @@ class LoadFunctions {
         
         try! realm.write {
             object.first!.putOnCount = putOnCount
+            
+            //着用回数の履歴作成
+            let dateLog = DateLog()
+            dateLog.date = date
+            object.first!.putOnDateArray.append(dateLog)
         }
         
     }
@@ -87,6 +92,25 @@ class LoadFunctions {
             realm.delete(result)
         }
         
+    }
+
+    //未着用期間の判定
+    func judgeWarning(clothes: Clothes) -> Bool {
+        
+        let nowDate = Date()
+        let putOnDate = clothes.putOnDateArray.last
+        
+        //時間で取得される
+        let dateSubtraction: Int = Int(nowDate.timeIntervalSince(putOnDate!.date))
+        
+        let subtractionDate = dateSubtraction/86400
+        
+        if subtractionDate >= 0 {
+            //警告対象
+            return true
+        }
+        
+        return false
     }
     
     //通知作成機能
