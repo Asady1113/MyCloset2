@@ -63,12 +63,8 @@ class LoadFunctions {
     func didTapCancelButton(clothes: Clothes) {
         
         var putOnCount = clothes.putOnCount
+        var putOnDateArray = clothes.putOnDateArray
         
-        if putOnCount > 0 {
-           putOnCount = putOnCount - 1
-        } else if putOnCount == 0 {
-            putOnCount = 0
-        }
         
         let realm = try! Realm()
         let result = realm.objects(Clothes.self).filter("id== %@", clothes.id)
@@ -77,7 +73,23 @@ class LoadFunctions {
         let object = Array(result)
         
         try! realm.write {
+    
+            if putOnCount > 0 {
+               putOnCount = putOnCount - 1
+               //着用履歴も消去
+               putOnDateArray.removeLast()
+            
+               //通知も再設定（最新のdateで設定）
+               let date = putOnDateArray.last!.date
+               makeNotification(date: date, notificationId: clothes.notificationId)
+                
+            
+            } else if putOnCount == 0 {
+                putOnCount = 0
+            }
+            
             object.first!.putOnCount = putOnCount
+            object.first!.putOnDateArray = putOnDateArray
         }
         
     }
@@ -103,9 +115,10 @@ class LoadFunctions {
         //時間で取得される
         let dateSubtraction: Int = Int(nowDate.timeIntervalSince(putOnDate!.date))
         
+        //日付に変換する
         let subtractionDate = dateSubtraction/86400
         
-        if subtractionDate >= 0 {
+        if subtractionDate >= 730 {
             //警告対象
             return true
         }
@@ -128,28 +141,30 @@ class LoadFunctions {
         let calendar = Calendar(identifier: .gregorian)
         let date = date
        //2年後に期日を設定
-        //let notificateDate = calendar.date(byAdding: .day, value: 730, to: date)!
+        let notificateDate = calendar.date(byAdding: .day, value: 730, to: date)!
         
-       //実験用
-        let notificateDate = calendar.date(byAdding: .minute, value: 1, to: date)!
-        
-       //日付をカレンダーに設定して、通知に入れる
-        let component = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: notificateDate)
-               
-        // ローカル通知リクエストを作成
-        let trigger = UNCalendarNotificationTrigger(dateMatching: component, repeats: false)
-        
-        
-        //固有のidで通知を保存する
-        let request = UNNotificationRequest(identifier: notificationId, content: content, trigger: trigger)
-        
-        // ローカル通知リクエストを登録
-        UNUserNotificationCenter.current().add(request){ (error : Error?) in
-            if let error = error {
-                KRProgressHUD.showMessage(error.localizedDescription)
-            }
+        //通知する時間と今の時間の差分を計算
+        let dateSubtraction: Int = Int(notificateDate.timeIntervalSince(date))
+       
+        //通知時間が未来であること（差分が0より大きい）が条件（クラッシュ防止）
+        if dateSubtraction > 0 {
+            //日付をカレンダーに設定して、通知に入れる
+             let component = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: notificateDate)
+                    
+             // ローカル通知リクエストを作成
+             let trigger = UNCalendarNotificationTrigger(dateMatching: component, repeats: false)
+             
+             
+             //固有のidで通知を保存する
+             let request = UNNotificationRequest(identifier: notificationId, content: content, trigger: trigger)
+             
+             // ローカル通知リクエストを登録
+             UNUserNotificationCenter.current().add(request){ (error : Error?) in
+                 if let error = error {
+                     KRProgressHUD.showMessage(error.localizedDescription)
+                 }
+             }
         }
     }
-    
     
 }

@@ -21,6 +21,7 @@ class Clothes: Object {
     @objc dynamic var imageData: NSData!
     @objc dynamic var putOnCount: Int = 0
     @objc dynamic var notificationId: String!
+    //着用履歴
     var putOnDateArray = List<DateLog>()
     
     
