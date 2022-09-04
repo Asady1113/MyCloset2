@@ -143,6 +143,8 @@ class LoadFunctions {
        //2年後に期日を設定
         let notificateDate = calendar.date(byAdding: .day, value: 730, to: date)!
         
+
+        
         //通知する時間と今の時間の差分を計算
         let dateSubtraction: Int = Int(notificateDate.timeIntervalSince(date))
        

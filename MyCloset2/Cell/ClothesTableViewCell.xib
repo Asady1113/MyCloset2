@@ -96,7 +96,7 @@
                             <constraint firstAttribute="height" constant="52" id="9hP-RD-oaQ"/>
                         </constraints>
                         <color key="textColor" systemColor="labelColor"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="13"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="着用回数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oKK-gR-kR8">
@@ -104,7 +104,7 @@
                         <constraints>
                             <constraint firstAttribute="width" constant="54" id="hsp-Y4-UoX"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="11"/>
                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
