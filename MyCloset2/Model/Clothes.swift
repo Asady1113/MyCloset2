@@ -20,10 +20,12 @@ class Clothes: Object {
     @objc dynamic var color: String!
     @objc dynamic var imageData: NSData!
     @objc dynamic var putOnCount: Int = 0
+    @objc dynamic var notificationId: String!
+    //着用履歴
+    var putOnDateArray = List<DateLog>()
     
     
-    
-    func add(id: String, category: String, name: String, buyDateString: String, buyDate: Date, price: String, comment: String, color: String, imageData: NSData) {
+    func add(id: String, category: String, name: String, buyDateString: String, buyDate: Date, price: String, comment: String, color: String, imageData: NSData, notificationId: String) {
         
         self.id = id
         self.category = category
@@ -34,6 +36,7 @@ class Clothes: Object {
         self.comment = comment
         self.color = color
         self.imageData = imageData
+        self.notificationId = notificationId
     }
     
 }
