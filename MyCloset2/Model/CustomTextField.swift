@@ -10,7 +10,7 @@ import UIKit
 class CustomTextField: UITextField {
 
     // 下線用のUIViewを作っておく
-    let underline: UIView = UIView()
+    let underline = UIView()
 
     override func layoutSubviews() {
         super.layoutSubviews()

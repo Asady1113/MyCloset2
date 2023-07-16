@@ -9,6 +9,6 @@ import Foundation
 import RealmSwift
 
 class DateLog: Object {
-    @objc dynamic var date: Date = Date()
+    @objc dynamic var date = Date()
 }
 

@@ -27,7 +27,7 @@ class HomeViewController: UIViewController {
         let attribute = [NSAttributedString.Key.font: UIFont(name: "HonyaJi-Re", size: 20) as Any]
         UIBarButtonItem.appearance().setTitleTextAttributes(attribute, for: .normal)
 
-        ruleButton.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "HonyaJi-Re", size: 20) as Any], for: UIControl.State.normal)
+        ruleButton.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "HonyaJi-Re", size: 20) as Any], for: .normal)
         
         
         //Tabbarのフォント

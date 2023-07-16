@@ -28,7 +28,7 @@ class LongTopsViewController: UIViewController,UITableViewDataSource,UITableView
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "HonyaJi-Re", size: 20) as Any]
         
         //カスタムセルの登録
-        let nib = UINib(nibName: "ClothesTableViewCell",bundle: Bundle.main)
+        let nib = UINib(nibName: "ClothesTableViewCell",bundle: .main)
         tableView.register(nib, forCellReuseIdentifier: "Cell")
         
         tableView.tableFooterView = UIView()
@@ -58,7 +58,7 @@ class LongTopsViewController: UIViewController,UITableViewDataSource,UITableView
         
         //画像取得
         let data = clothesArray[indexPath.row].imageData
-        let image = UIImage(data: data! as Data)
+        let image = UIImage(data: data!)
         cell.clothesImageView.image = image
         
         cell.nameLabel.text = clothesArray[indexPath.row].name

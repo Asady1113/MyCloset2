@@ -109,20 +109,19 @@ class LoadFunctions {
     //未着用期間の判定
     func judgeWarning(clothes: Clothes) -> Bool {
         
-        let nowDate = Date()
-        let putOnDate = clothes.putOnDateArray.last
-        
-        //時間で取得される
-        let dateSubtraction: Int = Int(nowDate.timeIntervalSince(putOnDate!.date))
-        
-        //日付に変換する
-        let subtractionDate = dateSubtraction/86400
-        
-        if subtractionDate >= 730 {
-            //警告対象
-            return true
+        if let putOnDate = clothes.putOnDateArray.last {
+            let nowDate = Date()
+            //時間で取得される
+            let dateSubtraction = Int(nowDate.timeIntervalSince(putOnDate.date))
+            
+            //日付に変換する
+            let subtractionDate = dateSubtraction/86400
+            
+            if subtractionDate >= 730 {
+                //警告対象
+                return true
+            }
         }
-        
         return false
     }
     
@@ -146,7 +145,7 @@ class LoadFunctions {
 
         
         //通知する時間と今の時間の差分を計算
-        let dateSubtraction: Int = Int(notificateDate.timeIntervalSince(date))
+        let dateSubtraction = Int(notificateDate.timeIntervalSince(date))
        
         //通知時間が未来であること（差分が0より大きい）が条件（クラッシュ防止）
         if dateSubtraction > 0 {

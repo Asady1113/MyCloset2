@@ -55,7 +55,7 @@ class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDe
         
         //画像取得
         let data = clothesArray[indexPath.row].imageData
-        let image = UIImage(data: data! as Data)
+        let image = UIImage(data: data!)
         cell.clothesImageView.image = image
         
         cell.nameLabel.text = clothesArray[indexPath.row].name

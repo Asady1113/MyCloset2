@@ -19,7 +19,7 @@ class Clothes: Object {
     @objc dynamic var comment: String!
     @objc dynamic var color: String!
     @objc dynamic var imageData: Data!
-    @objc dynamic var putOnCount: Int = 0
+    @objc dynamic var putOnCount = 0
     @objc dynamic var notificationId: String!
     //着用履歴
     var putOnDateArray = List<DateLog>()
