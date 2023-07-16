@@ -26,8 +26,8 @@ class DetailViewController: UIViewController,UITextViewDelegate,UITextFieldDeleg
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var selectImageButton: UIButton!
     
-    var datePicker: UIDatePicker = UIDatePicker()
-    var pickerView: UIPickerView = UIPickerView()
+    let datePicker = UIDatePicker()
+    let pickerView = UIPickerView()
     let colorList = ["ブラック","ホワイト","レッド","ブラウン","ベージュ","オレンジ","イエロー","グリーン","ブルー"]
     
     var resizedImage: UIImage!
@@ -50,8 +50,8 @@ class DetailViewController: UIViewController,UITextViewDelegate,UITextFieldDeleg
         addButton.layer.cornerRadius = 10
         
         //  購入日のシステム
-        datePicker.datePickerMode = UIDatePicker.Mode.date
-        datePicker.locale = Locale.current
+        datePicker.datePickerMode = .date
+        datePicker.locale = .current
         buyDateTextField.inputView = datePicker
         
         if #available(iOS 13.4, *) {
@@ -118,7 +118,7 @@ class DetailViewController: UIViewController,UITextViewDelegate,UITextFieldDeleg
     func showDetail() {
         //画像取得
         let data = selectedClothes.imageData
-        let image = UIImage(data: data! as Data)
+        let image = UIImage(data: data!)
         
         imageView.image = image
         nameTextField.text = selectedClothes.name
@@ -199,7 +199,7 @@ class DetailViewController: UIViewController,UITextViewDelegate,UITextFieldDeleg
         resizedImage = UIGraphicsGetImageFromCurrentImageContext()
                UIGraphicsEndImageContext()
                
-        let data: NSData? = resizedImage.pngData() as NSData?
+        let data: Data? = resizedImage.pngData()
         
         //空欄処理
         isEmpty(textField: nameTextField)

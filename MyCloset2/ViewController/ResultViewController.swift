@@ -11,10 +11,10 @@ import KRProgressHUD
 
 class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,ClothesTableViewCellDelegate {
     
-    var conditions: [String] = [""]
+    var conditions = [String]()
     var clothesArray = [Clothes]()
     
-    var loadFunction = LoadFunctions()
+    let loadFunction = LoadFunctions()
     
     @IBOutlet weak var tableView: UITableView!
 
@@ -28,7 +28,7 @@ class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDe
         
         
         //カスタムセルの登録
-        let nib = UINib(nibName: "ClothesTableViewCell",bundle: Bundle.main)
+        let nib = UINib(nibName: "ClothesTableViewCell",bundle: .main)
         tableView.register(nib, forCellReuseIdentifier: "Cell")
         
         tableView.tableFooterView = UIView()

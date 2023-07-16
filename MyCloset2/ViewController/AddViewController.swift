@@ -26,8 +26,8 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var selectImageButton: UIButton!
     
-    var datePicker: UIDatePicker = UIDatePicker()
-    var pickerView: UIPickerView = UIPickerView()
+    let datePicker = UIDatePicker()
+    let pickerView = UIPickerView()
     let colorList = ["ブラック","ホワイト","レッド","ブラウン","ベージュ","オレンジ","イエロー","グリーン","ブルー"]
     
     var resizedImage: UIImage!
@@ -56,8 +56,8 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
     
         
         //  購入日のシステム
-        datePicker.datePickerMode = UIDatePicker.Mode.date
-        datePicker.locale = Locale.current
+        datePicker.datePickerMode = .date
+        datePicker.locale = .current
         buyDateTextField.inputView = datePicker
         
         if #available(iOS 13.4, *) {
@@ -187,7 +187,7 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
         resizedImage = UIGraphicsGetImageFromCurrentImageContext()
                UIGraphicsEndImageContext()
                
-        let data: NSData? = resizedImage.pngData() as NSData?
+        let data: Data? = resizedImage.pngData()
         
         //空欄処理
         isEmpty(textField: nameTextField)

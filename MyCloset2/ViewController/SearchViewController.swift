@@ -9,9 +9,9 @@ import UIKit
 
 class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
 
-    var currentConditions: String = "Category"
-    var array: [String] = [""]
-    var searchResult: [String] = []
+    var currentConditions = "Category"
+    var array = [String]()
+    var searchResult = [String]()
 
     
     @IBOutlet weak var tableView: UITableView!
