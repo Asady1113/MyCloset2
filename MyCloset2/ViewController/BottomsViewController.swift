@@ -27,7 +27,7 @@ class BottomsViewController: UIViewController,UITableViewDataSource,UITableViewD
         
         tableView.backgroundColor = #colorLiteral(red: 0.9921784997, green: 0.8421893716, blue: 0.5883585811, alpha: 1)
         
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "HonyaJi-Re", size: 20) as Any]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "HonyaJi-Re", size: 20) as Any]
         
         //カスタムセルの登録
         let nib = UINib(nibName: "ClothesTableViewCell",bundle: Bundle.main)

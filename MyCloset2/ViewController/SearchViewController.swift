@@ -61,7 +61,7 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
             
             tableView.reloadData()
         } else if currentConditions == "Color" {
-            self.performSegue(withIdentifier: "toResult", sender: nil)
+            performSegue(withIdentifier: "toResult", sender: nil)
         }
         
         tableView.deselectRow(at: indexPath, animated: true)
