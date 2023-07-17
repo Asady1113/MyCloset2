@@ -22,7 +22,7 @@ class LoadFunctions {
         
         clothesArray = Array(result)
         
-        if clothesArray.count == 0 {
+        if clothesArray.isEmpty == true {
             KRProgressHUD.showMessage("登録されていません")
         }
         
@@ -82,10 +82,6 @@ class LoadFunctions {
                //通知も再設定（最新のdateで設定）
                let date = putOnDateArray.last!.date
                makeNotification(date: date, notificationId: clothes.notificationId)
-                
-            
-            } else if putOnCount == 0 {
-                putOnCount = 0
             }
             
             object.first!.putOnCount = putOnCount

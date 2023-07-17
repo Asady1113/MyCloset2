@@ -41,7 +41,7 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
     
     override func viewWillAppear(_ animated: Bool) {
         //ちょっと危険そうな処理（検索結果からこのページに戻ってきた時の処理。Color条件だけ削除する）
-        if searchResult.count != 0 {
+        if searchResult.isEmpty == false {
             searchResult.removeLast()
         }
     }

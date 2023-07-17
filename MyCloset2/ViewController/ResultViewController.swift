@@ -121,7 +121,7 @@ class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDe
        
         clothesArray = Array(result)
         
-        if clothesArray.count == 0 {
+        if clothesArray.isEmpty == true {
             KRProgressHUD.showMessage("検索結果がありません")
         }
         

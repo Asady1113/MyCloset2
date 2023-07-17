@@ -252,11 +252,11 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
     //空欄判定
     func isEmpty(textField: UITextField) {
         
-        if textField.text?.count == 0 {
+        if textField.text?.isEmpty == true  {
             textField.text = "未設定"
         }
         
-        if commentTextView.text.count == 0 {
+        if commentTextView.text.isEmpty == true {
             commentTextView.text = "未設定"
         }
         
