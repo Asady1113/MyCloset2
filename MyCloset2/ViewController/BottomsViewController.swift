@@ -82,7 +82,7 @@ class BottomsViewController: UIViewController,UITableViewDataSource,UITableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        self.performSegue(withIdentifier: "toDetail", sender: nil)
+        performSegue(withIdentifier: "toDetail", sender: nil)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -116,7 +116,7 @@ class BottomsViewController: UIViewController,UITableViewDataSource,UITableViewD
         
         alert.addAction(okAction)
         alert.addAction(cancelAction)
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
     
     
@@ -129,7 +129,7 @@ class BottomsViewController: UIViewController,UITableViewDataSource,UITableViewD
     
     //画面遷移処理
     @IBAction func toAdd() {
-        self.performSegue(withIdentifier: "fromBottoms", sender: nil)
+        performSegue(withIdentifier: "fromBottoms", sender: nil)
     }
   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

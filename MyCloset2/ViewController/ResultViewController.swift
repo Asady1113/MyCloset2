@@ -78,7 +78,7 @@ class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDe
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        self.performSegue(withIdentifier: "toDetail", sender: nil)
+        performSegue(withIdentifier: "toDetail", sender: nil)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -111,7 +111,7 @@ class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDe
         
         alert.addAction(okAction)
         alert.addAction(cancelAction)
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
     
     func loadData() {

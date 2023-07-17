@@ -81,7 +81,7 @@ class ShoesViewController: UIViewController,UITableViewDataSource,UITableViewDel
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        self.performSegue(withIdentifier: "toDetail", sender: nil)
+        performSegue(withIdentifier: "toDetail", sender: nil)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -128,7 +128,7 @@ class ShoesViewController: UIViewController,UITableViewDataSource,UITableViewDel
     
     //画面遷移処理
     @IBAction func toAdd() {
-        self.performSegue(withIdentifier: "fromShoes", sender: nil)
+        performSegue(withIdentifier: "fromShoes", sender: nil)
     }
   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
