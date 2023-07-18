@@ -199,7 +199,7 @@ class DetailViewController: UIViewController,UITextViewDelegate,UITextFieldDeleg
         resizedImage = UIGraphicsGetImageFromCurrentImageContext()
                UIGraphicsEndImageContext()
                
-        let data: Data? = resizedImage.pngData()
+        let data = resizedImage.pngData()
         
         //空欄処理
         isEmpty(textField: nameTextField)

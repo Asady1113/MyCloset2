@@ -54,10 +54,10 @@ class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDe
         cell.deleteButton.tag = indexPath.row
         
         //画像取得
-        let data = clothesArray[indexPath.row].imageData
-        let image = UIImage(data: data!)
-        cell.clothesImageView.image = image
-        
+        if let data = clothesArray[indexPath.row].imageData {
+            let image = UIImage(data: data)
+            cell.clothesImageView.image = image
+        }
         cell.nameLabel.text = clothesArray[indexPath.row].name
         cell.buyDateLabel.text = clothesArray[indexPath.row].buyDateString
         cell.priceLabel.text = clothesArray[indexPath.row].price
@@ -65,7 +65,7 @@ class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDe
         cell.putOnCountLabel.text = String(clothesArray[indexPath.row].putOnCount)
         
         //警告の有無を判定
-        let isWarning = loadFunction.judgeWarning(clothes: clothesArray[indexPath.row])
+        let isWarning = loadFunction.isOverTwoYearsSinceLastWorn(clothes: clothesArray[indexPath.row])
         
         //警告判定ありなら警告
         if isWarning == true {

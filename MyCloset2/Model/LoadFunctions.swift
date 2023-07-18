@@ -82,10 +82,6 @@ class LoadFunctions {
                //通知も再設定（最新のdateで設定）
                let date = putOnDateArray.last!.date
                makeNotification(date: date, notificationId: clothes.notificationId)
-                
-            
-            } else if putOnCount == 0 {
-                putOnCount = 0
             }
             
             object.first!.putOnCount = putOnCount
@@ -107,17 +103,20 @@ class LoadFunctions {
     }
 
     //未着用期間の判定
-    func judgeWarning(clothes: Clothes) -> Bool {
+    func isOverTwoYearsSinceLastWorn(clothes: Clothes) -> Bool {
         
         if let putOnDate = clothes.putOnDateArray.last {
             let nowDate = Date()
-            //時間で取得される
+            //秒数で取得される
             let dateSubtraction = Int(nowDate.timeIntervalSince(putOnDate.date))
             
             //日付に変換する
-            let subtractionDate = dateSubtraction/86400
+            let secondsPerDay = 86400
+            let subtractionDate = dateSubtraction / secondsPerDay
             
-            if subtractionDate >= 730 {
+            //2年以上差があったなら
+            let daysinTwoYears = 730
+            if subtractionDate >= daysinTwoYears {
                 //警告対象
                 return true
             }
@@ -140,7 +139,8 @@ class LoadFunctions {
         let calendar = Calendar(identifier: .gregorian)
         let date = date
        //2年後に期日を設定
-        let notificateDate = calendar.date(byAdding: .day, value: 730, to: date)!
+        let daysinTwoYears = 730
+        let notificateDate = calendar.date(byAdding: .day, value: daysinTwoYears, to: date)!
         
 
         

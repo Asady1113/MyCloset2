@@ -33,7 +33,7 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        array = judgeConditions(conditions: currentConditions)
+        array = getConditions(conditions: currentConditions)
         
         return array.count
     }
@@ -75,7 +75,7 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
     
     
     //配列の中身を判定する
-    func judgeConditions(conditions: String) -> [String] {
+    func getConditions(conditions: String) -> [String] {
         
         if conditions == "Category" {
             array = ["長袖トップス・アウター","半袖トップス・アウター","ボトムス","靴・サンダル","その他"]
