@@ -11,7 +11,7 @@ import KRProgressHUD
 
 class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,ClothesTableViewCellDelegate {
     
-    var conditions = [String]()
+    var searchConditions = [String]()
     var clothesArray = [Clothes]()
     
     let loadFunction = LoadFunctions()
@@ -35,7 +35,7 @@ class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDe
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        loadData()
+        loadClothes()
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -84,17 +84,17 @@ class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDe
     
     @objc func didTapPutOnButton(tableViewCell: UITableViewCell, button: UIButton) {
         
-        loadFunction.didTapPutOnButton(clothes: clothesArray[button.tag])
+        loadFunction.incrementPutOnCountAndRecordDate(clothes: clothesArray[button.tag])
         
-        loadData()
+        loadClothes()
         
     }
     
     @objc func didTapCancelButton(tableViewCell: UITableViewCell, button: UIButton) {
         
-        loadFunction.didTapCancelButton(clothes: clothesArray[button.tag])
+        loadFunction.decrementPutOnCountAndRecordDate(clothes: clothesArray[button.tag])
         
-        loadData()
+        loadClothes()
         
     }
     
@@ -102,8 +102,8 @@ class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDe
         
         let alert = UIAlertController(title: "削除しますか？", message: "削除したデータは復元できません", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { action in
-            self.loadFunction.didTapDeleteButton(clothes: self.clothesArray[button.tag])
-            self.loadData()
+            self.loadFunction.deleteClothesData(clothes: self.clothesArray[button.tag])
+            self.loadClothes()
         }
         let cancelAction = UIAlertAction(title: "キャンセル", style: .default) { action in
             alert.dismiss(animated: true, completion: nil)
@@ -114,10 +114,10 @@ class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDe
         self.present(alert, animated: true, completion: nil)
     }
     
-    func loadData() {
+    func loadClothes() {
         
         let realm = try! Realm()
-        let result = realm.objects(Clothes.self).filter("category== %@ AND color== %@", conditions[0],conditions[1])
+        let result = realm.objects(Clothes.self).filter("category== %@ AND color== %@", searchConditions[0],searchConditions[1])
        
         clothesArray = Array(result)
         

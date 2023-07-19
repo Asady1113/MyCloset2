@@ -31,8 +31,6 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
     let colorList = ["ブラック","ホワイト","レッド","ブラウン","ベージュ","オレンジ","イエロー","グリーン","ブルー"]
     
     var resizedImage: UIImage!
-    var color: String!
-    
     
     
 
@@ -120,13 +118,13 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
     // 選択された画像の表示
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
     let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-    // 画像のサイズ変更
-     resizedImage = selectedImage.scale(byFactor: 0.2)
-     imageView.image = resizedImage
-     picker.dismiss(animated: true, completion: nil)
-     
-    // 確認
-     confirmContents()
+        // 画像のサイズ変更
+         resizedImage = selectedImage.scale(byFactor: 0.2)
+         imageView.image = resizedImage
+         picker.dismiss(animated: true, completion: nil)
+         
+        // 確認
+         confirmContents()
     }
     
     
@@ -177,7 +175,7 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
     
     
     
-    @IBAction func save() {
+    @IBAction func uploadClothes() {
         KRProgressHUD.show()
         
         // 撮影した画像をデータ化したときに右に90度回転してしまう問題の解消
@@ -187,7 +185,7 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
         resizedImage = UIGraphicsGetImageFromCurrentImageContext()
                UIGraphicsEndImageContext()
                
-        let data = resizedImage.pngData()
+        let imageData = resizedImage.pngData()
         
         //空欄処理
         isEmpty(textField: nameTextField)
@@ -196,25 +194,23 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
         isEmpty(textField: colorTextField)
         
         //作成日を記憶
-        let date = Date()
+        let creatDate = Date()
         
         //idを作成
         let uuid = UUID()
-        let id = uuid.uuidString
+        let notificationId = uuid.uuidString
         
         //Realmに保存する
         let realm = try! Realm()
         let clothes = Clothes()
         
-      
-        clothes.add(id: id, category: selectedCategory, name: nameTextField.text!, buyDateString: buyDateTextField.text!, buyDate: datePicker.date, price: priceTextField.text!, comment: commentTextView.text!, color: colorTextField.text!, imageData: data!,notificationId: id)
+        clothes.add(id: notificationId, category: selectedCategory, name: nameTextField.text!, buyDateString: buyDateTextField.text!, buyDate: datePicker.date, price: priceTextField.text!, comment: commentTextView.text!, color: colorTextField.text!, imageData: imageData!,notificationId: notificationId)
         
         //着用日のログ
         let dateLog = DateLog()
-        dateLog.date = date
+        dateLog.date = creatDate
         clothes.putOnDateArray.append(dateLog)
 
-        
         try! realm.write {
             realm.add(clothes)
         }
@@ -238,31 +234,18 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
     }
     
    
-    //Image判定
+    //Imageが指定されているか判定する
     func confirmContents() {
-        if imageView.image != UIImage(named: "clothes-placeholder-icon@2x.png") {
-            addButton.isEnabled = true
-            addButton.backgroundColor = .orange
-        } else {
-            addButton.isEnabled = false
-            addButton.backgroundColor = .none
-        }
+        let placeholderImage = "clothes-placeholder-icon@2x.png"
+        addButton.isEnabled = (imageView.image != UIImage(named: "clothes-placeholder-icon@2x.png"))
+        addButton.backgroundColor = addButton.isEnabled ? .orange : .none
     }
     
     //空欄判定
     func isEmpty(textField: UITextField) {
-        
-        if textField.text?.count == 0 {
-            textField.text = "未設定"
-        }
-        
-        if commentTextView.text.count == 0 {
-            commentTextView.text = "未設定"
-        }
-        
+        textField.text = textField.text?.isEmpty == true ? "未設定" : textField.text
+        commentTextView.text = commentTextView.text.isEmpty == true ? "未設定" : commentTextView.text
     }
-    
-    
 }
 
 

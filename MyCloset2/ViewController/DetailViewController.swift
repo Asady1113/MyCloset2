@@ -31,7 +31,6 @@ class DetailViewController: UIViewController,UITextViewDelegate,UITextFieldDeleg
     let colorList = ["ブラック","ホワイト","レッド","ブラウン","ベージュ","オレンジ","イエロー","グリーン","ブルー"]
     
     var resizedImage: UIImage!
-    var color: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -131,13 +130,13 @@ class DetailViewController: UIViewController,UITextViewDelegate,UITextFieldDeleg
     // 選択された画像の表示
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
     let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-    // 画像のサイズ変更
-     resizedImage = selectedImage.scale(byFactor: 0.2)
-     imageView.image = resizedImage
-     picker.dismiss(animated: true, completion: nil)
-     
-    // 確認
-     confirmContents()
+        // 画像のサイズ変更
+         resizedImage = selectedImage.scale(byFactor: 0.2)
+         imageView.image = resizedImage
+         picker.dismiss(animated: true, completion: nil)
+         
+        // 確認
+         confirmContents()
     }
     
     
@@ -186,7 +185,7 @@ class DetailViewController: UIViewController,UITextViewDelegate,UITextFieldDeleg
         }
         
     
-    @IBAction func update() {
+    @IBAction func updateClothes() {
         KRProgressHUD.show()
         
         //変更なしの際に落ちるのを避ける
@@ -199,7 +198,7 @@ class DetailViewController: UIViewController,UITextViewDelegate,UITextFieldDeleg
         resizedImage = UIGraphicsGetImageFromCurrentImageContext()
                UIGraphicsEndImageContext()
                
-        let data = resizedImage.pngData()
+        let imageData = resizedImage.pngData()
         
         //空欄処理
         isEmpty(textField: nameTextField)
@@ -216,7 +215,7 @@ class DetailViewController: UIViewController,UITextViewDelegate,UITextFieldDeleg
         let object = Array(result)
         
         try! realm.write {
-            object.first?.add(id: selectedClothes.id, category: selectedClothes.category, name: nameTextField.text!, buyDateString: buyDateTextField.text!, buyDate: datePicker.date, price: priceTextField.text!, comment: commentTextView.text!, color: colorTextField.text!, imageData: data!,notificationId: selectedClothes.notificationId)
+            object.first?.add(id: selectedClothes.id, category: selectedClothes.category, name: nameTextField.text!, buyDateString: buyDateTextField.text!, buyDate: datePicker.date, price: priceTextField.text!, comment: commentTextView.text!, color: colorTextField.text!, imageData: imageData!,notificationId: selectedClothes.notificationId)
         }
         
         KRProgressHUD.dismiss()
@@ -242,26 +241,15 @@ class DetailViewController: UIViewController,UITextViewDelegate,UITextFieldDeleg
    
     //Image判定
     func confirmContents() {
-        if imageView.image != UIImage(named: "clothes-placeholder-icon@2x.png") {
-            addButton.isEnabled = true
-            addButton.backgroundColor = .orange
-        } else {
-            addButton.isEnabled = false
-            addButton.backgroundColor = .none
-        }
+        let placeholderImage = "clothes-placeholder-icon@2x.png"
+        addButton.isEnabled = (imageView.image != UIImage(named: "clothes-placeholder-icon@2x.png"))
+        addButton.backgroundColor = addButton.isEnabled ? .orange : .none
     }
     
     //空欄判定
     func isEmpty(textField: UITextField) {
-        
-        if textField.text?.count == 0 {
-            textField.text = "未設定"
-        }
-        
-        if commentTextView.text.count == 0 {
-            commentTextView.text = "未設定"
-        }
-        
+        textField.text = textField.text?.isEmpty == true ? "未設定" : textField.text
+        commentTextView.text = commentTextView.text.isEmpty == true ? "未設定" : commentTextView.text
     }
 }
 

@@ -89,7 +89,7 @@ class ShoesViewController: UIViewController,UITableViewDataSource,UITableViewDel
     
     @objc func didTapPutOnButton(tableViewCell: UITableViewCell, button: UIButton) {
         
-        loadFunction.didTapPutOnButton(clothes: clothesArray[button.tag])
+        loadFunction.incrementPutOnCountAndRecordDate(clothes: clothesArray[button.tag])
         
         loadData()
         
@@ -97,7 +97,7 @@ class ShoesViewController: UIViewController,UITableViewDataSource,UITableViewDel
     
     @objc func didTapCancelButton(tableViewCell: UITableViewCell, button: UIButton) {
         
-        loadFunction.didTapCancelButton(clothes: clothesArray[button.tag])
+        loadFunction.decrementPutOnCountAndRecordDate(clothes: clothesArray[button.tag])
         
         loadData()
         
@@ -107,7 +107,7 @@ class ShoesViewController: UIViewController,UITableViewDataSource,UITableViewDel
         
         let alert = UIAlertController(title: "削除しますか？", message: "削除したデータは復元できません", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { action in
-            self.loadFunction.didTapDeleteButton(clothes: self.clothesArray[button.tag])
+            self.loadFunction.deleteClothesData(clothes: self.clothesArray[button.tag])
             self.loadData()
         }
         let cancelAction = UIAlertAction(title: "キャンセル", style: .default) { action in
@@ -122,7 +122,7 @@ class ShoesViewController: UIViewController,UITableViewDataSource,UITableViewDel
     
     func loadData() {
         
-        clothesArray = loadFunction.loadData(category: category)
+        clothesArray = loadFunction.loadClothes(category: category)
         
         tableView.reloadData()
     }

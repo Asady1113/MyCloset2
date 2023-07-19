@@ -10,7 +10,7 @@ import UIKit
 class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
 
     var currentConditions = "Category"
-    var array = [String]()
+    var searchCandidateArray = [String]()
     var searchResult = [String]()
 
     
@@ -33,9 +33,9 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        array = getConditions(conditions: currentConditions)
+        searchCandidateArray = getConditions(conditions: currentConditions)
         
-        return array.count
+        return searchCandidateArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -45,7 +45,7 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
         cell.backgroundColor = #colorLiteral(red: 0.9921784997, green: 0.8421893716, blue: 0.5883585811, alpha: 1)
         
         let textLabel = cell.viewWithTag(1) as! UILabel
-        textLabel.text = array[indexPath.row]
+        textLabel.text = searchCandidateArray[indexPath.row]
         
         return cell
     }
@@ -53,7 +53,7 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let selectedIndex = tableView.indexPathForSelectedRow!
-        searchResult.append(array[selectedIndex.row])
+        searchResult.append(searchCandidateArray[selectedIndex.row])
         
         if currentConditions == "Category" {
             currentConditions = "Color"
@@ -70,20 +70,22 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let resultViewController = segue.destination as! ResultViewController
-        resultViewController.conditions = searchResult
+        resultViewController.searchConditions = searchResult
     }
     
     
-    //配列の中身を判定する
+    /// 配列の中身を指定する
+    /// - Parameter conditions: Categoryを選択しているか、Colorを選択しているか
+    /// - Returns: condtionsに合わせて、Categoryの要素かColorの要素を配列にして返す
     func getConditions(conditions: String) -> [String] {
         
         if conditions == "Category" {
-            array = ["長袖トップス・アウター","半袖トップス・アウター","ボトムス","靴・サンダル","その他"]
+            searchCandidateArray = ["長袖トップス・アウター","半袖トップス・アウター","ボトムス","靴・サンダル","その他"]
         } else if conditions == "Color" {
-            array = ["ブラック","ホワイト","レッド","ブラウン","ベージュ","オレンジ","イエロー","グリーン","ブルー"]
+            searchCandidateArray = ["ブラック","ホワイト","レッド","ブラウン","ベージュ","オレンジ","イエロー","グリーン","ブルー"]
         }
         
-        return array
+        return searchCandidateArray
     }
     
     
