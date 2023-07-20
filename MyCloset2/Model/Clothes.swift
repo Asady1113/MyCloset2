@@ -10,17 +10,17 @@ import Foundation
 
 class Clothes: Object {
     
-    @objc dynamic var id: String!
-    @objc dynamic var category: String!
-    @objc dynamic var name: String!
-    @objc dynamic var buyDateString: String!
-    @objc dynamic var buyDate: Date!
-    @objc dynamic var price: String!
-    @objc dynamic var comment: String!
-    @objc dynamic var color: String!
-    @objc dynamic var imageData: NSData!
+    @objc dynamic var id: String?
+    @objc dynamic var category: String?
+    @objc dynamic var name: String?
+    @objc dynamic var buyDateString: String?
+    @objc dynamic var buyDate: Date?
+    @objc dynamic var price: String?
+    @objc dynamic var comment: String?
+    @objc dynamic var color: String?
+    @objc dynamic var imageData: NSData?
     @objc dynamic var putOnCount: Int = 0
-    @objc dynamic var notificationId: String!
+    @objc dynamic var notificationId: String?
     //着用履歴
     var putOnDateArray = List<DateLog>()
     
