@@ -17,15 +17,13 @@ class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDe
     let loadFunction = LoadFunctions()
     
     @IBOutlet weak var tableView: UITableView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         tableView.dataSource = self
         tableView.delegate = self
-        
         tableView.backgroundColor = #colorLiteral(red: 0.9921784997, green: 0.8421893716, blue: 0.5883585811, alpha: 1)
-        
         
         //カスタムセルの登録
         let nib = UINib(nibName: "ClothesTableViewCell",bundle: .main)
@@ -37,9 +35,8 @@ class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDe
     override func viewWillAppear(_ animated: Bool) {
         loadClothes()
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return clothesArray.count
     }
     
@@ -65,41 +62,32 @@ class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDe
         cell.putOnCountLabel.text = String(clothesArray[indexPath.row].putOnCount)
         
         //警告の有無を判定
-        let isWarning = loadFunction.isOverTwoYearsSinceLastWorn(clothes: clothesArray[indexPath.row])
+        let isWarning = loadFunction.isOverMaxDurationSinceLastWorn(clothes: clothesArray[indexPath.row])
         
         //警告判定ありなら警告
         if isWarning == true {
             cell.warningLabel.text = "着用から2年経過"
         }
-        
         return cell
     }
     
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         self.performSegue(withIdentifier: "toDetail", sender: nil)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     @objc func didTapPutOnButton(tableViewCell: UITableViewCell, button: UIButton) {
-        
         loadFunction.incrementPutOnCountAndRecordDate(clothes: clothesArray[button.tag])
-        
         loadClothes()
-        
     }
     
     @objc func didTapCancelButton(tableViewCell: UITableViewCell, button: UIButton) {
-        
         loadFunction.decrementPutOnCountAndRecordDate(clothes: clothesArray[button.tag])
-        
         loadClothes()
-        
     }
     
     @objc func didTapDeleteButton(tableViewCell: UITableViewCell, button: UIButton) {
-        
         let alert = UIAlertController(title: "削除しますか？", message: "削除したデータは復元できません", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { action in
             self.loadFunction.deleteClothesData(clothes: self.clothesArray[button.tag])
@@ -108,28 +96,24 @@ class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDe
         let cancelAction = UIAlertAction(title: "キャンセル", style: .default) { action in
             alert.dismiss(animated: true, completion: nil)
         }
-        
         alert.addAction(okAction)
         alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
     }
     
     func loadClothes() {
-        
         let realm = try! Realm()
         let result = realm.objects(Clothes.self).filter("category== %@ AND color== %@", searchConditions[0],searchConditions[1])
-       
+        
         clothesArray = Array(result)
         
         if clothesArray.count == 0 {
             KRProgressHUD.showMessage("検索結果がありません")
         }
-        
         tableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         let detailViewController = segue.destination as! DetailViewController
         let selectedIndex = tableView.indexPathForSelectedRow!
         detailViewController.selectedClothes = clothesArray[selectedIndex.row]

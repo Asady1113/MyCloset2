@@ -16,18 +16,19 @@ class OthersViewController: UIViewController,UITableViewDataSource,UITableViewDe
     let category = "その他"
     var clothesArray = [Clothes]()
     
+    let segueIdToAddVC = "fromOthers"
+    let segueIdToDetailVC = "toDetail"
+    
     @IBOutlet weak var tableView: UITableView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         tableView.delegate = self
         tableView.dataSource = self
-       
         tableView.backgroundColor = #colorLiteral(red: 0.9921784997, green: 0.8421893716, blue: 0.5883585811, alpha: 1)
         
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "HonyaJi-Re", size: 20) as Any]
-        
         
         //カスタムセルの登録
         let nib = UINib(nibName: "ClothesTableViewCell",bundle: .main)
@@ -37,18 +38,14 @@ class OthersViewController: UIViewController,UITableViewDataSource,UITableViewDe
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
         loadData()
     }
     
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return clothesArray.count
     }
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! ClothesTableViewCell
         
         cell.delegate = self
@@ -63,7 +60,6 @@ class OthersViewController: UIViewController,UITableViewDataSource,UITableViewDe
             let image = UIImage(data: data)
             cell.clothesImageView.image = image
         }
-        
         cell.nameLabel.text = clothesArray[indexPath.row].name
         cell.buyDateLabel.text = clothesArray[indexPath.row].buyDateString
         cell.priceLabel.text = clothesArray[indexPath.row].price
@@ -71,40 +67,31 @@ class OthersViewController: UIViewController,UITableViewDataSource,UITableViewDe
         cell.putOnCountLabel.text = String(clothesArray[indexPath.row].putOnCount)
         
         //警告の有無を判定
-        let isWarning = loadFunction.isOverTwoYearsSinceLastWorn(clothes: clothesArray[indexPath.row])
+        let isWarning = loadFunction.isOverMaxDurationSinceLastWorn(clothes: clothesArray[indexPath.row])
         
         //警告判定ありなら警告
         if isWarning == true {
             cell.warningLabel.text = "着用から2年経過"
         }
-        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        self.performSegue(withIdentifier: "toDetail", sender: nil)
+        self.performSegue(withIdentifier: segueIdToDetailVC, sender: nil)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     @objc func didTapPutOnButton(tableViewCell: UITableViewCell, button: UIButton) {
-        
         loadFunction.incrementPutOnCountAndRecordDate(clothes: clothesArray[button.tag])
-        
         loadData()
-        
     }
     
     @objc func didTapCancelButton(tableViewCell: UITableViewCell, button: UIButton) {
-        
         loadFunction.decrementPutOnCountAndRecordDate(clothes: clothesArray[button.tag])
-        
         loadData()
-        
     }
     
     @objc func didTapDeleteButton(tableViewCell: UITableViewCell, button: UIButton) {
-        
         let alert = UIAlertController(title: "削除しますか？", message: "削除したデータは復元できません", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { action in
             self.loadFunction.deleteClothesData(clothes: self.clothesArray[button.tag])
@@ -119,31 +106,25 @@ class OthersViewController: UIViewController,UITableViewDataSource,UITableViewDe
         self.present(alert, animated: true, completion: nil)
     }
     
-    
     func loadData() {
-        
         clothesArray = loadFunction.loadClothes(category: category)
-        
         tableView.reloadData()
     }
     //画面遷移処理
     @IBAction func toAdd() {
-        self.performSegue(withIdentifier: "fromOthers", sender: nil)
+        self.performSegue(withIdentifier: segueIdToAddVC, sender: nil)
     }
-  
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "fromOthers" {
+        if segue.identifier == segueIdToAddVC {
             let addViewController = segue.destination as! AddViewController
             addViewController.selectedCategory = category
             
-        } else if segue.identifier == "toDetail" {
-            
+        } else if segue.identifier == segueIdToDetailVC {
             let detailViewController = segue.destination as! DetailViewController
             let selectedIndex = tableView.indexPathForSelectedRow!
             detailViewController.selectedClothes = clothesArray[selectedIndex.row]
-            
         }
     }
-
+    
 }

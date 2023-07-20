@@ -24,7 +24,6 @@ class Clothes: Object {
     //着用履歴
     var putOnDateArray = List<DateLog>()
     
-    
     func add(id: String, category: String, name: String, buyDateString: String, buyDate: Date, price: String, comment: String, color: String, imageData: Data, notificationId: String) {
         
         self.id = id

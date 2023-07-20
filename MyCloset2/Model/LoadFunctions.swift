@@ -12,6 +12,7 @@ import UserNotifications
 
 class LoadFunctions {
     
+    let MaxDurationOfNotWorn = 730
     /// 服のデータをRealmから読み込む
     /// - Parameter category: 読み込みたいカテゴリを格納
     /// - Returns: カテゴリに一致する服のデータを配列化したものを返す
@@ -27,7 +28,6 @@ class LoadFunctions {
         if clothesArray.count == 0 {
             KRProgressHUD.showMessage("登録されていません")
         }
-        
         return clothesArray
     }
     
@@ -58,17 +58,13 @@ class LoadFunctions {
             dateLog.date = date
             object.first!.putOnDateArray.append(dateLog)
         }
-        
     }
-    
     
     /// 着用回数を1減らし、Realmに保存する
     /// - Parameter clothes: 着用キャンセルボタンを押された服の情報を格納
     func decrementPutOnCountAndRecordDate(clothes: Clothes) {
-        
         var putOnCount = clothes.putOnCount
         var putOnDateArray = clothes.putOnDateArray
-        
         
         let realm = try! Realm()
         let result = realm.objects(Clothes.self).filter("id== %@", clothes.id)
@@ -77,7 +73,6 @@ class LoadFunctions {
         let object = Array(result)
         
         try! realm.write {
-    
             if putOnCount > 0 {
                putOnCount = putOnCount - 1
                //着用履歴も消去
@@ -87,31 +82,26 @@ class LoadFunctions {
                let date = putOnDateArray.last!.date
                makeNotification(date: date, notificationId: clothes.notificationId)
             }
-            
             object.first!.putOnCount = putOnCount
             object.first!.putOnDateArray = putOnDateArray
         }
-        
     }
     
     /// 服のデータをRealmから削除する
     /// - Parameter clothes: 削除したい服のデータを格納
     func deleteClothesData(clothes: Clothes) {
-        
         let realm = try! Realm()
         let result = realm.objects(Clothes.self).filter("id== %@", clothes.id)
         
         try! realm.write {
             realm.delete(result)
         }
-        
     }
 
-    /// 最後の着用履歴から2年が経っているか判定する
+    /// 最後の着用履歴から定められた期間が経っているか判定する
     /// - Parameter clothes: 選択された服のデータを格納
-    /// - Returns: true：2年経っている。false：2年経っていない
-    func isOverTwoYearsSinceLastWorn(clothes: Clothes) -> Bool {
-        
+    /// - Returns: true：定められた期間経っている。false：2年経っていない
+    func isOverMaxDurationSinceLastWorn(clothes: Clothes) -> Bool {
         if let putOnDate = clothes.putOnDateArray.last {
             let nowDate = Date()
             //秒数で取得される
@@ -121,8 +111,7 @@ class LoadFunctions {
             let secondsPerDay = 86400
             let subtractionDate = dateSubtraction / secondsPerDay
             
-            //2年以上差があったなら
-            let MaxDurationOfNotWorn = 730
+            //期日以上差があったなら
             if subtractionDate >= MaxDurationOfNotWorn {
                 //警告対象
                 return true
@@ -146,8 +135,7 @@ class LoadFunctions {
         //カレンダー型に変える
         let calendar = Calendar(identifier: .gregorian)
         let date = date
-       //2年後に期日を設定
-        let MaxDurationOfNotWorn = 730
+       //期日を設定
         let notificateDate = calendar.date(byAdding: .day, value: MaxDurationOfNotWorn, to: date)!
         
         //通知する時間と今の時間の差分を計算
@@ -172,4 +160,5 @@ class LoadFunctions {
              }
         }
     }
+    
 }
