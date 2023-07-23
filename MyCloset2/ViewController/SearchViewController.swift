@@ -9,7 +9,12 @@ import UIKit
 
 class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
-    var currentConditions = "Category"
+    enum Conditions {
+        case category
+        case color
+    }
+    var currentConditions: Conditions = .category
+    
     var searchCandidateArray = [String]()
     var searchResult = [String]()
     
@@ -30,7 +35,7 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        searchCandidateArray = getConditions(conditions: currentConditions)
+        searchCandidateArray = getCandidatesByCondition(selectedConditions: currentConditions)
         return searchCandidateArray.count
     }
     
@@ -48,12 +53,12 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
         let selectedIndex = tableView.indexPathForSelectedRow!
         searchResult.append(searchCandidateArray[selectedIndex.row])
         
-        if currentConditions == "Category" {
-            currentConditions = "Color"
+        if currentConditions == .category {
+            currentConditions = .color
             cancelButton.isHidden = false
             
             tableView.reloadData()
-        } else if currentConditions == "Color" {
+        } else if currentConditions == .color {
             self.performSegue(withIdentifier: "toResult", sender: nil)
         }
         tableView.deselectRow(at: indexPath, animated: true)
@@ -67,18 +72,18 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
     /// 配列の中身を指定する
     /// - Parameter conditions: Categoryを選択しているか、Colorを選択しているか
     /// - Returns: condtionsに合わせて、Categoryの要素かColorの要素を配列にして返す
-    func getConditions(conditions: String) -> [String] {
-        if conditions == "Category" {
+    func getCandidatesByCondition(selectedConditions: Conditions) -> [String] {
+        if selectedConditions == .category {
             searchCandidateArray = ["長袖トップス・アウター","半袖トップス・アウター","ボトムス","靴・サンダル","その他"]
             
-        } else if conditions == "Color" {
+        } else if selectedConditions == .color {
             searchCandidateArray = ["ブラック","ホワイト","レッド","ブラウン","ベージュ","オレンジ","イエロー","グリーン","ブルー"]
         }
         return searchCandidateArray
     }
     
     @IBAction func back() {
-        currentConditions = "Category"
+        currentConditions = .category
         //検索初期化
         searchResult = [String]()
         tableView.reloadData()
