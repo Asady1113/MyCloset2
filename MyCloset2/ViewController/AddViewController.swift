@@ -187,7 +187,7 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
         resizedImage = UIGraphicsGetImageFromCurrentImageContext()
                UIGraphicsEndImageContext()
                
-        let data: NSData? = resizedImage.pngData() as NSData?
+        let data = resizedImage.pngData()
         
         //空欄処理
         isEmpty(textField: nameTextField)
