@@ -116,23 +116,22 @@ class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDe
     
     func loadData() {
         
-        let realm = try! Realm()
-        let result = realm.objects(Clothes.self).filter("category== %@ AND color== %@", conditions[0],conditions[1])
-       
-        clothesArray = Array(result)
-        
-        if clothesArray.count == 0 {
-            KRProgressHUD.showMessage("検索結果がありません")
+        let realm = try? Realm()
+        if let result = realm?.objects(Clothes.self).filter("category== %@ AND color== %@", conditions[0],conditions[1]) {
+            clothesArray = Array(result)
+            if clothesArray.count == 0 {
+                KRProgressHUD.showMessage("検索結果がありません")
+            }
+            tableView.reloadData()
         }
-        
-        tableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let detailViewController = segue.destination as! DetailViewController
-        let selectedIndex = tableView.indexPathForSelectedRow!
-        detailViewController.selectedClothes = clothesArray[selectedIndex.row]
+        let detailViewController = segue.destination as? DetailViewController
+        if let selectedIndex = tableView.indexPathForSelectedRow {
+            detailViewController?.selectedClothes = clothesArray[selectedIndex.row]
+        }
     }
     
 }

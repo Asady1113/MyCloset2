@@ -44,17 +44,19 @@ class LoadFunctions {
         }
         
         let realm = try? Realm()
-        if let result = realm?.objects(Clothes.self).filter("id== %@", clothes.id ?? "") {
-            //resultを配列化する
-            let object = Array(result)
-            
-            try? realm?.write {
-                object.first?.putOnCount = putOnCount
+        if let clothesId = clothes.id {
+            if let result = realm?.objects(Clothes.self).filter("id== %@", clothesId) {
+                //resultを配列化する
+                let object = Array(result)
                 
-                //着用回数の履歴作成
-                let dateLog = DateLog()
-                dateLog.date = date
-                object.first?.putOnDateArray.append(dateLog)
+                try? realm?.write {
+                    object.first?.putOnCount = putOnCount
+                    
+                    //着用回数の履歴作成
+                    let dateLog = DateLog()
+                    dateLog.date = date
+                    object.first?.putOnDateArray.append(dateLog)
+                }
             }
         }
     }
@@ -67,28 +69,30 @@ class LoadFunctions {
         
         
         let realm = try? Realm()
-        if let result = realm?.objects(Clothes.self).filter("id== %@", clothes.id ?? "") {
-            //resultを配列化する
-            let object = Array(result)
+        if let clothesId = clothes.id {
+            if let result = realm?.objects(Clothes.self).filter("id== %@", clothesId) {
+                //resultを配列化する
+                let object = Array(result)
+                
+                try? realm?.write {
             
-            try? realm?.write {
-        
-                if putOnCount > 0 {
-                    putOnCount = putOnCount - 1
-                    //着用履歴も消去
-                    putOnDateArray.removeLast()
-                    
-                    //通知も再設定（最新のdateで設定）
-                    if let date = putOnDateArray.last?.date, let notificationId = clothes.notificationId {
-                        makeNotification(date: date, notificationId: notificationId)
+                    if putOnCount > 0 {
+                        putOnCount = putOnCount - 1
+                        //着用履歴も消去
+                        putOnDateArray.removeLast()
+                        
+                        //通知も再設定（最新のdateで設定）
+                        if let date = putOnDateArray.last?.date, let notificationId = clothes.notificationId {
+                            makeNotification(date: date, notificationId: notificationId)
+                        }
+                        
+                    } else if putOnCount == 0 {
+                        putOnCount = 0
                     }
                     
-                } else if putOnCount == 0 {
-                    putOnCount = 0
+                    object.first?.putOnCount = putOnCount
+                    object.first?.putOnDateArray = putOnDateArray
                 }
-                
-                object.first?.putOnCount = putOnCount
-                object.first?.putOnDateArray = putOnDateArray
             }
         }
     }
@@ -97,9 +101,11 @@ class LoadFunctions {
     func didTapDeleteButton(clothes: Clothes) {
         
         let realm = try? Realm()
-        if let result = realm?.objects(Clothes.self).filter("id== %@", clothes.id ?? "") {
-            try? realm?.write {
-                realm?.delete(result)
+        if let clothesId = clothes.id {
+            if let result = realm?.objects(Clothes.self).filter("id== %@", clothesId) {
+                try? realm?.write {
+                    realm?.delete(result)
+                }
             }
         }
     }
