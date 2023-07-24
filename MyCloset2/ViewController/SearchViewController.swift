@@ -15,11 +15,9 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
     }
     var currentConditions: Conditions = .category
     
-    var searchCandidateArray = [String]()
     var searchResult = [String]()
-    
     //カテゴリによって配列の中身を判定する
-    var array: [String] {
+    var searchCandidateArray: [String] {
         if currentConditions == .category {
             return ["長袖トップス・アウター", "半袖トップス・アウター", "ボトムス", "靴・サンダル", "その他"]
         } else if currentConditions == .color {
@@ -52,7 +50,7 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return array.count
+        return searchCandidateArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
