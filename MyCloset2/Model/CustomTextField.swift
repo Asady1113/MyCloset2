@@ -8,18 +8,16 @@
 import UIKit
 
 class CustomTextField: UITextField {
-
+    
     // 下線用のUIViewを作っておく
-    let underline: UIView = UIView()
-
+    let underline = UIView()
+    
     override func layoutSubviews() {
         super.layoutSubviews()
-
         //self.frame.size.height = 50 // ここ変える
-
         composeUnderline() // 下線のスタイルセットおよび追加処理
     }
-
+    
     private func composeUnderline() {
         underline.frame = CGRect(
             x: 0,                    // x, yの位置指定は親要素,
@@ -32,5 +30,6 @@ class CustomTextField: UITextField {
         self.addSubview(underline)
         self.bringSubviewToFront(underline)
     }
+    
 }
 

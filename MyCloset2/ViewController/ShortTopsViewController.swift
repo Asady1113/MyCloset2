@@ -16,38 +16,38 @@ class ShortTopsViewController: UIViewController,UITableViewDataSource,UITableVie
     let category = "半袖トップス・アウター"
     var clothesArray = [Clothes]()
     
+    let segueIdToAddVC = "fromShortTops"
+    let segueIdToDetailVC = "toDetail"
+    
     @IBOutlet weak var tableView: UITableView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         tableView.delegate = self
         tableView.dataSource = self
-        
         tableView.backgroundColor = #colorLiteral(red: 0.9921784997, green: 0.8421893716, blue: 0.5883585811, alpha: 1)
         
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "HonyaJi-Re", size: 20) as Any]
         
         //カスタムセルの登録
-        let nib = UINib(nibName: "ClothesTableViewCell",bundle: Bundle.main)
+        let nib = UINib(nibName: "ClothesTableViewCell",bundle: .main)
         tableView.register(nib, forCellReuseIdentifier: "Cell")
         
         tableView.tableFooterView = UIView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
         loadData()
     }
     
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return clothesArray.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! ClothesTableViewCell
         
         cell.delegate = self
@@ -58,10 +58,10 @@ class ShortTopsViewController: UIViewController,UITableViewDataSource,UITableVie
         cell.deleteButton.tag = indexPath.row
         
         //画像取得
-        let data = clothesArray[indexPath.row].imageData
-        let image = UIImage(data: data! as Data)
-        cell.clothesImageView.image = image
-        
+        if let data = clothesArray[indexPath.row].imageData {
+            let image = UIImage(data: data)
+            cell.clothesImageView.image = image
+        }
         cell.nameLabel.text = clothesArray[indexPath.row].name
         cell.buyDateLabel.text = clothesArray[indexPath.row].buyDateString
         cell.priceLabel.text = clothesArray[indexPath.row].price
@@ -69,13 +69,12 @@ class ShortTopsViewController: UIViewController,UITableViewDataSource,UITableVie
         cell.putOnCountLabel.text = String(clothesArray[indexPath.row].putOnCount)
         
         //警告の有無を判定
-        let isWarning = loadFunction.judgeWarning(clothes: clothesArray[indexPath.row])
+        let isWarning = loadFunction.isOverMaxDurationSinceLastWorn(clothes: clothesArray[indexPath.row])
         
         //警告判定ありなら警告
         if isWarning == true {
             cell.warningLabel.text = "着用から2年経過"
         }
-        
         return cell
     }
     
@@ -87,32 +86,24 @@ class ShortTopsViewController: UIViewController,UITableViewDataSource,UITableVie
     
     
     @objc func didTapPutOnButton(tableViewCell: UITableViewCell, button: UIButton) {
-        
-        loadFunction.didTapPutOnButton(clothes: clothesArray[button.tag])
-        
+        loadFunction.incrementPutOnCountAndRecordDate(clothes: clothesArray[button.tag])
         loadData()
-        
     }
     
     @objc func didTapCancelButton(tableViewCell: UITableViewCell, button: UIButton) {
-        
-        loadFunction.didTapCancelButton(clothes: clothesArray[button.tag])
-        
+        loadFunction.decrementPutOnCountAndRecordDate(clothes: clothesArray[button.tag])
         loadData()
-        
     }
     
     @objc func didTapDeleteButton(tableViewCell: UITableViewCell, button: UIButton) {
-        
         let alert = UIAlertController(title: "削除しますか？", message: "削除したデータは復元できません", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { action in
-            self.loadFunction.didTapDeleteButton(clothes: self.clothesArray[button.tag])
+            self.loadFunction.deleteClothesData(clothes: self.clothesArray[button.tag])
             self.loadData()
         }
         let cancelAction = UIAlertAction(title: "キャンセル", style: .default) { action in
             alert.dismiss(animated: true, completion: nil)
         }
-        
         alert.addAction(okAction)
         alert.addAction(cancelAction)
         present(alert, animated: true, completion: nil)
@@ -120,9 +111,7 @@ class ShortTopsViewController: UIViewController,UITableViewDataSource,UITableVie
     
     
     func loadData() {
-        
-        clothesArray = loadFunction.loadData(category: category)
-        
+        clothesArray = loadFunction.loadClothes(category: category)
         tableView.reloadData()
     }
     
@@ -130,20 +119,17 @@ class ShortTopsViewController: UIViewController,UITableViewDataSource,UITableVie
     @IBAction func toAdd() {
         performSegue(withIdentifier: "fromShortTops", sender: nil)
     }
-  
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "fromShortTops" {
-            
+        if segue.identifier == segueIdToAddVC {
             let addViewController = segue.destination as! AddViewController
             addViewController.selectedCategory = category
             
-        } else if segue.identifier == "toDetail" {
-            
+        } else if segue.identifier == segueIdToDetailVC {
             let detailViewController = segue.destination as! DetailViewController
             let selectedIndex = tableView.indexPathForSelectedRow!
             detailViewController.selectedClothes = clothesArray[selectedIndex.row]
-            
         }
     }
+    
 }

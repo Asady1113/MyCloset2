@@ -8,7 +8,7 @@
 import UIKit
 
 class TopsViewController: UIViewController {
-
+    
     let design = Design()
     
     @IBOutlet weak var longTopsButton: UIButton!
@@ -26,14 +26,13 @@ class TopsViewController: UIViewController {
     @IBAction func didTouchDownButton(_sender: UIButton) {
         design.didTouchDownButton(button: _sender)
     }
-
-  
+    
     @IBAction func didTouchDragExitButton(_sender: UIButton) {
         design.didTouchDragExitButton(button: _sender)
     }
-
-   
+    
     @IBAction func didTouchUpInsideButton(_sender: UIButton) {
         design.didTouchUpInsideButton(button: _sender)
     }
+    
 }
