@@ -13,7 +13,6 @@ import UITextView_Placeholder
 
 class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
-    
     var selectedCategory: String!
     
     @IBOutlet weak var imageView: UIImageView!
@@ -26,19 +25,15 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var selectImageButton: UIButton!
     
-    var datePicker: UIDatePicker = UIDatePicker()
-    var pickerView: UIPickerView = UIPickerView()
+    let datePicker = UIDatePicker()
+    let pickerView = UIPickerView()
     let colorList = ["ブラック","ホワイト","レッド","ブラウン","ベージュ","オレンジ","イエロー","グリーン","ブルー"]
     
     var resizedImage: UIImage!
-    var color: String!
     
-    
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         nameTextField.delegate = self
         buyDateTextField.delegate = self
         priceTextField.delegate = self
@@ -53,15 +48,14 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
         selectImageButton.layer.cornerRadius = 10
         cancelButton.layer.cornerRadius = 10
         addButton.layer.cornerRadius = 10
-    
         
         //  購入日のシステム
-        datePicker.datePickerMode = UIDatePicker.Mode.date
-        datePicker.locale = Locale.current
+        datePicker.datePickerMode = .date
+        datePicker.locale = .current
         buyDateTextField.inputView = datePicker
         
         if #available(iOS 13.4, *) {
-        datePicker.preferredDatePickerStyle = .wheels
+            datePicker.preferredDatePickerStyle = .wheels
         }
         
         let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 35))
@@ -72,19 +66,18 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
         buyDateTextField.inputView = datePicker
         buyDateTextField.inputAccessoryView = toolbar
         
-        
         //色指定のシステム
         // ピッカー設定
         pickerView.delegate = self
         pickerView.dataSource = self
         pickerView.showsSelectionIndicator = true
-       
+        
         // 決定バーの生成
         let colorToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 35))
         let colorSpacelItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         let colorDoneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(colorDone))
         colorToolBar.setItems([colorSpacelItem, colorDoneItem], animated: true)
-       
+        
         // インプットビュー設定
         colorTextField.inputView = pickerView
         colorTextField.inputAccessoryView = colorToolBar
@@ -107,7 +100,6 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        
         return true
     }
     
@@ -116,28 +108,26 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
             self.commentTextView.resignFirstResponder()
         }
     }
-
+    
     // 選択された画像の表示
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-    let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-    // 画像のサイズ変更
-     resizedImage = selectedImage.scale(byFactor: 0.2)
-     imageView.image = resizedImage
-     picker.dismiss(animated: true, completion: nil)
-     
-    // 確認
-     confirmContents()
+        let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        // 画像のサイズ変更
+        resizedImage = selectedImage.scale(byFactor: 0.2)
+        imageView.image = resizedImage
+        picker.dismiss(animated: true, completion: nil)
+        // 確認
+        confirmContents()
     }
-    
     
     // 画像を選択ボタン
     @IBAction func selectImage () {
         let alertController = UIAlertController(title: "画像の選択", message: "服の画像を選択してください", preferredStyle: .actionSheet)
         let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel) { (action) in
-              alertController.dismiss(animated: true, completion: nil)
-            }
+            alertController.dismiss(animated: true, completion: nil)
+        }
         let cameraAction = UIAlertAction(title: "カメラで撮影", style: .default) { (action) in
-             // もしカメラ起動可能なら
+            // もしカメラ起動可能なら
             if UIImagePickerController.isSourceTypeAvailable(.camera) == true {
                 let picker = UIImagePickerController()
                 picker.sourceType = .camera
@@ -150,11 +140,11 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
                 }
                 alert.addAction(okAction)
                 self.present(alert,animated: true,completion: nil)
-             }
             }
+        }
         let photoLibraryAction = UIAlertAction(title: "フォトライブラリから選択", style: .default) { (action) in
             // フォトライブラリが使えるなら
-           if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) == true {
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) == true {
                 let picker = UIImagePickerController()
                 picker.sourceType = .photoLibrary
                 picker.delegate = self
@@ -167,17 +157,14 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
                 alert.addAction(okAction)
                 self.present(alert,animated: true,completion: nil)
             }
-           }
-            alertController.addAction(cancelAction)
-            alertController.addAction(cameraAction)
-            alertController.addAction(photoLibraryAction)
-            self.present(alertController,animated: true,completion: nil)
         }
-        
+        alertController.addAction(cancelAction)
+        alertController.addAction(cameraAction)
+        alertController.addAction(photoLibraryAction)
+        self.present(alertController,animated: true,completion: nil)
+    }
     
-    
-    
-    @IBAction func save() {
+    @IBAction func uploadClothes() {
         KRProgressHUD.show()
         
         // 撮影した画像をデータ化したときに右に90度回転してしまう問題の解消
@@ -185,9 +172,9 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
         let rect = CGRect(x: 0, y: 0, width: resizedImage.size.width, height: resizedImage.size.height)
         resizedImage.draw(in: rect)
         resizedImage = UIGraphicsGetImageFromCurrentImageContext()
-               UIGraphicsEndImageContext()
-               
-        let data: NSData? = resizedImage.pngData() as NSData?
+        UIGraphicsEndImageContext()
+        
+        let imageData = resizedImage.pngData()
         
         //空欄処理
         isEmpty(textField: nameTextField)
@@ -196,29 +183,26 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
         isEmpty(textField: colorTextField)
         
         //作成日を記憶
-        let date = Date()
+        let createDate = Date()
         
         //idを作成
         let uuid = UUID()
-        let id = uuid.uuidString
+        let notificationId = uuid.uuidString
         
         //Realmに保存する
         let realm = try! Realm()
         let clothes = Clothes()
         
-      
-        clothes.add(id: id, category: selectedCategory, name: nameTextField.text!, buyDateString: buyDateTextField.text!, buyDate: datePicker.date, price: priceTextField.text!, comment: commentTextView.text!, color: colorTextField.text!, imageData: data!,notificationId: id)
+        clothes.add(id: notificationId, category: selectedCategory, name: nameTextField.text!, buyDateString: buyDateTextField.text!, buyDate: datePicker.date, price: priceTextField.text!, comment: commentTextView.text!, color: colorTextField.text!, imageData: imageData!,notificationId: notificationId)
         
         //着用日のログ
         let dateLog = DateLog()
-        dateLog.date = date
+        dateLog.date = createDate
         clothes.putOnDateArray.append(dateLog)
-
         
         try! realm.write {
             realm.add(clothes)
         }
-        
         KRProgressHUD.dismiss()
         self.dismiss(animated: true, completion: nil)
     }
@@ -237,39 +221,26 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
         self.present(alert,animated: true,completion: nil)
     }
     
-   
-    //Image判定
+    
+    //Imageが指定されているか判定する
     func confirmContents() {
-        if imageView.image != UIImage(named: "clothes-placeholder-icon@2x.png") {
-            addButton.isEnabled = true
-            addButton.backgroundColor = .orange
-        } else {
-            addButton.isEnabled = false
-            addButton.backgroundColor = .none
-        }
+        let placeholderImage = "clothes-placeholder-icon@2x.png"
+        addButton.isEnabled = (imageView.image != UIImage(named: placeholderImage))
+        addButton.backgroundColor = addButton.isEnabled ? .orange : .none
     }
     
     //空欄判定
     func isEmpty(textField: UITextField) {
-        
-        if textField.text?.count == 0 {
-            textField.text = "未設定"
-        }
-        
-        if commentTextView.text.count == 0 {
-            commentTextView.text = "未設定"
-        }
-        
+        let placeholderText = "未設定"
+        textField.text = textField.text?.isEmpty == true ? placeholderText : textField.text
+        commentTextView.text = commentTextView.text.isEmpty == true ? placeholderText : commentTextView.text
     }
-    
     
 }
 
-
-
 //Picker
 extension AddViewController : UIPickerViewDelegate, UIPickerViewDataSource {
- 
+    
     // ドラムロールの列数
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -277,13 +248,11 @@ extension AddViewController : UIPickerViewDelegate, UIPickerViewDataSource {
     
     // ドラムロールの行数
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        
         return colorList.count
     }
     
     // ドラムロールの各タイトル
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        
         return colorList[row]
     }
     
