@@ -28,7 +28,7 @@ class OthersViewController: UIViewController,UITableViewDataSource,UITableViewDe
         tableView.dataSource = self
         tableView.backgroundColor = #colorLiteral(red: 0.9921784997, green: 0.8421893716, blue: 0.5883585811, alpha: 1)
         
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "HonyaJi-Re", size: 20) as Any]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "HonyaJi-Re", size: 20) as Any]
         
         //カスタムセルの登録
         let nib = UINib(nibName: "ClothesTableViewCell",bundle: .main)
@@ -77,7 +77,8 @@ class OthersViewController: UIViewController,UITableViewDataSource,UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: segueIdToDetailVC, sender: nil)
+        
+        performSegue(withIdentifier: "toDetail", sender: nil)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -103,7 +104,7 @@ class OthersViewController: UIViewController,UITableViewDataSource,UITableViewDe
         
         alert.addAction(okAction)
         alert.addAction(cancelAction)
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
     
     func loadData() {
@@ -112,7 +113,7 @@ class OthersViewController: UIViewController,UITableViewDataSource,UITableViewDe
     }
     //画面遷移処理
     @IBAction func toAdd() {
-        self.performSegue(withIdentifier: segueIdToAddVC, sender: nil)
+        performSegue(withIdentifier: "fromOthers", sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -25,7 +25,7 @@ class LoadFunctions {
         
         clothesArray = Array(result)
         
-        if clothesArray.count == 0 {
+        if clothesArray.isEmpty == true {
             KRProgressHUD.showMessage("登録されていません")
         }
         return clothesArray

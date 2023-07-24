@@ -105,7 +105,7 @@ class DetailViewController: UIViewController,UITextViewDelegate,UITextFieldDeleg
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if (self.commentTextView.isFirstResponder) {
+        if (commentTextView.isFirstResponder) {
             self.commentTextView.resignFirstResponder()
         }
     }
@@ -175,7 +175,7 @@ class DetailViewController: UIViewController,UITextViewDelegate,UITextFieldDeleg
         alertController.addAction(cancelAction)
         alertController.addAction(cameraAction)
         alertController.addAction(photoLibraryAction)
-        self.present(alertController,animated: true,completion: nil)
+        present(alertController,animated: true,completion: nil)
     }
     
     @IBAction func updateClothes() {
@@ -209,7 +209,7 @@ class DetailViewController: UIViewController,UITextViewDelegate,UITextFieldDeleg
             object.first?.add(id: selectedClothes.id, category: selectedClothes.category, name: nameTextField.text!, buyDateString: buyDateTextField.text!, buyDate: datePicker.date, price: priceTextField.text!, comment: commentTextView.text!, color: colorTextField.text!, imageData: imageData!,notificationId: selectedClothes.notificationId)
         }
         KRProgressHUD.dismiss()
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func cancel() {
@@ -222,7 +222,7 @@ class DetailViewController: UIViewController,UITextViewDelegate,UITextFieldDeleg
         }
         alert.addAction(okAction)
         alert.addAction(cancelAction)
-        self.present(alert,animated: true,completion: nil)
+        present(alert,animated: true,completion: nil)
     }
     
     //Image判定

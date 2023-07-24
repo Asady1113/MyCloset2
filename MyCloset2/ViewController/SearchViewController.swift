@@ -8,15 +8,23 @@
 import UIKit
 
 class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
-    
+
     enum Conditions {
         case category
         case color
     }
     var currentConditions: Conditions = .category
     
-    var searchCandidateArray = [String]()
     var searchResult = [String]()
+    //カテゴリによって配列の中身を判定する
+    var searchCandidateArray: [String] {
+        if currentConditions == .category {
+            return ["長袖トップス・アウター", "半袖トップス・アウター", "ボトムス", "靴・サンダル", "その他"]
+        } else if currentConditions == .color {
+            return ["ブラック", "ホワイト", "レッド", "ブラウン", "ベージュ", "オレンジ", "イエロー", "グリーン", "ブルー"]
+        }
+        return []
+    }
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var cancelButton: UIButton!
@@ -28,14 +36,20 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
         tableView.delegate = self
         tableView.backgroundColor = #colorLiteral(red: 0.9921784997, green: 0.8421893716, blue: 0.5883585811, alpha: 1)
         
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "HonyaJi-Re", size: 20) as Any]
-        
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "HonyaJi-Re", size: 20) as Any]
+       
         cancelButton.layer.cornerRadius = 15
         cancelButton.isHidden = true
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        //ちょっと危険そうな処理（検索結果からこのページに戻ってきた時の処理。Color条件だけ削除する）
+        if searchResult.isEmpty == false {
+            searchResult.removeLast()
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        searchCandidateArray = getCandidatesByCondition(selectedConditions: currentConditions)
         return searchCandidateArray.count
     }
     
@@ -59,7 +73,7 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
             
             tableView.reloadData()
         } else if currentConditions == .color {
-            self.performSegue(withIdentifier: "toResult", sender: nil)
+            performSegue(withIdentifier: "toResult", sender: nil)
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -67,19 +81,6 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let resultViewController = segue.destination as! ResultViewController
         resultViewController.searchConditions = searchResult
-    }
-    
-    /// 配列の中身を指定する
-    /// - Parameter conditions: Categoryを選択しているか、Colorを選択しているか
-    /// - Returns: condtionsに合わせて、Categoryの要素かColorの要素を配列にして返す
-    func getCandidatesByCondition(selectedConditions: Conditions) -> [String] {
-        if selectedConditions == .category {
-            searchCandidateArray = ["長袖トップス・アウター","半袖トップス・アウター","ボトムス","靴・サンダル","その他"]
-            
-        } else if selectedConditions == .color {
-            searchCandidateArray = ["ブラック","ホワイト","レッド","ブラウン","ベージュ","オレンジ","イエロー","グリーン","ブルー"]
-        }
-        return searchCandidateArray
     }
     
     @IBAction func back() {
@@ -90,5 +91,5 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
         
         cancelButton.isHidden = true
     }
-    
+
 }

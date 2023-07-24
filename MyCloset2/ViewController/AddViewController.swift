@@ -104,7 +104,7 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if (self.commentTextView.isFirstResponder) {
+        if (commentTextView.isFirstResponder) {
             self.commentTextView.resignFirstResponder()
         }
     }
@@ -161,7 +161,7 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
         alertController.addAction(cancelAction)
         alertController.addAction(cameraAction)
         alertController.addAction(photoLibraryAction)
-        self.present(alertController,animated: true,completion: nil)
+        present(alertController,animated: true,completion: nil)
     }
     
     @IBAction func uploadClothes() {
@@ -204,7 +204,7 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
             realm.add(clothes)
         }
         KRProgressHUD.dismiss()
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     
@@ -218,7 +218,7 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
         }
         alert.addAction(okAction)
         alert.addAction(cancelAction)
-        self.present(alert,animated: true,completion: nil)
+        present(alert,animated: true,completion: nil)
     }
     
     
