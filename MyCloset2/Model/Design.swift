@@ -13,14 +13,12 @@ class Design {
     //ボタンのデザイン
     func buttonDesign(button: UIButton) {
         button.layer.cornerRadius = 15
-        
         button.layer.shadowOffset = CGSize(width: 3, height: 3 )
         button.layer.shadowOpacity = 0.5
         button.layer.shadowRadius = 10
         button.layer.shadowColor = UIColor.gray.cgColor
     }
     
-   
     //ボタンのバウンド処理
     func didTouchDownButton(button: UIButton) {
         // ボタンを縮こませます
@@ -31,7 +29,7 @@ class Design {
     
     func didTouchDragExitButton(button: UIButton) {
         // 縮こまったボタンをアニメーションで元のサイズに戻します
-     UIView.animate(withDuration: 0.2, animations: {
+        UIView.animate(withDuration: 0.2, animations: {
             button.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
         })
     }
@@ -44,7 +42,7 @@ class Design {
                        initialSpringVelocity: 8,
                        options: .curveEaseOut,
                        animations: { () -> Void in
-
+            
             button.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
         }, completion: nil)
     }

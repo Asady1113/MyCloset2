@@ -17,7 +17,6 @@ class ClothesTableViewCell: UITableViewCell {
     
     var delegate: ClothesTableViewCellDelegate?
    
-    
     @IBOutlet weak var clothesImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet var buyDateLabel: UILabel!
@@ -33,7 +32,6 @@ class ClothesTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         putOnButton.layer.cornerRadius = 12
-        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

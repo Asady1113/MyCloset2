@@ -11,35 +11,32 @@ import KRProgressHUD
 
 class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,ClothesTableViewCellDelegate {
     
-    var conditions: [String] = [""]
+    var searchConditions = [String]()
     var clothesArray = [Clothes]()
     
-    var loadFunction = LoadFunctions()
+    let loadFunction = LoadFunctions()
     
     @IBOutlet weak var tableView: UITableView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         tableView.dataSource = self
         tableView.delegate = self
-        
         tableView.backgroundColor = #colorLiteral(red: 0.9921784997, green: 0.8421893716, blue: 0.5883585811, alpha: 1)
         
-        
         //カスタムセルの登録
-        let nib = UINib(nibName: "ClothesTableViewCell",bundle: Bundle.main)
+        let nib = UINib(nibName: "ClothesTableViewCell",bundle: .main)
         tableView.register(nib, forCellReuseIdentifier: "Cell")
         
         tableView.tableFooterView = UIView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        loadData()
+        loadClothes()
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return clothesArray.count
     }
     
@@ -65,7 +62,7 @@ class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDe
         cell?.putOnCountLabel.text = String(clothesArray[indexPath.row].putOnCount)
         
         //警告の有無を判定
-        let isWarning = loadFunction.judgeWarning(clothes: clothesArray[indexPath.row])
+        let isWarning = loadFunction.isOverMaxDurationSinceLastWorn(clothes: clothesArray[indexPath.row])
         
         //警告判定ありなら警告
         if isWarning == true {
@@ -75,49 +72,39 @@ class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDe
         return cell ?? UITableViewCell()
     }
     
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         self.performSegue(withIdentifier: "toDetail", sender: nil)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     @objc func didTapPutOnButton(tableViewCell: UITableViewCell, button: UIButton) {
-        
-        loadFunction.didTapPutOnButton(clothes: clothesArray[button.tag])
-        
-        loadData()
-        
+        loadFunction.incrementPutOnCountAndRecordDate(clothes: clothesArray[button.tag])
+        loadClothes()
     }
     
     @objc func didTapCancelButton(tableViewCell: UITableViewCell, button: UIButton) {
-        
-        loadFunction.didTapCancelButton(clothes: clothesArray[button.tag])
-        
-        loadData()
-        
+        loadFunction.decrementPutOnCountAndRecordDate(clothes: clothesArray[button.tag])
+        loadClothes()
     }
     
     @objc func didTapDeleteButton(tableViewCell: UITableViewCell, button: UIButton) {
-        
         let alert = UIAlertController(title: "削除しますか？", message: "削除したデータは復元できません", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { action in
-            self.loadFunction.didTapDeleteButton(clothes: self.clothesArray[button.tag])
-            self.loadData()
+            self.loadFunction.deleteClothesData(clothes: self.clothesArray[button.tag])
+            self.loadClothes()
         }
         let cancelAction = UIAlertAction(title: "キャンセル", style: .default) { action in
             alert.dismiss(animated: true, completion: nil)
         }
-        
         alert.addAction(okAction)
         alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
     }
-    
-    func loadData() {
         
+    func loadClothes() {
         let realm = try? Realm()
-        if let result = realm?.objects(Clothes.self).filter("category== %@ AND color== %@", conditions[0],conditions[1]) {
+        if let result = realm?.objects(Clothes.self).filter("category== %@ AND color== %@", searchConditions[0],searchConditions[1]) {
             clothesArray = Array(result)
             if clothesArray.count == 0 {
                 KRProgressHUD.showMessage("検索結果がありません")
@@ -127,7 +114,6 @@ class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDe
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         let detailViewController = segue.destination as? DetailViewController
         if let selectedIndex = tableView.indexPathForSelectedRow {
             detailViewController?.selectedClothes = clothesArray[selectedIndex.row]

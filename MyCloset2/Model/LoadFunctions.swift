@@ -12,8 +12,11 @@ import UserNotifications
 
 class LoadFunctions {
     
-    //アイテムの読み込み
-    func loadData(category: String) -> [Clothes] {
+    let MaxDurationOfNotWorn = 730
+    /// 服のデータをRealmから読み込む
+    /// - Parameter category: 読み込みたいカテゴリを格納
+    /// - Returns: カテゴリに一致する服のデータを配列化したものを返す
+    func loadClothes(category: String) -> [Clothes] {
         //配列初期化
         var clothesArray = [Clothes]()
         
@@ -25,13 +28,12 @@ class LoadFunctions {
         if clothesArray.count == 0 {
             KRProgressHUD.showMessage("登録されていません")
         }
-        
         return clothesArray
     }
     
-    //着用ボタン
-    func didTapPutOnButton(clothes: Clothes) {
-        
+    /// 着用回数を1増やし、Realmに保存する
+    /// - Parameter clothes: 着用ボタンを押された服の情報を格納
+    func incrementPutOnCountAndRecordDate(clothes: Clothes) {
         //着用回数
         var putOnCount = clothes.putOnCount
         putOnCount = putOnCount + 1
@@ -61,9 +63,9 @@ class LoadFunctions {
         }
     }
     
-    //着用キャンセルボタン
-    func didTapCancelButton(clothes: Clothes) {
-        
+    /// 着用回数を1減らし、Realmに保存する
+    /// - Parameter clothes: 着用キャンセルボタンを押された服の情報を格納
+    func decrementPutOnCountAndRecordDate(clothes: Clothes) {
         var putOnCount = clothes.putOnCount
         var putOnDateArray = clothes.putOnDateArray
         
@@ -85,11 +87,7 @@ class LoadFunctions {
                         if let date = putOnDateArray.last?.date, let notificationId = clothes.notificationId {
                             makeNotification(date: date, notificationId: notificationId)
                         }
-                        
-                    } else if putOnCount == 0 {
-                        putOnCount = 0
                     }
-                    
                     object.first?.putOnCount = putOnCount
                     object.first?.putOnDateArray = putOnDateArray
                 }
@@ -97,9 +95,9 @@ class LoadFunctions {
         }
     }
     
-    //削除ボタン
-    func didTapDeleteButton(clothes: Clothes) {
-        
+    /// 服のデータをRealmから削除する
+    /// - Parameter clothes: 削除したい服のデータを格納
+    func deleteClothesData(clothes: Clothes) {
         let realm = try? Realm()
         if let clothesId = clothes.id {
             if let result = realm?.objects(Clothes.self).filter("id== %@", clothesId) {
@@ -110,18 +108,21 @@ class LoadFunctions {
         }
     }
 
-    //未着用期間の判定
-    func judgeWarning(clothes: Clothes) -> Bool {
-        
-        let nowDate = Date()
+    /// 最後の着用履歴から定められた期間が経っているか判定する
+    /// - Parameter clothes: 選択された服のデータを格納
+    /// - Returns: true：定められた期間経っている。false：2年経っていない
+    func isOverMaxDurationSinceLastWorn(clothes: Clothes) -> Bool {
         if let putOnDate = clothes.putOnDateArray.last {
-            //時間で取得される
+            let nowDate = Date()
+            //秒数で取得される
             let dateSubtraction = Int(nowDate.timeIntervalSince(putOnDate.date))
             
             //日付に変換する
-            let subtractionDate = dateSubtraction/86400
+            let secondsPerDay = 86400
+            let subtractionDate = dateSubtraction / secondsPerDay
             
-            if subtractionDate >= 730 {
+            //期日以上差があったなら
+            if subtractionDate >= MaxDurationOfNotWorn {
                 //警告対象
                 return true
             }
@@ -129,7 +130,10 @@ class LoadFunctions {
         return false
     }
     
-    //通知作成機能
+    /// 通知を作成する
+    /// - Parameters:
+    ///   - date: アクションを起こした日の日付
+    ///   - notificationId: 通知を識別するためのid
     func makeNotification(date: Date, notificationId: String) {
         // ローカル通知の内容
         let content = UNMutableNotificationContent()
@@ -138,13 +142,11 @@ class LoadFunctions {
         content.body = "最後の着用から2年が経過しています"
         content.badge = 1
         
-       
-        
         //カレンダー型に変える
         let calendar = Calendar(identifier: .gregorian)
         let date = date
        //2年後に期日を設定
-        if let notificateDate = calendar.date(byAdding: .day, value: 730, to: date) {
+        if let notificateDate = calendar.date(byAdding: .day, value: MaxDurationOfNotWorn, to: date) {
             //通知する時間と今の時間の差分を計算
             let dateSubtraction = Int(notificateDate.timeIntervalSince(date))
            
