@@ -20,8 +20,8 @@ class LoadFunctions {
         //配列初期化
         var clothesArray = [Clothes]()
         
-        let realm = try? Realm()
-        if let result = realm?.objects(Clothes.self).filter("category== %@", category) {
+        if let realm = try? Realm() {
+            let result = realm.objects(Clothes.self).filter("category== %@", category)
             clothesArray = Array(result)
         }
         
@@ -45,20 +45,19 @@ class LoadFunctions {
             makeNotification(date: date, notificationId: notificationId)
         }
         
-        let realm = try? Realm()
-        if let clothesId = clothes.id {
-            if let result = realm?.objects(Clothes.self).filter("id== %@", clothesId) {
-                //resultを配列化する
-                let object = Array(result)
+        if let realm = try? Realm(), let clothesId = clothes.id {
+            let result = realm.objects(Clothes.self).filter("id== %@", clothesId)
+            //resultを配列化する
+            let object = Array(result)
+            
+            try? realm.write {
+                object.first?.putOnCount = putOnCount
                 
-                try? realm?.write {
-                    object.first?.putOnCount = putOnCount
-                    
-                    //着用回数の履歴作成
-                    let dateLog = DateLog()
-                    dateLog.date = date
-                    object.first?.putOnDateArray.append(dateLog)
-                }
+                //着用回数の履歴作成
+                let dateLog = DateLog()
+                dateLog.date = date
+                object.first?.putOnDateArray.append(dateLog)
+                
             }
         }
     }
@@ -70,27 +69,25 @@ class LoadFunctions {
         var putOnDateArray = clothes.putOnDateArray
         
         
-        let realm = try? Realm()
-        if let clothesId = clothes.id {
-            if let result = realm?.objects(Clothes.self).filter("id== %@", clothesId) {
-                //resultを配列化する
-                let object = Array(result)
-                
-                try? realm?.write {
+        if let realm = try? Realm(), let clothesId = clothes.id {
+            let result = realm.objects(Clothes.self).filter("id== %@", clothesId)
+            //resultを配列化する
+            let object = Array(result)
             
-                    if putOnCount > 0 {
-                        putOnCount = putOnCount - 1
-                        //着用履歴も消去
-                        putOnDateArray.removeLast()
-                        
-                        //通知も再設定（最新のdateで設定）
-                        if let date = putOnDateArray.last?.date, let notificationId = clothes.notificationId {
-                            makeNotification(date: date, notificationId: notificationId)
-                        }
+            try? realm.write {
+                
+                if putOnCount > 0 {
+                    putOnCount = putOnCount - 1
+                    //着用履歴も消去
+                    putOnDateArray.removeLast()
+                    
+                    //通知も再設定（最新のdateで設定）
+                    if let date = putOnDateArray.last?.date, let notificationId = clothes.notificationId {
+                        makeNotification(date: date, notificationId: notificationId)
                     }
-                    object.first?.putOnCount = putOnCount
-                    object.first?.putOnDateArray = putOnDateArray
                 }
+                object.first?.putOnCount = putOnCount
+                object.first?.putOnDateArray = putOnDateArray
             }
         }
     }
@@ -98,12 +95,10 @@ class LoadFunctions {
     /// 服のデータをRealmから削除する
     /// - Parameter clothes: 削除したい服のデータを格納
     func deleteClothesData(clothes: Clothes) {
-        let realm = try? Realm()
-        if let clothesId = clothes.id {
-            if let result = realm?.objects(Clothes.self).filter("id== %@", clothesId) {
-                try? realm?.write {
-                    realm?.delete(result)
-                }
+        if let realm = try? Realm(), let clothesId = clothes.id {
+            let result = realm.objects(Clothes.self).filter("id== %@", clothesId)
+            try? realm.write {
+                realm.delete(result)
             }
         }
     }
