@@ -38,7 +38,7 @@ class BottomsViewController: UIViewController,UITableViewDataSource,UITableViewD
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        loadData()
+        loadClothes()
     }
     
     
@@ -85,20 +85,32 @@ class BottomsViewController: UIViewController,UITableViewDataSource,UITableViewD
     
     
     @objc func didTapPutOnButton(tableViewCell: UITableViewCell, button: UIButton) {
-        loadFunction.incrementPutOnCountAndRecordDate(clothes: clothesArray[button.tag])
-        loadData()
+        loadFunction.incrementPutOnCount(clothes: clothesArray[button.tag])
+        loadFunction.appendPutOnDate(clothes: clothesArray[button.tag])
+        //着用日を取得し、通知を作成する
+        let date = Date()
+        loadFunction.makeNotification(date: date, notificationId: clothesArray[button.tag].notificationId)
+        //データ再読み込み
+        loadClothes()
     }
     
     @objc func didTapCancelButton(tableViewCell: UITableViewCell, button: UIButton) {
-        loadFunction.decrementPutOnCountAndRecordDate(clothes: clothesArray[button.tag])
-        loadData()
+        if clothesArray[button.tag].putOnCount != 0 {
+            loadFunction.decrementPutOnCount(clothes: clothesArray[button.tag])
+            let putOnDateArray = loadFunction.removePutOnDate(clothes: clothesArray[button.tag])
+            //通知も再設定（最新のdateで設定）
+            let date = putOnDateArray.last!.date
+            loadFunction.makeNotification(date: date, notificationId: clothesArray[button.tag].notificationId)
+            //データ再読み込み
+            loadClothes()
+        }
     }
     
     @objc func didTapDeleteButton(tableViewCell: UITableViewCell, button: UIButton) {
         let alert = UIAlertController(title: "削除しますか？", message: "削除したデータは復元できません", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { action in
             self.loadFunction.deleteClothesData(clothes: self.clothesArray[button.tag])
-            self.loadData()
+            self.loadClothes()
         }
         let cancelAction = UIAlertAction(title: "キャンセル", style: .default) { action in
             alert.dismiss(animated: true, completion: nil)
@@ -109,7 +121,7 @@ class BottomsViewController: UIViewController,UITableViewDataSource,UITableViewD
     }
     
     
-    func loadData() {
+    func loadClothes() {
         clothesArray = loadFunction.loadClothes(category: category)
         tableView.reloadData()
     }

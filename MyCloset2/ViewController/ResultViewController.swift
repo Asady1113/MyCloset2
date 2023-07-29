@@ -78,13 +78,25 @@ class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDe
     }
     
     @objc func didTapPutOnButton(tableViewCell: UITableViewCell, button: UIButton) {
-        loadFunction.incrementPutOnCountAndRecordDate(clothes: clothesArray[button.tag])
+        loadFunction.incrementPutOnCount(clothes: clothesArray[button.tag])
+        loadFunction.appendPutOnDate(clothes: clothesArray[button.tag])
+        //着用日を取得し、通知を作成する
+        let date = Date()
+        loadFunction.makeNotification(date: date, notificationId: clothesArray[button.tag].notificationId)
+        //データ再読み込み
         loadClothes()
     }
     
     @objc func didTapCancelButton(tableViewCell: UITableViewCell, button: UIButton) {
-        loadFunction.decrementPutOnCountAndRecordDate(clothes: clothesArray[button.tag])
-        loadClothes()
+        if clothesArray[button.tag].putOnCount != 0 {
+            loadFunction.decrementPutOnCount(clothes: clothesArray[button.tag])
+            let putOnDateArray = loadFunction.removePutOnDate(clothes: clothesArray[button.tag])
+            //通知も再設定（最新のdateで設定）
+            let date = putOnDateArray.last!.date
+            loadFunction.makeNotification(date: date, notificationId: clothesArray[button.tag].notificationId)
+            //データ再読み込み
+            loadClothes()
+        }
     }
     
     @objc func didTapDeleteButton(tableViewCell: UITableViewCell, button: UIButton) {

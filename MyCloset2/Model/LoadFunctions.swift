@@ -33,58 +33,65 @@ class LoadFunctions {
     
     /// 着用回数を1増やし、Realmに保存する
     /// - Parameter clothes: 着用ボタンを押された服の情報を格納
-    func incrementPutOnCountAndRecordDate(clothes: Clothes) {
-        //着用回数
-        var putOnCount = clothes.putOnCount
-        putOnCount = putOnCount + 1
-        
+    func incrementPutOnCount(clothes: Clothes) {
+        let realm = try! Realm()
+        let result = realm.objects(Clothes.self).filter("id== %@", clothes.id)
+        //resultを配列化する
+        let object = Array(result)
+        //着用回数を1増やし、Realmに保存する
+        try! realm.write {
+            object.first!.putOnCount += 1
+        }
+    }
+    
+    /// 着用履歴を更新し、Realmに保存する
+    /// - Parameter clothes: 着用ボタンを押された服の情報を格納
+    func appendPutOnDate(clothes: Clothes) {
         //着用日を取得
         let date = Date()
-        let notificationId = clothes.notificationId
-        //通知を作成する
-        makeNotification(date: date, notificationId: notificationId!)
         
         let realm = try! Realm()
         let result = realm.objects(Clothes.self).filter("id== %@", clothes.id)
-        
         //resultを配列化する
         let object = Array(result)
         
         try! realm.write {
-            object.first!.putOnCount = putOnCount
-            
-            //着用回数の履歴作成
+            //着用日の履歴作成
             let dateLog = DateLog()
             dateLog.date = date
             object.first!.putOnDateArray.append(dateLog)
         }
     }
-    
+      
     /// 着用回数を1減らし、Realmに保存する
     /// - Parameter clothes: 着用キャンセルボタンを押された服の情報を格納
-    func decrementPutOnCountAndRecordDate(clothes: Clothes) {
-        var putOnCount = clothes.putOnCount
+    func decrementPutOnCount(clothes: Clothes) {
+        //Realmに更新
+        let realm = try! Realm()
+        let result = realm.objects(Clothes.self).filter("id== %@", clothes.id)
+        //resultを配列化する
+        let object = Array(result)
+        //着用回数を1増やし、Realmに保存する
+        try! realm.write {
+            object.first!.putOnCount -= 1
+        }
+    }
+    
+    /// 着用履歴を削除し、Realmに保存する
+    /// - Parameter clothes: 着用キャンセルボタンを押された服の情報を格納
+    func removePutOnDate(clothes: Clothes) -> List<DateLog> {
         var putOnDateArray = clothes.putOnDateArray
         
         let realm = try! Realm()
         let result = realm.objects(Clothes.self).filter("id== %@", clothes.id)
-        
         //resultを配列化する
         let object = Array(result)
         
         try! realm.write {
-            if putOnCount > 0 {
-               putOnCount = putOnCount - 1
-               //着用履歴も消去
-               putOnDateArray.removeLast()
-            
-               //通知も再設定（最新のdateで設定）
-               let date = putOnDateArray.last!.date
-               makeNotification(date: date, notificationId: clothes.notificationId)
-            }
-            object.first!.putOnCount = putOnCount
+            putOnDateArray.removeLast()
             object.first!.putOnDateArray = putOnDateArray
         }
+        return putOnDateArray
     }
     
     /// 服のデータをRealmから削除する
@@ -97,7 +104,7 @@ class LoadFunctions {
             realm.delete(result)
         }
     }
-
+    
     /// 最後の着用履歴から定められた期間が経っているか判定する
     /// - Parameter clothes: 選択された服のデータを格納
     /// - Returns: true：定められた期間経っている。false：2年経っていない
@@ -135,29 +142,29 @@ class LoadFunctions {
         //カレンダー型に変える
         let calendar = Calendar(identifier: .gregorian)
         let date = date
-       //期日を設定
+        //期日を設定
         let notificateDate = calendar.date(byAdding: .day, value: MaxDurationOfNotWorn, to: date)!
         
         //通知する時間と今の時間の差分を計算
         let dateSubtraction = Int(notificateDate.timeIntervalSince(date))
-       
+        
         //通知時間が未来であること（差分が0より大きい）が条件（クラッシュ防止）
         if dateSubtraction > 0 {
             //日付をカレンダーに設定して、通知に入れる
-             let component = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: notificateDate)
-                    
-             // ローカル通知リクエストを作成
-             let trigger = UNCalendarNotificationTrigger(dateMatching: component, repeats: false)
-             
-             //固有のidで通知を保存する
-             let request = UNNotificationRequest(identifier: notificationId, content: content, trigger: trigger)
-             
-             // ローカル通知リクエストを登録
-             UNUserNotificationCenter.current().add(request){ (error : Error?) in
-                 if let error = error {
-                     KRProgressHUD.showMessage(error.localizedDescription)
-                 }
-             }
+            let component = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: notificateDate)
+            
+            // ローカル通知リクエストを作成
+            let trigger = UNCalendarNotificationTrigger(dateMatching: component, repeats: false)
+            
+            //固有のidで通知を保存する
+            let request = UNNotificationRequest(identifier: notificationId, content: content, trigger: trigger)
+            
+            // ローカル通知リクエストを登録
+            UNUserNotificationCenter.current().add(request){ (error : Error?) in
+                if let error = error {
+                    KRProgressHUD.showMessage(error.localizedDescription)
+                }
+            }
         }
     }
     
