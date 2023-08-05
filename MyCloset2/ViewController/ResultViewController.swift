@@ -41,35 +41,37 @@ class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as? ClothesTableViewCell
+        //cellの中身がnilになること（ダウンキャストが失敗すること）はあってほしくない。あった場合はアプリをクラッシュさせる
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as? ClothesTableViewCell else {
+            fatalError()
+        }
         
-        cell?.delegate = self
+        cell.delegate = self
         
         //タグの設定
-        cell?.putOnButton.tag = indexPath.row
-        cell?.cancelButton.tag = indexPath.row
-        cell?.deleteButton.tag = indexPath.row
+        cell.putOnButton.tag = indexPath.row
+        cell.cancelButton.tag = indexPath.row
+        cell.deleteButton.tag = indexPath.row
         
         //画像取得
         if let data = clothesArray[indexPath.row].imageData {
             let image = UIImage(data: data)
-            cell?.clothesImageView.image = image
+            cell.clothesImageView.image = image
         }
-        cell?.nameLabel.text = clothesArray[indexPath.row].name
-        cell?.buyDateLabel.text = clothesArray[indexPath.row].buyDateString
-        cell?.priceLabel.text = clothesArray[indexPath.row].price
-        cell?.commentTextView.text = clothesArray[indexPath.row].comment
-        cell?.putOnCountLabel.text = String(clothesArray[indexPath.row].putOnCount)
+        cell.nameLabel.text = clothesArray[indexPath.row].name
+        cell.buyDateLabel.text = clothesArray[indexPath.row].buyDateString
+        cell.priceLabel.text = clothesArray[indexPath.row].price
+        cell.commentTextView.text = clothesArray[indexPath.row].comment
+        cell.putOnCountLabel.text = String(clothesArray[indexPath.row].putOnCount)
         
         //警告の有無を判定
         let isWarning = loadFunction.isOverMaxDurationSinceLastWorn(clothes: clothesArray[indexPath.row])
         
         //警告判定ありなら警告
         if isWarning == true {
-            cell?.warningLabel.text = "着用から2年経過"
+            cell.warningLabel.text = "着用から2年経過"
         }
-        //戻り値は必ず必要なので、nilの場合はUITableViewCell()を返す？
-        return cell ?? UITableViewCell()
+        return cell
     }
     
     

@@ -13,7 +13,7 @@ import UITextView_Placeholder
 
 class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
-    var selectedCategory: String!
+    var selectedCategory: String?
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
@@ -111,13 +111,14 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
     
     // 選択された画像の表示
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-        // 画像のサイズ変更
-        resizedImage = selectedImage.scale(byFactor: 0.2)
-        imageView.image = resizedImage
-        picker.dismiss(animated: true, completion: nil)
-        // 確認
-        confirmContents()
+        if let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            // 画像のサイズ変更
+            resizedImage = selectedImage.scale(byFactor: 0.2)
+            imageView.image = resizedImage
+            picker.dismiss(animated: true, completion: nil)
+            // 確認
+            confirmContents()
+        }
     }
     
     // 画像を選択ボタン
@@ -190,18 +191,19 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
         let notificationId = uuid.uuidString
         
         //Realmに保存する
-        let realm = try! Realm()
-        let clothes = Clothes()
-        
-        clothes.add(id: notificationId, category: selectedCategory, name: nameTextField.text!, buyDateString: buyDateTextField.text!, buyDate: datePicker.date, price: priceTextField.text!, comment: commentTextView.text!, color: colorTextField.text!, imageData: imageData!,notificationId: notificationId)
-        
-        //着用日のログ
-        let dateLog = DateLog()
-        dateLog.date = createDate
-        clothes.putOnDateArray.append(dateLog)
-        
-        try! realm.write {
-            realm.add(clothes)
+        if let realm = try? Realm(), let selectedCategory = selectedCategory, let name = nameTextField.text, let buyDateString = buyDateTextField.text, let price = priceTextField.text, let comment = commentTextView.text, let color = colorTextField.text, let imageData = imageData {
+            
+            let clothes = Clothes()
+            clothes.add(id: notificationId, category: selectedCategory, name: name, buyDateString: buyDateString, buyDate: datePicker.date, price: price, comment: comment, color: color, imageData: imageData, notificationId: notificationId)
+            
+            //着用日のログ
+            let dateLog = DateLog()
+            dateLog.date = createDate
+            clothes.putOnDateArray.append(dateLog)
+            
+            try? realm.write {
+                realm.add(clothes)
+            }
         }
         KRProgressHUD.dismiss()
         self.dismiss(animated: true, completion: nil)

@@ -112,10 +112,11 @@ class DetailViewController: UIViewController,UITextViewDelegate,UITextFieldDeleg
     
     func showDetail() {
         //画像取得
-        let data = selectedClothes.imageData
-        let image = UIImage(data: data!)
+        if let data = selectedClothes.imageData {
+            let image = UIImage(data: data)
+            imageView.image = image
+        }
         
-        imageView.image = image
         nameTextField.text = selectedClothes.name
         buyDateTextField.text = selectedClothes.buyDateString
         priceTextField.text = selectedClothes.price
@@ -125,13 +126,14 @@ class DetailViewController: UIViewController,UITextViewDelegate,UITextFieldDeleg
     
     // 選択された画像の表示
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-        // 画像のサイズ変更
-        resizedImage = selectedImage.scale(byFactor: 0.2)
-        imageView.image = resizedImage
-        picker.dismiss(animated: true, completion: nil)
-        // 確認
-        confirmContents()
+        if let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            // 画像のサイズ変更
+            resizedImage = selectedImage.scale(byFactor: 0.2)
+            imageView.image = resizedImage
+            picker.dismiss(animated: true, completion: nil)
+            // 確認
+            confirmContents()
+        }
     }
     
     // 画像を選択ボタン
@@ -199,17 +201,14 @@ class DetailViewController: UIViewController,UITextViewDelegate,UITextFieldDeleg
         isEmpty(textField: priceTextField)
         isEmpty(textField: colorTextField)
         
-        let realm = try! Realm()
-        let result = realm.objects(Clothes.self).filter("id== %@", selectedClothes.id)
-        
-        //resultを配列化する
-        let object = Array(result)
-        
-        try! realm.write {
-            if let id = selectedClothes.id, let category = selectedClothes.category, let notificationId = selectedClothes.notificationId {
-                object.first?.add(id: id, category: category, name: nameTextField.text!, buyDateString: buyDateTextField.text!, buyDate: datePicker.date, price: priceTextField.text!, comment: commentTextView.text!, color: colorTextField.text!, imageData: imageData!,notificationId: notificationId)
-            }
+        if let realm = try? Realm(), let id = selectedClothes.id, let category = selectedClothes.category, let name = nameTextField.text, let buyDateString = buyDateTextField.text, let price = priceTextField.text, let comment = commentTextView.text, let color = colorTextField.text, let imageData = imageData, let notificationId = selectedClothes.notificationId {
+            let result = realm.objects(Clothes.self).filter("id== %@", id)
+            //resultを配列化する
+            let object = Array(result)
+            
+            object.first?.add(id: id, category: category, name: name, buyDateString: buyDateString, buyDate: datePicker.date, price: price, comment: comment, color: color, imageData: imageData, notificationId: notificationId)
         }
+        
         KRProgressHUD.dismiss()
         self.dismiss(animated: true, completion: nil)
     }

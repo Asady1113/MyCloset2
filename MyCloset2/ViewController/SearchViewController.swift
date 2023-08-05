@@ -40,7 +40,9 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") else {
+            fatalError()
+        }
         cell.backgroundColor = #colorLiteral(red: 0.9921784997, green: 0.8421893716, blue: 0.5883585811, alpha: 1)
 
         let textLabel = cell.viewWithTag(1) as! UILabel
@@ -50,8 +52,9 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedIndex = tableView.indexPathForSelectedRow!
-        searchResult.append(searchCandidateArray[selectedIndex.row])
+        if let selectedIndex = tableView.indexPathForSelectedRow {
+            searchResult.append(searchCandidateArray[selectedIndex.row])
+        }
         
         if currentConditions == .category {
             currentConditions = .color
@@ -65,8 +68,9 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let resultViewController = segue.destination as! ResultViewController
-        resultViewController.searchConditions = searchResult
+        if let resultViewController = segue.destination as? ResultViewController {
+            resultViewController.searchConditions = searchResult
+        }
     }
     
     /// 配列の中身を指定する

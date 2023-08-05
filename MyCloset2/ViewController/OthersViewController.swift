@@ -46,7 +46,10 @@ class OthersViewController: UIViewController,UITableViewDataSource,UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! ClothesTableViewCell
+        //cellの中身がnilになること（ダウンキャストが失敗すること）はあってほしくない。あった場合はアプリをクラッシュさせる
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as? ClothesTableViewCell else {
+            fatalError()
+        }
         
         cell.delegate = self
         
@@ -117,13 +120,14 @@ class OthersViewController: UIViewController,UITableViewDataSource,UITableViewDe
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == segueIdToAddVC {
-            let addViewController = segue.destination as! AddViewController
-            addViewController.selectedCategory = category
+            let addViewController = segue.destination as? AddViewController
+            addViewController?.selectedCategory = category
             
         } else if segue.identifier == segueIdToDetailVC {
-            let detailViewController = segue.destination as! DetailViewController
-            let selectedIndex = tableView.indexPathForSelectedRow!
-            detailViewController.selectedClothes = clothesArray[selectedIndex.row]
+            let detailViewController = segue.destination as? DetailViewController
+            if let selectedIndex = tableView.indexPathForSelectedRow {
+                detailViewController?.selectedClothes = clothesArray[selectedIndex.row]
+            }
         }
     }
     

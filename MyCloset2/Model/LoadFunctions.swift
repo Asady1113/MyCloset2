@@ -36,7 +36,7 @@ class LoadFunctions {
     func incrementPutOnCountAndRecordDate(clothes: Clothes) {
         //着用回数
         var putOnCount = clothes.putOnCount
-        putOnCount = putOnCount + 1
+        putOnCount += 1
         
         //着用日を取得
         let date = Date()
@@ -77,7 +77,7 @@ class LoadFunctions {
             try? realm.write {
                 
                 if putOnCount > 0 {
-                    putOnCount = putOnCount - 1
+                    putOnCount -= 1
                     //着用履歴も消去
                     putOnDateArray.removeLast()
                     
@@ -142,11 +142,8 @@ class LoadFunctions {
         let date = date
        //2年後に期日を設定
         if let notificateDate = calendar.date(byAdding: .day, value: MaxDurationOfNotWorn, to: date) {
-            //通知する時間と今の時間の差分を計算
-            let dateSubtraction = Int(notificateDate.timeIntervalSince(date))
-           
             //通知時間が未来であること（差分が0より大きい）が条件（クラッシュ防止）
-            if dateSubtraction > 0 {
+            if Int(notificateDate.timeIntervalSince(date)) > 0 {
                 //日付をカレンダーに設定して、通知に入れる
                  let component = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: notificateDate)
                         
