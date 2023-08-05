@@ -68,11 +68,8 @@ class LongTopsViewController: UIViewController,UITableViewDataSource,UITableView
         cell.commentTextView.text = clothesArray[indexPath.row].comment
         cell.putOnCountLabel.text = String(clothesArray[indexPath.row].putOnCount)
         
-        //警告の有無を判定
-        let isWarning = loadFunction.isOverMaxDurationSinceLastWorn(clothes: clothesArray[indexPath.row])
-        
-        //警告判定ありなら警告
-        if isWarning == true {
+        //着用期限が過ぎていたら警告
+        if loadFunction.isOverMaxDurationSinceLastWorn(clothes: clothesArray[indexPath.row]) == true {
             cell.warningLabel.text = "着用から2年経過"
         }
         return cell
