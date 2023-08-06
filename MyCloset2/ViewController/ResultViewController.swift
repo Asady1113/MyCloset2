@@ -65,7 +65,7 @@ class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDe
         cell.putOnCountLabel.text = String(clothesArray[indexPath.row].putOnCount)
         
         //着用期限が過ぎていたら警告
-        if loadFunction.isOverMaxDurationSinceLastWorn(clothes: clothesArray[indexPath.row]) == true {
+        if loadFunction.isOverMaxDurationSinceLastWorn(clothes: clothesArray[indexPath.row]) {
             cell.warningLabel.text = "着用から2年経過"
         }
         return cell
@@ -102,8 +102,8 @@ class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDe
     }
         
     func loadClothes() {
-        let realm = try? Realm()
-        if let result = realm?.objects(Clothes.self).filter("category== %@ AND color== %@", searchConditions[0],searchConditions[1]) {
+        if let realm = try? Realm() {
+            let result = realm.objects(Clothes.self).filter("category== %@ AND color== %@", searchConditions[0],searchConditions[1])
             clothesArray = Array(result)
             if clothesArray.count == 0 {
                 KRProgressHUD.showMessage("検索結果がありません")

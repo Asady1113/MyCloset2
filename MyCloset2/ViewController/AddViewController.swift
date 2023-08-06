@@ -191,7 +191,14 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
         let notificationId = uuid.uuidString
         
         //Realmに保存する
-        if let realm = try? Realm(), let selectedCategory = selectedCategory, let name = nameTextField.text, let buyDateString = buyDateTextField.text, let price = priceTextField.text, let comment = commentTextView.text, let color = colorTextField.text, let imageData = imageData {
+        if let realm = try? Realm(),
+            let selectedCategory = selectedCategory,
+            let name = nameTextField.text,
+            let buyDateString = buyDateTextField.text,
+            let price = priceTextField.text,
+            let comment = commentTextView.text,
+            let color = colorTextField.text,
+            let imageData = imageData {
             
             let clothes = Clothes()
             clothes.add(id: notificationId, category: selectedCategory, name: name, buyDateString: buyDateString, buyDate: datePicker.date, price: price, comment: comment, color: color, imageData: imageData, notificationId: notificationId)

@@ -71,7 +71,7 @@ class BottomsViewController: UIViewController,UITableViewDataSource,UITableViewD
         cell.putOnCountLabel.text = String(clothesArray[indexPath.row].putOnCount)
         
         //着用期限が過ぎていたら警告
-        if loadFunction.isOverMaxDurationSinceLastWorn(clothes: clothesArray[indexPath.row]) == true {
+        if loadFunction.isOverMaxDurationSinceLastWorn(clothes: clothesArray[indexPath.row]) {
             cell.warningLabel.text = "着用から2年経過"
         }
         return cell

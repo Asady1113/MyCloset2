@@ -201,7 +201,17 @@ class DetailViewController: UIViewController,UITextViewDelegate,UITextFieldDeleg
         isEmpty(textField: priceTextField)
         isEmpty(textField: colorTextField)
         
-        if let realm = try? Realm(), let id = selectedClothes.id, let category = selectedClothes.category, let name = nameTextField.text, let buyDateString = buyDateTextField.text, let price = priceTextField.text, let comment = commentTextView.text, let color = colorTextField.text, let imageData = imageData, let notificationId = selectedClothes.notificationId {
+        if let realm = try? Realm(),
+            let id = selectedClothes.id,
+            let category = selectedClothes.category,
+            let name = nameTextField.text,
+            let buyDateString = buyDateTextField.text,
+            let price = priceTextField.text,
+            let comment = commentTextView.text,
+            let color = colorTextField.text,
+            let imageData = imageData,
+            let notificationId = selectedClothes.notificationId {
+            
             let result = realm.objects(Clothes.self).filter("id== %@", id)
             //resultを配列化する
             let object = Array(result)
