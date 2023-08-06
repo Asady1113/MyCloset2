@@ -20,17 +20,8 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Barボタンのフォント変更
-        UIBarButtonItem.appearance().setTitleTextAttributes(nil, for: .normal)
-        let attribute = [NSAttributedString.Key.font: UIFont(name: "HonyaJi-Re", size: 20) as Any]
-        UIBarButtonItem.appearance().setTitleTextAttributes(attribute, for: .normal)
-        
-        ruleButton.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "HonyaJi-Re", size: 20) as Any], for: .normal)
-        
-        //Tabbarのフォント
-        //        UITabBarItem.appearance().setTitleTextAttributes([.font : UIFont(name: "HonyaJi-Re", size: 10) as Any], for: .normal)
-        
-        //検索ボタンのデザイン
+        //ボタンのデザイン
+        design.changeFontOfButton(button: ruleButton)
         design.buttonDesign(button: searchButton)
         design.buttonDesign(button: howtoUseButton)
     }

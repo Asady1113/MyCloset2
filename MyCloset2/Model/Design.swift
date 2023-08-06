@@ -19,6 +19,18 @@ class Design {
         button.layer.shadowColor = UIColor.gray.cgColor
     }
     
+    func changeFontOfButton(button: UIBarButtonItem) {
+        //Barボタンのフォント変更
+        UIBarButtonItem.appearance().setTitleTextAttributes(nil, for: .normal)
+        let attribute = [NSAttributedString.Key.font: UIFont(name: "HonyaJi-Re", size: 20) as Any]
+        UIBarButtonItem.appearance().setTitleTextAttributes(attribute, for: .normal)
+        
+        button.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "HonyaJi-Re", size: 20) as Any], for: .normal)
+        
+        //Tabbarのフォント
+        //        UITabBarItem.appearance().setTitleTextAttributes([.font : UIFont(name: "HonyaJi-Re", size: 10) as Any], for: .normal)
+    }
+    
     //ボタンのバウンド処理
     func didTouchDownButton(button: UIButton) {
         // ボタンを縮こませます

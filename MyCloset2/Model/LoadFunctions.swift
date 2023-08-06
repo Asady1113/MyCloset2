@@ -144,21 +144,16 @@ class LoadFunctions {
         let date = date
         //期日を設定
         let notificateDate = calendar.date(byAdding: .day, value: MaxDurationOfNotWorn, to: date)!
-        
         //通知する時間と今の時間の差分を計算
         let dateSubtraction = Int(notificateDate.timeIntervalSince(date))
-        
         //通知時間が未来であること（差分が0より大きい）が条件（クラッシュ防止）
         if dateSubtraction > 0 {
             //日付をカレンダーに設定して、通知に入れる
             let component = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: notificateDate)
-            
             // ローカル通知リクエストを作成
             let trigger = UNCalendarNotificationTrigger(dateMatching: component, repeats: false)
-            
             //固有のidで通知を保存する
             let request = UNNotificationRequest(identifier: notificationId, content: content, trigger: trigger)
-            
             // ローカル通知リクエストを登録
             UNUserNotificationCenter.current().add(request){ (error : Error?) in
                 if let error = error {

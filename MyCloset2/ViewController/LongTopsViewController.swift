@@ -93,15 +93,16 @@ class LongTopsViewController: UIViewController,UITableViewDataSource,UITableView
     }
     
     @objc func didTapCancelButton(tableViewCell: UITableViewCell, button: UIButton) {
-        if clothesArray[button.tag].putOnCount != 0 {
-            loadFunction.decrementPutOnCount(clothes: clothesArray[button.tag])
-            let putOnDateArray = loadFunction.removePutOnDate(clothes: clothesArray[button.tag])
-            //通知も再設定（最新のdateで設定）
-            let date = putOnDateArray.last!.date
-            loadFunction.makeNotification(date: date, notificationId: clothesArray[button.tag].notificationId)
-            //データ再読み込み
-            loadClothes()
+        if clothesArray[button.tag].putOnCount == 0 {
+            return
         }
+        loadFunction.decrementPutOnCount(clothes: clothesArray[button.tag])
+        let putOnDateArray = loadFunction.removePutOnDate(clothes: clothesArray[button.tag])
+        //通知も再設定（最新のdateで設定）
+        let date = putOnDateArray.last!.date
+        loadFunction.makeNotification(date: date, notificationId: clothesArray[button.tag].notificationId)
+        //データ再読み込み
+        loadClothes()
     }
     
     @objc func didTapDeleteButton(tableViewCell: UITableViewCell, button: UIButton) {
