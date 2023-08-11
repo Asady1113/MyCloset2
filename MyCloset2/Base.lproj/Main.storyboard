@@ -627,7 +627,7 @@
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="追加する"/>
                                 <connections>
-                                    <action selector="uploadClothes" destination="Cdb-yD-mSg" eventType="touchUpInside" id="M53-2o-3XW"/>
+                                    <action selector="addButtonTapped" destination="Cdb-yD-mSg" eventType="touchUpInside" id="M53-2o-3XW"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YfJ-r4-pbT">
@@ -915,8 +915,8 @@
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="変更する"/>
                                 <connections>
+                                    <action selector="addButtonTapped" destination="Cdb-yD-mSg" eventType="touchUpInside" id="ZmI-O0-7yl"/>
                                     <action selector="updateClothes" destination="c0a-9h-VGg" eventType="touchUpInside" id="EOU-k5-pZL"/>
-                                    <action selector="uploadClothes" destination="Cdb-yD-mSg" eventType="touchUpInside" id="ZmI-O0-7yl"/>
                                 </connections>
                             </button>
                         </subviews>

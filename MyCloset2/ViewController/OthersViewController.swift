@@ -24,11 +24,23 @@ class OthersViewController: UIViewController,UITableViewDataSource,UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        loadClothes()
+    }
+    
+    func configureUI() {
+        setUpTableView()
+        
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "HonyaJi-Re", size: 20) as Any]
+    }
+    
+    func setUpTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = #colorLiteral(red: 0.9921784997, green: 0.8421893716, blue: 0.5883585811, alpha: 1)
-        
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "HonyaJi-Re", size: 20) as Any]
         
         //カスタムセルの登録
         let nib = UINib(nibName: "ClothesTableViewCell",bundle: .main)
@@ -37,17 +49,18 @@ class OthersViewController: UIViewController,UITableViewDataSource,UITableViewDe
         tableView.tableFooterView = UIView()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        loadClothes()
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return clothesArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! ClothesTableViewCell
+        configureCell(cell: cell, indexPath: indexPath)
         
+        return cell
+    }
+    
+    private func configureCell(cell: ClothesTableViewCell, indexPath: IndexPath) {
         cell.delegate = self
         
         //タグの設定
@@ -66,14 +79,10 @@ class OthersViewController: UIViewController,UITableViewDataSource,UITableViewDe
         cell.commentTextView.text = clothesArray[indexPath.row].comment
         cell.putOnCountLabel.text = String(clothesArray[indexPath.row].putOnCount)
         
-        //警告の有無を判定
-        let isWarning = loadFunction.isOverMaxDurationSinceLastWorn(clothes: clothesArray[indexPath.row])
-        
-        //警告判定ありなら警告
-        if isWarning == true {
+        //警告の有無を判定。警告判定ありなら警告
+        if loadFunction.isOverMaxDurationSinceLastWorn(clothes: clothesArray[indexPath.row]) {
             cell.warningLabel.text = "着用から2年経過"
         }
-        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

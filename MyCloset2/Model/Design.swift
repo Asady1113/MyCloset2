@@ -10,6 +10,11 @@ import UIKit
 
 class Design {
     
+    //NavigationBarのデザイン
+    func changeFontAndSizeOfNavigationBarTitle(navigationController: UINavigationController) {
+        navigationController.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "HonyaJi-Re", size: 20) as Any]
+    }
+    
     //ボタンのデザイン
     func buttonDesign(button: UIButton) {
         button.layer.cornerRadius = 15

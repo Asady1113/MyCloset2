@@ -34,21 +34,40 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureUI()
+    }
+    
+    func configureUI() {
+        setUpTextField()
+        setUpTextView()
+        setUpButton()
+        setUpDatePicker()
+        setUpColorPickerView()
+    }
+    
+    func setUpTextField() {
         nameTextField.delegate = self
         buyDateTextField.delegate = self
         priceTextField.delegate = self
-        commentTextView.delegate = self
         colorTextField.delegate = self
-        
-        addButton.isEnabled = false
-        addButton.backgroundColor = .none
+    }
+    
+    func setUpTextView() {
+        commentTextView.delegate = self
         commentTextView.placeholder = "コメントを入力しよう！"
         commentTextView.layer.cornerRadius = 10
+    }
+    
+    func setUpButton() {
+        addButton.isEnabled = false
+        addButton.backgroundColor = .none
         
         selectImageButton.layer.cornerRadius = 10
         cancelButton.layer.cornerRadius = 10
         addButton.layer.cornerRadius = 10
-        
+    }
+    
+    func setUpDatePicker() {
         //  購入日のシステム
         datePicker.datePickerMode = .date
         datePicker.locale = .current
@@ -65,7 +84,9 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
         
         buyDateTextField.inputView = datePicker
         buyDateTextField.inputAccessoryView = toolbar
-        
+    }
+    
+    func setUpColorPickerView() {
         //色指定のシステム
         // ピッカー設定
         pickerView.delegate = self
@@ -120,6 +141,13 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
         confirmContents()
     }
     
+    //Imageが指定されているか判定する
+    func confirmContents() {
+        let placeholderImage = "clothes-placeholder-icon@2x.png"
+        addButton.isEnabled = (imageView.image != UIImage(named: placeholderImage))
+        addButton.backgroundColor = addButton.isEnabled ? .orange : .none
+    }
+    
     // 画像を選択ボタン
     @IBAction func selectImage () {
         let alertController = UIAlertController(title: "画像の選択", message: "服の画像を選択してください", preferredStyle: .actionSheet)
@@ -127,36 +155,10 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
             alertController.dismiss(animated: true, completion: nil)
         }
         let cameraAction = UIAlertAction(title: "カメラで撮影", style: .default) { (action) in
-            // もしカメラ起動可能なら
-            if UIImagePickerController.isSourceTypeAvailable(.camera) == true {
-                let picker = UIImagePickerController()
-                picker.sourceType = .camera
-                picker.delegate = self
-                self.present(picker,animated: true,completion: nil)
-            } else {
-                let alert = UIAlertController(title: "エラー", message: "この機種ではカメラは使用できません", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
-                    alert.dismiss(animated: true, completion: nil)
-                }
-                alert.addAction(okAction)
-                self.present(alert,animated: true,completion: nil)
-            }
+            self.startCamera()
         }
         let photoLibraryAction = UIAlertAction(title: "フォトライブラリから選択", style: .default) { (action) in
-            // フォトライブラリが使えるなら
-            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) == true {
-                let picker = UIImagePickerController()
-                picker.sourceType = .photoLibrary
-                picker.delegate = self
-                self.present(picker,animated: true,completion: nil)
-            } else {
-                let alert = UIAlertController(title: "エラー", message: "この機種ではフォトライブラリは使用できません", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
-                    alert.dismiss(animated: true, completion: nil)
-                }
-                alert.addAction(okAction)
-                self.present(alert,animated: true,completion: nil)
-            }
+            self.startLibrary()
         }
         alertController.addAction(cancelAction)
         alertController.addAction(cameraAction)
@@ -164,36 +166,74 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
         self.present(alertController,animated: true,completion: nil)
     }
     
-    @IBAction func uploadClothes() {
+    //カメラ起動
+    func startCamera() {
+        // もしカメラ起動可能なら
+        if UIImagePickerController.isSourceTypeAvailable(.camera) == true {
+            let picker = UIImagePickerController()
+            picker.sourceType = .camera
+            picker.delegate = self
+            self.present(picker,animated: true,completion: nil)
+        } else {
+            let alert = UIAlertController(title: "エラー", message: "この機種ではカメラは使用できません", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                alert.dismiss(animated: true, completion: nil)
+            }
+            alert.addAction(okAction)
+            self.present(alert,animated: true,completion: nil)
+        }
+    }
+    
+    //ライブラリ起動
+    func startLibrary() {
+        // フォトライブラリが使えるなら
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) == true {
+            let picker = UIImagePickerController()
+            picker.sourceType = .photoLibrary
+            picker.delegate = self
+            self.present(picker,animated: true,completion: nil)
+        } else {
+            let alert = UIAlertController(title: "エラー", message: "この機種ではフォトライブラリは使用できません", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                alert.dismiss(animated: true, completion: nil)
+            }
+            alert.addAction(okAction)
+            self.present(alert,animated: true,completion: nil)
+        }
+    }
+    
+    //追加ボタンを押されたとき
+    @IBAction func addButtonTapped() {
         KRProgressHUD.show()
         
-        // 撮影した画像をデータ化したときに右に90度回転してしまう問題の解消
-        UIGraphicsBeginImageContext(resizedImage.size)
-        let rect = CGRect(x: 0, y: 0, width: resizedImage.size.width, height: resizedImage.size.height)
-        resizedImage.draw(in: rect)
-        resizedImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
+        //画像の処理
+        arrangeImage()
+        let imageData = resizedImage.pngData()!
         
-        let imageData = resizedImage.pngData()
+        //テキストフィールドの内容を確認
+        checkTextFieldContents()
         
-        //空欄処理
-        isEmpty(textField: nameTextField)
-        isEmpty(textField: buyDateTextField)
-        isEmpty(textField: priceTextField)
-        isEmpty(textField: colorTextField)
+        //服を保存する
+        uploadClothes(imageData: imageData)
         
+        KRProgressHUD.dismiss()
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    //服の情報をRealmに保存する
+    func uploadClothes(imageData: Data) {
         //作成日を記憶
         let createDate = Date()
         
         //idを作成
         let uuid = UUID()
-        let notificationId = uuid.uuidString
+        let id = uuid.uuidString
         
         //Realmに保存する
         let realm = try! Realm()
         let clothes = Clothes()
         
-        clothes.add(id: notificationId, category: selectedCategory, name: nameTextField.text!, buyDateString: buyDateTextField.text!, buyDate: datePicker.date, price: priceTextField.text!, comment: commentTextView.text!, color: colorTextField.text!, imageData: imageData!,notificationId: notificationId)
+        clothes.add(id: id, category: selectedCategory, name: nameTextField.text!, buyDateString: buyDateTextField.text!, buyDate: datePicker.date, price: priceTextField.text!, comment: commentTextView.text!, color: colorTextField.text!, imageData: imageData,notificationId: id)
         
         //着用日のログ
         let dateLog = DateLog()
@@ -203,11 +243,33 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
         try! realm.write {
             realm.add(clothes)
         }
-        KRProgressHUD.dismiss()
-        self.dismiss(animated: true, completion: nil)
     }
     
+    // 撮影した画像をデータ化したときに右に90度回転してしまう問題の解消
+    func arrangeImage() {
+        UIGraphicsBeginImageContext(resizedImage.size)
+        let rect = CGRect(x: 0, y: 0, width: resizedImage.size.width, height: resizedImage.size.height)
+        resizedImage.draw(in: rect)
+        resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+    }
     
+    //テキストフィールドの中身を判定
+    func checkTextFieldContents() {
+        isEmpty(textField: nameTextField)
+        isEmpty(textField: buyDateTextField)
+        isEmpty(textField: priceTextField)
+        isEmpty(textField: colorTextField)
+    }
+    
+    //空欄判定
+    func isEmpty(textField: UITextField) {
+        let placeholderText = "未設定"
+        textField.text = textField.text?.isEmpty == true ? placeholderText : textField.text
+        commentTextView.text = commentTextView.text.isEmpty == true ? placeholderText : commentTextView.text
+    }
+    
+    //キャンセルボタンが押されたとき
     @IBAction func cancel() {
         let alert = UIAlertController(title: "記入内容の破棄", message: "現在記入されている情報は破棄されます。よろしいですか？", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
@@ -219,21 +281,6 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
         alert.addAction(okAction)
         alert.addAction(cancelAction)
         self.present(alert,animated: true,completion: nil)
-    }
-    
-    
-    //Imageが指定されているか判定する
-    func confirmContents() {
-        let placeholderImage = "clothes-placeholder-icon@2x.png"
-        addButton.isEnabled = (imageView.image != UIImage(named: placeholderImage))
-        addButton.backgroundColor = addButton.isEnabled ? .orange : .none
-    }
-    
-    //空欄判定
-    func isEmpty(textField: UITextField) {
-        let placeholderText = "未設定"
-        textField.text = textField.text?.isEmpty == true ? placeholderText : textField.text
-        commentTextView.text = commentTextView.text.isEmpty == true ? placeholderText : commentTextView.text
     }
     
 }

@@ -9,6 +9,8 @@ import UIKit
 
 class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
+    let design = Design()
+    
     enum Conditions {
         case category
         case color
@@ -24,12 +26,26 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureUI()
+    }
+    
+    //UIを整理する関数
+    func configureUI() {
+        setUpTableView()
+        setUpButton()
+        
+        if let navigationController = navigationController {
+            design.changeFontAndSizeOfNavigationBarTitle(navigationController: navigationController)
+        }
+    }
+    
+    func setUpTableView() {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.backgroundColor = #colorLiteral(red: 0.9921784997, green: 0.8421893716, blue: 0.5883585811, alpha: 1)
-        
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "HonyaJi-Re", size: 20) as Any]
-        
+    }
+    
+    func setUpButton() {
         cancelButton.layer.cornerRadius = 15
         cancelButton.isHidden = true
     }
@@ -41,18 +57,26 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
+        configureCell(cell: cell, indexPath: indexPath)
+        return cell
+    }
+    
+    private func configureCell(cell: UITableViewCell, indexPath: IndexPath) {
         cell.backgroundColor = #colorLiteral(red: 0.9921784997, green: 0.8421893716, blue: 0.5883585811, alpha: 1)
 
         let textLabel = cell.viewWithTag(1) as! UILabel
         textLabel.text = searchCandidateArray[indexPath.row]
-        
-        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedIndex = tableView.indexPathForSelectedRow!
         searchResult.append(searchCandidateArray[selectedIndex.row])
         
+        changeConditionsAndToResult()
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func changeConditionsAndToResult() {
         if currentConditions == .category {
             currentConditions = .color
             cancelButton.isHidden = false
@@ -61,7 +85,6 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
         } else if currentConditions == .color {
             self.performSegue(withIdentifier: "toResult", sender: nil)
         }
-        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

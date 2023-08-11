@@ -24,7 +24,7 @@ class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDe
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        loadClothes()
+        searchClothes()
     }
     
     //TableViewの情報をセット
@@ -47,10 +47,7 @@ class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! ClothesTableViewCell
         configureCell(cell: cell, indexPath: indexPath)
-        //警告の有無を判定
-        if loadFunction.isOverMaxDurationSinceLastWorn(clothes: clothesArray[indexPath.row]) == true {
-            cell.warningLabel.text = "着用から2年経過"
-        }
+        
         return cell
     }
     
@@ -73,6 +70,11 @@ class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDe
         cell.priceLabel.text = clothesArray[indexPath.row].price
         cell.commentTextView.text = clothesArray[indexPath.row].comment
         cell.putOnCountLabel.text = String(clothesArray[indexPath.row].putOnCount)
+        
+        //警告の有無を判定
+        if loadFunction.isOverMaxDurationSinceLastWorn(clothes: clothesArray[indexPath.row]) {
+            cell.warningLabel.text = "着用から2年経過"
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -87,7 +89,7 @@ class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDe
         let date = Date()
         loadFunction.makeNotification(date: date, notificationId: clothesArray[button.tag].notificationId)
         //データ再読み込み
-        loadClothes()
+        searchClothes()
     }
     
     @objc func didTapCancelButton(tableViewCell: UITableViewCell, button: UIButton) {
@@ -98,7 +100,7 @@ class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDe
             let date = putOnDateArray.last!.date
             loadFunction.makeNotification(date: date, notificationId: clothesArray[button.tag].notificationId)
             //データ再読み込み
-            loadClothes()
+            searchClothes()
         }
     }
     
@@ -106,7 +108,7 @@ class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDe
         let alert = UIAlertController(title: "削除しますか？", message: "削除したデータは復元できません", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { action in
             self.loadFunction.deleteClothesData(clothes: self.clothesArray[button.tag])
-            self.loadClothes()
+            self.searchClothes()
         }
         let cancelAction = UIAlertAction(title: "キャンセル", style: .default) { action in
             alert.dismiss(animated: true, completion: nil)
@@ -116,11 +118,8 @@ class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDe
         self.present(alert, animated: true, completion: nil)
     }
     
-    func loadClothes() {
-        let realm = try! Realm()
-        let result = realm.objects(Clothes.self).filter("category== %@ AND color== %@", searchConditions[0],searchConditions[1])
-        
-        clothesArray = Array(result)
+    func searchClothes() {
+        clothesArray = loadFunction.searchClothes(selectedCategory: searchConditions[0], selectedColor: searchConditions[1])
         
         if clothesArray.count == 0 {
             KRProgressHUD.showMessage("検索結果がありません")

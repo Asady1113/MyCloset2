@@ -31,6 +31,22 @@ class LoadFunctions {
         return clothesArray
     }
     
+    /// 服を検索する関数
+    /// - Parameters:
+    ///   - selectedCategory: 選択されたカテゴリ
+    ///   - selectedColor: 選択されたカラー
+    /// - Returns: Clothesの配列を返す
+    func searchClothes(selectedCategory: String, selectedColor: String) -> [Clothes] {
+        guard let realm = try? Realm() else {
+            fatalError()
+        }
+        
+        let result = realm.objects(Clothes.self).filter("category== %@ AND color== %@", selectedCategory, selectedColor)
+        let clothesArray = Array(result)
+        
+        return clothesArray
+    }
+    
     /// 着用回数を1増やし、Realmに保存する
     /// - Parameter clothes: 着用ボタンを押された服の情報を格納
     func incrementPutOnCount(clothes: Clothes) {
