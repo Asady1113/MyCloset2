@@ -17,6 +17,7 @@
 		940B355A2859A9F000172ADB /* MyCloset2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B35592859A9F000172ADB /* MyCloset2Tests.swift */; };
 		940B35642859A9F000172ADB /* MyCloset2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B35632859A9F000172ADB /* MyCloset2UITests.swift */; };
 		940B35662859A9F000172ADB /* MyCloset2UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B35652859A9F000172ADB /* MyCloset2UITestsLaunchTests.swift */; };
+		94436ABB2A8882570099ED65 /* ClothesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94436ABA2A8882570099ED65 /* ClothesListViewController.swift */; };
 		9463205D28B0765F0005D6C3 /* Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463205C28B0765F0005D6C3 /* Design.swift */; };
 		9463205F28B07F750005D6C3 /* TopsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463205E28B07F750005D6C3 /* TopsViewController.swift */; };
 		9463206128B09AEC0005D6C3 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463206028B09AEC0005D6C3 /* CustomTextField.swift */; };
@@ -121,6 +122,7 @@
 		940B355F2859A9F000172ADB /* MyCloset2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyCloset2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		940B35632859A9F000172ADB /* MyCloset2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCloset2UITests.swift; sourceTree = "<group>"; };
 		940B35652859A9F000172ADB /* MyCloset2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCloset2UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		94436ABA2A8882570099ED65 /* ClothesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothesListViewController.swift; sourceTree = "<group>"; };
 		9463205C28B0765F0005D6C3 /* Design.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Design.swift; sourceTree = "<group>"; };
 		9463205E28B07F750005D6C3 /* TopsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopsViewController.swift; sourceTree = "<group>"; };
 		9463206028B09AEC0005D6C3 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 				940B35462859A9EF00172ADB /* HomeViewController.swift */,
 				94B40B6628AF5A9800B86CFF /* ResultViewController.swift */,
 				94B40B6A28AFEDB300B86CFF /* SearchViewController.swift */,
+				94436ABA2A8882570099ED65 /* ClothesListViewController.swift */,
 				94D32CD828ACF49800AE8409 /* OthersViewController.swift */,
 				94D32CEC28AD552500AE8409 /* LongTopsViewController.swift */,
 				9463205E28B07F750005D6C3 /* TopsViewController.swift */,
@@ -709,6 +712,7 @@
 				947A5BE628C3247C00FCC6AC /* DateLog.swift in Sources */,
 				9463206128B09AEC0005D6C3 /* CustomTextField.swift in Sources */,
 				94D32CEB28AD544900AE8409 /* BottomsViewController.swift in Sources */,
+				94436ABB2A8882570099ED65 /* ClothesListViewController.swift in Sources */,
 				940B35472859A9EF00172ADB /* HomeViewController.swift in Sources */,
 				94D32CE528AD385B00AE8409 /* LoadFunctions.swift in Sources */,
 				94D32CD928ACF49800AE8409 /* OthersViewController.swift in Sources */,
