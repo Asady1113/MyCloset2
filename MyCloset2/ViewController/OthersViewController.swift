@@ -121,8 +121,8 @@ class OthersViewController: UIViewController,UITableViewDataSource,UITableViewDe
             addViewController?.selectedCategory = category
             
         } else if segue.identifier == segueIdToDetailVC {
-            let detailViewController = segue.destination as? DetailViewController
             if let selectedIndex = tableView.indexPathForSelectedRow {
+                let detailViewController = segue.destination as? DetailViewController
                 detailViewController?.selectedClothes = clothesArray[selectedIndex.row]
             }
         }

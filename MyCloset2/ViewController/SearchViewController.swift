@@ -45,17 +45,18 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
         }
         cell.backgroundColor = #colorLiteral(red: 0.9921784997, green: 0.8421893716, blue: 0.5883585811, alpha: 1)
 
-        let textLabel = cell.viewWithTag(1) as! UILabel
-        textLabel.text = searchCandidateArray[indexPath.row]
-        
+        if let textLabel = cell.viewWithTag(1) as? UILabel {
+            textLabel.text = searchCandidateArray[indexPath.row]
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let selectedIndex = tableView.indexPathForSelectedRow {
-            searchResult.append(searchCandidateArray[selectedIndex.row])
+        guard let selectedIndex = tableView.indexPathForSelectedRow else {
+            fatalError()
         }
         
+        searchResult.append(searchCandidateArray[selectedIndex.row])
         if currentConditions == .category {
             currentConditions = .color
             cancelButton.isHidden = false

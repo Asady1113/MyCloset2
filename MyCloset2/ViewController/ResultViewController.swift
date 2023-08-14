@@ -113,8 +113,8 @@ class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDe
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let detailViewController = segue.destination as? DetailViewController
         if let selectedIndex = tableView.indexPathForSelectedRow {
+            let detailViewController = segue.destination as? DetailViewController
             detailViewController?.selectedClothes = clothesArray[selectedIndex.row]
         }
     }
