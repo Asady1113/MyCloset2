@@ -20,10 +20,10 @@ class LoadFunctions {
         //配列初期化
         var clothesArray = [Clothes]()
         
-        let realm = try! Realm()
-        let result = realm.objects(Clothes.self).filter("category== %@", category)
-        
-        clothesArray = Array(result)
+        if let realm = try? Realm() {
+            let result = realm.objects(Clothes.self).filter("category== %@", category)
+            clothesArray = Array(result)
+        }
         
         if clothesArray.count == 0 {
             KRProgressHUD.showMessage("登録されていません")
@@ -36,27 +36,29 @@ class LoadFunctions {
     func incrementPutOnCountAndRecordDate(clothes: Clothes) {
         //着用回数
         var putOnCount = clothes.putOnCount
-        putOnCount = putOnCount + 1
+        putOnCount += 1
         
         //着用日を取得
         let date = Date()
-        let notificationId = clothes.notificationId
-        //通知を作成する
-        makeNotification(date: date, notificationId: notificationId!)
+        if let notificationId = clothes.notificationId {
+            //通知を作成する
+            makeNotification(date: date, notificationId: notificationId)
+        }
         
-        let realm = try! Realm()
-        let result = realm.objects(Clothes.self).filter("id== %@", clothes.id)
-        
-        //resultを配列化する
-        let object = Array(result)
-        
-        try! realm.write {
-            object.first!.putOnCount = putOnCount
+        if let realm = try? Realm(), let clothesId = clothes.id {
+            let result = realm.objects(Clothes.self).filter("id== %@", clothesId)
+            //resultを配列化する
+            let object = Array(result)
             
-            //着用回数の履歴作成
-            let dateLog = DateLog()
-            dateLog.date = date
-            object.first!.putOnDateArray.append(dateLog)
+            try? realm.write {
+                object.first?.putOnCount = putOnCount
+                
+                //着用回数の履歴作成
+                let dateLog = DateLog()
+                dateLog.date = date
+                object.first?.putOnDateArray.append(dateLog)
+                
+            }
         }
     }
     
@@ -66,35 +68,35 @@ class LoadFunctions {
         var putOnCount = clothes.putOnCount
         var putOnDateArray = clothes.putOnDateArray
         
-        let realm = try! Realm()
-        let result = realm.objects(Clothes.self).filter("id== %@", clothes.id)
         
-        //resultを配列化する
-        let object = Array(result)
-        
-        try! realm.write {
-            if putOnCount > 0 {
-               putOnCount = putOnCount - 1
-               //着用履歴も消去
-               putOnDateArray.removeLast()
+        if let realm = try? Realm(), let clothesId = clothes.id, putOnCount > 0 {
+            let result = realm.objects(Clothes.self).filter("id== %@", clothesId)
+            //resultを配列化する
+            let object = Array(result)
             
-               //通知も再設定（最新のdateで設定）
-               let date = putOnDateArray.last!.date
-               makeNotification(date: date, notificationId: clothes.notificationId)
+            try? realm.write {
+                putOnCount -= 1
+                //着用履歴も消去
+                putOnDateArray.removeLast()
+                
+                //通知も再設定（最新のdateで設定）
+                if let date = putOnDateArray.last?.date, let notificationId = clothes.notificationId {
+                    makeNotification(date: date, notificationId: notificationId)
+                }
+                object.first?.putOnCount = putOnCount
+                object.first?.putOnDateArray = putOnDateArray
             }
-            object.first!.putOnCount = putOnCount
-            object.first!.putOnDateArray = putOnDateArray
         }
     }
     
     /// 服のデータをRealmから削除する
     /// - Parameter clothes: 削除したい服のデータを格納
     func deleteClothesData(clothes: Clothes) {
-        let realm = try! Realm()
-        let result = realm.objects(Clothes.self).filter("id== %@", clothes.id)
-        
-        try! realm.write {
-            realm.delete(result)
+        if let realm = try? Realm(), let clothesId = clothes.id {
+            let result = realm.objects(Clothes.self).filter("id== %@", clothesId)
+            try? realm.write {
+                realm.delete(result)
+            }
         }
     }
 
@@ -135,29 +137,23 @@ class LoadFunctions {
         //カレンダー型に変える
         let calendar = Calendar(identifier: .gregorian)
         let date = date
-       //期日を設定
-        let notificateDate = calendar.date(byAdding: .day, value: MaxDurationOfNotWorn, to: date)!
-        
-        //通知する時間と今の時間の差分を計算
-        let dateSubtraction = Int(notificateDate.timeIntervalSince(date))
-       
-        //通知時間が未来であること（差分が0より大きい）が条件（クラッシュ防止）
-        if dateSubtraction > 0 {
+       //2年後に期日を設定.通知時間が未来であること（差分が0より大きい）が条件（クラッシュ防止）
+        if let notificateDate = calendar.date(byAdding: .day, value: MaxDurationOfNotWorn, to: date), Int(notificateDate.timeIntervalSince(date)) > 0 {
             //日付をカレンダーに設定して、通知に入れる
-             let component = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: notificateDate)
-                    
-             // ローカル通知リクエストを作成
-             let trigger = UNCalendarNotificationTrigger(dateMatching: component, repeats: false)
-             
-             //固有のidで通知を保存する
-             let request = UNNotificationRequest(identifier: notificationId, content: content, trigger: trigger)
-             
-             // ローカル通知リクエストを登録
-             UNUserNotificationCenter.current().add(request){ (error : Error?) in
-                 if let error = error {
-                     KRProgressHUD.showMessage(error.localizedDescription)
-                 }
-             }
+            let component = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: notificateDate)
+            
+            // ローカル通知リクエストを作成
+            let trigger = UNCalendarNotificationTrigger(dateMatching: component, repeats: false)
+            
+            //固有のidで通知を保存する
+            let request = UNNotificationRequest(identifier: notificationId, content: content, trigger: trigger)
+            
+            // ローカル通知リクエストを登録
+            UNUserNotificationCenter.current().add(request){ (error : Error?) in
+                if let error {
+                    KRProgressHUD.showMessage(error.localizedDescription)
+                }
+            }
         }
     }
     
