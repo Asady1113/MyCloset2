@@ -29,6 +29,10 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
         configureUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        resetCondition()
+    }
+    
     //UIを整理する関数
     func configureUI() {
         setUpTableView()
@@ -56,7 +60,9 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") else {
+            fatalError()
+        }
         configureCell(cell: cell, indexPath: indexPath)
         return cell
     }
@@ -64,12 +70,15 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
     private func configureCell(cell: UITableViewCell, indexPath: IndexPath) {
         cell.backgroundColor = #colorLiteral(red: 0.9921784997, green: 0.8421893716, blue: 0.5883585811, alpha: 1)
 
-        let textLabel = cell.viewWithTag(1) as! UILabel
-        textLabel.text = searchCandidateArray[indexPath.row]
+        if let textLabel = cell.viewWithTag(1) as? UILabel {
+            textLabel.text = searchCandidateArray[indexPath.row]
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedIndex = tableView.indexPathForSelectedRow!
+        guard let selectedIndex = tableView.indexPathForSelectedRow else {
+            fatalError()
+        }
         searchResult.append(searchCandidateArray[selectedIndex.row])
         
         changeConditionsAndToResult()
@@ -88,8 +97,9 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let resultViewController = segue.destination as! ResultViewController
-        resultViewController.searchConditions = searchResult
+        if let resultViewController = segue.destination as? ResultViewController {
+            resultViewController.searchConditions = searchResult
+        }
     }
     
     /// 配列の中身を指定する
@@ -103,6 +113,13 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
             searchCandidateArray = ["ブラック","ホワイト","レッド","ブラウン","ベージュ","オレンジ","イエロー","グリーン","ブルー"]
         }
         return searchCandidateArray
+    }
+    
+    func resetCondition() {
+        //ちょっと危険そうな処理（検索結果からこのページに戻ってきた時の処理。Color条件だけ削除する）
+        if searchResult.isEmpty == false {
+            searchResult.removeLast()
+        }
     }
     
     @IBAction func back() {

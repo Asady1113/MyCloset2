@@ -20,10 +20,10 @@ class LoadFunctions {
         //配列初期化
         var clothesArray = [Clothes]()
         
-        let realm = try! Realm()
-        let result = realm.objects(Clothes.self).filter("category== %@", category)
-        
-        clothesArray = Array(result)
+        if let realm = try? Realm() {
+            let result = realm.objects(Clothes.self).filter("category== %@", category)
+            clothesArray = Array(result)
+        }
         
         if clothesArray.count == 0 {
             KRProgressHUD.showMessage("登録されていません")
@@ -50,13 +50,14 @@ class LoadFunctions {
     /// 着用回数を1増やし、Realmに保存する
     /// - Parameter clothes: 着用ボタンを押された服の情報を格納
     func incrementPutOnCount(clothes: Clothes) {
-        let realm = try! Realm()
-        let result = realm.objects(Clothes.self).filter("id== %@", clothes.id)
-        //resultを配列化する
-        let object = Array(result)
-        //着用回数を1増やし、Realmに保存する
-        try! realm.write {
-            object.first!.putOnCount += 1
+        if let realm = try? Realm(), let clothesId = clothes.id {
+            let result = realm.objects(Clothes.self).filter("id== %@", clothesId)
+            //resultを配列化する
+            let object = Array(result)
+            //着用回数を1増やし、Realmに保存する
+            try? realm.write {
+                object.first?.putOnCount += 1
+            }
         }
     }
     
@@ -66,16 +67,17 @@ class LoadFunctions {
         //着用日を取得
         let date = Date()
         
-        let realm = try! Realm()
-        let result = realm.objects(Clothes.self).filter("id== %@", clothes.id)
-        //resultを配列化する
-        let object = Array(result)
-        
-        try! realm.write {
-            //着用日の履歴作成
-            let dateLog = DateLog()
-            dateLog.date = date
-            object.first!.putOnDateArray.append(dateLog)
+        if let realm = try? Realm(), let clothesId = clothes.id {
+            let result = realm.objects(Clothes.self).filter("id== %@", clothesId)
+            //resultを配列化する
+            let object = Array(result)
+            
+            try? realm.write {
+                //着用日の履歴作成
+                let dateLog = DateLog()
+                dateLog.date = date
+                object.first?.putOnDateArray.append(dateLog)
+            }
         }
     }
       
@@ -83,13 +85,14 @@ class LoadFunctions {
     /// - Parameter clothes: 着用キャンセルボタンを押された服の情報を格納
     func decrementPutOnCount(clothes: Clothes) {
         //Realmに更新
-        let realm = try! Realm()
-        let result = realm.objects(Clothes.self).filter("id== %@", clothes.id)
-        //resultを配列化する
-        let object = Array(result)
-        //着用回数を1増やし、Realmに保存する
-        try! realm.write {
-            object.first!.putOnCount -= 1
+        if let realm = try? Realm(), let clothesId = clothes.id {
+            let result = realm.objects(Clothes.self).filter("id== %@", clothesId)
+            //resultを配列化する
+            let object = Array(result)
+            //着用回数を1増やし、Realmに保存する
+            try? realm.write {
+                object.first?.putOnCount -= 1
+            }
         }
     }
     
@@ -97,15 +100,16 @@ class LoadFunctions {
     /// - Parameter clothes: 着用キャンセルボタンを押された服の情報を格納
     func removePutOnDate(clothes: Clothes) -> List<DateLog> {
         var putOnDateArray = clothes.putOnDateArray
-        
-        let realm = try! Realm()
-        let result = realm.objects(Clothes.self).filter("id== %@", clothes.id)
-        //resultを配列化する
-        let object = Array(result)
-        
-        try! realm.write {
-            putOnDateArray.removeLast()
-            object.first!.putOnDateArray = putOnDateArray
+
+        if let realm = try? Realm(), let clothesId = clothes.id {
+            let result = realm.objects(Clothes.self).filter("id== %@", clothesId)
+            //resultを配列化する
+            let object = Array(result)
+            
+            try? realm.write {
+                putOnDateArray.removeLast()
+                object.first?.putOnDateArray = putOnDateArray
+            }
         }
         return putOnDateArray
     }
@@ -113,11 +117,11 @@ class LoadFunctions {
     /// 服のデータをRealmから削除する
     /// - Parameter clothes: 削除したい服のデータを格納
     func deleteClothesData(clothes: Clothes) {
-        let realm = try! Realm()
-        let result = realm.objects(Clothes.self).filter("id== %@", clothes.id)
-        
-        try! realm.write {
-            realm.delete(result)
+        if let realm = try? Realm(), let clothesId = clothes.id {
+            let result = realm.objects(Clothes.self).filter("id== %@", clothesId)
+            try? realm.write {
+                realm.delete(result)
+            }
         }
     }
     
@@ -158,21 +162,20 @@ class LoadFunctions {
         //カレンダー型に変える
         let calendar = Calendar(identifier: .gregorian)
         let date = date
-        //期日を設定
-        let notificateDate = calendar.date(byAdding: .day, value: MaxDurationOfNotWorn, to: date)!
-        //通知する時間と今の時間の差分を計算
-        let dateSubtraction = Int(notificateDate.timeIntervalSince(date))
-        //通知時間が未来であること（差分が0より大きい）が条件（クラッシュ防止）
-        if dateSubtraction > 0 {
+       //2年後に期日を設定.通知時間が未来であること（差分が0より大きい）が条件（クラッシュ防止）
+        if let notificateDate = calendar.date(byAdding: .day, value: MaxDurationOfNotWorn, to: date), Int(notificateDate.timeIntervalSince(date)) > 0 {
             //日付をカレンダーに設定して、通知に入れる
             let component = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: notificateDate)
+            
             // ローカル通知リクエストを作成
             let trigger = UNCalendarNotificationTrigger(dateMatching: component, repeats: false)
+            
             //固有のidで通知を保存する
             let request = UNNotificationRequest(identifier: notificationId, content: content, trigger: trigger)
+            
             // ローカル通知リクエストを登録
             UNUserNotificationCenter.current().add(request){ (error : Error?) in
-                if let error = error {
+                if let error {
                     KRProgressHUD.showMessage(error.localizedDescription)
                 }
             }

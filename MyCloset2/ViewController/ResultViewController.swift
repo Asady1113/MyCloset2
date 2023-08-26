@@ -45,9 +45,11 @@ class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! ClothesTableViewCell
+        //cellの中身がnilになること（ダウンキャストが失敗すること）はあってほしくない。あった場合はアプリをクラッシュさせる
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as? ClothesTableViewCell else {
+            fatalError()
+        }
         configureCell(cell: cell, indexPath: indexPath)
-        
         return cell
     }
     
@@ -71,7 +73,7 @@ class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDe
         cell.commentTextView.text = clothesArray[indexPath.row].comment
         cell.putOnCountLabel.text = String(clothesArray[indexPath.row].putOnCount)
         
-        //警告の有無を判定
+        //着用期限が過ぎていたら警告
         if loadFunction.isOverMaxDurationSinceLastWorn(clothes: clothesArray[indexPath.row]) {
             cell.warningLabel.text = "着用から2年経過"
         }
@@ -87,21 +89,25 @@ class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDe
         loadFunction.appendPutOnDate(clothes: clothesArray[button.tag])
         //着用日を取得し、通知を作成する
         let date = Date()
-        loadFunction.makeNotification(date: date, notificationId: clothesArray[button.tag].notificationId)
+        if let notificationId = clothesArray[button.tag].notificationId {
+            loadFunction.makeNotification(date: date, notificationId: notificationId)
+        }
         //データ再読み込み
         searchClothes()
     }
     
     @objc func didTapCancelButton(tableViewCell: UITableViewCell, button: UIButton) {
-        if clothesArray[button.tag].putOnCount != 0 {
-            loadFunction.decrementPutOnCount(clothes: clothesArray[button.tag])
-            let putOnDateArray = loadFunction.removePutOnDate(clothes: clothesArray[button.tag])
-            //通知も再設定（最新のdateで設定）
-            let date = putOnDateArray.last!.date
-            loadFunction.makeNotification(date: date, notificationId: clothesArray[button.tag].notificationId)
-            //データ再読み込み
-            searchClothes()
+        if clothesArray[button.tag].putOnCount == 0 {
+            return
         }
+        loadFunction.decrementPutOnCount(clothes: clothesArray[button.tag])
+        let putOnDateArray = loadFunction.removePutOnDate(clothes: clothesArray[button.tag])
+        //通知も再設定（最新のdateで設定）
+        if let date = putOnDateArray.last?.date, let notificationId = clothesArray[button.tag].notificationId {
+            loadFunction.makeNotification(date: date, notificationId: notificationId)
+        }
+        //データ再読み込み
+        searchClothes()
     }
     
     @objc func didTapDeleteButton(tableViewCell: UITableViewCell, button: UIButton) {
@@ -128,9 +134,10 @@ class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDe
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let detailViewController = segue.destination as! DetailViewController
-        let selectedIndex = tableView.indexPathForSelectedRow!
-        detailViewController.selectedClothes = clothesArray[selectedIndex.row]
+        if let selectedIndex = tableView.indexPathForSelectedRow {
+            let detailViewController = segue.destination as? DetailViewController
+            detailViewController?.selectedClothes = clothesArray[selectedIndex.row]
+        }
     }
     
 }

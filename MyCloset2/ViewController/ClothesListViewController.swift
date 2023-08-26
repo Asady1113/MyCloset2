@@ -95,7 +95,9 @@ class ClothesListViewController: UIViewController,UITableViewDataSource,UITableV
         loadFunction.appendPutOnDate(clothes: clothesArray[button.tag])
         //着用日を取得し、通知を作成する
         let date = Date()
-        loadFunction.makeNotification(date: date, notificationId: clothesArray[button.tag].notificationId)
+        if let notificationId = clothesArray[button.tag].notificationId {
+            loadFunction.makeNotification(date: date, notificationId: notificationId)
+        }
         //データ再読み込み
         loadClothes()
     }
@@ -107,8 +109,9 @@ class ClothesListViewController: UIViewController,UITableViewDataSource,UITableV
         loadFunction.decrementPutOnCount(clothes: clothesArray[button.tag])
         let putOnDateArray = loadFunction.removePutOnDate(clothes: clothesArray[button.tag])
         //通知も再設定（最新のdateで設定）
-        let date = putOnDateArray.last!.date
-        loadFunction.makeNotification(date: date, notificationId: clothesArray[button.tag].notificationId)
+        if let date = putOnDateArray.last?.date, let notificationId = clothesArray[button.tag].notificationId {
+            loadFunction.makeNotification(date: date, notificationId: notificationId)
+        }
         //データ再読み込み
         loadClothes()
     }
