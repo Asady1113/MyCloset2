@@ -11,10 +11,10 @@ import KRProgressHUD
 
 class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,ClothesTableViewCellDelegate {
     
-    var searchConditions = [String]()
-    var clothesArray = [Clothes]()
+    private var searchConditions = [String]()
+    private var clothesArray = [Clothes]()
     
-    let loadFunction = LoadFunctions()
+    private let loadFunction = LoadFunctions()
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -26,9 +26,8 @@ class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDe
     override func viewWillAppear(_ animated: Bool) {
         searchClothes()
     }
-    
     //TableViewの情報をセット
-    func setUpTableView() {
+    private func setUpTableView() {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.backgroundColor = #colorLiteral(red: 0.9921784997, green: 0.8421893716, blue: 0.5883585811, alpha: 1)
@@ -38,6 +37,11 @@ class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDe
         tableView.register(nib, forCellReuseIdentifier: "Cell")
         
         tableView.tableFooterView = UIView()
+    }
+    
+    // 検索情報をgetする
+    func getSearchConditions(searchConditions: [String]) {
+        self.searchConditions = searchConditions
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -124,10 +128,10 @@ class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDe
         self.present(alert, animated: true, completion: nil)
     }
     
-    func searchClothes() {
+    private func searchClothes() {
         clothesArray = loadFunction.searchClothes(selectedCategory: searchConditions[0], selectedColor: searchConditions[1])
         
-        if clothesArray.count == 0 {
+        if clothesArray.isEmpty == true {
             KRProgressHUD.showMessage("検索結果がありません")
         }
         tableView.reloadData()

@@ -11,13 +11,13 @@ import KRProgressHUD
 
 class ClothesListViewController: UIViewController,UITableViewDataSource,UITableViewDelegate, ClothesTableViewCellDelegate {
     
-    let loadFunction = LoadFunctions()
+    private let loadFunction = LoadFunctions()
     
-    var category: String?
-    var clothesArray = [Clothes]()
+    private var category: String?
+    private var clothesArray = [Clothes]()
     
-    let segueIdToAddVC = "fromOthers"
-    let segueIdToDetailVC = "toDetail"
+    private let segueIdToAddVC = "fromOthers"
+    private let segueIdToDetailVC = "toDetail"
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -49,12 +49,19 @@ class ClothesListViewController: UIViewController,UITableViewDataSource,UITableV
         tableView.tableFooterView = UIView()
     }
     
+    // カテゴリを取得する
+    func getCategory(category: String) {
+        self.category = category
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return clothesArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! ClothesTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as? ClothesTableViewCell else {
+            fatalError()
+        }
         configureCell(cell: cell, indexPath: indexPath)
         
         return cell
@@ -143,13 +150,9 @@ class ClothesListViewController: UIViewController,UITableViewDataSource,UITableV
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == segueIdToAddVC {
-            let addViewController = segue.destination as! AddViewController
+        if segue.identifier == segueIdToAddVC, let addViewController = segue.destination as? AddViewController {
             addViewController.selectedCategory = category
-            
-        } else if segue.identifier == segueIdToDetailVC {
-            let detailViewController = segue.destination as! DetailViewController
-            let selectedIndex = tableView.indexPathForSelectedRow!
+        } else if segue.identifier == segueIdToDetailVC, let detailViewController = segue.destination as? DetailViewController, let selectedIndex = tableView.indexPathForSelectedRow {
             detailViewController.selectedClothes = clothesArray[selectedIndex.row]
         }
     }

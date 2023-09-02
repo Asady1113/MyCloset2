@@ -15,11 +15,15 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var ruleButton: UIBarButtonItem!
     
-    let design = Design()
+    private let design = Design()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureUI()
+    }
+    
+    private func configureUI() {
         //ボタンのデザイン
         design.changeFontOfButton(button: ruleButton)
         design.buttonDesign(button: searchButton)

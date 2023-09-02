@@ -9,16 +9,17 @@ import UIKit
 
 class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
-    let design = Design()
+    private let design = Design()
     
     enum Conditions {
         case category
         case color
     }
-    var currentConditions: Conditions = .category
     
-    var searchCandidateArray = [String]()
-    var searchResult = [String]()
+    private var currentConditions: Conditions = .category
+    
+    private var searchCandidateArray = [String]()
+    private var searchResult = [String]()
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var cancelButton: UIButton!
@@ -34,7 +35,7 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
     }
     
     //UIを整理する関数
-    func configureUI() {
+    private func configureUI() {
         setUpTableView()
         setUpButton()
         
@@ -43,13 +44,13 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
         }
     }
     
-    func setUpTableView() {
+    private func setUpTableView() {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.backgroundColor = #colorLiteral(red: 0.9921784997, green: 0.8421893716, blue: 0.5883585811, alpha: 1)
     }
     
-    func setUpButton() {
+    private func setUpButton() {
         cancelButton.layer.cornerRadius = 15
         cancelButton.isHidden = true
     }
@@ -85,7 +86,7 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func changeConditionsAndToResult() {
+    private func changeConditionsAndToResult() {
         if currentConditions == .category {
             currentConditions = .color
             cancelButton.isHidden = false
@@ -98,14 +99,14 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let resultViewController = segue.destination as? ResultViewController {
-            resultViewController.searchConditions = searchResult
+            resultViewController.getSearchConditions(searchConditions: searchResult)
         }
     }
     
     /// 配列の中身を指定する
     /// - Parameter conditions: Categoryを選択しているか、Colorを選択しているか
     /// - Returns: condtionsに合わせて、Categoryの要素かColorの要素を配列にして返す
-    func getCandidatesByCondition(selectedConditions: Conditions) -> [String] {
+    private func getCandidatesByCondition(selectedConditions: Conditions) -> [String] {
         if selectedConditions == .category {
             searchCandidateArray = ["長袖トップス・アウター","半袖トップス・アウター","ボトムス","靴・サンダル","その他"]
             
@@ -115,8 +116,8 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
         return searchCandidateArray
     }
     
-    func resetCondition() {
-        //ちょっと危険そうな処理（検索結果からこのページに戻ってきた時の処理。Color条件だけ削除する）
+    // ちょっと危険そうな処理（検索結果からこのページに戻ってきた時の処理。Color条件だけ削除する）
+    private func resetCondition() {
         if searchResult.isEmpty == false {
             searchResult.removeLast()
         }

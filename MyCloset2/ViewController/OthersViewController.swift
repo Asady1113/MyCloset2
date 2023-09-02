@@ -11,15 +11,10 @@ import KRProgressHUD
 
 class OthersViewController: ClothesListViewController {
     
-    func setCategory() {
-        super.category = "その他"
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         super.configureUI()
-        
-        setCategory()
+        super.getCategory(category: "その他")
     }
     
     override func viewWillAppear(_ animated: Bool) {
