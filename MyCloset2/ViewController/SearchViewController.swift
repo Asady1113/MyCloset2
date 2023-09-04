@@ -99,7 +99,7 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let resultViewController = segue.destination as? ResultViewController {
-            resultViewController.getSearchConditions(searchConditions: searchResult)
+            resultViewController.setSearchConditions(searchConditions: searchResult)
         }
     }
     

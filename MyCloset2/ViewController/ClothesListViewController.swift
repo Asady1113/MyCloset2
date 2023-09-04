@@ -50,7 +50,7 @@ class ClothesListViewController: UIViewController,UITableViewDataSource,UITableV
     }
     
     // カテゴリを取得する
-    func getCategory(category: String) {
+    func setCategory(category: String) {
         self.category = category
     }
     
@@ -150,8 +150,8 @@ class ClothesListViewController: UIViewController,UITableViewDataSource,UITableV
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == segueIdToAddVC, let addViewController = segue.destination as? AddViewController {
-            addViewController.selectedCategory = category
+        if segue.identifier == segueIdToAddVC, let addViewController = segue.destination as? AddViewController, let category {
+            addViewController.setCategory(selectedCategory: category)
         } else if segue.identifier == segueIdToDetailVC, let detailViewController = segue.destination as? DetailViewController, let selectedIndex = tableView.indexPathForSelectedRow {
             detailViewController.selectedClothes = clothesArray[selectedIndex.row]
         }

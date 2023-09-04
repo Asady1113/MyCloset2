@@ -39,8 +39,8 @@ class ResultViewController: UIViewController,UITableViewDataSource,UITableViewDe
         tableView.tableFooterView = UIView()
     }
     
-    // 検索情報をgetする
-    func getSearchConditions(searchConditions: [String]) {
+    // 検索情報をsetする
+    func setSearchConditions(searchConditions: [String]) {
         self.searchConditions = searchConditions
     }
     

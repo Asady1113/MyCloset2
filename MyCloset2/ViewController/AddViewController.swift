@@ -13,7 +13,11 @@ import UITextView_Placeholder
 
 class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
-    var selectedCategory: String?
+    private var selectedCategory: String?
+    
+    func setCategory(selectedCategory: String) {
+        self.selectedCategory = selectedCategory
+    }
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
@@ -25,11 +29,11 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var selectImageButton: UIButton!
     
-    let datePicker = UIDatePicker()
-    let pickerView = UIPickerView()
-    let colorList = ["ブラック","ホワイト","レッド","ブラウン","ベージュ","オレンジ","イエロー","グリーン","ブルー"]
+    private let datePicker = UIDatePicker()
+    private let pickerView = UIPickerView()
+    private let colorList = ["ブラック","ホワイト","レッド","ブラウン","ベージュ","オレンジ","イエロー","グリーン","ブルー"]
     
-    var resizedImage: UIImage!
+    private var resizedImage: UIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +41,7 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
         configureUI()
     }
     
-    func configureUI() {
+    private func configureUI() {
         setUpTextField()
         setUpTextView()
         setUpButton()
@@ -45,20 +49,20 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
         setUpColorPickerView()
     }
     
-    func setUpTextField() {
+    private func setUpTextField() {
         nameTextField.delegate = self
         buyDateTextField.delegate = self
         priceTextField.delegate = self
         colorTextField.delegate = self
     }
     
-    func setUpTextView() {
+    private func setUpTextView() {
         commentTextView.delegate = self
         commentTextView.placeholder = "コメントを入力しよう！"
         commentTextView.layer.cornerRadius = 10
     }
     
-    func setUpButton() {
+    private func setUpButton() {
         addButton.isEnabled = false
         addButton.backgroundColor = .none
         
@@ -67,7 +71,7 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
         addButton.layer.cornerRadius = 10
     }
     
-    func setUpDatePicker() {
+    private func setUpDatePicker() {
         //  購入日のシステム
         datePicker.datePickerMode = .date
         datePicker.locale = .current
@@ -86,7 +90,7 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
         buyDateTextField.inputAccessoryView = toolbar
     }
     
-    func setUpColorPickerView() {
+    private func setUpColorPickerView() {
         //色指定のシステム
         // ピッカー設定
         pickerView.delegate = self
@@ -143,7 +147,7 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
     }
     
     //Imageが指定されているか判定する
-    func confirmContents() {
+    private func confirmContents() {
         let placeholderImage = "clothes-placeholder-icon@2x.png"
         addButton.isEnabled = (imageView.image != UIImage(named: placeholderImage))
         addButton.backgroundColor = addButton.isEnabled ? .orange : .none
@@ -168,7 +172,7 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
     }
     
     //カメラ起動
-    func startCamera() {
+    private func startCamera() {
         // もしカメラ起動可能なら
         if UIImagePickerController.isSourceTypeAvailable(.camera) == true {
             let picker = UIImagePickerController()
@@ -186,7 +190,7 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
     }
     
     //ライブラリ起動
-    func startLibrary() {
+    private func startLibrary() {
         // フォトライブラリが使えるなら
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) == true {
             let picker = UIImagePickerController()
@@ -221,7 +225,7 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
     }
     
     //服の情報をRealmに保存する
-    func uploadClothes(imageData: Data) {
+    private func uploadClothes(imageData: Data) {
         //作成日を記憶
         let createDate = Date()
         
@@ -253,7 +257,7 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
     }
     
     // 撮影した画像をデータ化したときに右に90度回転してしまう問題の解消
-    func arrangeImage() {
+    private func arrangeImage() {
         UIGraphicsBeginImageContext(resizedImage.size)
         let rect = CGRect(x: 0, y: 0, width: resizedImage.size.width, height: resizedImage.size.height)
         resizedImage.draw(in: rect)
@@ -262,7 +266,7 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
     }
     
     //テキストフィールドの中身を判定
-    func checkTextFieldContents() {
+    private func checkTextFieldContents() {
         isEmpty(textField: nameTextField)
         isEmpty(textField: buyDateTextField)
         isEmpty(textField: priceTextField)
@@ -270,7 +274,7 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
     }
     
     //空欄判定
-    func isEmpty(textField: UITextField) {
+    private func isEmpty(textField: UITextField) {
         let placeholderText = "未設定"
         textField.text = textField.text?.isEmpty == true ? placeholderText : textField.text
         commentTextView.text = commentTextView.text.isEmpty == true ? placeholderText : commentTextView.text

@@ -134,7 +134,7 @@ class LongTopsViewController: UIViewController,UITableViewDataSource,UITableView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == segueIdToAddVC {
             let addViewController = segue.destination as? AddViewController
-            addViewController?.selectedCategory = category
+            addViewController?.setCategory(selectedCategory: category)
             
         } else if segue.identifier == segueIdToDetailVC {
             if let selectedIndex = tableView.indexPathForSelectedRow {
