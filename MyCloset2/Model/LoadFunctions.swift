@@ -12,7 +12,7 @@ import UserNotifications
 
 class LoadFunctions {
     
-    let MaxDurationOfNotWorn = 730
+    private let MaxDurationOfNotWorn = 730
     /// 服のデータをRealmから読み込む
     /// - Parameter category: 読み込みたいカテゴリを格納
     /// - Returns: カテゴリに一致する服のデータを配列化したものを返す

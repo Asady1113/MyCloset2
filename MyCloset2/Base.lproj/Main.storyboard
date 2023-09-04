@@ -915,8 +915,8 @@
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="変更する"/>
                                 <connections>
+                                    <action selector="addButtonTapped" destination="c0a-9h-VGg" eventType="touchUpInside" id="EOU-k5-pZL"/>
                                     <action selector="addButtonTapped" destination="Cdb-yD-mSg" eventType="touchUpInside" id="ZmI-O0-7yl"/>
-                                    <action selector="updateClothes" destination="c0a-9h-VGg" eventType="touchUpInside" id="EOU-k5-pZL"/>
                                 </connections>
                             </button>
                         </subviews>

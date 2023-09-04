@@ -33,7 +33,7 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
     private let pickerView = UIPickerView()
     private let colorList = ["ブラック","ホワイト","レッド","ブラウン","ベージュ","オレンジ","イエロー","グリーン","ブルー"]
     
-    private var resizedImage: UIImage!
+    private var resizedImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -211,13 +211,16 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
     @IBAction func addButtonTapped() {
         KRProgressHUD.show()
         
-        //画像の処理
-        arrangeImage()
-        if let imageData = resizedImage.pngData() {
-            //テキストフィールドの内容を確認
-            checkTextFieldContents()
-            //服を保存する
-            uploadClothes(imageData: imageData)
+        if var resizedImage {
+            //画像の処理
+            resizedImage = arrangeImage(resizedImage: resizedImage)
+            
+            if let imageData = resizedImage.pngData() {
+                //テキストフィールドの内容を確認
+                checkTextFieldContents()
+                //服を保存する
+                uploadClothes(imageData: imageData)
+            }
         }
         
         KRProgressHUD.dismiss()
@@ -250,6 +253,10 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
             dateLog.date = createDate
             clothes.putOnDateArray.append(dateLog)
             
+            // 通知を作成する
+            let loadFunction = LoadFunctions()
+            loadFunction.makeNotification(date: createDate, notificationId: id)
+            
             try? realm.write {
                 realm.add(clothes)
             }
@@ -257,12 +264,19 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
     }
     
     // 撮影した画像をデータ化したときに右に90度回転してしまう問題の解消
-    private func arrangeImage() {
+    private func arrangeImage(resizedImage: UIImage) -> UIImage {
+        var resizedImage = resizedImage
+        
         UIGraphicsBeginImageContext(resizedImage.size)
         let rect = CGRect(x: 0, y: 0, width: resizedImage.size.width, height: resizedImage.size.height)
         resizedImage.draw(in: rect)
-        resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+        
+        guard let resizedImage = UIGraphicsGetImageFromCurrentImageContext() else {
+            fatalError()
+        }
         UIGraphicsEndImageContext()
+        
+        return resizedImage
     }
     
     //テキストフィールドの中身を判定

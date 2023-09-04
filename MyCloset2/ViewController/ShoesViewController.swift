@@ -142,7 +142,7 @@ class ShoesViewController: UIViewController,UITableViewDataSource,UITableViewDel
         } else if segue.identifier == segueIdToDetailVC {
             if let selectedIndex = tableView.indexPathForSelectedRow {
                 let detailViewController = segue.destination as? DetailViewController
-                detailViewController?.selectedClothes = clothesArray[selectedIndex.row]
+                detailViewController?.setClothes(selectedCategory: clothesArray[selectedIndex.row])
             }
         }
     }

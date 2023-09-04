@@ -153,7 +153,7 @@ class ClothesListViewController: UIViewController,UITableViewDataSource,UITableV
         if segue.identifier == segueIdToAddVC, let addViewController = segue.destination as? AddViewController, let category {
             addViewController.setCategory(selectedCategory: category)
         } else if segue.identifier == segueIdToDetailVC, let detailViewController = segue.destination as? DetailViewController, let selectedIndex = tableView.indexPathForSelectedRow {
-            detailViewController.selectedClothes = clothesArray[selectedIndex.row]
+            detailViewController.setClothes(selectedCategory: clothesArray[selectedIndex.row])
         }
     }
 
