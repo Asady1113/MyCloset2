@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import RealmSwift
 import NYXImagesKit
 import KRProgressHUD
 import UITextView_Placeholder
@@ -26,8 +25,6 @@ class InputClothesViewController: UIViewController,UITextViewDelegate,UITextFiel
     private let datePicker = UIDatePicker()
     private let pickerView = UIPickerView()
     private let colorList = ["ブラック","ホワイト","レッド","ブラウン","ベージュ","オレンジ","イエロー","グリーン","ブルー"]
-    
-    private var resizedImage: UIImage?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +53,7 @@ class InputClothesViewController: UIViewController,UITextViewDelegate,UITextFiel
         commentTextView.layer.cornerRadius = 10
     }
     
-    private func setUpButton() {
+    func setUpButton() {
         selectImageButton.layer.cornerRadius = 10
         cancelButton.layer.cornerRadius = 10
         addButton.layer.cornerRadius = 10
@@ -129,7 +126,7 @@ class InputClothesViewController: UIViewController,UITextViewDelegate,UITextFiel
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             // 画像のサイズ変更
-            resizedImage = selectedImage.scale(byFactor: 0.2)
+            let resizedImage = selectedImage.scale(byFactor: 0.2)
             imageView.image = resizedImage
             picker.dismiss(animated: true, completion: nil)
             // 確認
@@ -202,7 +199,7 @@ class InputClothesViewController: UIViewController,UITextViewDelegate,UITextFiel
     @IBAction func addButtonTapped() {
         KRProgressHUD.show()
         
-        if var resizedImage {
+        if var resizedImage = imageView.image {
             //画像の処理
             resizedImage = arrangeImage(resizedImage: resizedImage)
             
@@ -210,12 +207,16 @@ class InputClothesViewController: UIViewController,UITextViewDelegate,UITextFiel
                 //テキストフィールドの内容を確認
                 checkTextFieldContents()
                 //服を保存or更新する関数
+                uploadToRealm(imageData: imageData, buyDate: datePicker.date)
             }
         }
         
         KRProgressHUD.dismiss()
         self.dismiss(animated: true, completion: nil)
     }
+    
+    // Realmを使用する関数
+    func uploadToRealm(imageData: Data, buyDate: Date) {}
     
     // 撮影した画像をデータ化したときに右に90度回転してしまう問題の解消
     private func arrangeImage(resizedImage: UIImage) -> UIImage {
