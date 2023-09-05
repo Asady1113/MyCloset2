@@ -1,8 +1,8 @@
 //
-//  AddViewController.swift
+//  InputClothesViewController.swift
 //  MyCloset2
 //
-//  Created by 浅田智哉 on 2022/08/17.
+//  Created by 浅田智哉 on 2023/09/05.
 //
 
 import UIKit
@@ -11,13 +11,7 @@ import NYXImagesKit
 import KRProgressHUD
 import UITextView_Placeholder
 
-class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
-    
-    private var selectedCategory: String?
-    
-    func setCategory(selectedCategory: String) {
-        self.selectedCategory = selectedCategory
-    }
+class InputClothesViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
@@ -34,10 +28,10 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
     private let colorList = ["ブラック","ホワイト","レッド","ブラウン","ベージュ","オレンジ","イエロー","グリーン","ブルー"]
     
     private var resizedImage: UIImage?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         configureUI()
     }
     
@@ -63,9 +57,6 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
     }
     
     private func setUpButton() {
-        addButton.isEnabled = false
-        addButton.backgroundColor = .none
-        
         selectImageButton.layer.cornerRadius = 10
         cancelButton.layer.cornerRadius = 10
         addButton.layer.cornerRadius = 10
@@ -218,49 +209,12 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
             if let imageData = resizedImage.pngData() {
                 //テキストフィールドの内容を確認
                 checkTextFieldContents()
-                //服を保存する
-                uploadClothes(imageData: imageData)
+                //服を保存or更新する関数
             }
         }
         
         KRProgressHUD.dismiss()
         self.dismiss(animated: true, completion: nil)
-    }
-    
-    //服の情報をRealmに保存する
-    private func uploadClothes(imageData: Data) {
-        //作成日を記憶
-        let createDate = Date()
-        
-        //idを作成
-        let uuid = UUID()
-        let id = uuid.uuidString
-        
-        //Realmに保存する
-        if let realm = try? Realm(),
-            let selectedCategory = selectedCategory,
-            let name = nameTextField.text,
-            let buyDateString = buyDateTextField.text,
-            let price = priceTextField.text,
-            let comment = commentTextView.text,
-            let color = colorTextField.text {
-            
-            let clothes = Clothes()
-            clothes.add(id: id, category: selectedCategory, name: name, buyDateString: buyDateString, buyDate: datePicker.date, price: price, comment: comment, color: color, imageData: imageData, notificationId: id)
-            
-            //着用日のログ
-            let dateLog = DateLog()
-            dateLog.date = createDate
-            clothes.putOnDateArray.append(dateLog)
-            
-            // 通知を作成する
-            let loadFunction = LoadFunctions()
-            loadFunction.makeNotification(date: createDate, notificationId: id)
-            
-            try? realm.write {
-                realm.add(clothes)
-            }
-        }
     }
     
     // 撮影した画像をデータ化したときに右に90度回転してしまう問題の解消
@@ -311,7 +265,7 @@ class AddViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate
 }
 
 //Picker
-extension AddViewController : UIPickerViewDelegate, UIPickerViewDataSource {
+extension InputClothesViewController : UIPickerViewDelegate, UIPickerViewDataSource {
     
     // ドラムロールの列数
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
