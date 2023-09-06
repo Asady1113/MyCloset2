@@ -7,9 +7,6 @@
 
 import UIKit
 import RealmSwift
-import NYXImagesKit
-import KRProgressHUD
-import UITextView_Placeholder
 
 
 class DetailViewController: InputClothesViewController {

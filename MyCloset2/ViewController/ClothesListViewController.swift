@@ -11,10 +11,10 @@ import KRProgressHUD
 
 class ClothesListViewController: UIViewController,UITableViewDataSource,UITableViewDelegate, ClothesTableViewCellDelegate {
     
-    private let loadFunction = LoadFunctions()
+    let loadFunction = LoadFunctions()
     
     private var category: String?
-    private var clothesArray = [Clothes]()
+    var clothesArray = [Clothes]()
     
     private let segueIdToAddVC = "fromOthers"
     private let segueIdToDetailVC = "toDetail"
