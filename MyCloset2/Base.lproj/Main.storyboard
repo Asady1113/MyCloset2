@@ -53,7 +53,7 @@
                     <navigationItem key="navigationItem" title="その他" id="DCB-ey-c7I">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="OHJ-lf-94b">
                             <connections>
-                                <action selector="toAdd" destination="qgv-o6-4uH" id="9Ie-ly-tEj"/>
+                                <segue destination="Cdb-yD-mSg" kind="presentation" identifier="fromOthers" id="DJ5-tP-FKq"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -61,7 +61,6 @@
                     <connections>
                         <outlet property="tableView" destination="EpC-sc-nrb" id="TrU-Hn-f3z"/>
                         <segue destination="c0a-9h-VGg" kind="presentation" identifier="toDetail" id="xtR-Kd-vjn"/>
-                        <segue destination="Cdb-yD-mSg" kind="presentation" identifier="fromOthers" id="Lyo-cn-49b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rNh-r7-4nD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1202,8 +1201,8 @@ e. その他，開発者が本サービスの利用を適当でないと判断�
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="SkQ-Fo-8nD"/>
-        <segue reference="Lyo-cn-49b"/>
+        <segue reference="Dvv-T9-VhY"/>
+        <segue reference="Oh7-sD-nCm"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="clothes-placeholder-icon.png" width="40" height="40"/>
