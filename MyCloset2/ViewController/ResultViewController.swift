@@ -8,12 +8,42 @@
 import UIKit
 import KRProgressHUD
 
-class ResultViewController: OutputClothesViewController {
+class ResultViewController: OutputClothesViewController, UITableViewDataSource, UITableViewDelegate {
     
     private var searchConditions = [String]()
     // 検索情報をsetする
     func setSearchConditions(searchConditions: [String]) {
         self.searchConditions = searchConditions
+    }
+    
+    override func configureUI() {
+        super.configureUI()
+        setUpTableView()
+    }
+    
+    private func setUpTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.backgroundColor = #colorLiteral(red: 0.9921784997, green: 0.8421893716, blue: 0.5883585811, alpha: 1)
+        
+        //カスタムセルの登録
+        let nib = UINib(nibName: "ClothesTableViewCell",bundle: .main)
+        tableView.register(nib, forCellReuseIdentifier: "Cell")
+        
+        tableView.tableFooterView = UIView()
+    }
+    
+    // TableViewの実装
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.getTableCellCount()
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return self.getCell(indexPath: indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.transitionAndDeselectRow(indexPath: indexPath)
     }
     
     // 服を検索する

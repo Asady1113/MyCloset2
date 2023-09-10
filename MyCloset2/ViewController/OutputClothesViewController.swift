@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OutputClothesViewController: UIViewController, UITableViewDataSource,UITableViewDelegate,ClothesTableViewCellDelegate {
+class OutputClothesViewController: UIViewController, ClothesTableViewCellDelegate {
     
     let loadFunction = LoadFunctions()
     var clothesArray = [Clothes]()
@@ -16,7 +16,6 @@ class OutputClothesViewController: UIViewController, UITableViewDataSource,UITab
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         configureUI()
     }
     
@@ -25,31 +24,15 @@ class OutputClothesViewController: UIViewController, UITableViewDataSource,UITab
         loadClothes()
     }
     
-    private func configureUI() {
-        setUpTableView()
-        
+    func configureUI() {
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "HonyaJi-Re", size: 20) as Any]
     }
     
-    private func setUpTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.backgroundColor = #colorLiteral(red: 0.9921784997, green: 0.8421893716, blue: 0.5883585811, alpha: 1)
-        
-        //カスタムセルの登録
-        let nib = UINib(nibName: "ClothesTableViewCell",bundle: .main)
-        tableView.register(nib, forCellReuseIdentifier: "Cell")
-        
-        tableView.tableFooterView = UIView()
-    }
-    
-    // getTableCellCount
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func getTableCellCount() -> Int {
         return clothesArray.count
     }
     
-    // getCell（同じ名前の関数があるときは子クラスでsuperで呼び出す。それ以外ではselfでも）
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func getCell(indexPath: IndexPath) -> UITableViewCell {
         // cellの中身がnilになること（ダウンキャストが失敗すること）はあってほしくない。あった場合はアプリをクラッシュさせる
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as? ClothesTableViewCell else {
             fatalError()
@@ -58,16 +41,16 @@ class OutputClothesViewController: UIViewController, UITableViewDataSource,UITab
         return cell
     }
     
-    //セルの設定
+    // セルの設定
     private func configureCell(cell: ClothesTableViewCell, indexPath: IndexPath) {
         cell.delegate = self
         
-        //タグの設定
+        // タグの設定
         cell.putOnButton.tag = indexPath.row
         cell.cancelButton.tag = indexPath.row
         cell.deleteButton.tag = indexPath.row
         
-        //画像取得
+        // 画像取得
         if let data = clothesArray[indexPath.row].imageData {
             let image = UIImage(data: data)
             cell.clothesImageView.image = image
@@ -78,13 +61,13 @@ class OutputClothesViewController: UIViewController, UITableViewDataSource,UITab
         cell.commentTextView.text = clothesArray[indexPath.row].comment
         cell.putOnCountLabel.text = String(clothesArray[indexPath.row].putOnCount)
         
-        //着用期限が過ぎていたら警告
+        // 着用期限が過ぎていたら警告
         if loadFunction.isOverMaxDurationSinceLastWorn(clothes: clothesArray[indexPath.row]) {
             cell.warningLabel.text = "着用から2年経過"
         }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func transitionAndDeselectRow(indexPath: IndexPath) {
         let segueIdToDetailVC = "toDetail"
         self.performSegue(withIdentifier: segueIdToDetailVC, sender: nil)
         tableView.deselectRow(at: indexPath, animated: true)
@@ -108,7 +91,7 @@ class OutputClothesViewController: UIViewController, UITableViewDataSource,UITab
         }
         loadFunction.decrementPutOnCount(clothes: clothesArray[button.tag])
         let putOnDateArray = loadFunction.removePutOnDate(clothes: clothesArray[button.tag])
-        //通知も再設定（最新のdateで設定）
+        // 通知も再設定（最新のdateで設定）
         if let date = putOnDateArray.last?.date, let notificationId = clothesArray[button.tag].notificationId {
             loadFunction.makeNotification(date: date, notificationId: notificationId)
         }
