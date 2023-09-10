@@ -40,7 +40,7 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
         setUpButton()
         
         if let navigationController = navigationController {
-            design.changeFontAndSizeOfNavigationBarTitle(navigationController: navigationController)
+            design.setFontAndSizeOfNavigationBarTitle(navigationController)
         }
     }
     

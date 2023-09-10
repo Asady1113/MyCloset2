@@ -25,23 +25,23 @@ class HomeViewController: UIViewController {
     
     private func configureUI() {
         //ボタンのデザイン
-        design.changeFontOfButton(button: ruleButton)
-        design.buttonDesign(button: searchButton)
-        design.buttonDesign(button: howtoUseButton)
+        design.setFontForBarButton(ruleButton)
+        design.setShapeForButton(searchButton)
+        design.setShapeForButton(howtoUseButton)
     }
     
     @IBAction func didTouchDownButton(_sender: UIButton) {
-        design.didTouchDownButton(button: _sender)
+        design.didTouchDownButton(_sender)
     }
     
     
     @IBAction func didTouchDragExitButton(_sender: UIButton) {
-        design.didTouchDragExitButton(button: _sender)
+        design.didTouchDragExitButton(_sender)
     }
     
     
     @IBAction func didTouchUpInsideButton(_sender: UIButton) {
-        design.didTouchUpInsideButton(button: _sender)
+        design.didTouchUpInsideButton(_sender)
     }
     
 }

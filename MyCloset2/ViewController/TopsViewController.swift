@@ -19,20 +19,20 @@ class TopsViewController: UIViewController {
         
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "HonyaJi-Re", size: 20) as Any]
         
-        design.buttonDesign(button: longTopsButton)
-        design.buttonDesign(button: shortTopsButton)
+        design.setShapeForButton(longTopsButton)
+        design.setShapeForButton(shortTopsButton)
     }
     
     @IBAction func didTouchDownButton(_sender: UIButton) {
-        design.didTouchDownButton(button: _sender)
+        design.didTouchDownButton(_sender)
     }
     
     @IBAction func didTouchDragExitButton(_sender: UIButton) {
-        design.didTouchDragExitButton(button: _sender)
+        design.didTouchDragExitButton(_sender)
     }
     
     @IBAction func didTouchUpInsideButton(_sender: UIButton) {
-        design.didTouchUpInsideButton(button: _sender)
+        design.didTouchUpInsideButton(_sender)
     }
     
 }

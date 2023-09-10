@@ -43,12 +43,14 @@ class OutputClothesViewController: UIViewController, UITableViewDataSource,UITab
         tableView.tableFooterView = UIView()
     }
     
+    // getTableCellCount
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return clothesArray.count
     }
     
+    // getCell（同じ名前の関数があるときは子クラスでsuperで呼び出す。それ以外ではselfでも）
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //cellの中身がnilになること（ダウンキャストが失敗すること）はあってほしくない。あった場合はアプリをクラッシュさせる
+        // cellの中身がnilになること（ダウンキャストが失敗すること）はあってほしくない。あった場合はアプリをクラッシュさせる
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as? ClothesTableViewCell else {
             fatalError()
         }

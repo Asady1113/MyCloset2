@@ -10,13 +10,13 @@ import UIKit
 
 class Design {
     
-    //NavigationBarのデザイン
-    func changeFontAndSizeOfNavigationBarTitle(navigationController: UINavigationController) {
+    // NavigationBarのデザイン
+    func setFontAndSizeOfNavigationBarTitle(_ navigationController: UINavigationController) {
         navigationController.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "HonyaJi-Re", size: 20) as Any]
     }
     
-    //ボタンのデザイン
-    func buttonDesign(button: UIButton) {
+    // ボタンのデザイン
+    func setShapeForButton(_ button: UIButton) {
         button.layer.cornerRadius = 15
         button.layer.shadowOffset = CGSize(width: 3, height: 3 )
         button.layer.shadowOpacity = 0.5
@@ -24,34 +24,34 @@ class Design {
         button.layer.shadowColor = UIColor.gray.cgColor
     }
     
-    func changeFontOfButton(button: UIBarButtonItem) {
-        //Barボタンのフォント変更
+    func setFontForBarButton(_ button: UIBarButtonItem) {
+        // Barボタンのフォント変更
         UIBarButtonItem.appearance().setTitleTextAttributes(nil, for: .normal)
         let attribute = [NSAttributedString.Key.font: UIFont(name: "HonyaJi-Re", size: 20) as Any]
         UIBarButtonItem.appearance().setTitleTextAttributes(attribute, for: .normal)
         
         button.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "HonyaJi-Re", size: 20) as Any], for: .normal)
         
-        //Tabbarのフォント
-        //        UITabBarItem.appearance().setTitleTextAttributes([.font : UIFont(name: "HonyaJi-Re", size: 10) as Any], for: .normal)
+        // Tabbarのフォント
+        // UITabBarItem.appearance().setTitleTextAttributes([.font : UIFont(name: "HonyaJi-Re", size: 10) as Any], for: .normal)
     }
     
     //ボタンのバウンド処理
-    func didTouchDownButton(button: UIButton) {
+    func didTouchDownButton(_ button: UIButton) {
         // ボタンを縮こませます
         UIView.animate(withDuration: 0.2, animations: {
             button.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
         })
     }
     
-    func didTouchDragExitButton(button: UIButton) {
+    func didTouchDragExitButton(_ button: UIButton) {
         // 縮こまったボタンをアニメーションで元のサイズに戻します
         UIView.animate(withDuration: 0.2, animations: {
             button.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
         })
     }
     
-    func didTouchUpInsideButton(button: UIButton) {
+    func didTouchUpInsideButton(_ button: UIButton) {
         // バウンド処理です
         UIView.animate(withDuration: 0.5,
                        delay: 0.0,

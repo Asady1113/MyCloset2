@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import RealmSwift
-import KRProgressHUD
 
 class ClothesListViewController: OutputClothesViewController {
     
@@ -24,7 +22,7 @@ class ClothesListViewController: OutputClothesViewController {
         }
     }
     
-    //画面遷移処理
+    // 画面遷移処理
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let segueIdToAddVC = "fromOthers"
         let segueIdToDetailVC = "toDetail"
