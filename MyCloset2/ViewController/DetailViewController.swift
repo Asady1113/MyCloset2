@@ -9,7 +9,7 @@ import UIKit
 import RealmSwift
 
 
-class DetailViewController: InputClothesViewController {
+class DetailViewController: InputClothesViewController, UITextViewDelegate, UITextFieldDelegate {
     
     private var selectedClothes = Clothes()
     
@@ -20,6 +20,36 @@ class DetailViewController: InputClothesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         showDetail()
+    }
+    
+    override func configureUI() {
+        super.configureUI()
+        setUpTextView()
+        setUpTextField()
+    }
+    
+    private func setUpTextView() {
+        commentTextView.delegate = self
+        commentTextView.placeholder = "コメントを入力しよう！"
+        commentTextView.layer.cornerRadius = 10
+    }
+    
+    private func setUpTextField() {
+        nameTextField.delegate = self
+        buyDateTextField.delegate = self
+        priceTextField.delegate = self
+        colorTextField.delegate = self
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if (self.commentTextView.isFirstResponder) {
+            self.commentTextView.resignFirstResponder()
+        }
     }
     
     private func showDetail() {

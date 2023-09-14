@@ -10,7 +10,7 @@ import NYXImagesKit
 import KRProgressHUD
 import UITextView_Placeholder
 
-class InputClothesViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+class InputClothesViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
@@ -32,25 +32,10 @@ class InputClothesViewController: UIViewController,UITextViewDelegate,UITextFiel
         configureUI()
     }
     
-    private func configureUI() {
-        setUpTextField()
-        setUpTextView()
+    func configureUI() {
         setUpButton()
         setUpDatePicker()
         setUpColorPickerView()
-    }
-    
-    private func setUpTextField() {
-        nameTextField.delegate = self
-        buyDateTextField.delegate = self
-        priceTextField.delegate = self
-        colorTextField.delegate = self
-    }
-    
-    private func setUpTextView() {
-        commentTextView.delegate = self
-        commentTextView.placeholder = "コメントを入力しよう！"
-        commentTextView.layer.cornerRadius = 10
     }
     
     func setUpButton() {
@@ -110,18 +95,7 @@ class InputClothesViewController: UIViewController,UITextViewDelegate,UITextFiel
         colorTextField.endEditing(true)
         colorTextField.text = "\(colorList[pickerView.selectedRow(inComponent: 0)])"
     }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if (self.commentTextView.isFirstResponder) {
-            self.commentTextView.resignFirstResponder()
-        }
-    }
-    
+
     // 選択された画像の表示
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {

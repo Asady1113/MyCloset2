@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 
-class AddViewController: InputClothesViewController {
+class AddViewController: InputClothesViewController, UITextViewDelegate, UITextFieldDelegate {
     
     private var selectedCategory: String?
     
@@ -16,11 +16,41 @@ class AddViewController: InputClothesViewController {
         self.selectedCategory = selectedCategory
     }
     
+    override func configureUI() {
+        super.configureUI()
+        setUpTextView()
+        setUpTextField()
+    }
+    
     override func setUpButton() {
         super.setUpButton()
         
         addButton.isEnabled = false
         addButton.backgroundColor = .none
+    }
+    
+    private func setUpTextView() {
+        commentTextView.delegate = self
+        commentTextView.placeholder = "コメントを入力しよう！"
+        commentTextView.layer.cornerRadius = 10
+    }
+    
+    private func setUpTextField() {
+        nameTextField.delegate = self
+        buyDateTextField.delegate = self
+        priceTextField.delegate = self
+        colorTextField.delegate = self
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if (self.commentTextView.isFirstResponder) {
+            self.commentTextView.resignFirstResponder()
+        }
     }
     
     //服の情報をRealmに追加する
