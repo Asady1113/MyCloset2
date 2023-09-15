@@ -11,19 +11,27 @@ import RealmSwift
 class AddViewController: InputClothesViewController, UITextViewDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
     private var selectedCategory: String?
-    
     func setCategory(selectedCategory: String) {
         self.selectedCategory = selectedCategory
     }
-    
-    override func configureUI() {
-        super.configureUI()
-        setUpTextView()
-        setUpTextField()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureUI()
     }
     
-    override func setUpButton() {
-        super.setUpButton()
+    private func configureUI() {
+        setUpButton()
+        setUpTextView()
+        setUpTextField()
+        setUpDatePicker()
+        setUpColorPickerView()
+    }
+    
+    private func setUpButton() {
+        selectImageButton.layer.cornerRadius = 10
+        cancelButton.layer.cornerRadius = 10
+        addButton.layer.cornerRadius = 10
         
         addButton.isEnabled = false
         addButton.backgroundColor = .none
@@ -40,6 +48,43 @@ class AddViewController: InputClothesViewController, UITextViewDelegate, UITextF
         buyDateTextField.delegate = self
         priceTextField.delegate = self
         colorTextField.delegate = self
+    }
+    
+    private func setUpDatePicker() {
+        //  購入日のシステム
+        datePicker.datePickerMode = .date
+        datePicker.locale = .current
+        buyDateTextField.inputView = datePicker
+        
+        if #available(iOS 13.4, *) {
+            datePicker.preferredDatePickerStyle = .wheels
+        }
+        
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 35))
+        let spacelItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
+        toolbar.setItems([spacelItem, doneItem], animated: true)
+        
+        buyDateTextField.inputView = datePicker
+        buyDateTextField.inputAccessoryView = toolbar
+    }
+    
+    private func setUpColorPickerView() {
+        //色指定のシステム
+        // ピッカー設定
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        pickerView.showsSelectionIndicator = true
+        
+        // 決定バーの生成
+        let colorToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 35))
+        let colorSpacelItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let colorDoneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(colorDone))
+        colorToolBar.setItems([colorSpacelItem, colorDoneItem], animated: true)
+        
+        // インプットビュー設定
+        colorTextField.inputView = pickerView
+        colorTextField.inputAccessoryView = colorToolBar
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
