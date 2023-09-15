@@ -10,7 +10,7 @@ import NYXImagesKit
 import KRProgressHUD
 import UITextView_Placeholder
 
-class InputClothesViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+class InputClothesViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
@@ -97,7 +97,7 @@ class InputClothesViewController: UIViewController,UIImagePickerControllerDelega
     }
 
     // 選択された画像の表示
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func getImage(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             // 画像のサイズ変更
             let resizedImage = selectedImage.scale(byFactor: 0.2)
@@ -133,15 +133,10 @@ class InputClothesViewController: UIViewController,UIImagePickerControllerDelega
         self.present(alertController,animated: true,completion: nil)
     }
     
-    //カメラ起動
-    private func startCamera() {
-        // もしカメラ起動可能なら
-        if UIImagePickerController.isSourceTypeAvailable(.camera) == true {
-            let picker = UIImagePickerController()
-            picker.sourceType = .camera
-            picker.delegate = self
-            self.present(picker,animated: true,completion: nil)
-        } else {
+    // カメラ起動
+    func startCamera() {
+        // もしカメラ起動可能でないなら
+        if UIImagePickerController.isSourceTypeAvailable(.camera) == false {
             let alert = UIAlertController(title: "エラー", message: "この機種ではカメラは使用できません", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
                 alert.dismiss(animated: true, completion: nil)
@@ -151,15 +146,10 @@ class InputClothesViewController: UIViewController,UIImagePickerControllerDelega
         }
     }
     
-    //ライブラリ起動
-    private func startLibrary() {
-        // フォトライブラリが使えるなら
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) == true {
-            let picker = UIImagePickerController()
-            picker.sourceType = .photoLibrary
-            picker.delegate = self
-            self.present(picker,animated: true,completion: nil)
-        } else {
+    // ライブラリ起動
+    func startLibrary() {
+        // フォトライブラリが使えないなら
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) == false {
             let alert = UIAlertController(title: "エラー", message: "この機種ではフォトライブラリは使用できません", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
                 alert.dismiss(animated: true, completion: nil)

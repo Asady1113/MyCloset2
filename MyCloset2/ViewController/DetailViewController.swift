@@ -9,7 +9,7 @@ import UIKit
 import RealmSwift
 
 
-class DetailViewController: InputClothesViewController, UITextViewDelegate, UITextFieldDelegate {
+class DetailViewController: InputClothesViewController, UITextViewDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
     private var selectedClothes = Clothes()
     
@@ -64,6 +64,35 @@ class DetailViewController: InputClothesViewController, UITextViewDelegate, UITe
         priceTextField.text = selectedClothes.price
         commentTextView.text = selectedClothes.comment
         colorTextField.text = selectedClothes.color
+    }
+    
+    // カメラ起動
+    override func startCamera() {
+        super.startCamera()
+        // もしカメラ起動可能なら
+        if UIImagePickerController.isSourceTypeAvailable(.camera) == true {
+            let picker = UIImagePickerController()
+            picker.sourceType = .camera
+            picker.delegate = self
+            self.present(picker,animated: true,completion: nil)
+        }
+    }
+    
+    // ライブラリ起動
+    override func startLibrary() {
+        super.startLibrary()
+        // フォトライブラリが使えるなら
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) == true {
+            let picker = UIImagePickerController()
+            picker.sourceType = .photoLibrary
+            picker.delegate = self
+            self.present(picker,animated: true,completion: nil)
+        }
+    }
+    
+    // 選択された画像を表示する
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        self.getImage(picker, didFinishPickingMediaWithInfo: info)
     }
     
     override func uploadToRealm(imageData: Data, buyDate: Date) {

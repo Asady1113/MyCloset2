@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 
-class AddViewController: InputClothesViewController, UITextViewDelegate, UITextFieldDelegate {
+class AddViewController: InputClothesViewController, UITextViewDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
     private var selectedCategory: String?
     
@@ -51,6 +51,35 @@ class AddViewController: InputClothesViewController, UITextViewDelegate, UITextF
         if (self.commentTextView.isFirstResponder) {
             self.commentTextView.resignFirstResponder()
         }
+    }
+    
+    // カメラ起動
+    override func startCamera() {
+        super.startCamera()
+        // もしカメラ起動可能なら
+        if UIImagePickerController.isSourceTypeAvailable(.camera) == true {
+            let picker = UIImagePickerController()
+            picker.sourceType = .camera
+            picker.delegate = self
+            self.present(picker,animated: true,completion: nil)
+        }
+    }
+    
+    // ライブラリ起動
+    override func startLibrary() {
+        super.startLibrary()
+        // フォトライブラリが使えるなら
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) == true {
+            let picker = UIImagePickerController()
+            picker.sourceType = .photoLibrary
+            picker.delegate = self
+            self.present(picker,animated: true,completion: nil)
+        }
+    }
+    
+    // 選択された画像を表示する
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        self.getImage(picker, didFinishPickingMediaWithInfo: info)
     }
     
     //服の情報をRealmに追加する
