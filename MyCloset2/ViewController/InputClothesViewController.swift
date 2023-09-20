@@ -25,6 +25,50 @@ class InputClothesViewController: UIViewController {
     let datePicker = UIDatePicker()
     let pickerView = UIPickerView()
     private let colorList = ["ブラック","ホワイト","レッド","ブラウン","ベージュ","オレンジ","イエロー","グリーン","ブルー"]
+    
+    func setUpButton() {
+        selectImageButton.layer.cornerRadius = 10
+        cancelButton.layer.cornerRadius = 10
+        addButton.layer.cornerRadius = 10
+    }
+    
+    func setUpTextView(textView: UITextView) {
+        textView.placeholder = "コメントを入力しよう！"
+        textView.layer.cornerRadius = 10
+    }
+    
+    func setUpDatePicker() {
+        //  購入日のシステム
+        datePicker.datePickerMode = .date
+        datePicker.locale = .current
+        buyDateTextField.inputView = datePicker
+        
+        if #available(iOS 13.4, *) {
+            datePicker.preferredDatePickerStyle = .wheels
+        }
+        
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 35))
+        let spacelItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
+        toolbar.setItems([spacelItem, doneItem], animated: true)
+        
+        buyDateTextField.inputView = datePicker
+        buyDateTextField.inputAccessoryView = toolbar
+    }
+    
+    func setUpColorPickerView(pickerView: UIPickerView) {
+        pickerView.showsSelectionIndicator = true
+        
+        // 決定バーの生成
+        let colorToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 35))
+        let colorSpacelItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let colorDoneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(colorDone))
+        colorToolBar.setItems([colorSpacelItem, colorDoneItem], animated: true)
+        
+        // インプットビュー設定
+        colorTextField.inputView = pickerView
+        colorTextField.inputAccessoryView = colorToolBar
+    }
 
     //  購入日の決定ボタン
     @objc func done() {
@@ -39,6 +83,16 @@ class InputClothesViewController: UIViewController {
     @objc func colorDone() {
         colorTextField.endEditing(true)
         colorTextField.text = "\(colorList[pickerView.selectedRow(inComponent: 0)])"
+    }
+    
+    func closeTextField(_ textField: UITextField) {
+        textField.resignFirstResponder()
+    }
+    
+    func closeTextView(_ textView: UITextView) {
+        if (textView.isFirstResponder) {
+            textView.resignFirstResponder()
+        }
     }
 
     // 選択された画像の表示

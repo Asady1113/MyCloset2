@@ -561,6 +561,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Cdb-yD-mSg" id="xIi-58-Ogf"/>
+                                </connections>
                             </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="0aZ-om-1WA">
                                 <rect key="frame" x="76.666666666666686" y="366" width="240" height="34"/>

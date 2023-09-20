@@ -28,19 +28,15 @@ class AddViewController: InputClothesViewController, UITextViewDelegate, UITextF
         setUpColorPickerView()
     }
     
-    private func setUpButton() {
-        selectImageButton.layer.cornerRadius = 10
-        cancelButton.layer.cornerRadius = 10
-        addButton.layer.cornerRadius = 10
-        
+    override func setUpButton() {
+        super.setUpButton()
         addButton.isEnabled = false
         addButton.backgroundColor = .none
     }
     
     private func setUpTextView() {
         commentTextView.delegate = self
-        commentTextView.placeholder = "コメントを入力しよう！"
-        commentTextView.layer.cornerRadius = 10
+        self.setUpTextView(textView: commentTextView)
     }
     
     private func setUpTextField() {
@@ -50,52 +46,21 @@ class AddViewController: InputClothesViewController, UITextViewDelegate, UITextF
         colorTextField.delegate = self
     }
     
-    private func setUpDatePicker() {
-        //  購入日のシステム
-        datePicker.datePickerMode = .date
-        datePicker.locale = .current
-        buyDateTextField.inputView = datePicker
-        
-        if #available(iOS 13.4, *) {
-            datePicker.preferredDatePickerStyle = .wheels
-        }
-        
-        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 35))
-        let spacelItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
-        toolbar.setItems([spacelItem, doneItem], animated: true)
-        
-        buyDateTextField.inputView = datePicker
-        buyDateTextField.inputAccessoryView = toolbar
-    }
-    
     private func setUpColorPickerView() {
         //色指定のシステム
         // ピッカー設定
         pickerView.delegate = self
         pickerView.dataSource = self
-        pickerView.showsSelectionIndicator = true
-        
-        // 決定バーの生成
-        let colorToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 35))
-        let colorSpacelItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-        let colorDoneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(colorDone))
-        colorToolBar.setItems([colorSpacelItem, colorDoneItem], animated: true)
-        
-        // インプットビュー設定
-        colorTextField.inputView = pickerView
-        colorTextField.inputAccessoryView = colorToolBar
+        self.setUpColorPickerView(pickerView: pickerView)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
+        self.closeTextField(textField)
         return true
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if (self.commentTextView.isFirstResponder) {
-            self.commentTextView.resignFirstResponder()
-        }
+        self.closeTextView(commentTextView)
     }
     
     // カメラ起動
