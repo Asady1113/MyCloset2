@@ -18,16 +18,9 @@ class ResultViewController: OutputClothesViewController, UITableViewDataSource, 
     
     override func configureUI() {
         super.configureUI()
-        setUpTableView()
-    }
-    
-    private func setUpTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
-        
         self.setUpTableView(tableView: tableView)
     }
-    
+
     // TableViewの実装
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.getTableCellCount()

@@ -27,7 +27,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="300" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EpC-sc-nrb">
                                 <rect key="frame" x="0.0" y="103" width="393" height="666"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" red="0.99217849970000005" green="0.84218937159999996" blue="0.58835858110000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="mY1-05-2U9">
                                         <rect key="frame" x="0.0" y="50" width="393" height="300"/>
@@ -38,6 +38,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="qgv-o6-4uH" id="10D-ah-i6x"/>
+                                    <outlet property="delegate" destination="qgv-o6-4uH" id="qIi-2i-7xW"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HSz-Kx-7vn"/>
@@ -152,7 +156,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="300" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ghT-JO-JHy">
                                 <rect key="frame" x="0.0" y="103" width="393" height="666"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" red="0.99217849970000005" green="0.84218937159999996" blue="0.58835858110000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="fhp-r5-dXa">
                                         <rect key="frame" x="0.0" y="50" width="393" height="300"/>
@@ -163,6 +167,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="QpM-tU-WBp" id="KMf-Mv-D0z"/>
+                                    <outlet property="delegate" destination="QpM-tU-WBp" id="I3E-D6-Ty5"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="VDo-kx-KDk"/>
@@ -545,6 +553,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Cdb-yD-mSg" id="u2t-Tt-P6h"/>
+                                </connections>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clothes-placeholder-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="f9O-G7-XmE">
                                 <rect key="frame" x="121.66666666666669" y="102" width="150" height="150"/>
@@ -576,6 +587,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="Cdb-yD-mSg" id="RTW-OG-Wy8"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="値段" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Baa-73-mts" customClass="CustomTextField" customModule="MyCloset2" customModuleProvider="target">
                                         <rect key="frame" x="130" y="0.0" width="110" height="34"/>
@@ -585,6 +599,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="Cdb-yD-mSg" id="fvl-Jf-PS0"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <constraints>
@@ -604,7 +621,13 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="コメントを入力しよう！"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="Cdb-yD-mSg" id="qZO-QJ-J5G"/>
+                                </connections>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0KK-GV-Dpt">
                                 <rect key="frame" x="20" y="65" width="75" height="27"/>
@@ -616,13 +639,17 @@
                                 <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="15"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="キャンセル"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="cancel" destination="Cdb-yD-mSg" eventType="touchUpInside" id="WIs-Ic-hf6"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B9b-i0-Mc4">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B9b-i0-Mc4">
                                 <rect key="frame" x="295" y="65" width="78" height="27"/>
-                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="27" id="lVn-r1-H8K"/>
                                     <constraint firstAttribute="width" constant="78" id="pFy-fR-O4H"/>
@@ -630,6 +657,11 @@
                                 <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="15"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="追加する"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="addButtonTapped" destination="Cdb-yD-mSg" eventType="touchUpInside" id="M53-2o-3XW"/>
                                 </connections>
@@ -645,6 +677,11 @@
                                 <state key="normal" title="画像を選択">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="selectImage" destination="Cdb-yD-mSg" eventType="touchUpInside" id="nAh-LW-b5V"/>
                                 </connections>
@@ -812,6 +849,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="c0a-9h-VGg" id="MvE-hY-PBI"/>
+                                </connections>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clothes-placeholder-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="Rr6-Ck-gCF">
                                 <rect key="frame" x="121.66666666666669" y="102" width="150" height="150"/>
@@ -828,6 +868,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="c0a-9h-VGg" id="QDW-W2-vEV"/>
+                                </connections>
                             </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="p9z-pj-DV0">
                                 <rect key="frame" x="76.666666666666686" y="366" width="240" height="34"/>
@@ -840,6 +883,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="c0a-9h-VGg" id="aAb-d0-8S0"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="値段" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p5i-IG-vFp" customClass="CustomTextField" customModule="MyCloset2" customModuleProvider="target">
                                         <rect key="frame" x="130" y="0.0" width="110" height="34"/>
@@ -849,6 +895,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="c0a-9h-VGg" id="slP-rU-Vas"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <constraints>
@@ -866,6 +915,15 @@
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="コメントを入力しよう！"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="c0a-9h-VGg" id="nmy-bq-Xn9"/>
+                                </connections>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T0n-68-sqy">
                                 <rect key="frame" x="20" y="65" width="75" height="27"/>
@@ -877,6 +935,11 @@
                                 <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="15"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="キャンセル"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="cancel" destination="c0a-9h-VGg" eventType="touchUpInside" id="E9m-8d-YGG"/>
                                     <action selector="cancel" destination="Cdb-yD-mSg" eventType="touchUpInside" id="YS9-05-3dl"/>
@@ -903,6 +966,11 @@
                                 <state key="normal" title="画像を選択">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="selectImage" destination="c0a-9h-VGg" eventType="touchUpInside" id="hp0-I1-WTf"/>
                                     <action selector="selectImage" destination="Cdb-yD-mSg" eventType="touchUpInside" id="oyq-uS-cqQ"/>
@@ -918,6 +986,11 @@
                                 <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="15"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="変更する"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="addButtonTapped" destination="c0a-9h-VGg" eventType="touchUpInside" id="EOU-k5-pZL"/>
                                     <action selector="addButtonTapped" destination="Cdb-yD-mSg" eventType="touchUpInside" id="ZmI-O0-7yl"/>
@@ -1005,7 +1078,7 @@
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="IZo-U0-7r0">
                                 <rect key="frame" x="0.0" y="103" width="393" height="437"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" red="0.99217849970000005" green="0.84218937159999996" blue="0.58835858110000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="437" id="dA8-HZ-MJe"/>
                                 </constraints>
@@ -1028,6 +1101,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.99217849970000005" green="0.84218937159999996" blue="0.58835858110000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="9sY-d9-g9k" firstAttribute="leading" secondItem="kQy-7C-ST5" secondAttribute="leadingMargin" constant="17" id="MTB-31-odQ"/>
                                                 <constraint firstItem="9sY-d9-g9k" firstAttribute="top" secondItem="kQy-7C-ST5" secondAttribute="topMargin" constant="8" id="pJH-mb-QFJ"/>
@@ -1035,8 +1109,12 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="InO-F8-0O4" id="Tll-Cp-7iL"/>
+                                    <outlet property="delegate" destination="InO-F8-0O4" id="VCG-gG-KMm"/>
+                                </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="giy-75-wpW">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="giy-75-wpW">
                                 <rect key="frame" x="146.66666666666666" y="570" width="100" height="38"/>
                                 <color key="backgroundColor" systemColor="systemCyanColor"/>
                                 <constraints>
@@ -1046,6 +1124,11 @@
                                 <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="15"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="戻る"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="back" destination="InO-F8-0O4" eventType="touchUpInside" id="b6N-MR-ZQv"/>
                                     <action selector="cancel" destination="Cdb-yD-mSg" eventType="touchUpInside" id="5ci-1g-yU7"/>
@@ -1204,8 +1287,8 @@ e. その他，開発者が本サービスの利用を適当でないと判断�
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Dvv-T9-VhY"/>
-        <segue reference="Oh7-sD-nCm"/>
+        <segue reference="xtR-Kd-vjn"/>
+        <segue reference="DJ5-tP-FKq"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="clothes-placeholder-icon.png" width="40" height="40"/>

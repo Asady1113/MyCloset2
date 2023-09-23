@@ -26,7 +26,6 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureUI()
     }
     
@@ -36,23 +35,9 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
     
     //UIを整理する関数
     private func configureUI() {
-        setUpTableView()
-        setUpButton()
-        
         if let navigationController = navigationController {
             design.setFontAndSizeOfNavigationBarTitle(navigationController)
         }
-    }
-    
-    private func setUpTableView() {
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.backgroundColor = #colorLiteral(red: 0.9921784997, green: 0.8421893716, blue: 0.5883585811, alpha: 1)
-    }
-    
-    private func setUpButton() {
-        cancelButton.layer.cornerRadius = 15
-        cancelButton.isHidden = true
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -69,8 +54,6 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
     }
     
     private func configureCell(cell: UITableViewCell, indexPath: IndexPath) {
-        cell.backgroundColor = #colorLiteral(red: 0.9921784997, green: 0.8421893716, blue: 0.5883585811, alpha: 1)
-
         if let textLabel = cell.viewWithTag(1) as? UILabel {
             textLabel.text = searchCandidateArray[indexPath.row]
         }

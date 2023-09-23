@@ -26,17 +26,6 @@ class InputClothesViewController: UIViewController {
     let pickerView = UIPickerView()
     private let colorList = ["ブラック","ホワイト","レッド","ブラウン","ベージュ","オレンジ","イエロー","グリーン","ブルー"]
     
-    func setUpButton() {
-        selectImageButton.layer.cornerRadius = 10
-        cancelButton.layer.cornerRadius = 10
-        addButton.layer.cornerRadius = 10
-    }
-    
-    func setUpTextView(textView: UITextView) {
-        textView.placeholder = "コメントを入力しよう！"
-        textView.layer.cornerRadius = 10
-    }
-    
     func setUpDatePicker() {
         //  購入日のシステム
         datePicker.datePickerMode = .date

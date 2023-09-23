@@ -17,13 +17,6 @@ class ClothesListViewController: OutputClothesViewController, UITableViewDataSou
     
     override func configureUI() {
         super.configureUI()
-        setUpTableView()
-    }
-    
-    private func setUpTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
-        
         self.setUpTableView(tableView: tableView)
     }
     

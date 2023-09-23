@@ -21,29 +21,8 @@ class AddViewController: InputClothesViewController, UITextViewDelegate, UITextF
     }
     
     private func configureUI() {
-        setUpButton()
-        setUpTextView()
-        setUpTextField()
         setUpDatePicker()
         setUpColorPickerView()
-    }
-    
-    override func setUpButton() {
-        super.setUpButton()
-        addButton.isEnabled = false
-        addButton.backgroundColor = .none
-    }
-    
-    private func setUpTextView() {
-        commentTextView.delegate = self
-        self.setUpTextView(textView: commentTextView)
-    }
-    
-    private func setUpTextField() {
-        nameTextField.delegate = self
-        buyDateTextField.delegate = self
-        priceTextField.delegate = self
-        colorTextField.delegate = self
     }
     
     private func setUpColorPickerView() {

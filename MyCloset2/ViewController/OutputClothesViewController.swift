@@ -29,11 +29,10 @@ class OutputClothesViewController: UIViewController, ClothesTableViewCellDelegat
     }
     
     func setUpTableView(tableView: UITableView) {
-        tableView.backgroundColor = #colorLiteral(red: 0.9921784997, green: 0.8421893716, blue: 0.5883585811, alpha: 1)
         // カスタムセルの登録
         let nib = UINib(nibName: "ClothesTableViewCell",bundle: .main)
         tableView.register(nib, forCellReuseIdentifier: "Cell")
-        
+
         tableView.tableFooterView = UIView()
     }
     
