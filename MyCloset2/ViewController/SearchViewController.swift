@@ -9,29 +9,35 @@ import UIKit
 
 class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
+    private let design = Design()
+    
     enum Conditions {
         case category
         case color
     }
-    var currentConditions: Conditions = .category
     
-    var searchCandidateArray = [String]()
-    var searchResult = [String]()
+    private var currentConditions: Conditions = .category
+    
+    private var searchCandidateArray = [String]()
+    private var searchResult = [String]()
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var cancelButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.backgroundColor = #colorLiteral(red: 0.9921784997, green: 0.8421893716, blue: 0.5883585811, alpha: 1)
-        
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "HonyaJi-Re", size: 20) as Any]
-        
-        cancelButton.layer.cornerRadius = 15
-        cancelButton.isHidden = true
+        configureUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        resetCondition()
+    }
+    
+    //UIを整理する関数
+    private func configureUI() {
+        if let navigationController = navigationController {
+            design.setFontAndSizeOfNavigationBarTitle(navigationController)
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -43,20 +49,27 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") else {
             fatalError()
         }
-        cell.backgroundColor = #colorLiteral(red: 0.9921784997, green: 0.8421893716, blue: 0.5883585811, alpha: 1)
-
+        configureCell(cell: cell, indexPath: indexPath)
+        return cell
+    }
+    
+    private func configureCell(cell: UITableViewCell, indexPath: IndexPath) {
         if let textLabel = cell.viewWithTag(1) as? UILabel {
             textLabel.text = searchCandidateArray[indexPath.row]
         }
-        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let selectedIndex = tableView.indexPathForSelectedRow else {
             fatalError()
         }
-        
         searchResult.append(searchCandidateArray[selectedIndex.row])
+        
+        changeConditionsAndToResult()
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    private func changeConditionsAndToResult() {
         if currentConditions == .category {
             currentConditions = .color
             cancelButton.isHidden = false
@@ -65,19 +78,18 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
         } else if currentConditions == .color {
             self.performSegue(withIdentifier: "toResult", sender: nil)
         }
-        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let resultViewController = segue.destination as? ResultViewController {
-            resultViewController.searchConditions = searchResult
+            resultViewController.setSearchConditions(searchConditions: searchResult)
         }
     }
     
     /// 配列の中身を指定する
     /// - Parameter conditions: Categoryを選択しているか、Colorを選択しているか
     /// - Returns: condtionsに合わせて、Categoryの要素かColorの要素を配列にして返す
-    func getCandidatesByCondition(selectedConditions: Conditions) -> [String] {
+    private func getCandidatesByCondition(selectedConditions: Conditions) -> [String] {
         if selectedConditions == .category {
             searchCandidateArray = ["長袖トップス・アウター","半袖トップス・アウター","ボトムス","靴・サンダル","その他"]
             
@@ -85,6 +97,13 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
             searchCandidateArray = ["ブラック","ホワイト","レッド","ブラウン","ベージュ","オレンジ","イエロー","グリーン","ブルー"]
         }
         return searchCandidateArray
+    }
+    
+    // ちょっと危険そうな処理（検索結果からこのページに戻ってきた時の処理。Color条件だけ削除する）
+    private func resetCondition() {
+        if searchResult.isEmpty == false {
+            searchResult.removeLast()
+        }
     }
     
     @IBAction func back() {

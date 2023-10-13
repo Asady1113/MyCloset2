@@ -15,38 +15,33 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var ruleButton: UIBarButtonItem!
     
-    let design = Design()
+    private let design = Design()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Barボタンのフォント変更
-        UIBarButtonItem.appearance().setTitleTextAttributes(nil, for: .normal)
-        let attribute = [NSAttributedString.Key.font: UIFont(name: "HonyaJi-Re", size: 20) as Any]
-        UIBarButtonItem.appearance().setTitleTextAttributes(attribute, for: .normal)
-        
-        ruleButton.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "HonyaJi-Re", size: 20) as Any], for: .normal)
-        
-        //Tabbarのフォント
-        //        UITabBarItem.appearance().setTitleTextAttributes([.font : UIFont(name: "HonyaJi-Re", size: 10) as Any], for: .normal)
-        
-        //検索ボタンのデザイン
-        design.buttonDesign(button: searchButton)
-        design.buttonDesign(button: howtoUseButton)
+        configureUI()
+    }
+    
+    private func configureUI() {
+        //ボタンのデザイン
+        design.setFontForBarButton(ruleButton)
+        design.setShapeForButton(searchButton)
+        design.setShapeForButton(howtoUseButton)
     }
     
     @IBAction func didTouchDownButton(_sender: UIButton) {
-        design.didTouchDownButton(button: _sender)
+        design.didTouchDownButton(_sender)
     }
     
     
     @IBAction func didTouchDragExitButton(_sender: UIButton) {
-        design.didTouchDragExitButton(button: _sender)
+        design.didTouchDragExitButton(_sender)
     }
     
     
     @IBAction func didTouchUpInsideButton(_sender: UIButton) {
-        design.didTouchUpInsideButton(button: _sender)
+        design.didTouchUpInsideButton(_sender)
     }
     
 }

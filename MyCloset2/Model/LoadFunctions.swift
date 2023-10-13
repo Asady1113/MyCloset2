@@ -12,7 +12,7 @@ import UserNotifications
 
 class LoadFunctions {
     
-    let MaxDurationOfNotWorn = 730
+    private let MaxDurationOfNotWorn = 730
     /// 服のデータをRealmから読み込む
     /// - Parameter category: 読み込みたいカテゴリを格納
     /// - Returns: カテゴリに一致する服のデータを配列化したものを返す
@@ -31,19 +31,41 @@ class LoadFunctions {
         return clothesArray
     }
     
+    /// 服を検索する関数
+    /// - Parameters:
+    ///   - selectedCategory: 選択されたカテゴリ
+    ///   - selectedColor: 選択されたカラー
+    /// - Returns: Clothesの配列を返す
+    func searchClothes(selectedCategory: String, selectedColor: String) -> [Clothes] {
+        guard let realm = try? Realm() else {
+            fatalError()
+        }
+        
+        let result = realm.objects(Clothes.self).filter("category== %@ AND color== %@", selectedCategory, selectedColor)
+        let clothesArray = Array(result)
+        
+        return clothesArray
+    }
+    
     /// 着用回数を1増やし、Realmに保存する
     /// - Parameter clothes: 着用ボタンを押された服の情報を格納
-    func incrementPutOnCountAndRecordDate(clothes: Clothes) {
-        //着用回数
-        var putOnCount = clothes.putOnCount
-        putOnCount += 1
-        
+    func incrementPutOnCount(clothes: Clothes) {
+        if let realm = try? Realm(), let clothesId = clothes.id {
+            let result = realm.objects(Clothes.self).filter("id== %@", clothesId)
+            //resultを配列化する
+            let object = Array(result)
+            //着用回数を1増やし、Realmに保存する
+            try? realm.write {
+                object.first?.putOnCount += 1
+            }
+        }
+    }
+    
+    /// 着用履歴を更新し、Realmに保存する
+    /// - Parameter clothes: 着用ボタンを押された服の情報を格納
+    func appendPutOnDate(clothes: Clothes) {
         //着用日を取得
         let date = Date()
-        if let notificationId = clothes.notificationId {
-            //通知を作成する
-            makeNotification(date: date, notificationId: notificationId)
-        }
         
         if let realm = try? Realm(), let clothesId = clothes.id {
             let result = realm.objects(Clothes.self).filter("id== %@", clothesId)
@@ -51,42 +73,45 @@ class LoadFunctions {
             let object = Array(result)
             
             try? realm.write {
-                object.first?.putOnCount = putOnCount
-                
-                //着用回数の履歴作成
+                //着用日の履歴作成
                 let dateLog = DateLog()
                 dateLog.date = date
                 object.first?.putOnDateArray.append(dateLog)
-                
+            }
+        }
+    }
+      
+    /// 着用回数を1減らし、Realmに保存する
+    /// - Parameter clothes: 着用キャンセルボタンを押された服の情報を格納
+    func decrementPutOnCount(clothes: Clothes) {
+        //Realmに更新
+        if let realm = try? Realm(), let clothesId = clothes.id {
+            let result = realm.objects(Clothes.self).filter("id== %@", clothesId)
+            //resultを配列化する
+            let object = Array(result)
+            //着用回数を1増やし、Realmに保存する
+            try? realm.write {
+                object.first?.putOnCount -= 1
             }
         }
     }
     
-    /// 着用回数を1減らし、Realmに保存する
+    /// 着用履歴を削除し、Realmに保存する
     /// - Parameter clothes: 着用キャンセルボタンを押された服の情報を格納
-    func decrementPutOnCountAndRecordDate(clothes: Clothes) {
-        var putOnCount = clothes.putOnCount
+    func removePutOnDate(clothes: Clothes) -> List<DateLog> {
         var putOnDateArray = clothes.putOnDateArray
-        
-        
-        if let realm = try? Realm(), let clothesId = clothes.id, putOnCount > 0 {
+
+        if let realm = try? Realm(), let clothesId = clothes.id {
             let result = realm.objects(Clothes.self).filter("id== %@", clothesId)
             //resultを配列化する
             let object = Array(result)
             
             try? realm.write {
-                putOnCount -= 1
-                //着用履歴も消去
                 putOnDateArray.removeLast()
-                
-                //通知も再設定（最新のdateで設定）
-                if let date = putOnDateArray.last?.date, let notificationId = clothes.notificationId {
-                    makeNotification(date: date, notificationId: notificationId)
-                }
-                object.first?.putOnCount = putOnCount
                 object.first?.putOnDateArray = putOnDateArray
             }
         }
+        return putOnDateArray
     }
     
     /// 服のデータをRealmから削除する
@@ -99,7 +124,7 @@ class LoadFunctions {
             }
         }
     }
-
+    
     /// 最後の着用履歴から定められた期間が経っているか判定する
     /// - Parameter clothes: 選択された服のデータを格納
     /// - Returns: true：定められた期間経っている。false：2年経っていない

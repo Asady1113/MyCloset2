@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="y6N-v4-6yP">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -20,22 +22,26 @@
             <objects>
                 <viewController id="qgv-o6-4uH" customClass="OthersViewController" customModule="MyCloset2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hMz-7w-2IM">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="300" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EpC-sc-nrb">
-                                <rect key="frame" x="0.0" y="44" width="600" height="473"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
+                                <color key="backgroundColor" red="0.99217849970000005" green="0.84218937159999996" blue="0.58835858110000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="mY1-05-2U9">
-                                        <rect key="frame" x="0.0" y="50" width="600" height="300"/>
+                                        <rect key="frame" x="0.0" y="50" width="393" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mY1-05-2U9" id="4fk-XC-5ho">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="300"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="qgv-o6-4uH" id="10D-ah-i6x"/>
+                                    <outlet property="delegate" destination="qgv-o6-4uH" id="qIi-2i-7xW"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HSz-Kx-7vn"/>
@@ -51,7 +57,7 @@
                     <navigationItem key="navigationItem" title="その他" id="DCB-ey-c7I">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="OHJ-lf-94b">
                             <connections>
-                                <action selector="toAdd" destination="qgv-o6-4uH" id="9Ie-ly-tEj"/>
+                                <segue destination="Cdb-yD-mSg" kind="presentation" identifier="fromOthers" id="DJ5-tP-FKq"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -59,7 +65,6 @@
                     <connections>
                         <outlet property="tableView" destination="EpC-sc-nrb" id="TrU-Hn-f3z"/>
                         <segue destination="c0a-9h-VGg" kind="presentation" identifier="toDetail" id="xtR-Kd-vjn"/>
-                        <segue destination="Cdb-yD-mSg" kind="presentation" identifier="fromOthers" id="Lyo-cn-49b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rNh-r7-4nD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -71,22 +76,26 @@
             <objects>
                 <viewController id="WXl-CF-c1k" customClass="ShoesViewController" customModule="MyCloset2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XAP-Am-Fy0">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="300" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4f2-UC-tOC">
-                                <rect key="frame" x="0.0" y="44" width="600" height="507"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
+                                <color key="backgroundColor" red="0.99217849970000005" green="0.84218937159999996" blue="0.58835858110000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="922-Mx-Fu0">
-                                        <rect key="frame" x="0.0" y="50" width="600" height="300"/>
+                                        <rect key="frame" x="0.0" y="50" width="393" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="922-Mx-Fu0" id="Wbr-eB-6Yw">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="300"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="WXl-CF-c1k" id="tzA-18-d8I"/>
+                                    <outlet property="delegate" destination="WXl-CF-c1k" id="5Nj-6L-x0b"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="IUW-E1-q2D"/>
@@ -120,11 +129,11 @@
             <objects>
                 <viewController id="uGg-eh-diQ" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NtZ-sp-KEm">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="howtouseImage.png" translatesAutoresizingMaskIntoConstraints="NO" id="fUN-f1-2Km">
-                                <rect key="frame" x="16" y="20" width="568" height="497"/>
+                                <rect key="frame" x="16" y="20" width="361" height="700"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qLc-0m-gFi"/>
@@ -146,22 +155,26 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="QpM-tU-WBp" customClass="ResultViewController" customModule="MyCloset2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IeT-10-7Q7">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="300" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ghT-JO-JHy">
-                                <rect key="frame" x="0.0" y="44" width="600" height="507"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
+                                <color key="backgroundColor" red="0.99217849970000005" green="0.84218937159999996" blue="0.58835858110000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="fhp-r5-dXa">
-                                        <rect key="frame" x="0.0" y="50" width="600" height="300"/>
+                                        <rect key="frame" x="0.0" y="50" width="393" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fhp-r5-dXa" id="AEh-up-T9l">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="300"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="QpM-tU-WBp" id="KMf-Mv-D0z"/>
+                                    <outlet property="delegate" destination="QpM-tU-WBp" id="I3E-D6-Ty5"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="VDo-kx-KDk"/>
@@ -188,11 +201,11 @@
             <objects>
                 <viewController id="a2l-8L-662" customClass="HomeViewController" customModule="MyCloset2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QeA-Pd-IvB">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My-Closet+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gRU-ja-3km">
-                                <rect key="frame" x="172.66666666666669" y="64" width="254.66666666666669" height="63"/>
+                                <rect key="frame" x="69.333333333333329" y="123" width="254.33333333333337" height="63"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="63" id="gnW-oj-Ppq"/>
                                     <constraint firstAttribute="width" constant="254.5" id="k5O-gc-nGp"/>
@@ -202,13 +215,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mycloset.png" translatesAutoresizingMaskIntoConstraints="NO" id="UzR-ug-tIV">
-                                <rect key="frame" x="246" y="151" width="108" height="77"/>
+                                <rect key="frame" x="31" y="210" width="331" height="236"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="UzR-ug-tIV" secondAttribute="height" multiplier="414:295" id="lnJ-ny-FJA"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l2j-d9-XsZ">
-                                <rect key="frame" x="225" y="356" width="150" height="57"/>
+                                <rect key="frame" x="121.66666666666669" y="574" width="150" height="57"/>
                                 <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="4tc-0B-BSM"/>
@@ -226,7 +239,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sCc-Si-Gsj">
-                                <rect key="frame" x="225" y="265" width="150" height="57"/>
+                                <rect key="frame" x="121.66666666666669" y="483" width="150" height="57"/>
                                 <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="57" id="Was-EE-28U"/>
@@ -283,11 +296,11 @@
             <objects>
                 <viewController id="Esm-7l-gsy" customClass="TopsViewController" customModule="MyCloset2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aGn-hB-0DK">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kKA-vk-ry0">
-                                <rect key="frame" x="77" y="135" width="446" height="50"/>
+                                <rect key="frame" x="77" y="194" width="239" height="50"/>
                                 <color key="backgroundColor" red="0.99959963559999998" green="0.65415984390000004" blue="0.102527611" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="fWL-VI-4qR"/>
@@ -304,7 +317,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="カテゴリを選択してください" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K3M-oc-S0L">
-                                <rect key="frame" x="57" y="64" width="486" height="34"/>
+                                <rect key="frame" x="57" y="123" width="279" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="cif-a4-dtZ"/>
                                 </constraints>
@@ -313,7 +326,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oe7-pe-AYZ">
-                                <rect key="frame" x="77" y="214" width="446" height="50"/>
+                                <rect key="frame" x="77" y="273" width="239" height="50"/>
                                 <color key="backgroundColor" red="0.99959963559999998" green="0.65415984390000004" blue="0.102527611" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="mxh-Io-RYO"/>
@@ -361,22 +374,26 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="jtQ-US-1jC" customClass="LongTopsViewController" customModule="MyCloset2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WDs-Xs-yfy">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="300" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="woc-nR-lSE">
-                                <rect key="frame" x="0.0" y="44" width="600" height="507"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
+                                <color key="backgroundColor" red="0.99217849970000005" green="0.84218937159999996" blue="0.58835858110000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="tqx-NI-a6x">
-                                        <rect key="frame" x="0.0" y="50" width="600" height="300"/>
+                                        <rect key="frame" x="0.0" y="50" width="393" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tqx-NI-a6x" id="ekz-HQ-dcR">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="300"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="jtQ-US-1jC" id="FI9-Y7-gHE"/>
+                                    <outlet property="delegate" destination="jtQ-US-1jC" id="Ov3-CX-tg0"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7WR-qt-Wyb"/>
@@ -435,22 +452,26 @@
             <objects>
                 <viewController id="W9I-jh-6Hn" customClass="BottomsViewController" customModule="MyCloset2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9rT-5y-qh2">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="300" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1Z2-zB-Wib">
-                                <rect key="frame" x="0.0" y="44" width="600" height="507"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
+                                <color key="backgroundColor" red="0.99217849970000005" green="0.84218937159999996" blue="0.58835858110000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="HEA-bb-DUF">
-                                        <rect key="frame" x="0.0" y="50" width="600" height="300"/>
+                                        <rect key="frame" x="0.0" y="50" width="393" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HEA-bb-DUF" id="6uZ-p4-hLS">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="300"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="W9I-jh-6Hn" id="3kS-pc-CJK"/>
+                                    <outlet property="delegate" destination="W9I-jh-6Hn" id="7JS-6a-7fl"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="nbb-MF-TDg"/>
@@ -484,22 +505,26 @@
             <objects>
                 <viewController id="3lW-4J-gJA" customClass="ShortTopsViewController" customModule="MyCloset2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8dc-eh-ULW">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="300" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qof-mi-bwn">
-                                <rect key="frame" x="0.0" y="44" width="600" height="507"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
+                                <color key="backgroundColor" red="0.99217849970000005" green="0.84218937159999996" blue="0.58835858110000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="0NH-Gh-D8h">
-                                        <rect key="frame" x="0.0" y="50" width="600" height="300"/>
+                                        <rect key="frame" x="0.0" y="50" width="393" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0NH-Gh-D8h" id="8Cd-zt-nsh">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="300"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="3lW-4J-gJA" id="0ab-7x-bc8"/>
+                                    <outlet property="delegate" destination="3lW-4J-gJA" id="XTP-Ii-4k4"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="J7c-EV-n13"/>
@@ -533,36 +558,42 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="Cdb-yD-mSg" customClass="AddViewController" customModule="MyCloset2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="o3l-lh-b8f">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="カラー" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sKy-T0-j6p" customClass="CustomTextField" customModule="MyCloset2" customModuleProvider="target">
-                                <rect key="frame" x="180" y="358" width="240" height="34"/>
+                                <rect key="frame" x="76.666666666666686" y="417" width="240" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="7KE-ju-Opf"/>
                                     <constraint firstAttribute="height" constant="34" id="gQ6-q3-exr"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Cdb-yD-mSg" id="u2t-Tt-P6h"/>
+                                </connections>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clothes-placeholder-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="f9O-G7-XmE">
-                                <rect key="frame" x="225" y="43" width="150" height="150"/>
+                                <rect key="frame" x="121.66666666666669" y="102" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="Kyn-mH-0uz"/>
                                     <constraint firstAttribute="width" constant="150" id="r1c-Gb-VC1"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ブランド名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ioG-8c-VYr" customClass="CustomTextField" customModule="MyCloset2" customModuleProvider="target">
-                                <rect key="frame" x="180" y="256" width="240" height="34"/>
+                                <rect key="frame" x="76.666666666666686" y="315" width="240" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="JBQ-WG-CXP"/>
                                     <constraint firstAttribute="height" constant="34" id="eFa-B8-Qxl"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Cdb-yD-mSg" id="xIi-58-Ogf"/>
+                                </connections>
                             </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="0aZ-om-1WA">
-                                <rect key="frame" x="180" y="307" width="240" height="34"/>
+                                <rect key="frame" x="76.666666666666686" y="366" width="240" height="34"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="購入日" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Eb-HH-mTK" customClass="CustomTextField" customModule="MyCloset2" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="110" height="34"/>
@@ -572,6 +603,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="Cdb-yD-mSg" id="RTW-OG-Wy8"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="値段" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Baa-73-mts" customClass="CustomTextField" customModule="MyCloset2" customModuleProvider="target">
                                         <rect key="frame" x="130" y="0.0" width="110" height="34"/>
@@ -581,6 +615,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="Cdb-yD-mSg" id="fvl-Jf-PS0"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <constraints>
@@ -589,7 +626,7 @@
                                 </constraints>
                             </stackView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3oU-yg-VU7">
-                                <rect key="frame" x="180" y="417" width="240" height="98"/>
+                                <rect key="frame" x="76.666666666666686" y="476" width="240" height="98"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="Iop-SE-DX7"/>
@@ -600,10 +637,16 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="コメントを入力しよう！"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="Cdb-yD-mSg" id="qZO-QJ-J5G"/>
+                                </connections>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0KK-GV-Dpt">
-                                <rect key="frame" x="20" y="6" width="75" height="27"/>
+                                <rect key="frame" x="20" y="65" width="75" height="27"/>
                                 <color key="backgroundColor" systemColor="systemCyanColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="7Wj-lW-ZBV"/>
@@ -612,13 +655,17 @@
                                 <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="15"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="キャンセル"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="cancel" destination="Cdb-yD-mSg" eventType="touchUpInside" id="WIs-Ic-hf6"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B9b-i0-Mc4">
-                                <rect key="frame" x="502" y="6" width="78" height="27"/>
-                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B9b-i0-Mc4">
+                                <rect key="frame" x="295" y="65" width="78" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="27" id="lVn-r1-H8K"/>
                                     <constraint firstAttribute="width" constant="78" id="pFy-fR-O4H"/>
@@ -626,12 +673,17 @@
                                 <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="15"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="追加する"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="uploadClothes" destination="Cdb-yD-mSg" eventType="touchUpInside" id="M53-2o-3XW"/>
+                                    <action selector="addButtonTapped" destination="Cdb-yD-mSg" eventType="touchUpInside" id="M53-2o-3XW"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YfJ-r4-pbT">
-                                <rect key="frame" x="225" y="201" width="150" height="32"/>
+                                <rect key="frame" x="121.66666666666669" y="260" width="150" height="32"/>
                                 <color key="backgroundColor" red="0.99959963559999998" green="0.65415984390000004" blue="0.102527611" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="fQo-jU-eCe"/>
@@ -641,12 +693,17 @@
                                 <state key="normal" title="画像を選択">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="selectImage" destination="Cdb-yD-mSg" eventType="touchUpInside" id="nAh-LW-b5V"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="服を追加" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yM1-ik-MvG">
-                                <rect key="frame" x="260" y="6" width="80" height="27"/>
+                                <rect key="frame" x="156.66666666666666" y="65" width="80" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="hVw-hH-KwC"/>
                                     <constraint firstAttribute="height" constant="27" id="k4e-ts-05I"/>
@@ -703,7 +760,7 @@
                     <tabBarItem key="tabBarItem" title="靴・サンダルなど" image="tabbar-icon-shoes.png" id="1nl-eR-fjV"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="apm-8S-ajh">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="1" green="0.93128491349999998" blue="0.79172610320000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -727,7 +784,7 @@
                     <tabBarItem key="tabBarItem" title="ボトムス" image="tabbar-icon-bottoms.png" id="QQO-4b-gtv"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tkY-w4-9GU">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="1" green="0.93128491349999998" blue="0.79172610320000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -751,7 +808,7 @@
                     <tabBarItem key="tabBarItem" title="トップス/アウター" image="tabbar-icon-tops.png" id="q6o-0d-U9x"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tl1-o0-YK3">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="1" green="0.93128491349999998" blue="0.79172610320000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -775,7 +832,7 @@
                     <tabBarItem key="tabBarItem" title="ホーム" image="tabbar-icon-home.png" id="Aau-5Y-LKA"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="356-On-HYe">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="1" green="0.93128491349999998" blue="0.79172610320000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -797,36 +854,42 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="c0a-9h-VGg" customClass="DetailViewController" customModule="MyCloset2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="82X-EL-el3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="カラー" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ls7-NA-ZCu" customClass="CustomTextField" customModule="MyCloset2" customModuleProvider="target">
-                                <rect key="frame" x="180" y="358" width="240" height="34"/>
+                                <rect key="frame" x="76.666666666666686" y="417" width="240" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="7NY-ia-aWu"/>
                                     <constraint firstAttribute="height" constant="34" id="XGi-GY-QxU"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="c0a-9h-VGg" id="MvE-hY-PBI"/>
+                                </connections>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clothes-placeholder-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="Rr6-Ck-gCF">
-                                <rect key="frame" x="225" y="43" width="150" height="150"/>
+                                <rect key="frame" x="121.66666666666669" y="102" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="4Lt-gM-ZCt"/>
                                     <constraint firstAttribute="height" constant="150" id="PPu-hT-x2d"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ブランド名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ymt-ZW-RDp" customClass="CustomTextField" customModule="MyCloset2" customModuleProvider="target">
-                                <rect key="frame" x="180" y="256" width="240" height="34"/>
+                                <rect key="frame" x="76.666666666666686" y="315" width="240" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="b0I-fP-yPP"/>
                                     <constraint firstAttribute="height" constant="34" id="kXY-sG-J33"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="c0a-9h-VGg" id="QDW-W2-vEV"/>
+                                </connections>
                             </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="p9z-pj-DV0">
-                                <rect key="frame" x="180" y="307" width="240" height="34"/>
+                                <rect key="frame" x="76.666666666666686" y="366" width="240" height="34"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="購入日" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XH1-2s-o5K" customClass="CustomTextField" customModule="MyCloset2" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="110" height="34"/>
@@ -836,6 +899,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="c0a-9h-VGg" id="aAb-d0-8S0"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="値段" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p5i-IG-vFp" customClass="CustomTextField" customModule="MyCloset2" customModuleProvider="target">
                                         <rect key="frame" x="130" y="0.0" width="110" height="34"/>
@@ -845,6 +911,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="c0a-9h-VGg" id="slP-rU-Vas"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <constraints>
@@ -853,7 +922,7 @@
                                 </constraints>
                             </stackView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jF5-Ok-Ou5">
-                                <rect key="frame" x="180" y="417" width="240" height="98"/>
+                                <rect key="frame" x="76.666666666666686" y="476" width="240" height="98"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="3El-zl-vl5"/>
@@ -862,9 +931,18 @@
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="コメントを入力しよう！"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="c0a-9h-VGg" id="nmy-bq-Xn9"/>
+                                </connections>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T0n-68-sqy">
-                                <rect key="frame" x="20" y="6" width="75" height="27"/>
+                                <rect key="frame" x="20" y="65" width="75" height="27"/>
                                 <color key="backgroundColor" systemColor="systemCyanColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="8Kj-f7-HBg"/>
@@ -873,13 +951,18 @@
                                 <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="15"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="キャンセル"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="cancel" destination="c0a-9h-VGg" eventType="touchUpInside" id="E9m-8d-YGG"/>
                                     <action selector="cancel" destination="Cdb-yD-mSg" eventType="touchUpInside" id="YS9-05-3dl"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="服を追加" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jzo-0g-TAQ">
-                                <rect key="frame" x="260" y="6" width="80" height="27"/>
+                                <rect key="frame" x="156.66666666666666" y="65" width="80" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="27" id="GPS-XN-xgH"/>
                                     <constraint firstAttribute="width" constant="80" id="kKX-hp-JqY"/>
@@ -889,7 +972,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IRb-cb-KPW">
-                                <rect key="frame" x="225" y="201" width="150" height="32"/>
+                                <rect key="frame" x="121.66666666666669" y="260" width="150" height="32"/>
                                 <color key="backgroundColor" red="0.99959963559999998" green="0.65415984390000004" blue="0.102527611" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="GDz-PX-DWq"/>
@@ -899,13 +982,18 @@
                                 <state key="normal" title="画像を選択">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="selectImage" destination="c0a-9h-VGg" eventType="touchUpInside" id="hp0-I1-WTf"/>
                                     <action selector="selectImage" destination="Cdb-yD-mSg" eventType="touchUpInside" id="oyq-uS-cqQ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ij2-u4-IHQ">
-                                <rect key="frame" x="502" y="6" width="78" height="27"/>
+                                <rect key="frame" x="295" y="65" width="78" height="27"/>
                                 <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="27" id="K86-1a-7vq"/>
@@ -914,9 +1002,14 @@
                                 <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="15"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="変更する"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="updateClothes" destination="c0a-9h-VGg" eventType="touchUpInside" id="EOU-k5-pZL"/>
-                                    <action selector="uploadClothes" destination="Cdb-yD-mSg" eventType="touchUpInside" id="ZmI-O0-7yl"/>
+                                    <action selector="addButtonTapped" destination="c0a-9h-VGg" eventType="touchUpInside" id="EOU-k5-pZL"/>
+                                    <action selector="addButtonTapped" destination="Cdb-yD-mSg" eventType="touchUpInside" id="ZmI-O0-7yl"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -967,7 +1060,7 @@
                     <tabBarItem key="tabBarItem" title="その他" image="tabbar-icon-theOthers.png" id="VmI-Bg-oUA"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="n99-ep-98O">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="1" green="0.93128491349999998" blue="0.79172610320000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -989,7 +1082,7 @@
             <objects>
                 <viewController id="InO-F8-0O4" customClass="SearchViewController" customModule="MyCloset2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vFn-Y8-1Ya">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jFd-dq-eXk">
@@ -1000,21 +1093,21 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="IZo-U0-7r0">
-                                <rect key="frame" x="0.0" y="44" width="600" height="437"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="437"/>
+                                <color key="backgroundColor" red="0.99217849970000005" green="0.84218937159999996" blue="0.58835858110000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="437" id="dA8-HZ-MJe"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="Znc-St-gNx">
-                                        <rect key="frame" x="0.0" y="50" width="600" height="60"/>
+                                        <rect key="frame" x="0.0" y="50" width="393" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Znc-St-gNx" id="kQy-7C-ST5">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9sY-d9-g9k">
-                                                    <rect key="frame" x="33" y="19" width="257" height="21"/>
+                                                    <rect key="frame" x="37" y="19" width="257" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="9c7-Mn-si8"/>
                                                         <constraint firstAttribute="width" constant="257" id="Uvv-Qj-T0F"/>
@@ -1024,6 +1117,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.99217849970000005" green="0.84218937159999996" blue="0.58835858110000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="9sY-d9-g9k" firstAttribute="leading" secondItem="kQy-7C-ST5" secondAttribute="leadingMargin" constant="17" id="MTB-31-odQ"/>
                                                 <constraint firstItem="9sY-d9-g9k" firstAttribute="top" secondItem="kQy-7C-ST5" secondAttribute="topMargin" constant="8" id="pJH-mb-QFJ"/>
@@ -1031,9 +1125,13 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="InO-F8-0O4" id="Tll-Cp-7iL"/>
+                                    <outlet property="delegate" destination="InO-F8-0O4" id="VCG-gG-KMm"/>
+                                </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="giy-75-wpW">
-                                <rect key="frame" x="250" y="511" width="100" height="38"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="giy-75-wpW">
+                                <rect key="frame" x="146.66666666666666" y="570" width="100" height="38"/>
                                 <color key="backgroundColor" systemColor="systemCyanColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="dAb-bI-Jqf"/>
@@ -1042,6 +1140,11 @@
                                 <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="15"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="戻る"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="back" destination="InO-F8-0O4" eventType="touchUpInside" id="b6N-MR-ZQv"/>
                                     <action selector="cancel" destination="Cdb-yD-mSg" eventType="touchUpInside" id="5ci-1g-yU7"/>
@@ -1076,11 +1179,11 @@
             <objects>
                 <viewController id="ALd-iD-GuP" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9gs-Xh-qrF">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hmc-5r-lbj">
-                                <rect key="frame" x="20" y="20" width="560" height="526"/>
+                                <rect key="frame" x="20" y="79" width="353" height="670"/>
                                 <string key="text">この利用規約（以下，「本規約」といいます。）Asady（以下，「開発者」といいます。）がこのアプリ上で提供するサービス（以下，「本サービス」といいます。）の利用条件を定めるものです。登録ユーザーの皆さま（以下，「ユーザー」といいます。）には，本規約に従って，本サービスをご利用いただきます。
 
 第1条（適用）
@@ -1200,8 +1303,8 @@ e. その他，開発者が本サービスの利用を適当でないと判断�
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="xtR-Kd-vjn"/>
-        <segue reference="Lyo-cn-49b"/>
+        <segue reference="oij-Px-Tbe"/>
+        <segue reference="adN-Wy-ceU"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="clothes-placeholder-icon.png" width="40" height="40"/>
@@ -1214,9 +1317,6 @@ e. その他，開発者が本サービスの利用を適当でないと判断�
         <image name="tabbar-icon-tops.png" width="24" height="24"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemCyanColor">
             <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
