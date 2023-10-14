@@ -85,6 +85,7 @@
 		94D32CEB28AD544900AE8409 /* BottomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D32CEA28AD544900AE8409 /* BottomsViewController.swift */; };
 		94D32CED28AD552500AE8409 /* LongTopsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D32CEC28AD552500AE8409 /* LongTopsViewController.swift */; };
 		94D32CEF28AD558400AE8409 /* ShortTopsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D32CEE28AD558400AE8409 /* ShortTopsViewController.swift */; };
+		94E5AA512ADADBAB00C2113D /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E5AA502ADADBAB00C2113D /* UIButton.swift */; };
 		AFD14EFC87AEF581F40AEE0A /* Pods_MyCloset2_MyCloset2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 504C4A858119A1B8C20D97AF /* Pods_MyCloset2_MyCloset2UITests.framework */; };
 		FFA601E3A671CDD4A9837E5B /* Pods_MyCloset2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDA7B92BA40365AD0DDC2264 /* Pods_MyCloset2Tests.framework */; };
 /* End PBXBuildFile section */
@@ -192,6 +193,7 @@
 		94D32CEA28AD544900AE8409 /* BottomsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomsViewController.swift; sourceTree = "<group>"; };
 		94D32CEC28AD552500AE8409 /* LongTopsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongTopsViewController.swift; sourceTree = "<group>"; };
 		94D32CEE28AD558400AE8409 /* ShortTopsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortTopsViewController.swift; sourceTree = "<group>"; };
+		94E5AA502ADADBAB00C2113D /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		BDA7B92BA40365AD0DDC2264 /* Pods_MyCloset2Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyCloset2Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA10553C7FDBA533EF0C4DFF /* Pods-MyCloset2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyCloset2Tests.debug.xcconfig"; path = "Target Support Files/Pods-MyCloset2Tests/Pods-MyCloset2Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		EEA91A738F7099BD0457E578 /* Pods_MyCloset2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyCloset2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -279,6 +281,7 @@
 				94D32CA128ACED1400AE8409 /* images */,
 				940B35422859A9EF00172ADB /* AppDelegate.swift */,
 				940B35442859A9EF00172ADB /* SceneDelegate.swift */,
+				94E5AA522ADADFE800C2113D /* Design */,
 				94D32CDE28ACFC4F00AE8409 /* Model */,
 				9463206628B0F3430005D6C3 /* ViewController */,
 				94D32CE328AD0C3300AE8409 /* Cell */,
@@ -404,8 +407,6 @@
 				94D32CDC28ACFC3600AE8409 /* Clothes.swift */,
 				947A5BE528C3247C00FCC6AC /* DateLog.swift */,
 				94D32CE428AD385B00AE8409 /* LoadFunctions.swift */,
-				9463205C28B0765F0005D6C3 /* Design.swift */,
-				9463206028B09AEC0005D6C3 /* CustomTextField.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -417,6 +418,16 @@
 				94D32CE028AD09FB00AE8409 /* ClothesTableViewCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		94E5AA522ADADFE800C2113D /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				9463206028B09AEC0005D6C3 /* CustomTextField.swift */,
+				9463205C28B0765F0005D6C3 /* Design.swift */,
+				94E5AA502ADADBAB00C2113D /* UIButton.swift */,
+			);
+			path = Design;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -714,6 +725,7 @@
 				94D32CE728AD3BAC00AE8409 /* ShoesViewController.swift in Sources */,
 				9463205F28B07F750005D6C3 /* TopsViewController.swift in Sources */,
 				94B40B6728AF5A9800B86CFF /* ResultViewController.swift in Sources */,
+				94E5AA512ADADBAB00C2113D /* UIButton.swift in Sources */,
 				94D32CDD28ACFC3700AE8409 /* Clothes.swift in Sources */,
 				94D32CDB28ACF4CF00AE8409 /* AddViewController.swift in Sources */,
 				940323FB2AA6BFC60069B733 /* InputClothesViewController.swift in Sources */,

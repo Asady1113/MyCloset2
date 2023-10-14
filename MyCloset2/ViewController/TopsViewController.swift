@@ -18,9 +18,6 @@ class TopsViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "HonyaJi-Re", size: 20) as Any]
-        
-        design.setShapeForButton(longTopsButton)
-        design.setShapeForButton(shortTopsButton)
     }
     
     @IBAction func didTouchDownButton(_sender: UIButton) {

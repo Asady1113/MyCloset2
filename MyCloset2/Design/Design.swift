@@ -15,15 +15,6 @@ class Design {
         navigationController.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "HonyaJi-Re", size: 20) as Any]
     }
     
-    // ボタンのデザイン
-    func setShapeForButton(_ button: UIButton) {
-        button.layer.cornerRadius = 15
-        button.layer.shadowOffset = CGSize(width: 3, height: 3 )
-        button.layer.shadowOpacity = 0.5
-        button.layer.shadowRadius = 10
-        button.layer.shadowColor = UIColor.gray.cgColor
-    }
-    
     func setFontForBarButton(_ button: UIBarButtonItem) {
         // Barボタンのフォント変更
         UIBarButtonItem.appearance().setTitleTextAttributes(nil, for: .normal)

@@ -26,8 +26,6 @@ class HomeViewController: UIViewController {
     private func configureUI() {
         //ボタンのデザイン
         design.setFontForBarButton(ruleButton)
-        design.setShapeForButton(searchButton)
-        design.setShapeForButton(howtoUseButton)
     }
     
     @IBAction func didTouchDownButton(_sender: UIButton) {
