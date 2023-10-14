@@ -309,6 +309,9 @@
                         <barButtonItem key="backBarButtonItem" title="ホームに戻る" id="DN2-Bx-igs"/>
                         <barButtonItem key="rightBarButtonItem" title="利用規約" id="Mnu-LH-dAm">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="selectedTint" value="HonyaJi-Re"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <segue destination="ALd-iD-GuP" kind="presentation" id="crd-P4-6iT"/>
                             </connections>

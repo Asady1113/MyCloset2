@@ -17,17 +17,6 @@ class HomeViewController: UIViewController {
     
     private let design = Design()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        configureUI()
-    }
-    
-    private func configureUI() {
-        //ボタンのデザイン
-        design.setFontForBarButton(ruleButton)
-    }
-    
     @IBAction func didTouchDownButton(_sender: UIButton) {
         design.didTouchDownButton(_sender)
     }
