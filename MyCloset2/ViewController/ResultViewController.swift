@@ -16,8 +16,12 @@ class ResultViewController: OutputClothesViewController, UITableViewDataSource, 
         self.searchConditions = searchConditions
     }
     
-    override func configureUI() {
-        super.configureUI()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureUI()
+    }
+    
+    private func configureUI() {
         self.setUpTableView(tableView: tableView)
     }
 

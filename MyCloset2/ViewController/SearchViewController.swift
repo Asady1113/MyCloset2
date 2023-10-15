@@ -9,8 +9,6 @@ import UIKit
 
 class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
-    private let design = Design()
-    
     enum Conditions {
         case category
         case color
@@ -24,20 +22,8 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var cancelButton: UIButton!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configureUI()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         resetCondition()
-    }
-    
-    //UIを整理する関数
-    private func configureUI() {
-        if let navigationController = navigationController {
-            design.setFontAndSizeOfNavigationBarTitle(navigationController)
-        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

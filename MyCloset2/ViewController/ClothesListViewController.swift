@@ -15,8 +15,12 @@ class ClothesListViewController: OutputClothesViewController, UITableViewDataSou
         self.category = category
     }
     
-    override func configureUI() {
-        super.configureUI()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureUI()
+    }
+    
+    private func configureUI() {
         self.setUpTableView(tableView: tableView)
     }
     
