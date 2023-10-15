@@ -11,7 +11,6 @@
 		940323FB2AA6BFC60069B733 /* InputClothesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940323FA2AA6BFC60069B733 /* InputClothesViewController.swift */; };
 		940B35432859A9EF00172ADB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B35422859A9EF00172ADB /* AppDelegate.swift */; };
 		940B35452859A9EF00172ADB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B35442859A9EF00172ADB /* SceneDelegate.swift */; };
-		940B35472859A9EF00172ADB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B35462859A9EF00172ADB /* HomeViewController.swift */; };
 		940B354A2859A9EF00172ADB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 940B35482859A9EF00172ADB /* Main.storyboard */; };
 		940B354C2859A9F000172ADB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 940B354B2859A9F000172ADB /* Assets.xcassets */; };
 		940B354F2859A9F000172ADB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 940B354D2859A9F000172ADB /* LaunchScreen.storyboard */; };
@@ -19,7 +18,6 @@
 		940B35642859A9F000172ADB /* MyCloset2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B35632859A9F000172ADB /* MyCloset2UITests.swift */; };
 		940B35662859A9F000172ADB /* MyCloset2UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B35652859A9F000172ADB /* MyCloset2UITestsLaunchTests.swift */; };
 		94436ABB2A8882570099ED65 /* ClothesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94436ABA2A8882570099ED65 /* ClothesListViewController.swift */; };
-		9463205F28B07F750005D6C3 /* TopsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463205E28B07F750005D6C3 /* TopsViewController.swift */; };
 		9463206128B09AEC0005D6C3 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463206028B09AEC0005D6C3 /* CustomTextField.swift */; };
 		9463206528B0D57C0005D6C3 /* mycloset.png in Resources */ = {isa = PBXBuildFile; fileRef = 9463206428B0D57C0005D6C3 /* mycloset.png */; };
 		9463207D28B0F3BE0005D6C3 /* iTunesArtwork@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9463206828B0F3BE0005D6C3 /* iTunesArtwork@1x.png */; };
@@ -116,7 +114,6 @@
 		940B353F2859A9EF00172ADB /* MyCloset2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyCloset2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		940B35422859A9EF00172ADB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		940B35442859A9EF00172ADB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		940B35462859A9EF00172ADB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		940B35492859A9EF00172ADB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		940B354B2859A9F000172ADB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		940B354E2859A9F000172ADB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -127,7 +124,6 @@
 		940B35632859A9F000172ADB /* MyCloset2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCloset2UITests.swift; sourceTree = "<group>"; };
 		940B35652859A9F000172ADB /* MyCloset2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCloset2UITestsLaunchTests.swift; sourceTree = "<group>"; };
 		94436ABA2A8882570099ED65 /* ClothesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothesListViewController.swift; sourceTree = "<group>"; };
-		9463205E28B07F750005D6C3 /* TopsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopsViewController.swift; sourceTree = "<group>"; };
 		9463206028B09AEC0005D6C3 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		9463206428B0D57C0005D6C3 /* mycloset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mycloset.png; sourceTree = "<group>"; };
 		9463206828B0F3BE0005D6C3 /* iTunesArtwork@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@1x.png"; sourceTree = "<group>"; };
@@ -313,14 +309,12 @@
 		9463206628B0F3430005D6C3 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				940B35462859A9EF00172ADB /* HomeViewController.swift */,
 				94B40B6A28AFEDB300B86CFF /* SearchViewController.swift */,
 				94B6E3AB2AA813C900B6B423 /* OutputClothesViewController.swift */,
 				94B40B6628AF5A9800B86CFF /* ResultViewController.swift */,
 				94436ABA2A8882570099ED65 /* ClothesListViewController.swift */,
 				94D32CD828ACF49800AE8409 /* OthersViewController.swift */,
 				94D32CEC28AD552500AE8409 /* LongTopsViewController.swift */,
-				9463205E28B07F750005D6C3 /* TopsViewController.swift */,
 				94D32CEE28AD558400AE8409 /* ShortTopsViewController.swift */,
 				94D32CEA28AD544900AE8409 /* BottomsViewController.swift */,
 				94D32CE628AD3BAC00AE8409 /* ShoesViewController.swift */,
@@ -722,7 +716,6 @@
 				94B6E3AC2AA813C900B6B423 /* OutputClothesViewController.swift in Sources */,
 				94D32CED28AD552500AE8409 /* LongTopsViewController.swift in Sources */,
 				94D32CE728AD3BAC00AE8409 /* ShoesViewController.swift in Sources */,
-				9463205F28B07F750005D6C3 /* TopsViewController.swift in Sources */,
 				94B40B6728AF5A9800B86CFF /* ResultViewController.swift in Sources */,
 				94E5AA512ADADBAB00C2113D /* UIButton.swift in Sources */,
 				94D32CDD28ACFC3700AE8409 /* Clothes.swift in Sources */,
@@ -732,7 +725,6 @@
 				9463206128B09AEC0005D6C3 /* CustomTextField.swift in Sources */,
 				94D32CEB28AD544900AE8409 /* BottomsViewController.swift in Sources */,
 				94436ABB2A8882570099ED65 /* ClothesListViewController.swift in Sources */,
-				940B35472859A9EF00172ADB /* HomeViewController.swift in Sources */,
 				94D32CE528AD385B00AE8409 /* LoadFunctions.swift in Sources */,
 				94D32CD928ACF49800AE8409 /* OthersViewController.swift in Sources */,
 				94D32CEF28AD558400AE8409 /* ShortTopsViewController.swift in Sources */,

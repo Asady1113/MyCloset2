@@ -195,10 +195,10 @@
             </objects>
             <point key="canvasLocation" x="5310" y="-2484"/>
         </scene>
-        <!--Home View Controller-->
+        <!--View Controller-->
         <scene sceneID="Ctw-SQ-RRg">
             <objects>
-                <viewController id="a2l-8L-662" customClass="HomeViewController" customModule="MyCloset2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="a2l-8L-662" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QeA-Pd-IvB">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -320,7 +320,7 @@
         <!--トップス/アウター-->
         <scene sceneID="ZC1-Y9-aeZ">
             <objects>
-                <viewController id="Esm-7l-gsy" customClass="TopsViewController" customModule="MyCloset2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Esm-7l-gsy" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aGn-hB-0DK">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
