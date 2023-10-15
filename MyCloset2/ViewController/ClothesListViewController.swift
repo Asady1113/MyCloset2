@@ -42,7 +42,7 @@ class ClothesListViewController: OutputClothesViewController, UITableViewDataSou
     
     // 画面遷移処理
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let segueIdToAddVC = "fromOthers"
+        let segueIdToAddVC = "toAdd"
         let segueIdToDetailVC = "toDetail"
     
         if segue.identifier == segueIdToAddVC, let addViewController = segue.destination as? AddViewController, let category {

@@ -15,32 +15,4 @@ class Design {
         navigationController.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "HonyaJi-Re", size: 20) as Any]
     }
     
-    //ボタンのバウンド処理
-    func didTouchDownButton(_ button: UIButton) {
-        // ボタンを縮こませます
-        UIView.animate(withDuration: 0.2, animations: {
-            button.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-        })
-    }
-    
-    func didTouchDragExitButton(_ button: UIButton) {
-        // 縮こまったボタンをアニメーションで元のサイズに戻します
-        UIView.animate(withDuration: 0.2, animations: {
-            button.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-        })
-    }
-    
-    func didTouchUpInsideButton(_ button: UIButton) {
-        // バウンド処理です
-        UIView.animate(withDuration: 0.5,
-                       delay: 0.0,
-                       usingSpringWithDamping: 0.3,
-                       initialSpringVelocity: 8,
-                       options: .curveEaseOut,
-                       animations: { () -> Void in
-            
-            button.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-        }, completion: nil)
-    }
-    
 }

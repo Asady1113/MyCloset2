@@ -9,27 +9,5 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    @IBOutlet weak var searchButton : UIButton!
-    @IBOutlet weak var howtoUseButton: UIButton!
-    @IBOutlet weak var titleLabel: UILabel!
-    
-    @IBOutlet weak var ruleButton: UIBarButtonItem!
-    
-    private let design = Design()
-    
-    @IBAction func didTouchDownButton(_sender: UIButton) {
-        design.didTouchDownButton(_sender)
-    }
-    
-    
-    @IBAction func didTouchDragExitButton(_sender: UIButton) {
-        design.didTouchDragExitButton(_sender)
-    }
-    
-    
-    @IBAction func didTouchUpInsideButton(_sender: UIButton) {
-        design.didTouchUpInsideButton(_sender)
-    }
-    
 }
 
