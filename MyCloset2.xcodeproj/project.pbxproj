@@ -18,6 +18,8 @@
 		940B35642859A9F000172ADB /* MyCloset2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B35632859A9F000172ADB /* MyCloset2UITests.swift */; };
 		940B35662859A9F000172ADB /* MyCloset2UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B35652859A9F000172ADB /* MyCloset2UITestsLaunchTests.swift */; };
 		94436ABB2A8882570099ED65 /* ClothesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94436ABA2A8882570099ED65 /* ClothesListViewController.swift */; };
+		9455B83C2ADCE27F008C50CF /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9455B83B2ADCE27F008C50CF /* DatePicker.swift */; };
+		9455B83E2ADCE4D3008C50CF /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9455B83D2ADCE4D3008C50CF /* PickerView.swift */; };
 		9463206128B09AEC0005D6C3 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463206028B09AEC0005D6C3 /* CustomTextField.swift */; };
 		9463206528B0D57C0005D6C3 /* mycloset.png in Resources */ = {isa = PBXBuildFile; fileRef = 9463206428B0D57C0005D6C3 /* mycloset.png */; };
 		9463207D28B0F3BE0005D6C3 /* iTunesArtwork@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9463206828B0F3BE0005D6C3 /* iTunesArtwork@1x.png */; };
@@ -124,6 +126,8 @@
 		940B35632859A9F000172ADB /* MyCloset2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCloset2UITests.swift; sourceTree = "<group>"; };
 		940B35652859A9F000172ADB /* MyCloset2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCloset2UITestsLaunchTests.swift; sourceTree = "<group>"; };
 		94436ABA2A8882570099ED65 /* ClothesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothesListViewController.swift; sourceTree = "<group>"; };
+		9455B83B2ADCE27F008C50CF /* DatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
+		9455B83D2ADCE4D3008C50CF /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 		9463206028B09AEC0005D6C3 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		9463206428B0D57C0005D6C3 /* mycloset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mycloset.png; sourceTree = "<group>"; };
 		9463206828B0F3BE0005D6C3 /* iTunesArtwork@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@1x.png"; sourceTree = "<group>"; };
@@ -420,6 +424,8 @@
 				9463206028B09AEC0005D6C3 /* CustomTextField.swift */,
 				94E5AA502ADADBAB00C2113D /* UIButton.swift */,
 				94E5AA552ADAFBA500C2113D /* UIBarButtonItem.swift */,
+				9455B83B2ADCE27F008C50CF /* DatePicker.swift */,
+				9455B83D2ADCE4D3008C50CF /* PickerView.swift */,
 			);
 			path = Design;
 			sourceTree = "<group>";
@@ -719,11 +725,13 @@
 				94B40B6728AF5A9800B86CFF /* ResultViewController.swift in Sources */,
 				94E5AA512ADADBAB00C2113D /* UIButton.swift in Sources */,
 				94D32CDD28ACFC3700AE8409 /* Clothes.swift in Sources */,
+				9455B83C2ADCE27F008C50CF /* DatePicker.swift in Sources */,
 				94D32CDB28ACF4CF00AE8409 /* AddViewController.swift in Sources */,
 				940323FB2AA6BFC60069B733 /* InputClothesViewController.swift in Sources */,
 				947A5BE628C3247C00FCC6AC /* DateLog.swift in Sources */,
 				9463206128B09AEC0005D6C3 /* CustomTextField.swift in Sources */,
 				94D32CEB28AD544900AE8409 /* BottomsViewController.swift in Sources */,
+				9455B83E2ADCE4D3008C50CF /* PickerView.swift in Sources */,
 				94436ABB2A8882570099ED65 /* ClothesListViewController.swift in Sources */,
 				94D32CE528AD385B00AE8409 /* LoadFunctions.swift in Sources */,
 				94D32CD928ACF49800AE8409 /* OthersViewController.swift in Sources */,
