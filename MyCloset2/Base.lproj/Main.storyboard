@@ -57,7 +57,7 @@
                     <navigationItem key="navigationItem" title="その他" id="DCB-ey-c7I">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="OHJ-lf-94b">
                             <connections>
-                                <segue destination="Cdb-yD-mSg" kind="presentation" identifier="fromOthers" id="DJ5-tP-FKq"/>
+                                <segue destination="Cdb-yD-mSg" kind="presentation" identifier="toAdd" id="DJ5-tP-FKq"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -110,13 +110,12 @@
                     <navigationItem key="navigationItem" title="靴・サンダルなど" id="x7y-EV-MdX">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Pnw-3F-wOO">
                             <connections>
-                                <action selector="toAdd" destination="WXl-CF-c1k" id="dhg-cn-rU3"/>
+                                <segue destination="Cdb-yD-mSg" kind="presentation" identifier="toAdd" id="RkG-dq-B9U"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="4f2-UC-tOC" id="bh6-Co-45L"/>
-                        <segue destination="Cdb-yD-mSg" kind="presentation" identifier="fromShoes" id="Oh7-sD-nCm"/>
                         <segue destination="c0a-9h-VGg" kind="presentation" identifier="toDetail" id="Dvv-T9-VhY"/>
                     </connections>
                 </viewController>
@@ -196,10 +195,10 @@
             </objects>
             <point key="canvasLocation" x="5310" y="-2484"/>
         </scene>
-        <!--Home View Controller-->
+        <!--View Controller-->
         <scene sceneID="Ctw-SQ-RRg">
             <objects>
-                <viewController id="a2l-8L-662" customClass="HomeViewController" customModule="MyCloset2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="a2l-8L-662" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QeA-Pd-IvB">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -231,10 +230,25 @@
                                 <state key="normal" title="使い方">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                        <size key="value" width="3" height="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isAnimated" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="didTouchDownButtonWith_sender:" destination="a2l-8L-662" eventType="touchDown" id="hH1-78-gFS"/>
-                                    <action selector="didTouchDragExitButtonWith_sender:" destination="a2l-8L-662" eventType="touchDragExit" id="UgR-5A-rG5"/>
-                                    <action selector="didTouchUpInsideButtonWith_sender:" destination="a2l-8L-662" eventType="touchUpInside" id="kRS-oc-YmR"/>
                                     <segue destination="uGg-eh-diQ" kind="presentation" id="Yb1-M0-HaI"/>
                                 </connections>
                             </button>
@@ -249,10 +263,25 @@
                                 <state key="normal" title="服を検索">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                        <size key="value" width="3" height="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isAnimated" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="didTouchDownButtonWith_sender:" destination="a2l-8L-662" eventType="touchDown" id="haC-ZT-cg9"/>
-                                    <action selector="didTouchDragExitButtonWith_sender:" destination="a2l-8L-662" eventType="touchDragExit" id="qdL-OA-YBW"/>
-                                    <action selector="didTouchUpInsideButtonWith_sender:" destination="a2l-8L-662" eventType="touchUpInside" id="TcJ-9g-oxH"/>
                                     <segue destination="InO-F8-0O4" kind="show" id="L6U-xb-WRE"/>
                                 </connections>
                             </button>
@@ -275,17 +304,14 @@
                         <barButtonItem key="backBarButtonItem" title="ホームに戻る" id="DN2-Bx-igs"/>
                         <barButtonItem key="rightBarButtonItem" title="利用規約" id="Mnu-LH-dAm">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="selectedTint" value="HonyaJi-Re"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <segue destination="ALd-iD-GuP" kind="presentation" id="crd-P4-6iT"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="howtoUseButton" destination="l2j-d9-XsZ" id="PPV-eW-neU"/>
-                        <outlet property="ruleButton" destination="Mnu-LH-dAm" id="j1S-Yi-YWn"/>
-                        <outlet property="searchButton" destination="sCc-Si-Gsj" id="yk5-tY-ab5"/>
-                        <outlet property="titleLabel" destination="gRU-ja-3km" id="Jei-n0-gS8"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zf8-r4-Tek" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -294,7 +320,7 @@
         <!--トップス/アウター-->
         <scene sceneID="ZC1-Y9-aeZ">
             <objects>
-                <viewController id="Esm-7l-gsy" customClass="TopsViewController" customModule="MyCloset2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Esm-7l-gsy" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aGn-hB-0DK">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -309,10 +335,25 @@
                                 <state key="normal" title="長袖トップス">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                        <size key="value" width="3" height="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isAnimated" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="didTouchDownButtonWith_sender:" destination="Esm-7l-gsy" eventType="touchDown" id="5wa-3T-z8O"/>
-                                    <action selector="didTouchDragExitButtonWith_sender:" destination="Esm-7l-gsy" eventType="touchDragExit" id="Hci-JQ-asv"/>
-                                    <action selector="didTouchUpInsideButtonWith_sender:" destination="Esm-7l-gsy" eventType="touchUpInside" id="oQD-th-ILk"/>
                                     <segue destination="jtQ-US-1jC" kind="show" id="OWg-hE-g2y"/>
                                 </connections>
                             </button>
@@ -335,10 +376,25 @@
                                 <state key="normal" title="半袖トップス">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                        <size key="value" width="3" height="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isAnimated" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="didTouchDownButtonWith_sender:" destination="Esm-7l-gsy" eventType="touchDown" id="2PD-TY-ZiF"/>
-                                    <action selector="didTouchDragExitButtonWith_sender:" destination="Esm-7l-gsy" eventType="touchDragExit" id="1jd-tZ-5pZ"/>
-                                    <action selector="didTouchUpInsideButtonWith_sender:" destination="Esm-7l-gsy" eventType="touchUpInside" id="ixo-Gq-aYe"/>
                                     <segue destination="3lW-4J-gJA" kind="show" id="qAd-WZ-zGX"/>
                                 </connections>
                             </button>
@@ -360,10 +416,6 @@
                     <navigationItem key="navigationItem" title="トップス/アウター" id="Vo1-9M-9hh">
                         <barButtonItem key="backBarButtonItem" title="もどる" id="DS1-fW-P84"/>
                     </navigationItem>
-                    <connections>
-                        <outlet property="longTopsButton" destination="kKA-vk-ry0" id="9Eb-UM-f3s"/>
-                        <outlet property="shortTopsButton" destination="oe7-pe-AYZ" id="clR-mJ-Zbz"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="njK-pb-aLV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -408,13 +460,12 @@
                     <navigationItem key="navigationItem" title="トップス/アウター長袖" id="lG1-0k-DF9">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="pZ5-Vh-f8Q">
                             <connections>
-                                <action selector="toAdd" destination="jtQ-US-1jC" id="I2r-py-Len"/>
+                                <segue destination="Cdb-yD-mSg" kind="presentation" identifier="toAdd" id="hsf-Ae-zD0"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="woc-nR-lSE" id="ItN-HI-nHO"/>
-                        <segue destination="Cdb-yD-mSg" kind="presentation" identifier="fromLongTops" id="cfg-yL-ujk"/>
                         <segue destination="c0a-9h-VGg" kind="presentation" identifier="toDetail" id="GhU-6U-6Ez"/>
                     </connections>
                 </viewController>
@@ -486,13 +537,12 @@
                     <navigationItem key="navigationItem" title="ボトムス" id="2u2-se-iKt">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="s0p-u8-cZ4">
                             <connections>
-                                <action selector="toAdd" destination="W9I-jh-6Hn" id="tma-hP-24I"/>
+                                <segue destination="Cdb-yD-mSg" kind="presentation" identifier="toAdd" id="0dQ-rK-aL1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="1Z2-zB-Wib" id="yRK-zh-YW6"/>
-                        <segue destination="Cdb-yD-mSg" kind="presentation" identifier="fromBottoms" id="adN-Wy-ceU"/>
                         <segue destination="c0a-9h-VGg" kind="presentation" identifier="toDetail" id="oij-Px-Tbe"/>
                     </connections>
                 </viewController>
@@ -537,16 +587,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="トップス/アウター半袖" id="sb2-Xr-59h">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="dnS-Kr-itY">
-                            <connections>
-                                <action selector="toAdd" destination="3lW-4J-gJA" id="aTS-a4-ojf"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="dnS-Kr-itY"/>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="qof-mi-bwn" id="0MV-tt-yGJ"/>
-                        <segue destination="Cdb-yD-mSg" kind="presentation" identifier="fromShortTops" id="iMi-RZ-AxA"/>
                         <segue destination="c0a-9h-VGg" kind="presentation" identifier="toDetail" id="N3p-Af-H2V"/>
+                        <segue destination="Cdb-yD-mSg" kind="presentation" identifier="toAdd" id="2Se-JO-c6z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vh2-gq-Wgo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -764,6 +810,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="1" green="0.93128491349999998" blue="0.79172610320000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="20"/>
+                        </textAttributes>
                         <textAttributes key="largeTitleTextAttributes">
                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
@@ -789,6 +838,7 @@
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="1" green="0.93128491349999998" blue="0.79172610320000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="20"/>
                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
@@ -813,6 +863,7 @@
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="1" green="0.93128491349999998" blue="0.79172610320000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="20"/>
                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
@@ -837,6 +888,7 @@
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="1" green="0.93128491349999998" blue="0.79172610320000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="20"/>
                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
@@ -1064,6 +1116,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="1" green="0.93128491349999998" blue="0.79172610320000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="HonyaJi-Re" family="HonyaJi-Re" pointSize="20"/>
+                        </textAttributes>
                         <textAttributes key="largeTitleTextAttributes">
                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
@@ -1304,7 +1359,7 @@ e. その他，開発者が本サービスの利用を適当でないと判断�
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="oij-Px-Tbe"/>
-        <segue reference="adN-Wy-ceU"/>
+        <segue reference="0dQ-rK-aL1"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="clothes-placeholder-icon.png" width="40" height="40"/>

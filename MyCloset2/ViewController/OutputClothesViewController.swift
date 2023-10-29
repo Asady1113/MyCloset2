@@ -14,18 +14,9 @@ class OutputClothesViewController: UIViewController, ClothesTableViewCellDelegat
     
     @IBOutlet weak var tableView: UITableView!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configureUI()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         // データ読み込みの処理
         loadClothes()
-    }
-    
-    func configureUI() {
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "HonyaJi-Re", size: 20) as Any]
     }
     
     func setUpTableView(tableView: UITableView) {

@@ -15,8 +15,12 @@ class ClothesListViewController: OutputClothesViewController, UITableViewDataSou
         self.category = category
     }
     
-    override func configureUI() {
-        super.configureUI()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureUI()
+    }
+    
+    private func configureUI() {
         self.setUpTableView(tableView: tableView)
     }
     
@@ -42,7 +46,7 @@ class ClothesListViewController: OutputClothesViewController, UITableViewDataSou
     
     // 画面遷移処理
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let segueIdToAddVC = "fromOthers"
+        let segueIdToAddVC = "toAdd"
         let segueIdToDetailVC = "toDetail"
     
         if segue.identifier == segueIdToAddVC, let addViewController = segue.destination as? AddViewController, let category {

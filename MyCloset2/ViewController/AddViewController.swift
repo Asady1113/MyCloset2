@@ -25,12 +25,18 @@ class AddViewController: InputClothesViewController, UITextViewDelegate, UITextF
         setUpColorPickerView()
     }
     
+    private func setUpDatePicker() {
+        let datePicker = DatePicker(datePicker: datePicker, textField: buyDateTextField, view: view)
+        datePicker.setUpDatePicker(with: #selector(done))
+    }
+    
     private func setUpColorPickerView() {
         //色指定のシステム
-        // ピッカー設定
         pickerView.delegate = self
         pickerView.dataSource = self
-        self.setUpColorPickerView(pickerView: pickerView)
+        // ピッカー設定
+        let pickerView = PickerView(pickerView: pickerView, textField: colorTextField, view: view)
+        pickerView.setUpColorPickerView(with: #selector(colorDone))
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

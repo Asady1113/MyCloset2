@@ -27,18 +27,6 @@ class ClothesTableViewCell: UITableViewCell {
     @IBOutlet var cancelButton: UIButton!
     @IBOutlet var deleteButton: UIButton!
     @IBOutlet weak var warningLabel: UILabel!
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        putOnButton.layer.cornerRadius = 12
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
     @IBAction func putOn(button: UIButton) {
         self.delegate?.didTapPutOnButton(tableViewCell: self,button: button)
