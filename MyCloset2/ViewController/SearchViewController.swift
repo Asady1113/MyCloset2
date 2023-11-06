@@ -7,52 +7,38 @@
 
 import UIKit
 
-class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class SearchViewController: UIViewController {
     
     enum Conditions {
         case category
         case color
     }
     
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var cancelButton: UIButton!
+    
     private var currentConditions: Conditions = .category
     
     private var searchCandidateArray = [String]()
     private var searchResult = [String]()
     
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var cancelButton: UIButton!
-    
     override func viewWillAppear(_ animated: Bool) {
         resetCondition()
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        searchCandidateArray = getCandidatesByCondition(selectedConditions: currentConditions)
-        return searchCandidateArray.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") else {
-            fatalError()
-        }
-        configureCell(cell: cell, indexPath: indexPath)
-        return cell
-    }
-    
-    private func configureCell(cell: UITableViewCell, indexPath: IndexPath) {
-        if let textLabel = cell.viewWithTag(1) as? UILabel {
-            textLabel.text = searchCandidateArray[indexPath.row]
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let resultViewController = segue.destination as? ResultViewController {
+            resultViewController.setSearchConditions(searchConditions: searchResult)
         }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let selectedIndex = tableView.indexPathForSelectedRow else {
-            fatalError()
-        }
-        searchResult.append(searchCandidateArray[selectedIndex.row])
+    @IBAction func back() {
+        currentConditions = .category
+        //検索初期化
+        searchResult = [String]()
+        tableView.reloadData()
         
-        changeConditionsAndToResult()
-        tableView.deselectRow(at: indexPath, animated: true)
+        cancelButton.isHidden = true
     }
     
     private func changeConditionsAndToResult() {
@@ -63,12 +49,6 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
             tableView.reloadData()
         } else if currentConditions == .color {
             self.performSegue(withIdentifier: "toResult", sender: nil)
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let resultViewController = segue.destination as? ResultViewController {
-            resultViewController.setSearchConditions(searchConditions: searchResult)
         }
     }
     
@@ -92,13 +72,37 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
         }
     }
     
-    @IBAction func back() {
-        currentConditions = .category
-        //検索初期化
-        searchResult = [String]()
-        tableView.reloadData()
-        
-        cancelButton.isHidden = true
+}
+
+extension SearchViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        searchCandidateArray = getCandidatesByCondition(selectedConditions: currentConditions)
+        return searchCandidateArray.count
     }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") else {
+            fatalError()
+        }
+        configureCell(cell: cell, indexPath: indexPath)
+        return cell
+    }
+    
+    private func configureCell(cell: UITableViewCell, indexPath: IndexPath) {
+        if let textLabel = cell.viewWithTag(1) as? UILabel {
+            textLabel.text = searchCandidateArray[indexPath.row]
+        }
+    }
+}
+
+extension SearchViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let selectedIndex = tableView.indexPathForSelectedRow else {
+            fatalError()
+        }
+        searchResult.append(searchCandidateArray[selectedIndex.row])
+        
+        changeConditionsAndToResult()
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
